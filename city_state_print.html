@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Date and City</title>
+  </head>
+  <body>
+    <h1>Date and City</h1>
+    <form action="#" method="get">
+      <label for="date">Date:</label>
+      <input type="date" id="date" name="date"><br><br>
+      <label for="city">City:</label>
+      <input type="text" id="city" name="city"><br><br>
+      <input type="submit" value="Submit">
+    </form>
+    <br>
+    <div id="result"></div>
+    <script>
+      function handleSubmit(event) {
+        event.preventDefault();
+        const date = document.getElementById('date').value;
+        const city = document.getElementById('city').value;
+        const result = `You entered: ${date} and ${city}`;
+        document.getElementById('result').innerHTML = result;
+      }
+      const form = document.querySelector('form');
+      form.addEventListener('submit', handleSubmit);
+    </script>
+  </body>
+</html>
