@@ -2,10 +2,10 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Plan a Day Trip</title>
+    <title>Plan a Day Trip v1</title>
   </head>
   <body>
-    <h1>Plan a Day Trip</h1>
+    <h1>Plan a Day Trip v1</h1>
     <form action="#" method="get">
       <label for="date">Date:</label>
       <input type="date" id="date" name="date"><br><br>
@@ -42,7 +42,7 @@
           });
           document.getElementById('loading').style.display = 'none';
           const data = await response.json();
-          const result = data.choices[0].text;
+          const result = data.choices.length ? data.choices[0].text : 'No results found.';
           document.getElementById('result').innerHTML = result;
         } catch (error) {
           document.getElementById('loading').style.display = 'none';
