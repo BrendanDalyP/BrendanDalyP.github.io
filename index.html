@@ -1,48 +1,200 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio - Resume</title>
-    <link rel="stylesheet" href="styles.css">
+  <title>Brendan Daly - Data Architect | Microsoft Professional</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      color: #333;
+      background-color: #f9f9f9;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    header {
+      text-align: center;
+      padding: 60px 0 30px;
+      background-color: #fff;
+      border-bottom: 1px solid #eaeaea;
+      margin-bottom: 40px;
+    }
+    .profile-pic {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 20px;
+      border: 3px solid #0078D4; /* Microsoft blue */
+    }
+    h1 {
+      color: #0078D4; /* Microsoft blue */
+      margin: 10px 0;
+      font-size: 2.5rem;
+    }
+    .subtitle {
+      font-size: 1.3rem;
+      color: #555;
+      margin-bottom: 20px;
+    }
+    .social-links {
+      margin: 20px 0;
+    }
+    .social-links a {
+      color: #0078D4;
+      font-size: 1.8rem;
+      margin: 0 10px;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .social-links a:hover {
+      color: #005a9e;
+    }
+    section {
+      background-color: #fff;
+      padding: 30px;
+      margin-bottom: 30px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #0078D4;
+      border-bottom: 2px solid #eaeaea;
+      padding-bottom: 10px;
+      margin-top: 0;
+    }
+    .experience-item {
+      margin-bottom: 25px;
+    }
+    .company {
+      font-weight: bold;
+      font-size: 1.1rem;
+      color: #444;
+    }
+    .period {
+      color: #666;
+      font-style: italic;
+      margin-bottom: 10px;
+    }
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .skill-badge {
+      background-color: #e6f2fa;
+      color: #0078D4;
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #fff;
+      border-top: 1px solid #eaeaea;
+      color: #666;
+      font-size: 0.9rem;
+    }
+    .cta-button {
+      display: inline-block;
+      background-color: #0078D4;
+      color: white;
+      padding: 12px 25px;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: bold;
+      margin-top: 15px;
+      transition: background-color 0.3s;
+    }
+    .cta-button:hover {
+      background-color: #005a9e;
+    }
+  </style>
 </head>
 <body>
+  <div class="container">
     <header>
-        <nav>
-            <ul>
-                <li><a href="index.html" class="active">Resume</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
+      <!-- Replace with your actual image URL when available -->
+      <img src="https://via.placeholder.com/150" alt="Brendan Daly" class="profile-pic">
+      <h1>Brendan Daly</h1>
+      <p class="subtitle">Microsoft Data Architect at Quisitive</p>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/dalybi/" target="_blank" title="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/BrendanDalyP" target="_blank" title="GitHub Profile"><i class="fab fa-github"></i></a>
+        <!-- Add other social media as needed -->
+      </div>
     </header>
-
-    <main>
-        <h1>My Resume</h1>
-        <!-- Add your resume content here -->
-        <section>
-            <h2>Experience</h2>
-            <p>Add your work experience here...</p>
-        </section>
-        <section>
-            <h2>Education</h2>
-            <p>Add your education details here...</p>
-        </section>
-        <!-- Add more sections as needed -->
-    </main>
-
+    
+    <section id="about">
+      <h2>About Me</h2>
+      <p>I'm a Microsoft Data Architect at Quisitive, specializing in designing and implementing data solutions leveraging Microsoft's data platform and cloud technologies.</p>
+      <p>With a focus on enterprise data architecture, I help organizations optimize their data infrastructure, implement data governance strategies, and build scalable data solutions on Microsoft Azure.</p>
+      <a href="https://www.linkedin.com/in/dalybi/" class="cta-button" target="_blank">Connect on LinkedIn</a>
+    </section>
+    
+    <section id="experience">
+      <h2>Professional Experience</h2>
+      
+      <div class="experience-item">
+        <div class="company">Quisitive</div>
+        <div class="period">Data Architect</div>
+        <p>Working as a Microsoft Data Architect, designing and implementing enterprise data solutions leveraging the Microsoft data platform and Azure cloud services.</p>
+      </div>
+      
+      <!-- Add previous experience as needed based on your LinkedIn profile -->
+    </section>
+    
+    <section id="skills">
+      <h2>Technical Skills</h2>
+      <div class="skills">
+        <span class="skill-badge">Microsoft Azure</span>
+        <span class="skill-badge">Azure Synapse Analytics</span>
+        <span class="skill-badge">Azure Data Factory</span>
+        <span class="skill-badge">Power BI</span>
+        <span class="skill-badge">SQL Server</span>
+        <span class="skill-badge">Data Modeling</span>
+        <span class="skill-badge">ETL/ELT</span>
+        <span class="skill-badge">Data Warehousing</span>
+        <span class="skill-badge">T-SQL</span>
+        <span class="skill-badge">Data Governance</span>
+        <span class="skill-badge">Azure Databricks</span>
+        <span class="skill-badge">Data Lake Design</span>
+      </div>
+    </section>
+    
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="experience-item">
+        <div class="company">ClaimArche Pet Counter</div>
+        <p>An Android application that uses TensorFlow Lite and computer vision to detect and count pets and other objects in real-time.</p>
+      </div>
+      <div class="experience-item">
+        <div class="company">Azure Data Platform Modernization</div>
+        <p>Designed and implemented modern data architecture on Azure for enterprise clients, including data lake, data warehouse, and real-time analytics solutions.</p>
+      </div>
+      <!-- Add more projects as needed -->
+    </section>
+    
+    <section id="certifications">
+      <h2>Microsoft Certifications</h2>
+      <div class="experience-item">
+        <div class="company">Microsoft Certified: Azure Data Engineer Associate</div>
+        <p>Expertise in designing and implementing the management, monitoring, security, and privacy of data solutions using the full stack of Azure data services.</p>
+      </div>
+      <!-- Add more certifications as applicable -->
+    </section>
+    
     <footer>
-        <nav>
-            <ul>
-                <li><a href="#data-engineering">Data Engineering</a></li>
-                <li><a href="#power-bi">Power BI</a></li>
-                <li><a href="#data-science">Data Science</a></li>
-                <li><a href="#real-time-intelligence">Real-Time Intelligence</a></li>
-                <li><a href="#data-governance">Data Governance</a></li>
-            </ul>
-        </nav>
-        <p>&copy; 2023 Your Name. All rights reserved.</p>
+      <p>© 2025 Brendan Daly. All rights reserved.</p>
     </footer>
+  </div>
 </body>
 </html>
-
