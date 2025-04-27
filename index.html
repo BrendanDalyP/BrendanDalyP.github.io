@@ -1,200 +1,883 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <title>Brendan Daly - Data Architect | Microsoft Professional</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
+    :root {
+      --primary: #0078D4;
+      --primary-dark: #005a9e;
+      --light: #f9f9f9;
+      --dark: #333;
+      --gray: #666;
+      --light-gray: #eaeaea;
+      --transition: all 0.3s ease;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       line-height: 1.6;
-      margin: 0;
-      padding: 0;
-      color: #333;
-      background-color: #f9f9f9;
+      color: var(--dark);
+      background-color: var(--light);
     }
+    
     .container {
-      max-width: 1000px;
+      max-width: 1200px;
       margin: 0 auto;
-      padding: 20px;
+      padding: 0 20px;
     }
-    header {
-      text-align: center;
-      padding: 60px 0 30px;
-      background-color: #fff;
-      border-bottom: 1px solid #eaeaea;
-      margin-bottom: 40px;
+    
+    /* Navigation */
+    nav {
+      background-color: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      transition: var(--transition);
     }
-    .profile-pic {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 20px;
-      border: 3px solid #0078D4; /* Microsoft blue */
-    }
-    h1 {
-      color: #0078D4; /* Microsoft blue */
-      margin: 10px 0;
-      font-size: 2.5rem;
-    }
-    .subtitle {
-      font-size: 1.3rem;
-      color: #555;
-      margin-bottom: 20px;
-    }
-    .social-links {
-      margin: 20px 0;
-    }
-    .social-links a {
-      color: #0078D4;
-      font-size: 1.8rem;
-      margin: 0 10px;
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-    .social-links a:hover {
-      color: #005a9e;
-    }
-    section {
-      background-color: #fff;
-      padding: 30px;
-      margin-bottom: 30px;
-      border-radius: 5px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    h2 {
-      color: #0078D4;
-      border-bottom: 2px solid #eaeaea;
-      padding-bottom: 10px;
-      margin-top: 0;
-    }
-    .experience-item {
-      margin-bottom: 25px;
-    }
-    .company {
-      font-weight: bold;
-      font-size: 1.1rem;
-      color: #444;
-    }
-    .period {
-      color: #666;
-      font-style: italic;
-      margin-bottom: 10px;
-    }
-    .skills {
+    
+    .nav-container {
       display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0;
+    }
+    
+    .logo {
+      font-weight: bold;
+      font-size: 1.5rem;
+      color: var(--primary);
+      text-decoration: none;
+    }
+    
+    .nav-links {
+      display: flex;
+      list-style: none;
+    }
+    
+    .nav-links li {
+      margin-left: 30px;
+    }
+    
+    .nav-links a {
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: 500;
+      transition: var(--transition);
+      position: relative;
+    }
+    
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+    
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background-color: var(--primary);
+      transition: var(--transition);
+    }
+    
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+    
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--dark);
+    }
+    
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(231,241,253,0.9) 100%);
+      margin-top: 0;
+      position: relative;
+      overflow: hidden;
+      padding-top: 80px;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://via.placeholder.com/1920x1080') center/cover;
+      opacity: 0.05;
+      z-index: -1;
+    }
+    
+    .hero-content {
+      max-width: 700px;
+      padding: 0 20px;
+    }
+    
+    .hero-content h1 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      color: var(--dark);
+      line-height: 1.2;
+    }
+    
+    .highlight {
+      color: var(--primary);
+      position: relative;
+    }
+    
+    .highlight::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 8px;
+      bottom: 5px;
+      left: 0;
+      background-color: rgba(0,120,212,0.2);
+      z-index: -1;
+    }
+    
+    .hero-content p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      color: var(--gray);
+    }
+    
+    .cta-buttons {
+      display: flex;
+      gap: 15px;
       flex-wrap: wrap;
-      gap: 10px;
     }
-    .skill-badge {
-      background-color: #e6f2fa;
-      color: #0078D4;
-      padding: 5px 15px;
-      border-radius: 20px;
-      font-size: 0.9rem;
-    }
-    footer {
-      text-align: center;
-      padding: 20px;
-      background-color: #fff;
-      border-top: 1px solid #eaeaea;
-      color: #666;
-      font-size: 0.9rem;
-    }
+    
     .cta-button {
       display: inline-block;
-      background-color: #0078D4;
-      color: white;
-      padding: 12px 25px;
-      text-decoration: none;
+      padding: 12px 30px;
       border-radius: 30px;
-      font-weight: bold;
-      margin-top: 15px;
-      transition: background-color 0.3s;
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+      font-size: 1rem;
     }
-    .cta-button:hover {
-      background-color: #005a9e;
+    
+    .primary-btn {
+      background-color: var(--primary);
+      color: white;
+      box-shadow: 0 4px 15px rgba(0,120,212,0.3);
+    }
+    
+    .primary-btn:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,120,212,0.4);
+    }
+    
+    .secondary-btn {
+      background-color: transparent;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+    
+    .secondary-btn:hover {
+      background-color: rgba(0,120,212,0.1);
+      transform: translateY(-2px);
+    }
+    
+    .profile-container {
+      position: relative;
+      width: 280px;
+      height: 280px;
+      margin-left: 50px;
+    }
+    
+    .profile-pic {
+      width: 280px;
+      height: 280px;
+      border-radius: 20px;
+      object-fit: cover;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      border: 4px solid white;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .profile-bg {
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      background-color: var(--primary);
+      border-radius: 20px;
+      top: 20px;
+      left: 20px;
+      z-index: 1;
+    }
+    
+    /* Section Styling */
+    section {
+      padding: 100px 0;
+    }
+    
+    .section-title {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: var(--dark);
+      text-align: center;
+    }
+    
+    .section-subtitle {
+      text-align: center;
+      color: var(--gray);
+      margin-bottom: 60px;
+      font-size: 1.1rem;
+    }
+    
+    /* Skills Section */
+    .skills-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 30px;
+    }
+    
+    .skill-category {
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: var(--transition);
+    }
+    
+    .skill-category:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    }
+    
+    .category-title {
+      font-size: 1.3rem;
+      color: var(--primary);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .category-title i {
+      margin-right: 10px;
+      font-size: 1.5rem;
+    }
+    
+    .skill-description {
+      margin-bottom: 15px;
+      color: var(--gray);
+    }
+    
+    .skill-tools {
+      background-color: #f4f9fd;
+      padding: 15px;
+      border-radius: 8px;
+    }
+    
+    .tools-title {
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: var(--dark);
+    }
+    
+    .tools-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    
+    .tool-badge {
+      background-color: var(--primary);
+      color: white;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+    
+    /* Certifications Section */
+    .certifications-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 30px;
+    }
+    
+    .cert-card {
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .cert-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    }
+    
+    .cert-icon {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 20px;
+      color: var(--primary);
+      font-size: 2.5rem;
+    }
+    
+    .cert-title {
+      font-size: 1.1rem;
+      color: var(--dark);
+      margin-bottom: 10px;
+      line-height: 1.4;
+      font-weight: bold;
+    }
+    
+    .cert-issuer {
+      color: var(--primary);
+      margin-bottom: 15px;
+      font-weight: 500;
+    }
+    
+    /* Resume Section */
+    .resume-embed {
+      width: 100%;
+      height: 800px;
+      border: none;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      border-radius: 10px;
+    }
+    
+    /* Contact Section */
+    .contact-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+    }
+    
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+    
+    .info-item {
+      display: flex;
+      align-items: flex-start;
+    }
+    
+    .info-icon {
+      width: 50px;
+      height: 50px;
+      background-color: var(--primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      margin-right: 15px;
+      flex-shrink: 0;
+    }
+    
+    .info-content h3 {
+      font-size: 1.2rem;
+      color: var(--dark);
+      margin-bottom: 5px;
+    }
+    
+    .info-content p, .info-content a {
+      color: var(--gray);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    
+    .info-content a:hover {
+      color: var(--primary);
+    }
+    
+    .social-icons {
+      display: flex;
+      gap: 15px;
+      margin-top: 30px;
+    }
+    
+    .social-icon {
+      width: 40px;
+      height: 40px;
+      background-color: white;
+      color: var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      transition: var(--transition);
+      text-decoration: none;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    
+    .social-icon:hover {
+      background-color: var(--primary);
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0,120,212,0.3);
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-control {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-family: inherit;
+      font-size: 1rem;
+      transition: var(--transition);
+    }
+    
+    .form-control:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px rgba(0,120,212,0.2);
+    }
+    
+    textarea.form-control {
+      min-height: 150px;
+      resize: vertical;
+    }
+    
+    .submit-btn {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: var(--transition);
+      display: inline-block;
+    }
+    
+    .submit-btn:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0,120,212,0.3);
+    }
+    
+    /* Footer */
+    footer {
+      background-color: #1a1a1a;
+      color: white;
+      padding: 30px 0;
+      text-align: center;
+    }
+    
+    .footer-text {
+      color: #bbb;
+      font-size: 0.9rem;
+    }
+    
+    /* Media Queries */
+    @media (max-width: 1024px) {
+      .hero-content h1 {
+        font-size: 2.8rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .hero {
+        height: auto;
+        padding: 150px 0 100px;
+      }
+      
+      .hero-content {
+        margin: 0 auto;
+        text-align: center;
+      }
+      
+      .profile-container {
+        margin: 50px auto 0;
+      }
+      
+      .cta-buttons {
+        justify-content: center;
+      }
+      
+      .contact-container {
+        grid-template-columns: 1fr;
+      }
+      
+      .resume-embed {
+        height: 600px;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .hero-content h1 {
+        font-size: 2.2rem;
+      }
+      
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        flex-direction: column;
+        padding: 20px 0;
+      }
+      
+      .nav-links.show {
+        display: flex;
+      }
+      
+      .nav-links li {
+        margin: 10px 20px;
+      }
+      
+      .mobile-menu-btn {
+        display: block;
+      }
+      
+      .resume-embed {
+        height: 500px;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <!-- Replace with your actual image URL when available -->
-      <img src="https://via.placeholder.com/150" alt="Brendan Daly" class="profile-pic">
-      <h1>Brendan Daly</h1>
-      <p class="subtitle">Microsoft Data Architect at Quisitive</p>
-      <div class="social-links">
-        <a href="https://www.linkedin.com/in/dalybi/" target="_blank" title="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
-        <a href="https://github.com/BrendanDalyP" target="_blank" title="GitHub Profile"><i class="fab fa-github"></i></a>
-        <!-- Add other social media as needed -->
+  <!-- Navigation -->
+  <nav id="navbar">
+    <div class="container nav-container">
+      <a href="#home" class="logo">BD</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#certifications">Certifications</a></li>
+        <li><a href="#resume">Resume</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="container" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;">
+      <div class="hero-content">
+        <h1>Hello, I'm <span class="highlight">Brendan Daly</span></h1>
+        <p>Data & Analytics Leader aligning architecture with business goals to reduce time-to-insight, accelerate delivery, and increase the strategic value of data across organizations.</p>
+        <div class="cta-buttons">
+          <a href="#contact" class="cta-button primary-btn">Contact Me</a>
+          <a href="#resume" class="cta-button secondary-btn">View Resume</a>
+        </div>
       </div>
-    </header>
-    
-    <section id="about">
-      <h2>About Me</h2>
-      <p>I'm a Microsoft Data Architect at Quisitive, specializing in designing and implementing data solutions leveraging Microsoft's data platform and cloud technologies.</p>
-      <p>With a focus on enterprise data architecture, I help organizations optimize their data infrastructure, implement data governance strategies, and build scalable data solutions on Microsoft Azure.</p>
-      <a href="https://www.linkedin.com/in/dalybi/" class="cta-button" target="_blank">Connect on LinkedIn</a>
-    </section>
-    
-    <section id="experience">
-      <h2>Professional Experience</h2>
+      <div class="profile-container">
+        <img src="https://via.placeholder.com/280" alt="Brendan Daly" class="profile-pic">
+        <div class="profile-bg"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills">
+    <div class="container">
+      <h2 class="section-title">Skills & Expertise</h2>
+      <p class="section-subtitle">Technical capabilities and core competencies</p>
       
-      <div class="experience-item">
-        <div class="company">Quisitive</div>
-        <div class="period">Data Architect</div>
-        <p>Working as a Microsoft Data Architect, designing and implementing enterprise data solutions leveraging the Microsoft data platform and Azure cloud services.</p>
+      <div class="skills-container">
+        <div class="skill-category">
+          <div class="category-title">
+            <i class="fas fa-cloud"></i>
+            Cloud Data Architecture
+          </div>
+          <p class="skill-description">I design scalable, governed data platforms that unify siloed sources into performance-optimized ecosystems. My architectures prioritize security, accessibility, and business alignment.</p>
+          <div class="skill-tools">
+            <div class="tools-title">Tools & Technologies:</div>
+            <div class="tools-list">
+              <span class="tool-badge">Microsoft Fabric</span>
+              <span class="tool-badge">Azure Synapse</span>
+              <span class="tool-badge">ADLS Gen2</span>
+              <span class="tool-badge">Delta Lake</span>
+              <span class="tool-badge">OneLake</span>
+              <span class="tool-badge">Cosmos DB</span>
+              <span class="tool-badge">Azure SQL</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="skill-category">
+          <div class="category-title">
+            <i class="fas fa-cogs"></i>
+            Data Engineering
+          </div>
+          <p class="skill-description">I build cloud-native ETL/ELT pipelines and reusable data products designed for scale, performance, and stakeholder alignment. My solutions accelerate data delivery while reducing technical debt.</p>
+          <div class="skill-tools">
+            <div class="tools-title">Tools & Technologies:</div>
+            <div class="tools-list">
+              <span class="tool-badge">Python</span>
+              <span class="tool-badge">PySpark</span>
+              <span class="tool-badge">SQL</span>
+              <span class="tool-badge">Data Factory</span>
+              <span class="tool-badge">Databricks</span>
+              <span class="tool-badge">dbt</span>
+              <span class="tool-badge">Synapse Pipelines</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="skill-category">
+          <div class="category-title">
+            <i class="fas fa-bolt"></i>
+            Real-Time & Event Architecture
+          </div>
+          <p class="skill-description">I implement streaming ingestion and alerting pipelines that capture, process, and deliver data in real-time for both operational decision-making and analytics use cases.</p>
+          <div class="skill-tools">
+            <div class="tools-title">Tools & Technologies:</div>
+            <div class="tools-list">
+              <span class="tool-badge">KQL</span>
+              <span class="tool-badge">Event Hubs</span>
+              <span class="tool-badge">Stream Analytics</span>
+              <span class="tool-badge">Fabric Real-Time Hub</span>
+              <span class="tool-badge">IoT Hub</span>
+              <span class="tool-badge">Change Data Capture</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="skill-category">
+          <div class="category-title">
+            <i class="fas fa-project-diagram"></i>
+            Data Modeling
+          </div>
+          <p class="skill-description">I create scalable, governed models across dimensional, vault, and medallion patterns for enterprise analytics, optimizing for both performance and business understanding.</p>
+          <div class="skill-tools">
+            <div class="tools-title">Tools & Technologies:</div>
+            <div class="tools-list">
+              <span class="tool-badge">Dimensional Modeling</span>
+              <span class="tool-badge">Data Vault</span>
+              <span class="tool-badge">Medallion Architecture</span>
+              <span class="tool-badge">Fabric Dataflows</span>
+              <span class="tool-badge">Semantic Models</span>
+              <span class="tool-badge">Tabular Editor</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="skill-category">
+          <div class="category-title">
+            <i class="fas fa-robot"></i>
+            AI Solutioning & Integration
+          </div>
+          <p class="skill-description">I identify and deliver enterprise AI use cases, integrating contextual logic and deploying multimodal orchestration to automate workflows and accelerate decision-making.</p>
+          <div class="skill-tools">
+            <div class="tools-title">Tools & Technologies:</div>
+            <div class="tools-list">
+              <span class="tool-badge">Microsoft Copilot</span>
+              <span class="tool-badge">Azure AI Foundry</span>
+              <span class="tool-badge">OpenAI</span>
+              <span class="tool-badge">ML Studio</span>
+              <span class="tool-badge">Fabric AI</span>
+              <span class="tool-badge">Cognitive Services</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="skill-category">
+          <div class="category-title">
+            <i class="fas fa-chart-bar"></i>
+            Business Intelligence
+          </div>
+          <p class="skill-description">I architect reporting systems that operationalize executive KPIs, integrate with strategic planning cycles, and deliver trusted insights across departments with reduced time-to-insight.</p>
+          <div class="skill-tools">
+            <div class="tools-title">Tools & Technologies:</div>
+            <div class="tools-list">
+              <span class="tool-badge">Power BI</span>
+              <span class="tool-badge">Tableau</span>
+              <span class="tool-badge">DAX</span>
+              <span class="tool-badge">Power Query</span>
+              <span class="tool-badge">Fabric Direct Lake</span>
+              <span class="tool-badge">Power BI Embedded</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="skill-category">
+          <div class="category-title">
+            <i class="fas fa-shield-alt"></i>
+            Data Governance & Security
+          </div>
+          <p class="skill-description">I operationalize enterprise data governance with RLS, PII controls, lineage, and auditability, enforcing standards that balance security, agility, and platform trust.</p>
+          <div class="skill-tools">
+            <div class="tools-title">Tools & Technologies:</div>
+            <div class="tools-list">
+              <span class="tool-badge">Purview</span>
+              <span class="tool-badge">Unity Catalog</span>
+              <span class="tool-badge">Profisee</span>
+              <span class="tool-badge">Collibra</span>
+              <span class="tool-badge">Azure Key Vault</span>
+              <span class="tool-badge">Row-Level Security</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="skill-category">
+          <div class="category-title">
+            <i class="fas fa-comments"></i>
+            Executive Communication
+          </div>
+          <p class="skill-description">I engage with C-suite through strategic readouts, KPI alignment, and roadmap facilitation, translating complex architecture into business impact and driving stakeholder buy-in.</p>
+          <div class="skill-tools">
+            <div class="tools-title">Key Capabilities:</div>
+            <div class="tools-list">
+              <span class="tool-badge">Strategic Roadmapping</span>
+              <span class="tool-badge">Solution Envisioning</span>
+              <span class="tool-badge">Business Case Development</span>
+              <span class="tool-badge">Implementation Planning</span>
+              <span class="tool-badge">Value Stream Alignment</span>
+            </div>
+          </div>
+        </div>
       </div>
+    </div>
+  </section>
+
+  <!-- Certifications Section -->
+  <section id="certifications">
+    <div class="container">
+      <h2 class="section-title">Microsoft Certifications</h2>
+      <p class="section-subtitle">Technical validations and professional credentials</p>
       
-      <!-- Add previous experience as needed based on your LinkedIn profile -->
-    </section>
-    
-    <section id="skills">
-      <h2>Technical Skills</h2>
-      <div class="skills">
-        <span class="skill-badge">Microsoft Azure</span>
-        <span class="skill-badge">Azure Synapse Analytics</span>
-        <span class="skill-badge">Azure Data Factory</span>
-        <span class="skill-badge">Power BI</span>
-        <span class="skill-badge">SQL Server</span>
-        <span class="skill-badge">Data Modeling</span>
-        <span class="skill-badge">ETL/ELT</span>
-        <span class="skill-badge">Data Warehousing</span>
-        <span class="skill-badge">T-SQL</span>
-        <span class="skill-badge">Data Governance</span>
-        <span class="skill-badge">Azure Databricks</span>
-        <span class="skill-badge">Data Lake Design</span>
+      <div class="certifications-container">
+        <div class="cert-card">
+          <div class="cert-icon">
+            <i class="fab fa-microsoft"></i>
+          </div>
+          <h3 class="cert-title">Azure Data Engineer Associate</h3>
+          <p class="cert-issuer">Microsoft (DP-203)</p>
+          <p>Design and implement data storage, processing, and security using the full stack of Azure data services.</p>
+        </div>
+        
+        <div class="cert-card">
+          <div class="cert-icon">
+            <i class="fab fa-microsoft"></i>
+          </div>
+          <h3 class="cert-title">Fabric Data Engineer Associate</h3>
+          <p class="cert-issuer">Microsoft (DP-700)</p>
+          <p>Implement enterprise data solutions using Microsoft Fabric's integrated analytics platform.</p>
+        </div>
+        
+        <div class="cert-card">
+          <div class="cert-icon">
+            <i class="fab fa-microsoft"></i>
+          </div>
+          <h3 class="cert-title">Fabric Analytics Engineer Associate</h3>
+          <p class="cert-issuer">Microsoft (DP-600)</p>
+          <p>Design and build analytics solutions within Microsoft Fabric's end-to-end analytics environment.</p>
+        </div>
+        
+        <div class="cert-card">
+          <div class="cert-icon">
+            <i class="fab fa-microsoft"></i>
+          </div>
+          <h3 class="cert-title">Data Analyst Associate</h3>
+          <p class="cert-issuer">Microsoft (PL-300)</p>
+          <p>Deliver business value through Power BI dashboards and reports using enterprise data assets.</p>
+        </div>
+        
+        <div class="cert-card">
+          <div class="cert-icon">
+            <i class="fab fa-microsoft"></i>
+          </div>
+          <h3 class="cert-title">Azure Cosmos DB Developer Specialty</h3>
+          <p class="cert-issuer">Microsoft (DP-420)</p>
+          <p>Design and implement multi-region, multi-master NoSQL solutions using Azure Cosmos DB.</p>
+        </div>
+        
+        <div class="cert-card">
+          <div class="cert-icon">
+            <i class="fas fa-snowflake"></i>
+          </div>
+          <h3 class="cert-title">SnowPro Core</h3>
+          <p class="cert-issuer">Snowflake</p>
+          <p>Expert knowledge in Snowflake's cloud data platform architecture and best practices.</p>
+        </div>
+        
+        <div class="cert-card">
+          <div class="cert-icon">
+            <i class="fas fa-database"></i>
+          </div>
+          <h3 class="cert-title">Azure Databricks Platform Architect</h3>
+          <p class="cert-issuer">Databricks Academy</p>
+          <p>Advanced skills in designing and implementing Databricks solutions on Azure.</p>
+        </div>
       </div>
-    </section>
-    
-    <section id="projects">
-      <h2>Projects</h2>
-      <div class="experience-item">
-        <div class="company">ClaimArche Pet Counter</div>
-        <p>An Android application that uses TensorFlow Lite and computer vision to detect and count pets and other objects in real-time.</p>
-      </div>
-      <div class="experience-item">
-        <div class="company">Azure Data Platform Modernization</div>
-        <p>Designed and implemented modern data architecture on Azure for enterprise clients, including data lake, data warehouse, and real-time analytics solutions.</p>
-      </div>
-      <!-- Add more projects as needed -->
-    </section>
-    
-    <section id="certifications">
-      <h2>Microsoft Certifications</h2>
-      <div class="experience-item">
-        <div class="company">Microsoft Certified: Azure Data Engineer Associate</div>
-        <p>Expertise in designing and implementing the management, monitoring, security, and privacy of data solutions using the full stack of Azure data services.</p>
-      </div>
-      <!-- Add more certifications as applicable -->
-    </section>
-    
-    <footer>
-      <p>© 2025 Brendan Daly. All rights reserved.</p>
-    </footer>
-  </div>
-</body>
-</html>
+    </div>
+  </section>
+
+  <!-- Resume Section -->
+  <section id="resume">
+    <div class="container">
+      <h2 class="section-title">Resume</h2>
+      <p class="section-subtitle">Professional experience and qualifications</p>
+      
+      <!-- PDF Resume Embed -->
+      <object data="Resume_Daly_425-1.pdf" type="application/pdf" class="resume-embed">
+        <p>It appears your browser doesn't support embedded PDFs. 
+           <a href="Resume_Daly_425-1.pdf" download>Click here to download the PDF</a> instead.
+        </p>
+      </object>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title">Contact Me</h2>
+      <p class="section-subtitle">Let's connect and discuss how I can help with your data needs</p>
+      
+      <div class="contact-container">
+        <div class="contact-info">
+          <div class="info-item">
+            <div class="info-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div class="info-content">
+              <h3>Email</h3>
+              <a href="mailto:Brendan.Daly.P@gmail.com">Brendan.Daly.P@gmail.com</a>
+            </div>
+          </div>
+          
+          <div class="info-
