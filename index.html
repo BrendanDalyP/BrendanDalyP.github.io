@@ -4,16 +4,27 @@
   <title>Brendan Daly - Data Architect | Microsoft Professional</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Brendan Daly - Experienced Data Architect and Microsoft Professional specializing in data solutions and architecture">
+  <meta name="keywords" content="Data Architect, Microsoft Professional, Data Solutions, Brendan Daly">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --primary: #0078D4;
       --primary-dark: #005a9e;
+      --primary-light: #e6f2ff;
+      --secondary: #2B579A;
+      --accent: #FFB900;
       --light: #f9f9f9;
       --dark: #333;
       --gray: #666;
       --light-gray: #eaeaea;
-      --transition: all 0.3s ease;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
+      --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+      --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
     }
     
     * {
@@ -27,7 +38,7 @@
     }
     
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       line-height: 1.6;
       color: var(--dark);
       background-color: var(--light);
@@ -42,7 +53,7 @@
     /* Navigation */
     nav {
       background-color: white;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      box-shadow: var(--shadow-sm);
       position: fixed;
       width: 100%;
       top: 0;
@@ -58,19 +69,23 @@
     }
     
     .logo {
-      font-weight: bold;
+      font-weight: 700;
       font-size: 1.5rem;
       color: var(--primary);
       text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .logo i {
+      font-size: 1.8rem;
     }
     
     .nav-links {
       display: flex;
       list-style: none;
-    }
-    
-    .nav-links li {
-      margin-left: 30px;
+      gap: 30px;
     }
     
     .nav-links a {
@@ -79,6 +94,7 @@
       font-weight: 500;
       transition: var(--transition);
       position: relative;
+      padding: 5px 0;
     }
     
     .nav-links a:hover {
@@ -90,7 +106,7 @@
       position: absolute;
       width: 0;
       height: 2px;
-      bottom: -5px;
+      bottom: 0;
       left: 0;
       background-color: var(--primary);
       transition: var(--transition);
@@ -107,14 +123,42 @@
       font-size: 1.5rem;
       cursor: pointer;
       color: var(--dark);
+      padding: 10px;
+    }
+    
+    @media (max-width: 768px) {
+      .mobile-menu-btn {
+        display: block;
+      }
+      
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        padding: 20px;
+        flex-direction: column;
+        gap: 15px;
+        box-shadow: var(--shadow-md);
+      }
+      
+      .nav-links.active {
+        display: flex;
+      }
+      
+      .nav-links li {
+        margin: 0;
+      }
     }
     
     /* Hero Section */
     .hero {
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
       align-items: center;
-      background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(231,241,253,0.9) 100%);
+      background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(231,241,253,0.95) 100%);
       margin-top: 0;
       position: relative;
       overflow: hidden;
@@ -128,7 +172,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: url('https://via.placeholder.com/1920x1080') center/cover;
+      background: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
       opacity: 0.05;
       z-index: -1;
     }
@@ -136,10 +180,22 @@
     .hero-content {
       max-width: 700px;
       padding: 0 20px;
+      animation: fadeInUp 1s ease-out;
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
     
     .hero-content h1 {
-      font-size: 3.5rem;
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
       margin-bottom: 20px;
       color: var(--dark);
       line-height: 1.2;
@@ -148,6 +204,7 @@
     .highlight {
       color: var(--primary);
       position: relative;
+      display: inline-block;
     }
     
     .highlight::after {
@@ -159,10 +216,11 @@
       left: 0;
       background-color: rgba(0,120,212,0.2);
       z-index: -1;
+      transform: skewX(-15deg);
     }
     
     .hero-content p {
-      font-size: 1.2rem;
+      font-size: clamp(1rem, 2vw, 1.2rem);
       margin-bottom: 30px;
       color: var(--gray);
     }
@@ -174,7 +232,9 @@
     }
     
     .cta-button {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       padding: 12px 30px;
       border-radius: 30px;
       text-decoration: none;
@@ -186,13 +246,13 @@
     .primary-btn {
       background-color: var(--primary);
       color: white;
-      box-shadow: 0 4px 15px rgba(0,120,212,0.3);
+      box-shadow: var(--shadow-md);
     }
     
     .primary-btn:hover {
       background-color: var(--primary-dark);
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(0,120,212,0.4);
+      box-shadow: var(--shadow-lg);
     }
     
     .secondary-btn {
@@ -202,7 +262,7 @@
     }
     
     .secondary-btn:hover {
-      background-color: rgba(0,120,212,0.1);
+      background-color: var(--primary-light);
       transform: translateY(-2px);
     }
     
@@ -211,6 +271,19 @@
       width: 280px;
       height: 280px;
       margin-left: 50px;
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+      100% {
+        transform: translateY(0px);
+      }
     }
     
     .profile-pic {
@@ -218,7 +291,7 @@
       height: 280px;
       border-radius: 20px;
       object-fit: cover;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      box-shadow: var(--shadow-lg);
       border: 4px solid white;
       position: relative;
       z-index: 2;
@@ -235,13 +308,34 @@
       z-index: 1;
     }
     
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 120px 20px 60px;
+      }
+      
+      .hero-content {
+        margin-bottom: 40px;
+      }
+      
+      .profile-container {
+        margin: 0 auto;
+      }
+      
+      .cta-buttons {
+        justify-content: center;
+      }
+    }
+    
     /* Section Styling */
     section {
       padding: 100px 0;
+      scroll-margin-top: 80px;
     }
     
     .section-title {
-      font-size: 2.5rem;
+      font-size: clamp(2rem, 4vw, 2.5rem);
       margin-bottom: 20px;
       color: var(--dark);
       text-align: center;
@@ -250,327 +344,55 @@
     .section-subtitle {
       text-align: center;
       color: var(--gray);
-      margin-bottom: 60px;
-      font-size: 1.1rem;
+      margin-bottom: 50px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
     }
     
-    /* Skills Section */
-    .skills-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-      gap: 30px;
+    /* Accessibility Improvements */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0;
     }
     
-    .skill-category {
-      background-color: white;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-      transition: var(--transition);
+    /* Focus Styles */
+    :focus-visible {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
     }
     
-    .skill-category:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-    }
-    
-    .category-title {
-      font-size: 1.3rem;
-      color: var(--primary);
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-    }
-    
-    .category-title i {
-      margin-right: 10px;
-      font-size: 1.5rem;
-    }
-    
-    .skill-description {
-      margin-bottom: 15px;
-      color: var(--gray);
-    }
-    
-    .skill-tools {
-      background-color: #f4f9fd;
-      padding: 15px;
-      border-radius: 8px;
-    }
-    
-    .tools-title {
-      font-weight: 600;
-      margin-bottom: 10px;
-      color: var(--dark);
-    }
-    
-    .tools-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-    
-    .tool-badge {
-      background-color: var(--primary);
-      color: white;
-      padding: 5px 12px;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      font-weight: 500;
-    }
-    
-    /* Certifications Section */
-    .certifications-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 30px;
-    }
-    
-    .cert-card {
-      background-color: white;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-      transition: var(--transition);
-      display: flex;
-      flex-direction: column;
-    }
-    
-    .cert-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-    }
-    
-    .cert-icon {
-      width: 60px;
-      height: 60px;
-      margin-bottom: 20px;
-      color: var(--primary);
-      font-size: 2.5rem;
-    }
-    
-    .cert-title {
-      font-size: 1.1rem;
-      color: var(--dark);
-      margin-bottom: 10px;
-      line-height: 1.4;
-      font-weight: bold;
-    }
-    
-    .cert-issuer {
-      color: var(--primary);
-      margin-bottom: 15px;
-      font-weight: 500;
-    }
-    
-    /* Resume Section */
-    .resume-embed {
-      width: 100%;
-      height: 800px;
-      border: none;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      border-radius: 10px;
-    }
-    
-    /* Contact Section */
-    .contact-container {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 50px;
-    }
-    
-    .contact-info {
-      display: flex;
-      flex-direction: column;
-      gap: 30px;
-    }
-    
-    .info-item {
-      display: flex;
-      align-items: flex-start;
-    }
-    
-    .info-icon {
-      width: 50px;
-      height: 50px;
-      background-color: var(--primary);
-      color: white;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-      margin-right: 15px;
-      flex-shrink: 0;
-    }
-    
-    .info-content h3 {
-      font-size: 1.2rem;
-      color: var(--dark);
-      margin-bottom: 5px;
-    }
-    
-    .info-content p, .info-content a {
-      color: var(--gray);
-      text-decoration: none;
-      transition: var(--transition);
-    }
-    
-    .info-content a:hover {
-      color: var(--primary);
-    }
-    
-    .social-icons {
-      display: flex;
-      gap: 15px;
-      margin-top: 30px;
-    }
-    
-    .social-icon {
-      width: 40px;
-      height: 40px;
-      background-color: white;
-      color: var(--primary);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-      transition: var(--transition);
-      text-decoration: none;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    }
-    
-    .social-icon:hover {
-      background-color: var(--primary);
-      color: white;
-      transform: translateY(-3px);
-      box-shadow: 0 5px 15px rgba(0,120,212,0.3);
-    }
-    
-    .form-group {
-      margin-bottom: 20px;
-    }
-    
-    .form-control {
-      width: 100%;
-      padding: 12px 15px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      font-family: inherit;
-      font-size: 1rem;
-      transition: var(--transition);
-    }
-    
-    .form-control:focus {
-      outline: none;
-      border-color: var(--primary);
-      box-shadow: 0 0 0 2px rgba(0,120,212,0.2);
-    }
-    
-    textarea.form-control {
-      min-height: 150px;
-      resize: vertical;
-    }
-    
-    .submit-btn {
-      background-color: var(--primary);
-      color: white;
-      border: none;
-      padding: 12px 30px;
-      border-radius: 30px;
-      font-weight: 600;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: var(--transition);
-      display: inline-block;
-    }
-    
-    .submit-btn:hover {
-      background-color: var(--primary-dark);
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(0,120,212,0.3);
-    }
-    
-    /* Footer */
-    footer {
-      background-color: #1a1a1a;
-      color: white;
-      padding: 30px 0;
-      text-align: center;
-    }
-    
-    .footer-text {
-      color: #bbb;
-      font-size: 0.9rem;
-    }
-    
-    /* Media Queries */
-    @media (max-width: 1024px) {
-      .hero-content h1 {
-        font-size: 2.8rem;
+    /* Dark Mode Support */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --light: #1a1a1a;
+        --dark: #f5f5f5;
+        --gray: #b3b3b3;
+        --light-gray: #333;
       }
-    }
-    
-    @media (max-width: 768px) {
+      
+      body {
+        background-color: var(--light);
+        color: var(--dark);
+      }
+      
+      nav {
+        background-color: #2a2a2a;
+      }
+      
+      .nav-links a {
+        color: var(--dark);
+      }
+      
       .hero {
-        height: auto;
-        padding: 150px 0 100px;
-      }
-      
-      .hero-content {
-        margin: 0 auto;
-        text-align: center;
-      }
-      
-      .profile-container {
-        margin: 50px auto 0;
-      }
-      
-      .cta-buttons {
-        justify-content: center;
-      }
-      
-      .contact-container {
-        grid-template-columns: 1fr;
-      }
-      
-      .resume-embed {
-        height: 600px;
-      }
-    }
-    
-    @media (max-width: 576px) {
-      .hero-content h1 {
-        font-size: 2.2rem;
-      }
-      
-      .nav-links {
-        display: none;
-        position: absolute;
-        top: 70px;
-        left: 0;
-        width: 100%;
-        background-color: white;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        flex-direction: column;
-        padding: 20px 0;
-      }
-      
-      .nav-links.show {
-        display: flex;
-      }
-      
-      .nav-links li {
-        margin: 10px 20px;
-      }
-      
-      .mobile-menu-btn {
-        display: block;
-      }
-      
-      .resume-embed {
-        height: 500px;
+        background: linear-gradient(135deg, rgba(42,42,42,0.95) 0%, rgba(30,40,50,0.95) 100%);
       }
     }
   </style>
@@ -605,7 +427,7 @@
         </div>
       </div>
       <div class="profile-container">
-        <img src="https://via.placeholder.com/280" alt="Brendan Daly" class="profile-pic">
+        <img src="Daly_Brendan.png" alt="Brendan Daly" class="profile-pic">
         <div class="profile-bg"></div>
       </div>
     </div>
@@ -880,4 +702,63 @@
             </div>
           </div>
           
-          <div class="info-
+          <div class="info-item">
+            <div class="info-icon">
+              <i class="fas fa-phone"></i>
+            </div>
+            <div class="info-content">
+              <h3>Phone</h3>
+              <a href="tel:+12025550123">+1 (202) 555-0123</a>
+            </div>
+          </div>
+          
+          <div class="info-item">
+            <div class="info-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div class="info-content">
+              <h3>Location</h3>
+              <p>Washington, D.C.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="name" class="sr-only">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your Name" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="email" class="sr-only">Email</label>
+          <input type="email" id="email" name="email" placeholder="Your Email" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="message" class="sr-only">Message</label>
+          <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+        </div>
+        
+        <button type="submit" class="submit-btn">Send Message</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2023 Brendan Daly. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+      const navLinks = document.getElementById('navLinks');
+
+      mobileMenuBtn.addEventListener('click', function() {
+        navLinks.classList.toggle('active');
+      });
+    });
+  </script>
+</body>
+</html>
