@@ -978,209 +978,83 @@
   </section>
 
   <!-- Skills Section -->
-  <section id="skills">
+  <section id="skills" class="section">
     <div class="container">
       <h2 class="section-title">Skills & Expertise</h2>
-      <p class="section-subtitle">Technical capabilities and core competencies</p>
-      
       <div class="skills-tabs">
-        <button class="skill-tab active" data-tab="data-architecture">Data Architecture</button>
-        <button class="skill-tab" data-tab="data-engineering">Data Engineering</button>
-        <button class="skill-tab" data-tab="data-governance">Data Governance</button>
-        <button class="skill-tab" data-tab="business-intelligence">Business Intelligence</button>
-        <button class="skill-tab" data-tab="ai-enablement">AI Enablement</button>
+        <button class="skill-tab active" data-tab="data">Data Engineering</button>
+        <button class="skill-tab" data-tab="ai">AI Enablement</button>
+        <button class="skill-tab" data-tab="cloud">Cloud Architecture</button>
       </div>
-
-      <!-- Data Architecture Tab -->
-      <div class="skill-content active" id="data-architecture">
+      
+      <div class="skill-content active" id="data">
         <div class="skill-overview">
-          <h3>Data Architecture Overview</h3>
-          <p>Designing scalable, governed data platforms that unify siloed sources into performance-optimized ecosystems. Specializing in Microsoft Fabric and Azure data services to create modern data architectures.</p>
+          <h3>Data Engineering</h3>
+          <p>Expertise in designing and implementing robust data pipelines, ETL processes, and data warehousing solutions.</p>
         </div>
-
         <div class="tools-grid">
           <div class="tool-card">
-            <div class="tool-icon"><i class="fas fa-cloud"></i></div>
-            <h4 class="tool-name">Microsoft Fabric</h4>
-            <p class="tool-description">End-to-end analytics platform</p>
+            <i class="fas fa-database tool-icon"></i>
+            <h4 class="tool-name">SQL & NoSQL</h4>
+            <p class="tool-description">Advanced querying, optimization, and database design</p>
           </div>
           <div class="tool-card">
-            <div class="tool-icon"><i class="fas fa-database"></i></div>
-            <h4 class="tool-name">Azure Synapse</h4>
-            <p class="tool-description">Unified analytics service</p>
-          </div>
-          <div class="tool-card">
-            <div class="tool-icon"><i class="fas fa-layer-group"></i></div>
-            <h4 class="tool-name">Delta Lake</h4>
-            <p class="tool-description">Reliable data lakehouse</p>
-          </div>
-        </div>
-
-        <div class="cert-grid">
-          <div class="cert-card">
-            <div class="cert-badge">
-              <img src="badges/azure-data-engineer.png" alt="Azure Data Engineer">
-            </div>
-            <h4 class="cert-name">Azure Data Engineer</h4>
-            <p class="cert-issuer">Microsoft (DP-203)</p>
-          </div>
-          <div class="cert-card">
-            <div class="cert-badge">
-              <img src="badges/fabric-data-engineer.png" alt="Fabric Data Engineer">
-            </div>
-            <h4 class="cert-name">Fabric Data Engineer</h4>
-            <p class="cert-issuer">Microsoft (DP-700)</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Data Engineering Tab -->
-      <div class="skill-content" id="data-engineering">
-        <div class="skill-overview">
-          <h3>Data Engineering Overview</h3>
-          <p>Building cloud-native ETL/ELT pipelines and reusable data products designed for scale and performance. Expert in Python, PySpark, and modern data integration tools.</p>
-        </div>
-
-        <div class="tools-grid">
-          <div class="tool-card">
-            <div class="tool-icon"><i class="fab fa-python"></i></div>
+            <i class="fas fa-code tool-icon"></i>
             <h4 class="tool-name">Python</h4>
-            <p class="tool-description">Data processing & automation</p>
+            <p class="tool-description">Data processing, automation, and scripting</p>
           </div>
           <div class="tool-card">
-            <div class="tool-icon"><i class="fas fa-code"></i></div>
-            <h4 class="tool-name">PySpark</h4>
-            <p class="tool-description">Distributed processing</p>
-          </div>
-          <div class="tool-card">
-            <div class="tool-icon"><i class="fas fa-database"></i></div>
-            <h4 class="tool-name">SQL</h4>
-            <p class="tool-description">Data manipulation</p>
-          </div>
-        </div>
-
-        <div class="cert-grid">
-          <div class="cert-card">
-            <div class="cert-badge">
-              <img src="badges/azure-data-engineer.png" alt="Azure Data Engineer">
-            </div>
-            <h4 class="cert-name">Azure Data Engineer</h4>
-            <p class="cert-issuer">Microsoft (DP-203)</p>
+            <i class="fas fa-project-diagram tool-icon"></i>
+            <h4 class="tool-name">ETL/ELT</h4>
+            <p class="tool-description">Data integration and transformation pipelines</p>
           </div>
         </div>
       </div>
-
-      <!-- Data Governance Tab -->
-      <div class="skill-content" id="data-governance">
+      
+      <div class="skill-content" id="ai">
         <div class="skill-overview">
-          <h3>Data Governance Overview</h3>
-          <p>Operationalizing enterprise data governance with RLS, PII controls, lineage, and auditability. Expert in implementing comprehensive data governance frameworks.</p>
+          <h3>AI Enablement</h3>
+          <p>Specializing in implementing and optimizing AI solutions, with a focus on data preparation and model deployment.</p>
         </div>
-
         <div class="tools-grid">
           <div class="tool-card">
-            <div class="tool-icon"><i class="fas fa-shield-alt"></i></div>
-            <h4 class="tool-name">Purview</h4>
-            <p class="tool-description">Data governance</p>
+            <i class="fas fa-brain tool-icon"></i>
+            <h4 class="tool-name">Machine Learning</h4>
+            <p class="tool-description">Model development and deployment</p>
           </div>
           <div class="tool-card">
-            <div class="tool-icon"><i class="fas fa-key"></i></div>
-            <h4 class="tool-name">Unity Catalog</h4>
-            <p class="tool-description">Data catalog</p>
+            <i class="fas fa-robot tool-icon"></i>
+            <h4 class="tool-name">AI Integration</h4>
+            <p class="tool-description">Implementing AI solutions in production</p>
           </div>
           <div class="tool-card">
-            <div class="tool-icon"><i class="fas fa-lock"></i></div>
-            <h4 class="tool-name">Key Vault</h4>
-            <p class="tool-description">Security management</p>
-          </div>
-        </div>
-
-        <div class="cert-grid">
-          <div class="cert-card">
-            <div class="cert-badge">
-              <img src="badges/azure-data-engineer.png" alt="Azure Data Engineer">
-            </div>
-            <h4 class="cert-name">Azure Data Engineer</h4>
-            <p class="cert-issuer">Microsoft (DP-203)</p>
+            <i class="fas fa-chart-line tool-icon"></i>
+            <h4 class="tool-name">Data Analysis</h4>
+            <p class="tool-description">Statistical analysis and insights</p>
           </div>
         </div>
       </div>
-
-      <!-- Business Intelligence Tab -->
-      <div class="skill-content" id="business-intelligence">
+      
+      <div class="skill-content" id="cloud">
         <div class="skill-overview">
-          <h3>Business Intelligence Overview</h3>
-          <p>Architecting reporting systems that operationalize executive KPIs and deliver trusted insights. Specializing in Power BI and modern analytics solutions.</p>
+          <h3>Cloud Architecture</h3>
+          <p>Designing and implementing scalable cloud solutions with a focus on data platforms and services.</p>
         </div>
-
         <div class="tools-grid">
           <div class="tool-card">
-            <div class="tool-icon"><i class="fas fa-chart-line"></i></div>
-            <h4 class="tool-name">Power BI</h4>
-            <p class="tool-description">Business analytics</p>
+            <i class="fab fa-microsoft tool-icon"></i>
+            <h4 class="tool-name">Azure</h4>
+            <p class="tool-description">Cloud infrastructure and services</p>
           </div>
           <div class="tool-card">
-            <div class="tool-icon"><i class="fas fa-calculator"></i></div>
-            <h4 class="tool-name">DAX</h4>
-            <p class="tool-description">Data analysis expressions</p>
+            <i class="fas fa-server tool-icon"></i>
+            <h4 class="tool-name">Infrastructure</h4>
+            <p class="tool-description">Cloud architecture and deployment</p>
           </div>
           <div class="tool-card">
-            <div class="tool-icon"><i class="fas fa-filter"></i></div>
-            <h4 class="tool-name">Power Query</h4>
-            <p class="tool-description">Data transformation</p>
-          </div>
-        </div>
-
-        <div class="cert-grid">
-          <div class="cert-card">
-            <div class="cert-badge">
-              <img src="badges/power-bi-analyst.png" alt="Data Analyst">
-            </div>
-            <h4 class="cert-name">Data Analyst</h4>
-            <p class="cert-issuer">Microsoft (PL-300)</p>
-          </div>
-          <div class="cert-card">
-            <div class="cert-badge">
-              <img src="badges/fabric-analytics.png" alt="Fabric Analytics">
-            </div>
-            <h4 class="cert-name">Fabric Analytics</h4>
-            <p class="cert-issuer">Microsoft (DP-600)</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- AI Enablement Tab -->
-      <div class="skill-content" id="ai-enablement">
-        <div class="skill-overview">
-          <h3>AI Enablement Overview</h3>
-          <p>Enabling AI capabilities through robust data infrastructure and MLOps practices. Specializing in Azure AI services and machine learning operations.</p>
-        </div>
-
-        <div class="tools-grid">
-          <div class="tool-card">
-            <div class="tool-icon"><i class="fas fa-brain"></i></div>
-            <h4 class="tool-name">Azure AI</h4>
-            <p class="tool-description">AI services & models</p>
-          </div>
-          <div class="tool-card">
-            <div class="tool-icon"><i class="fas fa-robot"></i></div>
-            <h4 class="tool-name">MLOps</h4>
-            <p class="tool-description">Machine learning operations</p>
-          </div>
-          <div class="tool-card">
-            <div class="tool-icon"><i class="fas fa-cube"></i></div>
-            <h4 class="tool-name">Azure ML</h4>
-            <p class="tool-description">Machine learning platform</p>
-          </div>
-        </div>
-
-        <div class="cert-grid">
-          <div class="cert-card">
-            <div class="cert-badge">
-              <img src="badges/azure-data-engineer.png" alt="Azure Data Engineer">
-            </div>
-            <h4 class="cert-name">Azure Data Engineer</h4>
-            <p class="cert-issuer">Microsoft (DP-203)</p>
+            <i class="fas fa-shield-alt tool-icon"></i>
+            <h4 class="tool-name">Security</h4>
+            <p class="tool-description">Cloud security and compliance</p>
           </div>
         </div>
       </div>
@@ -1223,11 +1097,9 @@
   </section>
 
   <!-- Resume Section -->
-  <section id="resume">
+  <section id="resume" class="section">
     <div class="container">
       <h2 class="section-title">Resume</h2>
-      <p class="section-subtitle">Professional experience and qualifications</p>
-      
       <div class="resume-container">
         <div class="pdf-container">
           <iframe src="./Resume_Daly_425 (1).pdf" class="resume-pdf" title="Brendan Daly's Resume">
