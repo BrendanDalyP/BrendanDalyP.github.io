@@ -894,6 +894,34 @@
     .pdf-fallback a:hover {
       color: var(--primary-dark);
     }
+
+    .certification-card img {
+      width: 120px;
+      height: 120px;
+      object-fit: contain;
+      margin-bottom: 20px;
+    }
+
+    .pdf-container {
+      width: 100%;
+      height: 800px;
+      border-radius: 10px;
+      overflow: hidden;
+      background: var(--light-gray);
+      position: relative;
+    }
+
+    .resume-pdf {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    @media (max-width: 768px) {
+      .pdf-container {
+        height: 600px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -926,7 +954,7 @@
         </div>
       </div>
       <div class="profile-container">
-        <img src="Daly_Brendan_690x690.png" alt="Brendan Daly" class="profile-pic">
+        <img src="./Daly_Brendan_690x690.png" alt="Brendan Daly" class="profile-pic">
       </div>
     </div>
   </section>
@@ -1167,30 +1195,26 @@
       
       <div class="certifications-grid">
         <div class="certification-card">
-          <img src="https://learn.microsoft.com/en-us/media/learn/certification/badges/microsoft-certified-power-bi-data-analyst-associate.svg" 
-               alt="Microsoft Certified: Power BI Data Analyst Associate" 
-               onerror="this.src='badges/power-bi-data-analyst.png'">
+          <img src="./badge-powerbi-data-analyst.png" 
+               alt="Microsoft Certified: Power BI Data Analyst Associate">
           <h3>Power BI Data Analyst Associate</h3>
           <p>PL-300</p>
         </div>
         <div class="certification-card">
-          <img src="https://learn.microsoft.com/en-us/media/learn/certification/badges/microsoft-certified-fabric-analytics-engineer-associate.svg" 
-               alt="Microsoft Certified: Fabric Analytics Engineer Associate" 
-               onerror="this.src='badges/fabric-analytics-engineer.png'">
+          <img src="./fabric_data_analytics_engineer_associate.png" 
+               alt="Microsoft Certified: Fabric Analytics Engineer Associate">
           <h3>Fabric Analytics Engineer Associate</h3>
           <p>DP-600</p>
         </div>
         <div class="certification-card">
-          <img src="https://learn.microsoft.com/en-us/media/learn/certification/badges/microsoft-certified-fabric-data-engineer-associate.svg" 
-               alt="Microsoft Certified: Fabric Data Engineer Associate" 
-               onerror="this.src='badges/fabric-data-engineer.png'">
+          <img src="./fabric_dataengineer_badge.png" 
+               alt="Microsoft Certified: Fabric Data Engineer Associate">
           <h3>Fabric Data Engineer Associate</h3>
           <p>DP-700</p>
         </div>
         <div class="certification-card">
-          <img src="https://learn.microsoft.com/en-us/media/learn/certification/badges/microsoft-certified-azure-cosmos-db-developer-specialty.svg" 
-               alt="Microsoft Certified: Azure Cosmos DB Developer Specialty" 
-               onerror="this.src='badges/azure-cosmos-db-developer.png'">
+          <img src="./cosmosdb_specialty.png" 
+               alt="Microsoft Certified: Azure Cosmos DB Developer Specialty">
           <h3>Azure Cosmos DB Developer Specialty</h3>
           <p>DP-420</p>
         </div>
@@ -1206,10 +1230,9 @@
       
       <div class="resume-container">
         <div class="pdf-container">
-          <embed src="Resume_Daly_425 (1).pdf" type="application/pdf" class="resume-pdf">
-          <div class="pdf-fallback">
-            <p>If the PDF doesn't load, you can <a href="Resume_Daly_425 (1).pdf" download>download it here</a></p>
-          </div>
+          <iframe src="./Resume_Daly_425 (1).pdf" class="resume-pdf" title="Brendan Daly's Resume">
+            <p>Your browser does not support PDFs. Please <a href="./Resume_Daly_425 (1).pdf" download>download the PDF</a> to view it.</p>
+          </iframe>
         </div>
       </div>
     </div>
