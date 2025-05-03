@@ -12,11 +12,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary: #0078D4;
-      --primary-dark: #005a9e;
-      --primary-light: #e6f2ff;
-      --secondary: #2B579A;
-      --accent: #FFB900;
+      --primary: #2E7D32;
+      --primary-dark: #1B5E20;
+      --primary-light: #E8F5E9;
+      --secondary: #4CAF50;
+      --accent: #8BC34A;
       --light: #f9f9f9;
       --dark: #333;
       --gray: #666;
@@ -158,7 +158,7 @@
       min-height: 100vh;
       display: flex;
       align-items: center;
-      background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(231,241,253,0.95) 100%);
+      background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(232,245,233,0.95) 100%);
       margin-top: 0;
       position: relative;
       overflow: hidden;
@@ -172,8 +172,8 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
-      opacity: 0.05;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%232E7D32" fill-opacity="0.1" d="M50 0 L100 50 L50 100 L0 50 Z"/></svg>') center/cover;
+      opacity: 0.1;
       z-index: -1;
     }
     
@@ -214,7 +214,7 @@
       height: 8px;
       bottom: 5px;
       left: 0;
-      background-color: rgba(0,120,212,0.2);
+      background-color: rgba(46,125,50,0.2);
       z-index: -1;
       transform: skewX(-15deg);
     }
@@ -268,8 +268,8 @@
     
     .profile-container {
       position: relative;
-      width: 280px;
-      height: 280px;
+      width: 320px;
+      height: 320px;
       margin-left: 50px;
       animation: float 6s ease-in-out infinite;
     }
@@ -287,9 +287,9 @@
     }
     
     .profile-pic {
-      width: 280px;
-      height: 280px;
-      border-radius: 20px;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
       object-fit: cover;
       box-shadow: var(--shadow-lg);
       border: 4px solid white;
@@ -299,13 +299,60 @@
     
     .profile-bg {
       position: absolute;
-      width: 280px;
-      height: 280px;
+      width: 100%;
+      height: 100%;
       background-color: var(--primary);
-      border-radius: 20px;
+      border-radius: 50%;
       top: 20px;
       left: 20px;
       z-index: 1;
+    }
+    
+    .shamrock-decoration {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background-color: var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.2rem;
+      animation: spin 10s linear infinite;
+    }
+    
+    .shamrock-decoration:nth-child(1) {
+      top: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    
+    .shamrock-decoration:nth-child(2) {
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    
+    .shamrock-decoration:nth-child(3) {
+      top: 50%;
+      left: -15px;
+      transform: translateY(-50%);
+    }
+    
+    .shamrock-decoration:nth-child(4) {
+      top: 50%;
+      right: -15px;
+      transform: translateY(-50%);
+    }
+    
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
     }
     
     @media (max-width: 768px) {
@@ -392,7 +439,141 @@
       }
       
       .hero {
-        background: linear-gradient(135deg, rgba(42,42,42,0.95) 0%, rgba(30,40,50,0.95) 100%);
+        background: linear-gradient(135deg, rgba(42,42,42,0.95) 0%, rgba(30,50,30,0.95) 100%);
+      }
+    }
+    
+    /* Skills Section Styling */
+    .skills-tabs {
+      background: white;
+      border-radius: 15px;
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+    }
+    
+    .tab-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 20px;
+      background: var(--primary-light);
+      border-bottom: 2px solid var(--primary);
+    }
+    
+    .tab-button {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 30px;
+      background: white;
+      color: var(--dark);
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: var(--shadow-sm);
+    }
+    
+    .tab-button i {
+      color: var(--primary);
+      font-size: 1.2rem;
+    }
+    
+    .tab-button:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+    
+    .tab-button.active {
+      background: var(--primary);
+      color: white;
+    }
+    
+    .tab-button.active i {
+      color: white;
+    }
+    
+    .tab-content {
+      padding: 30px;
+    }
+    
+    .tab-pane {
+      display: none;
+      animation: fadeIn 0.3s ease-out;
+    }
+    
+    .tab-pane.active {
+      display: block;
+    }
+    
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .skill-description {
+      margin-bottom: 30px;
+    }
+    
+    .skill-description h3 {
+      color: var(--primary);
+      margin-bottom: 15px;
+      font-size: 1.5rem;
+    }
+    
+    .skill-description p {
+      color: var(--gray);
+      line-height: 1.8;
+    }
+    
+    .skill-tools h4 {
+      color: var(--dark);
+      margin-bottom: 15px;
+      font-size: 1.2rem;
+    }
+    
+    .tools-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    
+    .tool-badge {
+      background: var(--primary-light);
+      color: var(--primary);
+      padding: 8px 15px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+    
+    .tool-badge:hover {
+      background: var(--primary);
+      color: white;
+      transform: translateY(-2px);
+    }
+    
+    @media (max-width: 768px) {
+      .tab-buttons {
+        flex-direction: column;
+        gap: 5px;
+      }
+      
+      .tab-button {
+        width: 100%;
+        justify-content: center;
+      }
+      
+      .tools-list {
+        justify-content: center;
       }
     }
   </style>
@@ -401,7 +582,10 @@
   <!-- Navigation -->
   <nav id="navbar">
     <div class="container nav-container">
-      <a href="#home" class="logo">BD</a>
+      <a href="#home" class="logo">
+        <i class="fas fa-clover"></i>
+        BD
+      </a>
       <ul class="nav-links" id="navLinks">
         <li><a href="#home">Home</a></li>
         <li><a href="#skills">Skills</a></li>
@@ -429,6 +613,18 @@
       <div class="profile-container">
         <img src="Daly_Brendan.png" alt="Brendan Daly" class="profile-pic">
         <div class="profile-bg"></div>
+        <div class="shamrock-decoration">
+          <i class="fas fa-clover"></i>
+        </div>
+        <div class="shamrock-decoration">
+          <i class="fas fa-clover"></i>
+        </div>
+        <div class="shamrock-decoration">
+          <i class="fas fa-clover"></i>
+        </div>
+        <div class="shamrock-decoration">
+          <i class="fas fa-clover"></i>
+        </div>
       </div>
     </div>
   </section>
@@ -439,156 +635,120 @@
       <h2 class="section-title">Skills & Expertise</h2>
       <p class="section-subtitle">Technical capabilities and core competencies</p>
       
-      <div class="skills-container">
-        <div class="skill-category">
-          <div class="category-title">
+      <div class="skills-tabs">
+        <div class="tab-buttons">
+          <button class="tab-button active" data-tab="data-architecture">
             <i class="fas fa-cloud"></i>
-            Cloud Data Architecture
-          </div>
-          <p class="skill-description">I design scalable, governed data platforms that unify siloed sources into performance-optimized ecosystems. My architectures prioritize security, accessibility, and business alignment.</p>
-          <div class="skill-tools">
-            <div class="tools-title">Tools & Technologies:</div>
-            <div class="tools-list">
-              <span class="tool-badge">Microsoft Fabric</span>
-              <span class="tool-badge">Azure Synapse</span>
-              <span class="tool-badge">ADLS Gen2</span>
-              <span class="tool-badge">Delta Lake</span>
-              <span class="tool-badge">OneLake</span>
-              <span class="tool-badge">Cosmos DB</span>
-              <span class="tool-badge">Azure SQL</span>
-            </div>
-          </div>
-        </div>
-        
-        <div class="skill-category">
-          <div class="category-title">
+            Data Architecture
+          </button>
+          <button class="tab-button" data-tab="data-engineering">
             <i class="fas fa-cogs"></i>
             Data Engineering
-          </div>
-          <p class="skill-description">I build cloud-native ETL/ELT pipelines and reusable data products designed for scale, performance, and stakeholder alignment. My solutions accelerate data delivery while reducing technical debt.</p>
-          <div class="skill-tools">
-            <div class="tools-title">Tools & Technologies:</div>
-            <div class="tools-list">
-              <span class="tool-badge">Python</span>
-              <span class="tool-badge">PySpark</span>
-              <span class="tool-badge">SQL</span>
-              <span class="tool-badge">Data Factory</span>
-              <span class="tool-badge">Databricks</span>
-              <span class="tool-badge">dbt</span>
-              <span class="tool-badge">Synapse Pipelines</span>
-            </div>
-          </div>
-        </div>
-        
-        <div class="skill-category">
-          <div class="category-title">
-            <i class="fas fa-bolt"></i>
-            Real-Time & Event Architecture
-          </div>
-          <p class="skill-description">I implement streaming ingestion and alerting pipelines that capture, process, and deliver data in real-time for both operational decision-making and analytics use cases.</p>
-          <div class="skill-tools">
-            <div class="tools-title">Tools & Technologies:</div>
-            <div class="tools-list">
-              <span class="tool-badge">KQL</span>
-              <span class="tool-badge">Event Hubs</span>
-              <span class="tool-badge">Stream Analytics</span>
-              <span class="tool-badge">Fabric Real-Time Hub</span>
-              <span class="tool-badge">IoT Hub</span>
-              <span class="tool-badge">Change Data Capture</span>
-            </div>
-          </div>
-        </div>
-        
-        <div class="skill-category">
-          <div class="category-title">
-            <i class="fas fa-project-diagram"></i>
-            Data Modeling
-          </div>
-          <p class="skill-description">I create scalable, governed models across dimensional, vault, and medallion patterns for enterprise analytics, optimizing for both performance and business understanding.</p>
-          <div class="skill-tools">
-            <div class="tools-title">Tools & Technologies:</div>
-            <div class="tools-list">
-              <span class="tool-badge">Dimensional Modeling</span>
-              <span class="tool-badge">Data Vault</span>
-              <span class="tool-badge">Medallion Architecture</span>
-              <span class="tool-badge">Fabric Dataflows</span>
-              <span class="tool-badge">Semantic Models</span>
-              <span class="tool-badge">Tabular Editor</span>
-            </div>
-          </div>
-        </div>
-        
-        <div class="skill-category">
-          <div class="category-title">
-            <i class="fas fa-robot"></i>
-            AI Solutioning & Integration
-          </div>
-          <p class="skill-description">I identify and deliver enterprise AI use cases, integrating contextual logic and deploying multimodal orchestration to automate workflows and accelerate decision-making.</p>
-          <div class="skill-tools">
-            <div class="tools-title">Tools & Technologies:</div>
-            <div class="tools-list">
-              <span class="tool-badge">Microsoft Copilot</span>
-              <span class="tool-badge">Azure AI Foundry</span>
-              <span class="tool-badge">OpenAI</span>
-              <span class="tool-badge">ML Studio</span>
-              <span class="tool-badge">Fabric AI</span>
-              <span class="tool-badge">Cognitive Services</span>
-            </div>
-          </div>
-        </div>
-        
-        <div class="skill-category">
-          <div class="category-title">
+          </button>
+          <button class="tab-button" data-tab="business-intelligence">
             <i class="fas fa-chart-bar"></i>
             Business Intelligence
-          </div>
-          <p class="skill-description">I architect reporting systems that operationalize executive KPIs, integrate with strategic planning cycles, and deliver trusted insights across departments with reduced time-to-insight.</p>
-          <div class="skill-tools">
-            <div class="tools-title">Tools & Technologies:</div>
-            <div class="tools-list">
-              <span class="tool-badge">Power BI</span>
-              <span class="tool-badge">Tableau</span>
-              <span class="tool-badge">DAX</span>
-              <span class="tool-badge">Power Query</span>
-              <span class="tool-badge">Fabric Direct Lake</span>
-              <span class="tool-badge">Power BI Embedded</span>
-            </div>
-          </div>
-        </div>
-        
-        <div class="skill-category">
-          <div class="category-title">
+          </button>
+          <button class="tab-button" data-tab="data-governance">
             <i class="fas fa-shield-alt"></i>
-            Data Governance & Security
-          </div>
-          <p class="skill-description">I operationalize enterprise data governance with RLS, PII controls, lineage, and auditability, enforcing standards that balance security, agility, and platform trust.</p>
-          <div class="skill-tools">
-            <div class="tools-title">Tools & Technologies:</div>
-            <div class="tools-list">
-              <span class="tool-badge">Purview</span>
-              <span class="tool-badge">Unity Catalog</span>
-              <span class="tool-badge">Profisee</span>
-              <span class="tool-badge">Collibra</span>
-              <span class="tool-badge">Azure Key Vault</span>
-              <span class="tool-badge">Row-Level Security</span>
-            </div>
-          </div>
+            Data Governance
+          </button>
+          <button class="tab-button" data-tab="ai-solutioning">
+            <i class="fas fa-robot"></i>
+            AI Solutioning
+          </button>
         </div>
         
-        <div class="skill-category">
-          <div class="category-title">
-            <i class="fas fa-comments"></i>
-            Executive Communication
+        <div class="tab-content">
+          <div class="tab-pane active" id="data-architecture">
+            <div class="skill-description">
+              <h3>Cloud Data Architecture</h3>
+              <p>I design scalable, governed data platforms that unify siloed sources into performance-optimized ecosystems. My architectures prioritize security, accessibility, and business alignment.</p>
+            </div>
+            <div class="skill-tools">
+              <h4>Tools & Technologies</h4>
+              <div class="tools-list">
+                <span class="tool-badge">Microsoft Fabric</span>
+                <span class="tool-badge">Azure Synapse</span>
+                <span class="tool-badge">ADLS Gen2</span>
+                <span class="tool-badge">Delta Lake</span>
+                <span class="tool-badge">OneLake</span>
+                <span class="tool-badge">Cosmos DB</span>
+                <span class="tool-badge">Azure SQL</span>
+              </div>
+            </div>
           </div>
-          <p class="skill-description">I engage with C-suite through strategic readouts, KPI alignment, and roadmap facilitation, translating complex architecture into business impact and driving stakeholder buy-in.</p>
-          <div class="skill-tools">
-            <div class="tools-title">Key Capabilities:</div>
-            <div class="tools-list">
-              <span class="tool-badge">Strategic Roadmapping</span>
-              <span class="tool-badge">Solution Envisioning</span>
-              <span class="tool-badge">Business Case Development</span>
-              <span class="tool-badge">Implementation Planning</span>
-              <span class="tool-badge">Value Stream Alignment</span>
+          
+          <div class="tab-pane" id="data-engineering">
+            <div class="skill-description">
+              <h3>Data Engineering</h3>
+              <p>I build cloud-native ETL/ELT pipelines and reusable data products designed for scale, performance, and stakeholder alignment. My solutions accelerate data delivery while reducing technical debt.</p>
+            </div>
+            <div class="skill-tools">
+              <h4>Tools & Technologies</h4>
+              <div class="tools-list">
+                <span class="tool-badge">Python</span>
+                <span class="tool-badge">PySpark</span>
+                <span class="tool-badge">SQL</span>
+                <span class="tool-badge">Data Factory</span>
+                <span class="tool-badge">Databricks</span>
+                <span class="tool-badge">dbt</span>
+                <span class="tool-badge">Synapse Pipelines</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="tab-pane" id="business-intelligence">
+            <div class="skill-description">
+              <h3>Business Intelligence</h3>
+              <p>I architect reporting systems that operationalize executive KPIs, integrate with strategic planning cycles, and deliver trusted insights across departments with reduced time-to-insight.</p>
+            </div>
+            <div class="skill-tools">
+              <h4>Tools & Technologies</h4>
+              <div class="tools-list">
+                <span class="tool-badge">Power BI</span>
+                <span class="tool-badge">Tableau</span>
+                <span class="tool-badge">DAX</span>
+                <span class="tool-badge">Power Query</span>
+                <span class="tool-badge">Fabric Direct Lake</span>
+                <span class="tool-badge">Power BI Embedded</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="tab-pane" id="data-governance">
+            <div class="skill-description">
+              <h3>Data Governance & Security</h3>
+              <p>I operationalize enterprise data governance with RLS, PII controls, lineage, and auditability, enforcing standards that balance security, agility, and platform trust.</p>
+            </div>
+            <div class="skill-tools">
+              <h4>Tools & Technologies</h4>
+              <div class="tools-list">
+                <span class="tool-badge">Purview</span>
+                <span class="tool-badge">Unity Catalog</span>
+                <span class="tool-badge">Profisee</span>
+                <span class="tool-badge">Collibra</span>
+                <span class="tool-badge">Azure Key Vault</span>
+                <span class="tool-badge">Row-Level Security</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="tab-pane" id="ai-solutioning">
+            <div class="skill-description">
+              <h3>AI Solutioning & Integration</h3>
+              <p>I identify and deliver enterprise AI use cases, integrating contextual logic and deploying multimodal orchestration to automate workflows and accelerate decision-making.</p>
+            </div>
+            <div class="skill-tools">
+              <h4>Tools & Technologies</h4>
+              <div class="tools-list">
+                <span class="tool-badge">Microsoft Copilot</span>
+                <span class="tool-badge">Azure AI Foundry</span>
+                <span class="tool-badge">OpenAI</span>
+                <span class="tool-badge">ML Studio</span>
+                <span class="tool-badge">Fabric AI</span>
+                <span class="tool-badge">Cognitive Services</span>
+              </div>
             </div>
           </div>
         </div>
@@ -757,6 +917,24 @@
 
       mobileMenuBtn.addEventListener('click', function() {
         navLinks.classList.toggle('active');
+      });
+
+      const tabButtons = document.querySelectorAll('.tab-button');
+      const tabPanes = document.querySelectorAll('.tab-pane');
+      
+      tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          // Remove active class from all buttons and panes
+          tabButtons.forEach(btn => btn.classList.remove('active'));
+          tabPanes.forEach(pane => pane.classList.remove('active'));
+          
+          // Add active class to clicked button
+          button.classList.add('active');
+          
+          // Show corresponding pane
+          const tabId = button.getAttribute('data-tab');
+          document.getElementById(tabId).classList.add('active');
+        });
       });
     });
   </script>
