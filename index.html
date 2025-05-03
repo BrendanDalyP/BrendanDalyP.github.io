@@ -591,19 +591,48 @@
       overflow: hidden;
       margin-top: 30px;
       border: 1px solid var(--light-gray);
+      padding: 20px;
     }
     
     .pdf-container {
       width: 100%;
       height: 800px;
+      border-radius: 10px;
       overflow: hidden;
-      border-radius: 15px;
+      background: var(--light-gray);
+      position: relative;
     }
     
     .resume-pdf {
       width: 100%;
       height: 100%;
       border: none;
+    }
+
+    .pdf-fallback {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .pdf-fallback a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 15px;
+    }
+
+    .pdf-fallback a:hover {
+      color: var(--primary-dark);
     }
     
     @media (max-width: 768px) {
@@ -796,8 +825,9 @@
       <div class="skills-tabs">
         <button class="skill-tab active" data-tab="data-architecture">Data Architecture</button>
         <button class="skill-tab" data-tab="data-engineering">Data Engineering</button>
-        <button class="skill-tab" data-tab="business-intelligence">Business Intelligence</button>
         <button class="skill-tab" data-tab="data-governance">Data Governance</button>
+        <button class="skill-tab" data-tab="business-intelligence">Business Intelligence</button>
+        <button class="skill-tab" data-tab="ai-enablement">AI Enablement</button>
       </div>
 
       <!-- Data Architecture Tab -->
@@ -828,14 +858,14 @@
         <div class="cert-grid">
           <div class="cert-card">
             <div class="cert-badge">
-              <img src="https://learn.microsoft.com/en-us/media/learn/certification/badges/microsoft-certified-azure-data-engineer-associate.svg" alt="Azure Data Engineer">
+              <img src="badges/azure-data-engineer.png" alt="Azure Data Engineer">
             </div>
             <h4 class="cert-name">Azure Data Engineer</h4>
             <p class="cert-issuer">Microsoft (DP-203)</p>
           </div>
           <div class="cert-card">
             <div class="cert-badge">
-              <img src="https://learn.microsoft.com/en-us/media/learn/certification/badges/microsoft-certified-fabric-data-engineer-associate.svg" alt="Fabric Data Engineer">
+              <img src="badges/fabric-data-engineer.png" alt="Fabric Data Engineer">
             </div>
             <h4 class="cert-name">Fabric Data Engineer</h4>
             <p class="cert-issuer">Microsoft (DP-700)</p>
@@ -871,7 +901,43 @@
         <div class="cert-grid">
           <div class="cert-card">
             <div class="cert-badge">
-              <img src="https://learn.microsoft.com/en-us/media/learn/certification/badges/microsoft-certified-azure-data-engineer-associate.svg" alt="Azure Data Engineer">
+              <img src="badges/azure-data-engineer.png" alt="Azure Data Engineer">
+            </div>
+            <h4 class="cert-name">Azure Data Engineer</h4>
+            <p class="cert-issuer">Microsoft (DP-203)</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Data Governance Tab -->
+      <div class="skill-content" id="data-governance">
+        <div class="skill-overview">
+          <h3>Data Governance Overview</h3>
+          <p>Operationalizing enterprise data governance with RLS, PII controls, lineage, and auditability. Expert in implementing comprehensive data governance frameworks.</p>
+        </div>
+
+        <div class="tools-grid">
+          <div class="tool-card">
+            <div class="tool-icon"><i class="fas fa-shield-alt"></i></div>
+            <h4 class="tool-name">Purview</h4>
+            <p class="tool-description">Data governance</p>
+          </div>
+          <div class="tool-card">
+            <div class="tool-icon"><i class="fas fa-key"></i></div>
+            <h4 class="tool-name">Unity Catalog</h4>
+            <p class="tool-description">Data catalog</p>
+          </div>
+          <div class="tool-card">
+            <div class="tool-icon"><i class="fas fa-lock"></i></div>
+            <h4 class="tool-name">Key Vault</h4>
+            <p class="tool-description">Security management</p>
+          </div>
+        </div>
+
+        <div class="cert-grid">
+          <div class="cert-card">
+            <div class="cert-badge">
+              <img src="badges/azure-data-engineer.png" alt="Azure Data Engineer">
             </div>
             <h4 class="cert-name">Azure Data Engineer</h4>
             <p class="cert-issuer">Microsoft (DP-203)</p>
@@ -907,14 +973,14 @@
         <div class="cert-grid">
           <div class="cert-card">
             <div class="cert-badge">
-              <img src="https://learn.microsoft.com/en-us/media/learn/certification/badges/microsoft-certified-power-bi-data-analyst-associate.svg" alt="Data Analyst">
+              <img src="badges/power-bi-analyst.png" alt="Data Analyst">
             </div>
             <h4 class="cert-name">Data Analyst</h4>
             <p class="cert-issuer">Microsoft (PL-300)</p>
           </div>
           <div class="cert-card">
             <div class="cert-badge">
-              <img src="https://learn.microsoft.com/en-us/media/learn/certification/badges/microsoft-certified-fabric-analytics-engineer-associate.svg" alt="Fabric Analytics">
+              <img src="badges/fabric-analytics.png" alt="Fabric Analytics">
             </div>
             <h4 class="cert-name">Fabric Analytics</h4>
             <p class="cert-issuer">Microsoft (DP-600)</p>
@@ -922,35 +988,35 @@
         </div>
       </div>
 
-      <!-- Data Governance Tab -->
-      <div class="skill-content" id="data-governance">
+      <!-- AI Enablement Tab -->
+      <div class="skill-content" id="ai-enablement">
         <div class="skill-overview">
-          <h3>Data Governance Overview</h3>
-          <p>Operationalizing enterprise data governance with RLS, PII controls, lineage, and auditability. Expert in implementing comprehensive data governance frameworks.</p>
+          <h3>AI Enablement Overview</h3>
+          <p>Enabling AI capabilities through robust data infrastructure and MLOps practices. Specializing in Azure AI services and machine learning operations.</p>
         </div>
 
         <div class="tools-grid">
           <div class="tool-card">
-            <div class="tool-icon"><i class="fas fa-shield-alt"></i></div>
-            <h4 class="tool-name">Purview</h4>
-            <p class="tool-description">Data governance</p>
+            <div class="tool-icon"><i class="fas fa-brain"></i></div>
+            <h4 class="tool-name">Azure AI</h4>
+            <p class="tool-description">AI services & models</p>
           </div>
           <div class="tool-card">
-            <div class="tool-icon"><i class="fas fa-key"></i></div>
-            <h4 class="tool-name">Unity Catalog</h4>
-            <p class="tool-description">Data catalog</p>
+            <div class="tool-icon"><i class="fas fa-robot"></i></div>
+            <h4 class="tool-name">MLOps</h4>
+            <p class="tool-description">Machine learning operations</p>
           </div>
           <div class="tool-card">
-            <div class="tool-icon"><i class="fas fa-lock"></i></div>
-            <h4 class="tool-name">Key Vault</h4>
-            <p class="tool-description">Security management</p>
+            <div class="tool-icon"><i class="fas fa-cube"></i></div>
+            <h4 class="tool-name">Azure ML</h4>
+            <p class="tool-description">Machine learning platform</p>
           </div>
         </div>
 
         <div class="cert-grid">
           <div class="cert-card">
             <div class="cert-badge">
-              <img src="https://learn.microsoft.com/en-us/media/learn/certification/badges/microsoft-certified-azure-data-engineer-associate.svg" alt="Azure Data Engineer">
+              <img src="badges/azure-data-engineer.png" alt="Azure Data Engineer">
             </div>
             <h4 class="cert-name">Azure Data Engineer</h4>
             <p class="cert-issuer">Microsoft (DP-203)</p>
@@ -1014,7 +1080,10 @@
       
       <div class="resume-container">
         <div class="pdf-container">
-          <embed src="Resume_Daly0425 (1).pdf" type="application/pdf" class="resume-pdf">
+          <embed src="Resume_Daly_425 (1).pdf" type="application/pdf" class="resume-pdf">
+          <div class="pdf-fallback">
+            <p>If the PDF doesn't load, you can <a href="Resume_Daly_425 (1).pdf" download>download it here</a></p>
+          </div>
         </div>
       </div>
     </div>
