@@ -835,6 +835,67 @@
         border-color: var(--primary);
       }
     }
+
+    /* About Section */
+    .about-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 30px;
+      background: white;
+      border-radius: 15px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .about-text {
+      color: var(--gray);
+      line-height: 1.8;
+    }
+
+    .about-text p {
+      margin-bottom: 20px;
+    }
+
+    /* PDF Viewer */
+    .pdf-container {
+      width: 100%;
+      height: 800px;
+      border-radius: 10px;
+      overflow: hidden;
+      background: var(--light-gray);
+      position: relative;
+    }
+
+    .resume-pdf {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .pdf-fallback {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .pdf-fallback a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 15px;
+    }
+
+    .pdf-fallback a:hover {
+      color: var(--primary-dark);
+    }
   </style>
 </head>
 <body>
@@ -869,6 +930,24 @@
       <div class="profile-container">
         <img src="Daly_Brendan_690x690.png" alt="Brendan Daly" class="profile-pic">
         <div class="profile-bg"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Me Section -->
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title">About Me</h2>
+      <p class="section-subtitle">Professional background and expertise</p>
+      
+      <div class="about-content">
+        <div class="about-text">
+          <p>I am a Data & Analytics Leader with extensive experience in designing and implementing modern data architectures. My expertise spans across Microsoft Fabric, Azure data services, and enterprise analytics solutions.</p>
+          
+          <p>Currently, I am the Data & Analytics Lead at ClaimArche, where I architect and implement modern data platforms that transform how organizations leverage their data assets. I specialize in creating scalable, governed data ecosystems that reduce time-to-insight and accelerate delivery.</p>
+          
+          <p>With a strong background in data architecture, engineering, and governance, I help organizations align their data strategy with business goals, ensuring that data becomes a strategic asset rather than just a technical requirement.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -1106,40 +1185,33 @@
       <p class="section-subtitle">Technical validations and professional credentials</p>
       
       <div class="certifications-grid">
-        <div class="cert-card">
-          <div class="cert-badge">
-            <img src="https://learn.microsoft.com/en-us/media/learn/certification/badges/microsoft-certified-azure-data-engineer-associate.svg" alt="Azure Data Engineer Associate">
-          </div>
-          <h3 class="cert-title">Azure Data Engineer Associate</h3>
-          <p class="cert-issuer">Microsoft (DP-203)</p>
-          <p class="cert-description">Design and implement data storage, processing, and security using the full stack of Azure data services.</p>
+        <div class="certification-card">
+          <img src="https://learn.microsoft.com/en-us/media/learn/certification/badges/microsoft-certified-power-bi-data-analyst-associate.svg" 
+               alt="Microsoft Certified: Power BI Data Analyst Associate" 
+               onerror="this.src='badges/power-bi-data-analyst.png'">
+          <h3>Power BI Data Analyst Associate</h3>
+          <p>PL-300</p>
         </div>
-        
-        <div class="cert-card">
-          <div class="cert-badge">
-            <img src="https://learn.microsoft.com/en-us/media/learn/certification/badges/microsoft-certified-fabric-data-engineer-associate.svg" alt="Fabric Data Engineer Associate">
-          </div>
-          <h3 class="cert-title">Fabric Data Engineer Associate</h3>
-          <p class="cert-issuer">Microsoft (DP-700)</p>
-          <p class="cert-description">Implement enterprise data solutions using Microsoft Fabric's integrated analytics platform.</p>
+        <div class="certification-card">
+          <img src="https://learn.microsoft.com/en-us/media/learn/certification/badges/microsoft-certified-fabric-analytics-engineer-associate.svg" 
+               alt="Microsoft Certified: Fabric Analytics Engineer Associate" 
+               onerror="this.src='badges/fabric-analytics-engineer.png'">
+          <h3>Fabric Analytics Engineer Associate</h3>
+          <p>DP-600</p>
         </div>
-        
-        <div class="cert-card">
-          <div class="cert-badge">
-            <img src="https://learn.microsoft.com/en-us/media/learn/certification/badges/microsoft-certified-fabric-analytics-engineer-associate.svg" alt="Fabric Analytics Engineer Associate">
-          </div>
-          <h3 class="cert-title">Fabric Analytics Engineer Associate</h3>
-          <p class="cert-issuer">Microsoft (DP-600)</p>
-          <p class="cert-description">Design and build analytics solutions within Microsoft Fabric's end-to-end analytics environment.</p>
+        <div class="certification-card">
+          <img src="https://learn.microsoft.com/en-us/media/learn/certification/badges/microsoft-certified-fabric-data-engineer-associate.svg" 
+               alt="Microsoft Certified: Fabric Data Engineer Associate" 
+               onerror="this.src='badges/fabric-data-engineer.png'">
+          <h3>Fabric Data Engineer Associate</h3>
+          <p>DP-700</p>
         </div>
-        
-        <div class="cert-card">
-          <div class="cert-badge">
-            <img src="https://learn.microsoft.com/en-us/media/learn/certification/badges/microsoft-certified-power-bi-data-analyst-associate.svg" alt="Data Analyst Associate">
-          </div>
-          <h3 class="cert-title">Data Analyst Associate</h3>
-          <p class="cert-issuer">Microsoft (PL-300)</p>
-          <p class="cert-description">Deliver business value through Power BI dashboards and reports using enterprise data assets.</p>
+        <div class="certification-card">
+          <img src="https://learn.microsoft.com/en-us/media/learn/certification/badges/microsoft-certified-azure-cosmos-db-developer-specialty.svg" 
+               alt="Microsoft Certified: Azure Cosmos DB Developer Specialty" 
+               onerror="this.src='badges/azure-cosmos-db-developer.png'">
+          <h3>Azure Cosmos DB Developer Specialty</h3>
+          <p>DP-420</p>
         </div>
       </div>
     </div>
