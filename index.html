@@ -576,6 +576,66 @@
         justify-content: center;
       }
     }
+    
+    /* Resume Section Styling */
+    .resume-container {
+      background: white;
+      border-radius: 15px;
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+      margin-top: 30px;
+    }
+    
+    .resume-actions {
+      padding: 20px;
+      background: var(--primary-light);
+      border-bottom: 2px solid var(--primary);
+      display: flex;
+      justify-content: flex-end;
+    }
+    
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      background: var(--primary);
+      color: white;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: 600;
+      transition: var(--transition);
+      box-shadow: var(--shadow-sm);
+    }
+    
+    .download-btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+    
+    .pdf-container {
+      width: 100%;
+      height: 800px;
+      overflow: hidden;
+      border-radius: 0 0 15px 15px;
+    }
+    
+    .resume-pdf {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    
+    @media (max-width: 768px) {
+      .pdf-container {
+        height: 600px;
+      }
+      
+      .resume-actions {
+        justify-content: center;
+      }
+    }
   </style>
 </head>
 <body>
@@ -835,12 +895,22 @@
       <h2 class="section-title">Resume</h2>
       <p class="section-subtitle">Professional experience and qualifications</p>
       
-      <!-- PDF Resume Embed -->
-      <object data="Resume_Daly_425-1.pdf" type="application/pdf" class="resume-embed">
-        <p>It appears your browser doesn't support embedded PDFs. 
-           <a href="Resume_Daly_425-1.pdf" download>Click here to download the PDF</a> instead.
-        </p>
-      </object>
+      <div class="resume-container">
+        <div class="resume-actions">
+          <a href="Resume_Daly_425-1.pdf" download class="download-btn">
+            <i class="fas fa-download"></i>
+            Download PDF
+          </a>
+        </div>
+        
+        <div class="pdf-container">
+          <object data="Resume_Daly_425-1.pdf" type="application/pdf" class="resume-pdf">
+            <p>It appears your browser doesn't support embedded PDFs. 
+               <a href="Resume_Daly_425-1.pdf" download>Click here to download the PDF</a> instead.
+            </p>
+          </object>
+        </div>
+      </div>
     </div>
   </section>
 
