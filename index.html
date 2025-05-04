@@ -275,6 +275,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      overflow: hidden;
     }
     
     @keyframes float {
@@ -572,6 +573,7 @@
       overflow: hidden;
       background: var(--light-gray);
       position: relative;
+      margin-top: 20px;
     }
     
     .resume-pdf {
@@ -923,7 +925,7 @@
         </div>
       </div>
       <div class="profile-container">
-        <img src="./Daly_Brendan_690x690.png" alt="Brendan Daly" class="profile-pic">
+        <img src="Daly_Brendan_690x690.png" alt="Brendan Daly" class="profile-pic">
       </div>
     </div>
   </section>
@@ -960,129 +962,70 @@
     <div class="container">
       <h2 class="section-title">Skills & Expertise</h2>
       <div class="skills-tabs">
-        <button class="skill-tab active" data-tab="data-architecture">Data Architecture</button>
-        <button class="skill-tab" data-tab="data-engineering">Data Engineering</button>
-        <button class="skill-tab" data-tab="data-governance">Data Governance</button>
-        <button class="skill-tab" data-tab="business-intelligence">Business Intelligence</button>
-        <button class="skill-tab" data-tab="ai-enablement">AI Enablement</button>
+        <button class="skill-tab active" data-tab="overview">Overview</button>
+        <button class="skill-tab" data-tab="core-skills">Core Skills</button>
+        <button class="skill-tab" data-tab="tech-stack">Tech Stack</button>
       </div>
       
-      <div class="skill-content active" id="data-architecture">
+      <div class="skill-content active" id="overview">
         <div class="skill-overview">
-          <h3>Data Architecture</h3>
-          <p>Designing enterprise-scale data architectures that balance performance, cost, and maintainability while enabling business agility.</p>
+          <h3>Professional Expertise</h3>
+          <p>As a Data & Analytics Leader, I specialize in designing and implementing modern data architectures that transform raw data into strategic assets. My approach combines technical excellence with business acumen to deliver solutions that drive real business value.</p>
+          <p>I focus on creating scalable, governed data ecosystems that reduce time-to-insight and accelerate delivery while ensuring data quality, security, and compliance. My expertise spans across enterprise data architecture, engineering, governance, and analytics.</p>
         </div>
+      </div>
+      
+      <div class="skill-content" id="core-skills">
         <div class="tools-grid">
           <div class="tool-card">
             <i class="fas fa-sitemap tool-icon"></i>
-            <h4 class="tool-name">Enterprise Architecture</h4>
-            <p class="tool-description">Lakehouse architecture, medallion design patterns, data mesh implementation, domain-driven design</p>
+            <h4 class="tool-name">Data Architecture</h4>
+            <p class="tool-description">Designing enterprise-scale architectures, implementing data mesh patterns, and creating scalable data products</p>
           </div>
-          <div class="tool-card">
-            <i class="fas fa-expand-arrows-alt tool-icon"></i>
-            <h4 class="tool-name">Performance Architecture</h4>
-            <p class="tool-description">Partitioning strategies, materialized views, query optimization, workload management</p>
-          </div>
-          <div class="tool-card">
-            <i class="fas fa-project-diagram tool-icon"></i>
-            <h4 class="tool-name">Integration Architecture</h4>
-            <p class="tool-description">Change data capture, event streaming, API gateways, service mesh implementation</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="skill-content" id="data-engineering">
-        <div class="skill-overview">
-          <h3>Data Engineering</h3>
-          <p>Implementing production-grade data pipelines with robust error handling, monitoring, and operational excellence.</p>
-        </div>
-        <div class="tools-grid">
           <div class="tool-card">
             <i class="fas fa-code-branch tool-icon"></i>
-            <h4 class="tool-name">Pipeline Engineering</h4>
-            <p class="tool-description">Idempotent transformations, checkpoint recovery, dead letter queues, pipeline orchestration</p>
+            <h4 class="tool-name">Data Engineering</h4>
+            <p class="tool-description">Building robust data pipelines, implementing data quality frameworks, and optimizing data workflows</p>
           </div>
-          <div class="tool-card">
-            <i class="fas fa-tachometer-alt tool-icon"></i>
-            <h4 class="tool-name">Performance Engineering</h4>
-            <p class="tool-description">Query plan optimization, index design, statistics management, resource governance</p>
-          </div>
-          <div class="tool-card">
-            <i class="fas fa-sync tool-icon"></i>
-            <h4 class="tool-name">Data Quality</h4>
-            <p class="tool-description">Schema validation, data profiling, anomaly detection, data quality monitoring</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="skill-content" id="data-governance">
-        <div class="skill-overview">
-          <h3>Data Governance</h3>
-          <p>Implementing enterprise data governance frameworks that enable secure, compliant, and discoverable data assets.</p>
-        </div>
-        <div class="tools-grid">
           <div class="tool-card">
             <i class="fas fa-shield-alt tool-icon"></i>
-            <h4 class="tool-name">Security Architecture</h4>
-            <p class="tool-description">Row-level security, column-level encryption, key management, audit logging</p>
+            <h4 class="tool-name">Data Governance</h4>
+            <p class="tool-description">Establishing data governance frameworks, implementing security controls, and ensuring compliance</p>
           </div>
           <div class="tool-card">
-            <i class="fas fa-book tool-icon"></i>
-            <h4 class="tool-name">Metadata Management</h4>
-            <p class="tool-description">Data lineage tracking, business glossary, technical metadata, data cataloging</p>
+            <i class="fas fa-chart-line tool-icon"></i>
+            <h4 class="tool-name">Business Intelligence</h4>
+            <p class="tool-description">Creating semantic models, designing analytics solutions, and delivering actionable insights</p>
           </div>
-          <div class="tool-card">
-            <i class="fas fa-balance-scale tool-icon"></i>
-            <h4 class="tool-name">Compliance Architecture</h4>
-            <p class="tool-description">Data retention policies, privacy controls, regulatory compliance, audit frameworks</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="skill-content" id="business-intelligence">
-        <div class="skill-overview">
-          <h3>Business Intelligence</h3>
-          <p>Designing and implementing enterprise BI solutions that deliver actionable insights with performance and scalability.</p>
-        </div>
-        <div class="tools-grid">
-          <div class="tool-card">
-            <i class="fas fa-cube tool-icon"></i>
-            <h4 class="tool-name">Semantic Modeling</h4>
-            <p class="tool-description">Star schema design, measure definitions, calculation groups, time intelligence</p>
-          </div>
-          <div class="tool-card">
-            <i class="fas fa-chart-bar tool-icon"></i>
-            <h4 class="tool-name">Analytics Architecture</h4>
-            <p class="tool-description">DirectQuery optimization, composite models, incremental refresh, query folding</p>
-          </div>
-          <div class="tool-card">
-            <i class="fas fa-bullseye tool-icon"></i>
-            <h4 class="tool-name">Performance Optimization</h4>
-            <p class="tool-description">Query optimization, materialization strategies, partitioning, caching policies</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="skill-content" id="ai-enablement">
-        <div class="skill-overview">
-          <h3>AI Enablement</h3>
-          <p>Architecting and implementing production-grade ML infrastructure that enables reliable model deployment and monitoring.</p>
-        </div>
-        <div class="tools-grid">
           <div class="tool-card">
             <i class="fas fa-brain tool-icon"></i>
-            <h4 class="tool-name">ML Infrastructure</h4>
-            <p class="tool-description">Feature store implementation, model serving architecture, experiment tracking, version control</p>
+            <h4 class="tool-name">AI Enablement</h4>
+            <p class="tool-description">Architecting ML infrastructure, implementing feature stores, and enabling AI capabilities</p>
           </div>
+        </div>
+      </div>
+      
+      <div class="skill-content" id="tech-stack">
+        <div class="tools-grid">
           <div class="tool-card">
-            <i class="fas fa-cogs tool-icon"></i>
-            <h4 class="tool-name">MLOps Architecture</h4>
-            <p class="tool-description">CI/CD pipelines, model monitoring, drift detection, automated retraining workflows</p>
+            <i class="fas fa-cloud tool-icon"></i>
+            <h4 class="tool-name">Microsoft Fabric</h4>
+            <p class="tool-description">OneLake, Lakehouse, Data Warehouse, Data Factory, Synapse Analytics</p>
           </div>
           <div class="tool-card">
             <i class="fas fa-database tool-icon"></i>
-            <h4 class="tool-name">Data Preparation</h4>
-            <p class="tool-description">Feature engineering pipelines, data quality validation, sampling strategies, bias detection</p>
+            <h4 class="tool-name">Data Platforms</h4>
+            <p class="tool-description">Azure SQL, Cosmos DB, Synapse, Databricks, Snowflake</p>
+          </div>
+          <div class="tool-card">
+            <i class="fas fa-chart-pie tool-icon"></i>
+            <h4 class="tool-name">Analytics</h4>
+            <p class="tool-description">Power BI, DAX, MDX, SQL, Python, R</p>
+          </div>
+          <div class="tool-card">
+            <i class="fas fa-cogs tool-icon"></i>
+            <h4 class="tool-name">DevOps</h4>
+            <p class="tool-description">Azure DevOps, GitHub, CI/CD, Infrastructure as Code</p>
           </div>
         </div>
       </div>
@@ -1130,8 +1073,15 @@
       <h2 class="section-title">Resume</h2>
       <div class="resume-container">
         <div class="pdf-container">
-          <iframe src="./Resume_Daly_425 (1).pdf" class="resume-pdf" title="Brendan Daly's Resume">
-            <p>Your browser does not support PDFs. Please <a href="./Resume_Daly_425 (1).pdf" download>download the PDF</a> to view it.</p>
+          <iframe 
+            src="Resume_Daly_425 (1).pdf#toolbar=0&navpanes=0" 
+            class="resume-pdf" 
+            title="Brendan Daly's Resume"
+            type="application/pdf"
+            width="100%"
+            height="100%"
+          >
+            <p>Your browser does not support PDFs. Please <a href="Resume_Daly_425 (1).pdf" download>download the PDF</a> to view it.</p>
           </iframe>
         </div>
       </div>
@@ -1160,7 +1110,7 @@
           </div>
           <h3 class="contact-title">LinkedIn</h3>
           <p class="contact-info">
-            <a href="https://linkedin.com/in/dalybi" target="_blank">linkedin.com/in/dalybi</a>
+            <a href="https://www.linkedin.com/in/dalybi/" target="_blank">linkedin.com/in/dalybi</a>
           </p>
         </div>
       </div>
