@@ -3,40 +3,428 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio - Contact</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Contact - Brendan Daly | Data & Analytics Leader</title>
+    <meta name="description" content="Get in touch with Brendan Daly - Data & Analytics Leader specializing in Microsoft technologies">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
+    
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+          --background: 0 0% 100%;
+          --foreground: 222.2 84% 4.9%;
+          --card: 0 0% 100%;
+          --card-foreground: 222.2 84% 4.9%;
+          --primary: 222.2 47.4% 11.2%;
+          --primary-foreground: 210 40% 98%;
+          --secondary: 210 40% 96.1%;
+          --secondary-foreground: 222.2 47.4% 11.2%;
+          --muted: 210 40% 96.1%;
+          --muted-foreground: 215.4 16.3% 46.9%;
+          --border: 214.3 31.8% 91.4%;
+          --radius: 0.5rem;
+        }
+
+        .dark {
+          --background: 222.2 84% 4.9%;
+          --foreground: 210 40% 98%;
+          --card: 222.2 84% 4.9%;
+          --card-foreground: 210 40% 98%;
+          --primary: 210 40% 98%;
+          --primary-foreground: 222.2 47.4% 11.2%;
+          --secondary: 217.2 32.6% 17.5%;
+          --secondary-foreground: 210 40% 98%;
+          --muted: 217.2 32.6% 17.5%;
+          --muted-foreground: 215 20.2% 65.1%;
+          --border: 217.2 32.6% 17.5%;
+        }
+
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+
+        html {
+          font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        body {
+          background-color: hsl(var(--background));
+          color: hsl(var(--foreground));
+          transition: background-color 0.3s, color 0.3s;
+          min-height: 100vh;
+          display: flex;
+          flex-direction: column;
+        }
+
+        .container {
+          width: 100%;
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 1rem;
+        }
+
+        .header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 1rem 0;
+          border-bottom: 1px solid hsl(var(--border));
+        }
+
+        .logo {
+          font-size: 1.5rem;
+          font-weight: 700;
+          color: hsl(var(--foreground));
+          text-decoration: none;
+        }
+
+        .nav {
+          display: flex;
+          gap: 2rem;
+        }
+
+        .nav a {
+          color: hsl(var(--muted-foreground));
+          text-decoration: none;
+          font-weight: 500;
+          transition: color 0.3s;
+        }
+
+        .nav a:hover,
+        .nav a.active {
+          color: hsl(var(--foreground));
+        }
+
+        .theme-toggle {
+          background: none;
+          border: 1px solid hsl(var(--border));
+          border-radius: var(--radius);
+          width: 2.5rem;
+          height: 2.5rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          color: hsl(var(--foreground));
+        }
+
+        .theme-toggle svg {
+          width: 1.2rem;
+          height: 1.2rem;
+          transition: transform 0.3s, opacity 0.3s;
+        }
+
+        .theme-toggle .sun {
+          opacity: 1;
+          transform: rotate(0) scale(1);
+        }
+
+        .theme-toggle .moon {
+          position: absolute;
+          opacity: 0;
+          transform: rotate(90deg) scale(0);
+        }
+
+        .dark .theme-toggle .sun {
+          opacity: 0;
+          transform: rotate(-90deg) scale(0);
+        }
+
+        .dark .theme-toggle .moon {
+          opacity: 1;
+          transform: rotate(0) scale(1);
+        }
+
+        main {
+          flex: 1;
+          padding: 3rem 0;
+        }
+
+        .page-title {
+          font-size: 2.5rem;
+          font-weight: 700;
+          text-align: center;
+          margin-bottom: 1rem;
+        }
+
+        .page-subtitle {
+          font-size: 1.125rem;
+          color: hsl(var(--muted-foreground));
+          text-align: center;
+          margin-bottom: 3rem;
+        }
+
+        .contact-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: 2rem;
+          margin-bottom: 3rem;
+        }
+
+        .contact-card {
+          background-color: hsl(var(--card));
+          border: 1px solid hsl(var(--border));
+          border-radius: var(--radius);
+          padding: 2rem;
+          text-align: center;
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+          transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .contact-card:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .contact-icon {
+          width: 60px;
+          height: 60px;
+          background-color: hsl(var(--primary));
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin: 0 auto 1rem;
+          color: hsl(var(--primary-foreground));
+          font-size: 1.5rem;
+        }
+
+        .contact-title {
+          font-size: 1.25rem;
+          font-weight: 600;
+          margin-bottom: 0.5rem;
+          color: hsl(var(--foreground));
+        }
+
+        .contact-info {
+          color: hsl(var(--muted-foreground));
+          margin: 0;
+        }
+
+        .contact-info a {
+          color: hsl(var(--primary));
+          text-decoration: none;
+          transition: color 0.3s;
+        }
+
+        .contact-info a:hover {
+          color: hsl(var(--primary) / 0.8);
+          text-decoration: underline;
+        }
+
+        .contact-form {
+          background-color: hsl(var(--card));
+          border: 1px solid hsl(var(--border));
+          border-radius: var(--radius);
+          padding: 2rem;
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+          max-width: 600px;
+          margin: 0 auto;
+        }
+
+        .form-group {
+          margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+          display: block;
+          font-weight: 500;
+          margin-bottom: 0.5rem;
+          color: hsl(var(--foreground));
+        }
+
+        .form-input,
+        .form-textarea {
+          width: 100%;
+          padding: 0.75rem;
+          border: 1px solid hsl(var(--border));
+          border-radius: var(--radius);
+          background-color: hsl(var(--background));
+          color: hsl(var(--foreground));
+          font-family: inherit;
+          transition: border-color 0.3s;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+          outline: none;
+          border-color: hsl(var(--primary));
+        }
+
+        .form-textarea {
+          min-height: 120px;
+          resize: vertical;
+        }
+
+        .submit-button {
+          background-color: hsl(var(--primary));
+          color: hsl(var(--primary-foreground));
+          border: none;
+          padding: 0.75rem 2rem;
+          border-radius: var(--radius);
+          font-weight: 500;
+          cursor: pointer;
+          transition: background-color 0.3s;
+          width: 100%;
+        }
+
+        .submit-button:hover {
+          background-color: hsl(var(--primary) / 0.9);
+        }
+
+        .footer {
+          border-top: 1px solid hsl(var(--border));
+          padding: 2rem 0;
+          text-align: center;
+          color: hsl(var(--muted-foreground));
+        }
+
+        @media (max-width: 768px) {
+          .nav {
+            display: none;
+          }
+          
+          .contact-grid {
+            grid-template-columns: 1fr;
+          }
+          
+          .page-title {
+            font-size: 2rem;
+          }
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="index.html">Resume</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="contact.html" class="active">Contact</a></li>
-            </ul>
+    <header class="header container">
+        <a href="index.html" class="logo">Brendan Daly</a>
+        <nav class="nav">
+            <a href="index.html">Home</a>
+            <a href="projects.html">Projects</a>
+            <a href="contact.html" class="active">Contact</a>
         </nav>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sun">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="moon">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+        </button>
     </header>
 
-    <main>
-        <h1>Contact Me</h1>
-        <!-- Add your contact information or a contact form here -->
-        <p>Email: your.email@example.com</p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/yourprofile">Your LinkedIn Profile</a></p>
-        <!-- Add more contact details as needed -->
+    <main class="container">
+        <h1 class="page-title">Contact Me</h1>
+        <p class="page-subtitle">Let's connect and discuss how I can help with your data and analytics needs</p>
+
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <h3 class="contact-title">Email</h3>
+                <p class="contact-info">
+                    <a href="mailto:Brendan.Daly.P@gmail.com">Brendan.Daly.P@gmail.com</a>
+                </p>
+            </div>
+            
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fab fa-linkedin"></i>
+                </div>
+                <h3 class="contact-title">LinkedIn</h3>
+                <p class="contact-info">
+                    <a href="https://www.linkedin.com/in/dalybi/" target="_blank">linkedin.com/in/dalybi</a>
+                </p>
+            </div>
+            
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fas fa-phone"></i>
+                </div>
+                <h3 class="contact-title">Phone</h3>
+                <p class="contact-info">
+                    <a href="tel:+13148357944">(314) 835-7944</a>
+                </p>
+            </div>
+            
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <h3 class="contact-title">Location</h3>
+                <p class="contact-info">St. Louis, MO 63119</p>
+            </div>
+        </div>
+
+        <div class="contact-form">
+            <h3 style="margin-bottom: 1.5rem; text-align: center;">Send me a message</h3>
+            <form action="mailto:Brendan.Daly.P@gmail.com" method="get" enctype="text/plain">
+                <div class="form-group">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" id="name" name="name" class="form-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" id="email" name="email" class="form-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject" class="form-label">Subject</label>
+                    <input type="text" id="subject" name="subject" class="form-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message" class="form-label">Message</label>
+                    <textarea id="message" name="body" class="form-textarea" required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-button">Send Message</button>
+            </form>
+        </div>
     </main>
 
-    <footer>
-        <nav>
-            <ul>
-                <li><a href="#data-engineering">Data Engineering</a></li>
-                <li><a href="#power-bi">Power BI</a></li>
-                <li><a href="#data-science">Data Science</a></li>
-                <li><a href="#real-time-intelligence">Real-Time Intelligence</a></li>
-                <li><a href="#data-governance">Data Governance</a></li>
-            </ul>
-        </nav>
-        <p>&copy; 2023 Your Name. All rights reserved.</p>
+    <footer class="footer container">
+        <p>&copy; 2025 Brendan Daly. All rights reserved.</p>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme toggle functionality
+            const themeToggle = document.getElementById('theme-toggle');
+            const body = document.body;
+            
+            // Check for saved theme preference or default to light
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            if (savedTheme === 'dark') {
+                body.classList.add('dark');
+            }
+            
+            themeToggle.addEventListener('click', function() {
+                body.classList.toggle('dark');
+                const currentTheme = body.classList.contains('dark') ? 'dark' : 'light';
+                localStorage.setItem('theme', currentTheme);
+            });
+        });
+    </script>
 </body>
 </html>
 
