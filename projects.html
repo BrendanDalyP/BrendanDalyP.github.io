@@ -19,16 +19,134 @@
 
     <main>
         <h1>My Projects</h1>
-        <!-- Add your projects here -->
+        
+        <!-- AI Auto Scheduler for Safe Stay Technologies -->
         <section>
-            <h2>Project 1</h2>
-            <p>Description of project 1...</p>
+            <h2>AI Auto Scheduler for Safe Stay Technologies</h2>
+            <h3>Transforming Aging-in-Place and Disability Technology Installation Scheduling</h3>
+            
+            <h4>Project Overview</h4>
+            <p>Safe Stay Technologies specializes in installing critical accessibility and aging-in-place technology solutions, including grab bars, stair lifts, ramps, smart home automation, medical alert systems, and mobility aids. The challenge lies in optimizing the scheduling of these highly specialized installations while considering technician expertise, equipment availability, client needs, and geographic constraints.</p>
+            
+            <h4>Business Problem</h4>
+            <p>Traditional scheduling approaches in the assistive technology installation industry face several challenges:</p>
+            <ul>
+                <li><strong>Technician Specialization:</strong> Different installations require specific certifications and expertise (electrical, structural, medical equipment)</li>
+                <li><strong>Client Urgency:</strong> Many clients have immediate accessibility needs that impact their daily safety and independence</li>
+                <li><strong>Equipment Dependencies:</strong> Complex supply chain coordination for specialized accessibility equipment</li>
+                <li><strong>Geographic Optimization:</strong> Minimizing travel time while maximizing service coverage across diverse client locations</li>
+                <li><strong>Regulatory Compliance:</strong> Ensuring installations meet ADA, local building codes, and insurance requirements</li>
+            </ul>
+            
+            <h4>AI-Powered Solution Architecture</h4>
+            <p>The proposed AI auto scheduler leverages modern data architecture and machine learning to optimize installation scheduling:</p>
+            
+            <h5>Data Foundation & Architecture</h5>
+            <ul>
+                <li><strong>Microsoft Fabric:</strong> Unified data platform for ingesting client requests, technician availability, equipment inventory, and historical performance data</li>
+                <li><strong>Azure Cosmos DB:</strong> Real-time storage for dynamic scheduling data with global distribution capabilities</li>
+                <li><strong>Delta Lake:</strong> Medallion architecture (Bronze/Silver/Gold) for data quality and governance</li>
+                <li><strong>Microsoft Purview:</strong> Data governance ensuring client privacy and regulatory compliance</li>
+            </ul>
+            
+            <h5>AI & Machine Learning Components</h5>
+            <ul>
+                <li><strong>Azure AI Foundry:</strong> Custom ML models for demand forecasting and installation duration prediction</li>
+                <li><strong>OpenAI GPT Integration:</strong> Natural language processing for client request analysis and priority scoring</li>
+                <li><strong>Azure ML Studio:</strong> Reinforcement learning models for continuous schedule optimization</li>
+                <li><strong>Optimization Algorithms:</strong> Constraint-based scheduling considering technician skills, equipment availability, and geographic proximity</li>
+            </ul>
+            
+            <h5>Real-Time Intelligence</h5>
+            <ul>
+                <li><strong>Event Hubs & Stream Analytics:</strong> Real-time processing of schedule changes, emergency requests, and technician updates</li>
+                <li><strong>KQL Queries:</strong> Complex analytics for identifying scheduling bottlenecks and optimization opportunities</li>
+                <li><strong>Fabric Real-Time Hub:</strong> Live dashboards for operations teams to monitor schedule performance</li>
+            </ul>
+            
+            <h4>Key Features & Capabilities</h4>
+            
+            <h5>Intelligent Scheduling Engine</h5>
+            <ul>
+                <li><strong>Multi-Constraint Optimization:</strong> Balances technician expertise, client urgency, geographic efficiency, and equipment availability</li>
+                <li><strong>Dynamic Rescheduling:</strong> AI-powered automatic rescheduling for cancellations, emergencies, or delays</li>
+                <li><strong>Predictive Duration Modeling:</strong> ML models predict installation time based on historical data, complexity, and client-specific factors</li>
+                <li><strong>Emergency Prioritization:</strong> Automated priority scoring for urgent accessibility needs</li>
+            </ul>
+            
+            <h5>Technician Optimization</h5>
+            <ul>
+                <li><strong>Skill Matching:</strong> AI matches installations to technicians based on certifications, experience, and past performance</li>
+                <li><strong>Route Optimization:</strong> Geographic clustering and route planning to minimize travel time and maximize daily installations</li>
+                <li><strong>Workload Balancing:</strong> Ensures equitable distribution of complex vs. routine installations</li>
+                <li><strong>Training Recommendations:</strong> Identifies skill gaps and recommends training based on demand patterns</li>
+            </ul>
+            
+            <h5>Client Experience Enhancement</h5>
+            <ul>
+                <li><strong>Automated Communication:</strong> Proactive notifications about scheduling, delays, and technician arrival times</li>
+                <li><strong>Preference Learning:</strong> AI learns client preferences for scheduling windows and technician characteristics</li>
+                <li><strong>Accessibility Assessment:</strong> Integration with intake forms to automatically classify installation complexity and urgency</li>
+            </ul>
+            
+            <h4>Technology Stack</h4>
+            <ul>
+                <li><strong>Data Platform:</strong> Microsoft Fabric, Azure Synapse Analytics, Azure Data Lake Storage</li>
+                <li><strong>AI/ML Services:</strong> Azure AI Foundry, OpenAI, Azure ML Studio, Azure Cognitive Services</li>
+                <li><strong>Database:</strong> Azure Cosmos DB, Azure SQL Database</li>
+                <li><strong>Real-Time Processing:</strong> Azure Event Hubs, Stream Analytics, Service Bus</li>
+                <li><strong>Visualization:</strong> Power BI with real-time dashboards and embedded analytics</li>
+                <li><strong>Development:</strong> Python, PySpark, KQL, REST APIs</li>
+                <li><strong>Governance:</strong> Microsoft Purview, Azure Policy, Key Vault</li>
+            </ul>
+            
+            <h4>Implementation Approach</h4>
+            
+            <h5>Phase 1: Data Foundation (Months 1-2)</h5>
+            <ul>
+                <li>Implement medallion architecture in Microsoft Fabric</li>
+                <li>Establish data ingestion pipelines for existing systems</li>
+                <li>Set up governance framework with Purview</li>
+                <li>Create initial data models for clients, technicians, and installations</li>
+            </ul>
+            
+            <h5>Phase 2: Basic AI Scheduling (Months 3-4)</h5>
+            <ul>
+                <li>Develop constraint-based optimization algorithms</li>
+                <li>Implement ML models for duration prediction</li>
+                <li>Create basic scheduling interface</li>
+                <li>Establish feedback loops for model improvement</li>
+            </ul>
+            
+            <h5>Phase 3: Advanced Intelligence (Months 5-6)</h5>
+            <ul>
+                <li>Integrate real-time scheduling adjustments</li>
+                <li>Implement predictive analytics for demand forecasting</li>
+                <li>Add natural language processing for client request analysis</li>
+                <li>Develop comprehensive reporting and analytics</li>
+            </ul>
+            
+            <h4>Expected Business Impact</h4>
+            <ul>
+                <li><strong>30% Reduction in Schedule Gaps:</strong> AI optimization minimizes downtime between installations</li>
+                <li><strong>25% Improvement in Client Satisfaction:</strong> Better matching of technician expertise to client needs</li>
+                <li><strong>20% Decrease in Travel Costs:</strong> Geographic optimization reduces fuel and time expenses</li>
+                <li><strong>40% Faster Emergency Response:</strong> Automated priority scoring and dynamic rescheduling</li>
+                <li><strong>15% Increase in Daily Installations:</strong> Optimized routing and duration prediction</li>
+            </ul>
+            
+            <h4>Governance & Compliance</h4>
+            <ul>
+                <li><strong>Data Privacy:</strong> HIPAA-compliant handling of client health information</li>
+                <li><strong>Accessibility Standards:</strong> Ensures all recommendations meet ADA requirements</li>
+                <li><strong>Audit Trail:</strong> Complete lineage tracking for scheduling decisions</li>
+                <li><strong>Bias Detection:</strong> Monitoring for algorithmic bias in technician assignments</li>
+            </ul>
+            
+            <p><strong>This AI auto scheduler represents a significant opportunity to modernize the assistive technology installation industry, improving both operational efficiency and client outcomes while maintaining the highest standards of data governance and regulatory compliance.</strong></p>
         </section>
-        <section>
-            <h2>Project 2</h2>
-            <p>Description of project 2...</p>
-        </section>
-        <!-- Add more projects as needed -->
+        
+        <!-- Additional project sections can be added here -->
     </main>
 
     <footer>
