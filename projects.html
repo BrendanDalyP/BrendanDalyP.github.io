@@ -3,46 +3,237 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio - Projects</title>
+    <title>Projects - Brendan Daly | Data & Analytics Leader</title>
+    <meta name="description" content="Explore projects and work by Brendan Daly, Data & Analytics Leader">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
+    
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="index.html">Resume</a></li>
-                <li><a href="projects.html" class="active">Projects</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+    <div class="min-h-screen">
+        <header class="header container">
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="projects.html" class="nav-link active">Projects</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon sun">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon moon">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+            </button>
+        </header>
 
-    <main>
-        <h1>My Projects</h1>
-        <!-- Add your projects here -->
-        <section>
-            <h2>Project 1</h2>
-            <p>Description of project 1...</p>
-        </section>
-        <section>
-            <h2>Project 2</h2>
-            <p>Description of project 2...</p>
-        </section>
-        <!-- Add more projects as needed -->
-    </main>
+        <main class="main container">
+            <section class="profile-section">
+                <div class="profile-image">
+                    <img src="Daly_Brendan_690x690.png" alt="Brendan Daly">
+                </div>
+                <div class="profile-content">
+                    <h1>My Projects</h1>
+                    <div class="job-title">Data platforms and solutions I've built</div>
+                    <p>
+                        Here's a showcase of key projects and platforms I've architected and implemented. 
+                        Each represents a unique approach to solving complex data challenges while 
+                        delivering measurable business value.
+                    </p>
+                </div>
+            </section>
 
-    <footer>
-        <nav>
-            <ul>
-                <li><a href="#data-engineering">Data Engineering</a></li>
-                <li><a href="#power-bi">Power BI</a></li>
-                <li><a href="#data-science">Data Science</a></li>
-                <li><a href="#real-time-intelligence">Real-Time Intelligence</a></li>
-                <li><a href="#data-governance">Data Governance</a></li>
-            </ul>
-        </nav>
-        <p>&copy; 2023 Your Name. All rights reserved.</p>
-    </footer>
+            <!-- Current Project -->
+            <section class="section">
+                <h2>Current Project</h2>
+                <div class="project-card featured-project">
+                    <div class="project-header">
+                        <h3 class="project-title">ClaimArche</h3>
+                        <span class="project-status">Currently Leading</span>
+                    </div>
+                    <p class="project-description">
+                        A comprehensive insurance claims management and analytics platform built with 
+                        security-first principles. As the Data & Analytics Lead, I've architected a 
+                        modern data ecosystem that processes sensitive insurance data while enabling 
+                        powerful analytics and AI capabilities.
+                    </p>
+                    <div class="project-tech">
+                        <h4>Technologies Used:</h4>
+                        <div class="badge-container">
+                            <span class="badge">Microsoft Fabric</span>
+                            <span class="badge">Azure Synapse</span>
+                            <span class="badge">Power BI</span>
+                            <span class="badge">Delta Lake</span>
+                            <span class="badge">Python</span>
+                            <span class="badge">Azure Data Factory</span>
+                        </div>
+                    </div>
+                    <div class="project-highlights">
+                        <h4>Key Achievements:</h4>
+                        <ul>
+                            <li>Designed scalable data architecture processing millions of claims records</li>
+                            <li>Implemented comprehensive data governance and security framework</li>
+                            <li>Built real-time analytics dashboards for executive decision-making</li>
+                            <li>Enabled AI-powered fraud detection and risk assessment</li>
+                        </ul>
+                    </div>
+                    <a href="https://claimarche.com" target="_blank" class="project-link">
+                        Visit ClaimArche <span class="fa-external-link-alt">↗</span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Previous Projects -->
+            <section class="section">
+                <h2>Previous Projects & Experience</h2>
+                <div class="grid grid-cols-2">
+                    <div class="project-card">
+                        <h3 class="project-title">Enterprise Data Platform Modernization</h3>
+                        <p class="project-description">
+                            Led the migration of legacy data warehouses to Microsoft Fabric, 
+                            reducing data processing time by 70% and enabling real-time analytics 
+                            for a Fortune 500 company.
+                        </p>
+                        <div class="badge-container">
+                            <span class="badge">Microsoft Fabric</span>
+                            <span class="badge">Azure Synapse</span>
+                            <span class="badge">ADLS Gen2</span>
+                            <span class="badge">Delta Lake</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <h3 class="project-title">Real-Time Analytics Pipeline</h3>
+                        <p class="project-description">
+                            Architected event-driven data pipeline processing 100M+ events daily, 
+                            enabling sub-second analytics and alerting for operational teams.
+                        </p>
+                        <div class="badge-container">
+                            <span class="badge">Azure Event Hubs</span>
+                            <span class="badge">Stream Analytics</span>
+                            <span class="badge">KQL</span>
+                            <span class="badge">Power BI</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <h3 class="project-title">Data Governance Framework</h3>
+                        <p class="project-description">
+                            Implemented comprehensive data governance using Microsoft Purview, 
+                            establishing data lineage, quality monitoring, and compliance 
+                            frameworks across the enterprise.
+                        </p>
+                        <div class="badge-container">
+                            <span class="badge">Microsoft Purview</span>
+                            <span class="badge">Data Quality</span>
+                            <span class="badge">Compliance</span>
+                            <span class="badge">Data Lineage</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <h3 class="project-title">AI-Powered Business Intelligence</h3>
+                        <p class="project-description">
+                            Developed intelligent reporting solutions integrating OpenAI GPT models 
+                            with Power BI, enabling natural language querying and automated 
+                            insight generation.
+                        </p>
+                        <div class="badge-container">
+                            <span class="badge">OpenAI</span>
+                            <span class="badge">Power BI</span>
+                            <span class="badge">Azure OpenAI</span>
+                            <span class="badge">Copilot</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Expertise Areas -->
+            <section class="section">
+                <h2>Solution Domains</h2>
+                <div class="grid grid-cols-3">
+                    <div class="card">
+                        <h3>Cloud Data Architecture</h3>
+                        <p class="text-sm">
+                            Modern, scalable data platforms built on Microsoft Azure and Fabric, 
+                            designed for performance, governance, and AI-readiness.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <h3>Real-Time Intelligence</h3>
+                        <p class="text-sm">
+                            Event-driven architectures enabling real-time analytics, monitoring, 
+                            and alerting for mission-critical business operations.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <h3>AI Integration</h3>
+                        <p class="text-sm">
+                            Seamless integration of AI capabilities into existing data platforms, 
+                            enabling intelligent automation and advanced analytics.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Call to Action -->
+            <section class="section">
+                <div class="card">
+                    <h2>Let's Build Something Great Together</h2>
+                    <p>
+                        Interested in discussing a project or exploring how I can help with your 
+                        data challenges? I'm always excited to work on innovative solutions that 
+                        drive real business value.
+                    </p>
+                    <div class="button-group">
+                        <a href="contact.html" class="button button-primary">
+                            <span>Get In Touch</span>
+                        </a>
+                        <a href="index.html" class="button button-outline">
+                            <span>← Back to Home</span>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme toggle functionality
+            const themeToggle = document.getElementById('theme-toggle');
+            if (themeToggle) {
+                themeToggle.addEventListener('click', function() {
+                    document.body.classList.toggle('dark');
+                    const isDark = document.body.classList.contains('dark');
+                    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+                });
+            }
+
+            // Load saved theme
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark');
+            }
+        });
+    </script>
 </body>
 </html>
 
