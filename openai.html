@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Openai - Brendan Daly | Data & Analytics Leader</title>
+  <meta name="description" content="Advanced Openai expertise for enterprise business intelligence and data visualization solutions">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
+  
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <style>
+    :root {
+      --background: 0 0% 100%;
+      --foreground: 222.2 84% 4.9%;
+      --card: 0 0% 100%;
+      --card-foreground: 222.2 84% 4.9%;
+      --popover: 0 0% 100%;
+      --popover-foreground: 222.2 84% 4.9%;
+      --primary: 222.2 47.4% 11.2%;
+      --primary-foreground: 210 40% 98%;
+      --secondary: 210 40% 96.1%;
+      --secondary-foreground: 222.2 47.4% 11.2%;
+      --muted: 210 40% 96.1%;
+      --muted-foreground: 215.4 16.3% 46.9%;
+      --accent: 210 40% 96.1%;
+      --accent-foreground: 222.2 47.4% 11.2%;
+      --destructive: 0 84.2% 60.2%;
+      --destructive-foreground: 210 40% 98%;
+      --border: 214.3 31.8% 91.4%;
+      --input: 214.3 31.8% 91.4%;
+      --ring: 222.2 84% 4.9%;
+      --radius: 0.5rem;
+    }
+
+    .dark {
+      --background: 222.2 84% 4.9%;
+      --foreground: 210 40% 98%;
+      --card: 222.2 84% 4.9%;
+      --card-foreground: 210 40% 98%;
+      --popover: 222.2 84% 4.9%;
+      --popover-foreground: 210 40% 98%;
+      --primary: 210 40% 98%;
+      --primary-foreground: 222.2 47.4% 11.2%;
+      --secondary: 217.2 32.6% 17.5%;
+      --secondary-foreground: 210 40% 98%;
+      --muted: 217.2 32.6% 17.5%;
+      --muted-foreground: 215 20.2% 65.1%;
+      --accent: 217.2 32.6% 17.5%;
+      --accent-foreground: 210 40% 98%;
+      --destructive: 0 62.8% 30.6%;
+      --destructive-foreground: 210 40% 98%;
+      --border: 217.2 32.6% 17.5%;
+      --input: 217.2 32.6% 17.5%;
+      --ring: 212.7 26.8% 83.9%;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: hsl(var(--background));
+      color: hsl(var(--foreground));
+      transition: background-color 0.3s, color 0.3s;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+      border-bottom: 1px solid hsl(var(--border));
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: hsl(var(--foreground));
+      text-decoration: none;
+    }
+
+    .nav {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .nav > a {
+      color: hsl(var(--muted-foreground));
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav > a:hover,
+    .nav > a.active {
+      color: hsl(var(--foreground));
+    }
+
+    /* Dropdown Styles */
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-toggle {
+      color: hsl(var(--muted-foreground));
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+    }
+
+    .dropdown.active .dropdown-toggle {
+      color: hsl(var(--foreground));
+    }
+
+    .dropdown-toggle:hover {
+      color: hsl(var(--foreground));
+    }
+
+    .dropdown-toggle i {
+      font-size: 0.75rem;
+      transition: transform 0.3s;
+    }
+
+    .dropdown:hover .dropdown-toggle i {
+      transform: rotate(180deg);
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: hsl(var(--card));
+      border: 1px solid hsl(var(--border));
+      border-radius: var(--radius);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      min-width: 200px;
+      padding: 0.5rem 0;
+      margin-top: 0.5rem;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+      z-index: 1000;
+    }
+
+    .dropdown:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 0.5rem 1rem;
+      color: hsl(var(--foreground));
+      text-decoration: none;
+      font-weight: 400;
+      transition: background-color 0.3s;
+    }
+
+    .dropdown-menu a:hover,
+    .dropdown-menu a.active {
+      background-color: hsl(var(--accent));
+      color: hsl(var(--accent-foreground));
+    }
+
+    .theme-toggle {
+      background: none;
+      border: 1px solid hsl(var(--border));
+      border-radius: var(--radius);
+      width: 2.5rem;
+      height: 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      position: relative;
+      color: hsl(var(--foreground));
+    }
+
+    .theme-toggle svg {
+      width: 1.2rem;
+      height: 1.2rem;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .theme-toggle .sun {
+      opacity: 1;
+      transform: rotate(0) scale(1);
+    }
+
+    .theme-toggle .moon {
+      position: absolute;
+      opacity: 0;
+      transform: rotate(90deg) scale(0);
+    }
+
+    .dark .theme-toggle .sun {
+      opacity: 0;
+      transform: rotate(-90deg) scale(0);
+    }
+
+    .dark .theme-toggle .moon {
+      opacity: 1;
+      transform: rotate(0) scale(1);
+    }
+
+    main {
+      flex: 1;
+      padding: 3rem 0;
+    }
+
+    .page-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .page-subtitle {
+      font-size: 1.125rem;
+      color: hsl(var(--muted-foreground));
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .content-section {
+      background-color: hsl(var(--card));
+      border: 1px solid hsl(var(--border));
+      border-radius: var(--radius);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: hsl(var(--foreground));
+      border-bottom: 2px solid hsl(var(--primary));
+      padding-bottom: 0.5rem;
+    }
+
+    .section-content {
+      color: hsl(var(--muted-foreground));
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .subsection {
+      margin: 2rem 0;
+    }
+
+    .subsection-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: hsl(var(--foreground));
+    }
+
+    .highlight-card {
+      background-color: hsl(var(--secondary));
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .highlight-title {
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: hsl(var(--foreground));
+    }
+
+    .highlight-content {
+      color: hsl(var(--muted-foreground));
+      line-height: 1.6;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .feature-card {
+      background-color: hsl(var(--card));
+      border: 1px solid hsl(var(--border));
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .feature-icon {
+      width: 50px;
+      height: 50px;
+      background-color: hsl(var(--primary));
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      color: hsl(var(--primary-foreground));
+      font-size: 1.5rem;
+    }
+
+    .feature-title {
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: hsl(var(--foreground));
+    }
+
+    .feature-description {
+      color: hsl(var(--muted-foreground));
+      line-height: 1.6;
+    }
+
+    .footer {
+      border-top: 1px solid hsl(var(--border));
+      padding: 2rem 0;
+      text-align: center;
+      color: hsl(var(--muted-foreground));
+    }
+
+    @media (max-width: 768px) {
+      .nav {
+        display: none;
+      }
+      
+      .page-title {
+        font-size: 2rem;
+      }
+      
+      .content-section {
+        padding: 1.5rem;
+      }
+      
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header container">
+    <a href="index.html" class="logo">Brendan Daly</a>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <div class="dropdown">
+        <a href="#" class="dropdown-toggle">Competencies <i class="fas fa-chevron-down"></i></a>
+        <div class="dropdown-menu">
+          <a href="ux-data-visualization.html">UX & Data Visualization</a>
+          <a href="data-engineering.html">Data Engineering</a>
+          <a href="data-architecture.html">Data Architecture</a>
+          <a href="ai-implementation.html">AI Implementation</a>
+          <a href="data-strategy.html">Data Strategy</a>
+          <a href="data-governance.html">Data Governance</a>
+          <a href="devops-dataops.html">DevOps & DataOps</a>
+        </div>
+      </div>
+      <div class="dropdown active">
+        <a href="#" class="dropdown-toggle">Tools <i class="fas fa-chevron-down"></i></a>
+        <div class="dropdown-menu">
+          <a href="openai.html" class="active">Openai</a>
+          <a href="fabric.html">Fabric</a>
+          <a href="databricks.html">Databricks</a>
+          <a href="openai.html">OpenAI</a>
+        </div>
+      </div>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon sun">
+        <circle cx="12" cy="12" r="5"></circle>
+        <line x1="12" y1="1" x2="12" y2="3"></line>
+        <line x1="12" y1="21" x2="12" y2="23"></line>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+        <line x1="1" y1="12" x2="3" y2="12"></line>
+        <line x1="21" y1="12" x2="23" y2="12"></line>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon moon">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+      </svg>
+    </button>
+  </header>
+
+  <main class="container">
+    <h1 class="page-title">Openai</h1>
+    <p class="page-subtitle">Advanced business intelligence and data visualization platform for enterprise reporting and analytics</p>
+
+    <div class="content-section">
+      <h2 class="section-title">Platform Overview</h2>
+      <div class="section-content">
+        <p>
+          Openai is Microsoft's flagship business intelligence platform, providing comprehensive tools for data visualization, reporting, and analytics. As a certified Openai Data Analyst Associate, I leverage the full ecosystem to deliver enterprise-grade solutions.
+        </p>
+        <p>
+          My approach focuses on creating scalable, governed solutions that empower users at all levels of the organization to make data-driven decisions while maintaining security and compliance standards.
+        </p>
+      </div>
+    </div>
+
+    <div class="content-section">
+      <h2 class="section-title">Core Capabilities</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <h3 class="feature-title">Data Modeling</h3>
+          <p class="feature-description">
+            Advanced data modeling techniques including star schema design, relationship optimization, and calculated columns/measures using DAX.
+          </p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-paint-brush"></i>
+          </div>
+          <h3 class="feature-title">Report Development</h3>
+          <p class="feature-description">
+            Creating compelling, interactive reports and dashboards that tell data stories and drive actionable insights across the organization.
+          </p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h3 class="feature-title">Security & Governance</h3>
+          <p class="feature-description">
+            Implementing row-level security, workspace governance, and deployment pipelines to ensure secure, controlled access to business data.
+          </p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-rocket"></i>
+          </div>
+          <h3 class="feature-title">Performance Optimization</h3>
+          <p class="feature-description">
+            Optimizing report performance through efficient data models, query optimization, and strategic use of aggregations and composite models.
+          </p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-mobile-alt"></i>
+          </div>
+          <h3 class="feature-title">Mobile & Embedded Analytics</h3>
+          <p class="feature-description">
+            Designing responsive reports for mobile consumption and embedding analytics into custom applications using Openai Embedded.
+          </p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-sync"></i>
+          </div>
+          <h3 class="feature-title">Real-time Analytics</h3>
+          <p class="feature-description">
+            Implementing streaming datasets and real-time dashboards for operational monitoring and immediate insight delivery.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-section">
+      <h2 class="section-title">Advanced DAX Development</h2>
+      <div class="section-content">
+        <p>
+          Data Analysis Expressions (DAX) is the formula language that powers calculations in Openai. My expertise includes complex measure development and optimization for enterprise scenarios.
+        </p>
+        
+        <div class="subsection">
+          <h3 class="subsection-title">Time Intelligence</h3>
+          <div class="highlight-card">
+            <h4 class="highlight-title">Year-over-Year Analysis</h4>
+            <p class="highlight-content">
+              Creating sophisticated time-based calculations for comparative analysis including YoY growth, moving averages, and period-over-period comparisons.
+            </p>
+          </div>
+        </div>
+        
+        <div class="subsection">
+          <h3 class="subsection-title">Complex Business Logic</h3>
+          <div class="highlight-card">
+            <h4 class="highlight-title">Context Manipulation</h4>
+            <p class="highlight-content">
+              Advanced context modification using CALCULATE, FILTER, and other context functions to implement complex business rules and calculations.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-section">
+      <h2 class="section-title">Enterprise Integration</h2>
+      <div class="section-content">
+        <p>
+          Openai integration with broader Microsoft ecosystem and enterprise data platforms enables comprehensive analytics solutions.
+        </p>
+        
+        <div class="subsection">
+          <h3 class="subsection-title">Data Source Connectivity</h3>
+          <p class="section-content">
+            Connecting to diverse data sources including Azure SQL, Fabric lakehouses, SharePoint, and cloud services with optimized refresh strategies.
+          </p>
+        </div>
+        
+        <div class="subsection">
+          <h3 class="subsection-title">Premium Features</h3>
+          <p class="section-content">
+            Leveraging Openai Premium capabilities including dataflows, deployment pipelines, XMLA endpoints, and large dataset support.
+          </p>
+        </div>
+        
+        <div class="subsection">
+          <h3 class="subsection-title">API & Automation</h3>
+          <p class="section-content">
+            Using Openai REST APIs and PowerShell for automated deployment, monitoring, and administrative tasks at enterprise scale.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-section">
+      <h2 class="section-title">Best Practices & Standards</h2>
+      <div class="section-content">
+        <p>
+          Implementing industry best practices and organizational standards to ensure consistent, maintainable, and scalable Openai solutions.
+        </p>
+        
+        <div class="highlight-card">
+          <h4 class="highlight-title">Development Standards</h4>
+          <p class="highlight-content">
+            Establishing coding standards, naming conventions, and documentation practices that enable team collaboration and solution maintainability.
+          </p>
+        </div>
+        
+        <div class="highlight-card">
+          <h4 class="highlight-title">Testing & Validation</h4>
+          <p class="highlight-content">
+            Implementing testing frameworks for data accuracy, performance validation, and user acceptance testing to ensure solution quality.
+          </p>
+        </div>
+        
+        <div class="highlight-card">
+          <h4 class="highlight-title">Change Management</h4>
+          <p class="highlight-content">
+            Managing solution lifecycle including version control, deployment processes, and user training to ensure successful adoption.
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer container">
+    <p>&copy; 2025 Brendan Daly. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Theme toggle functionality
+      const themeToggle = document.getElementById('theme-toggle');
+      const body = document.body;
+      
+      // Check for saved theme preference or default to light
+      const savedTheme = localStorage.getItem('theme') || 'light';
+      if (savedTheme === 'dark') {
+        body.classList.add('dark');
+      }
+      
+      themeToggle.addEventListener('click', function() {
+        body.classList.toggle('dark');
+        const currentTheme = body.classList.contains('dark') ? 'dark' : 'light';
+        localStorage.setItem('theme', currentTheme);
+      });
+    });
+  </script>
+</body>
+</html>
