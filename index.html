@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Brendan Daly | Data & Analytics Leader</title>
-  <meta name="description" content="Personal resume website showcasing expertise in data architecture, engineering, and AI enablement">
+  <meta name="description" content="Professional portfolio showcasing expertise in data modeling, data strategy, and data visualization">
   
   <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
@@ -23,8 +23,6 @@
       --foreground: 222.2 84% 4.9%;
       --card: 0 0% 100%;
       --card-foreground: 222.2 84% 4.9%;
-      --popover: 0 0% 100%;
-      --popover-foreground: 222.2 84% 4.9%;
       --primary: 222.2 47.4% 11.2%;
       --primary-foreground: 210 40% 98%;
       --secondary: 210 40% 96.1%;
@@ -33,11 +31,7 @@
       --muted-foreground: 215.4 16.3% 46.9%;
       --accent: 210 40% 96.1%;
       --accent-foreground: 222.2 47.4% 11.2%;
-      --destructive: 0 84.2% 60.2%;
-      --destructive-foreground: 210 40% 98%;
       --border: 214.3 31.8% 91.4%;
-      --input: 214.3 31.8% 91.4%;
-      --ring: 222.2 84% 4.9%;
       --radius: 0.5rem;
     }
 
@@ -46,8 +40,6 @@
       --foreground: 210 40% 98%;
       --card: 222.2 84% 4.9%;
       --card-foreground: 210 40% 98%;
-      --popover: 222.2 84% 4.9%;
-      --popover-foreground: 210 40% 98%;
       --primary: 210 40% 98%;
       --primary-foreground: 222.2 47.4% 11.2%;
       --secondary: 217.2 32.6% 17.5%;
@@ -56,11 +48,7 @@
       --muted-foreground: 215 20.2% 65.1%;
       --accent: 217.2 32.6% 17.5%;
       --accent-foreground: 210 40% 98%;
-      --destructive: 0 62.8% 30.6%;
-      --destructive-foreground: 210 40% 98%;
       --border: 217.2 32.6% 17.5%;
-      --input: 217.2 32.6% 17.5%;
-      --ring: 212.7 26.8% 83.9%;
     }
 
     * {
@@ -78,6 +66,7 @@
       background-color: hsl(var(--background));
       color: hsl(var(--foreground));
       transition: background-color 0.3s, color 0.3s;
+      line-height: 1.6;
     }
 
     .container {
@@ -87,16 +76,17 @@
       padding: 0 1rem;
     }
 
-    .min-h-screen {
-      min-height: 100vh;
-    }
-
+    /* Header Styles */
     .header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 1rem 0;
       border-bottom: 1px solid hsl(var(--border));
+      position: sticky;
+      top: 0;
+      background-color: hsl(var(--background));
+      z-index: 100;
     }
 
     .logo {
@@ -112,184 +102,16 @@
       align-items: center;
     }
 
-    .nav > a {
+    .nav a {
       color: hsl(var(--muted-foreground));
       text-decoration: none;
       font-weight: 500;
       transition: color 0.3s;
     }
 
-    .nav > a:hover,
-    .nav > a.active {
+    .nav a:hover,
+    .nav a.active {
       color: hsl(var(--foreground));
-    }
-
-    /* Dropdown Styles */
-    .dropdown {
-      position: relative;
-    }
-
-    .dropdown-toggle {
-      color: hsl(var(--muted-foreground));
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      cursor: pointer;
-    }
-
-    .dropdown-toggle:hover {
-      color: hsl(var(--foreground));
-    }
-
-    .dropdown-toggle i {
-      font-size: 0.75rem;
-      transition: transform 0.3s;
-    }
-
-    .dropdown:hover .dropdown-toggle i {
-      transform: rotate(180deg);
-    }
-
-    .dropdown-menu {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background-color: hsl(var(--card));
-      border: 1px solid hsl(var(--border));
-      border-radius: var(--radius);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-      min-width: 200px;
-      padding: 0.5rem 0;
-      margin-top: 0.5rem;
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(-10px);
-      transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
-      z-index: 1000;
-    }
-
-    .dropdown:hover .dropdown-menu {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-
-    .dropdown-menu a {
-      display: block;
-      padding: 0.5rem 1rem;
-      color: hsl(var(--foreground));
-      text-decoration: none;
-      font-weight: 400;
-      transition: background-color 0.3s;
-    }
-
-    .dropdown-menu a:hover {
-      background-color: hsl(var(--accent));
-      color: hsl(var(--accent-foreground));
-    }
-
-    /* New sections styles */
-    .section {
-      margin-top: 4rem;
-      margin-bottom: 4rem;
-    }
-
-    .section-title {
-      font-size: 2rem;
-      font-weight: 700;
-      color: hsl(var(--foreground));
-      text-align: center;
-      margin-bottom: 1rem;
-    }
-
-    .section-subtitle {
-      font-size: 1.125rem;
-      color: hsl(var(--muted-foreground));
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-
-    .competencies-grid,
-    .tools-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-
-    .competency-card,
-    .tool-card {
-      background-color: hsl(var(--card));
-      border: 1px solid hsl(var(--border));
-      border-radius: var(--radius);
-      padding: 2rem;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .competency-card:hover,
-    .tool-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    }
-
-    .competency-icon,
-    .tool-icon {
-      width: 60px;
-      height: 60px;
-      background-color: hsl(var(--primary));
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 1.5rem;
-      color: hsl(var(--primary-foreground));
-      font-size: 1.5rem;
-    }
-
-    .competency-title,
-    .tool-title {
-      font-size: 1.25rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-      color: hsl(var(--foreground));
-    }
-
-    .competency-description,
-    .tool-description {
-      color: hsl(var(--muted-foreground));
-      margin-bottom: 1.5rem;
-      line-height: 1.6;
-    }
-
-    .competency-link,
-    .tool-link {
-      color: hsl(var(--primary));
-      text-decoration: none;
-      font-weight: 500;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      transition: color 0.3s;
-    }
-
-    .competency-link:hover,
-    .tool-link:hover {
-      color: hsl(var(--primary) / 0.8);
-      text-decoration: underline;
-    }
-
-    .competency-link i,
-    .tool-link i {
-      font-size: 0.875rem;
-      transition: transform 0.3s;
-    }
-
-    .competency-link:hover i,
-    .tool-link:hover i {
-      transform: translateX(3px);
     }
 
     .theme-toggle {
@@ -302,8 +124,12 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      position: relative;
       color: hsl(var(--foreground));
+      transition: background-color 0.3s;
+    }
+
+    .theme-toggle:hover {
+      background-color: hsl(var(--accent));
     }
 
     .theme-toggle svg {
@@ -333,472 +159,493 @@
       transform: rotate(0) scale(1);
     }
 
-    .main {
-      padding: 2rem 0 3rem;
-    }
-
-    .profile-section {
+    /* Hero Section */
+    .hero {
+      position: relative;
+      height: 60vh;
+      min-height: 400px;
+      background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary) / 0.8));
       display: flex;
-      flex-direction: column;
       align-items: center;
-      gap: 2rem;
-      margin-bottom: 3rem;
-    }
-
-    @media (min-width: 768px) {
-      .profile-section {
-        flex-direction: row;
-        align-items: flex-start;
-      }
-    }
-
-    .profile-image {
-      width: 10rem;
-      height: 10rem;
-      border-radius: 50%;
+      justify-content: center;
+      text-align: center;
+      color: white;
       overflow: hidden;
-      border: 4px solid white;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
-    .profile-image img {
+    .hero-background {
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
+      opacity: 0.3;
+      z-index: 1;
     }
 
-    .profile-content {
-      text-align: center;
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      padding: 2rem;
     }
 
-    @media (min-width: 768px) {
-      .profile-content {
-        text-align: left;
-      }
-    }
-
-    h1 {
-      font-size: 2rem;
+    .hero h1 {
+      font-size: 3.5rem;
       font-weight: 700;
-      margin-bottom: 0.5rem;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     }
 
-    @media (min-width: 768px) {
-      h1 {
-        font-size: 2.5rem;
-      }
-    }
-
-    h2 {
+    .hero .subtitle {
       font-size: 1.5rem;
-      font-weight: 700;
-      color: hsl(var(--foreground));
-      border-bottom: 1px solid hsl(var(--border));
-      padding-bottom: 0.5rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
     }
 
-    h3 {
-      font-size: 1.25rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
+    .hero-description {
+      font-size: 1.125rem;
+      margin-bottom: 2rem;
+      opacity: 0.8;
+      line-height: 1.7;
     }
 
-    h4 {
-      font-size: 1rem;
-      font-weight: 500;
-      color: hsl(var(--muted-foreground));
-      margin-bottom: 0.5rem;
-    }
-
-    p {
-      margin-bottom: 1rem;
-      line-height: 1.6;
-      color: hsl(var(--muted-foreground));
-    }
-
-    .job-title {
-      font-size: 1.25rem;
-      color: hsl(var(--muted-foreground));
-      margin-top: 0.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .button-group {
+    .hero-buttons {
       display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-top: 1.5rem;
+      gap: 1rem;
       justify-content: center;
-    }
-
-    .contact-buttons {
-      display: flex;
       flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-top: 1.5rem;
-      justify-content: center;
-    }
-
-    @media (min-width: 768px) {
-      .button-group {
-        justify-content: flex-start;
-      }
-      
-      .contact-buttons {
-        justify-content: flex-start;
-      }
     }
 
     .button {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      padding: 0.5rem 1rem;
+      padding: 0.75rem 1.5rem;
       border-radius: var(--radius);
-      font-size: 0.875rem;
+      font-size: 1rem;
       font-weight: 500;
       cursor: pointer;
-      transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+      transition: all 0.3s;
+      text-decoration: none;
+      border: 2px solid transparent;
     }
 
     .button-primary {
-      background-color: hsl(var(--primary));
-      color: hsl(var(--primary-foreground));
-      border: 1px solid transparent;
+      background-color: white;
+      color: hsl(var(--primary));
+      border-color: white;
     }
 
     .button-primary:hover {
-      background-color: hsl(var(--primary) / 0.9);
+      background-color: hsl(var(--primary));
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     }
 
     .button-outline {
       background-color: transparent;
-      border: 1px solid hsl(var(--border));
-      color: hsl(var(--foreground));
+      color: white;
+      border-color: white;
     }
 
     .button-outline:hover {
-      background-color: hsl(var(--accent));
-      color: hsl(var(--accent-foreground));
+      background-color: white;
+      color: hsl(var(--primary));
+      transform: translateY(-2px);
     }
 
-    .location {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin-top: 1.5rem;
-      font-size: 0.875rem;
+    /* Main Content */
+    .main {
+      padding: 4rem 0;
+    }
+
+    .section {
+      margin-bottom: 6rem;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 1rem;
+      color: hsl(var(--foreground));
+    }
+
+    .section-subtitle {
+      font-size: 1.125rem;
+      text-align: center;
+      margin-bottom: 3rem;
       color: hsl(var(--muted-foreground));
-      justify-content: center;
     }
 
-    @media (min-width: 768px) {
-      .location {
-        justify-content: flex-start;
-      }
+    /* Competencies Section */
+    .competencies-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
     }
 
-    .location-item {
+    .competency-card {
+      background-color: hsl(var(--card));
+      border: 1px solid hsl(var(--border));
+      border-radius: var(--radius);
+      padding: 2rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .competency-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .competency-icon {
+      width: 60px;
+      height: 60px;
+      background-color: hsl(var(--primary));
+      border-radius: 50%;
       display: flex;
       align-items: center;
-      gap: 0.25rem;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      color: hsl(var(--primary-foreground));
+      font-size: 1.5rem;
     }
 
-    /* FontAwesome icons fallback */
-    .fas, .fab {
-      font-size: inherit;
+    .competency-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: hsl(var(--foreground));
     }
 
-    /* Responsive adjustments */
-    @media (max-width: 768px) {
-      .nav {
-        display: none;
-      }
-      
-      .dropdown-menu {
-        position: static;
-        opacity: 1;
-        visibility: visible;
-        transform: none;
-        box-shadow: none;
-        border: none;
-        margin-top: 0;
-        padding: 0;
-      }
-      
-      .profile-section {
-        text-align: center;
-      }
-      
-      .button-group,
-      .contact-buttons {
-        justify-content: center;
-      }
-      
-      .location {
-        justify-content: center;
-      }
-      
-      .competencies-grid,
-      .tools-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .section-title {
-        font-size: 1.75rem;
-      }
+    .competency-description {
+      color: hsl(var(--muted-foreground));
+      margin-bottom: 2rem;
+      line-height: 1.6;
     }
 
+    /* Tabs Styles */
+    .tabs {
+      border-top: 1px solid hsl(var(--border));
+      padding-top: 1.5rem;
+    }
+
+    .tab-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .tab-button {
+      padding: 0.5rem 1rem;
+      border: 1px solid hsl(var(--border));
+      background-color: hsl(var(--background));
+      color: hsl(var(--muted-foreground));
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: all 0.3s;
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+
+    .tab-button:hover {
+      background-color: hsl(var(--accent));
+    }
+
+    .tab-button.active {
+      background-color: hsl(var(--primary));
+      color: hsl(var(--primary-foreground));
+      border-color: hsl(var(--primary));
+    }
+
+    .tab-content {
+      display: none;
+      padding: 1rem;
+      background-color: hsl(var(--muted));
+      border-radius: var(--radius);
+      border: 1px solid hsl(var(--border));
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    .tab-content h4 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: hsl(var(--foreground));
+    }
+
+    .tab-content p {
+      color: hsl(var(--muted-foreground));
+      font-size: 0.875rem;
+    }
+
+    /* Footer */
     .footer {
       border-top: 1px solid hsl(var(--border));
       padding: 2rem 0;
       text-align: center;
       color: hsl(var(--muted-foreground));
+      background-color: hsl(var(--muted));
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav {
+        display: none;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .hero .subtitle {
+        font-size: 1.25rem;
+      }
+
+      .hero-description {
+        font-size: 1rem;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .competencies-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .tab-buttons {
+        justify-content: center;
+      }
+    }
+
+    /* Mobile Menu (basic implementation) */
+    .mobile-menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: hsl(var(--foreground));
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .mobile-menu-toggle {
+        display: block;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="min-h-screen">
-    <header class="header container">
-      <a href="index.html" class="logo">Brendan Daly</a>
-      <nav class="nav">
-        <a href="index.html" class="active">Home</a>
-        <div class="dropdown">
-          <a href="#" class="dropdown-toggle">Competencies <i class="fas fa-chevron-down"></i></a>
-          <div class="dropdown-menu">
-            <a href="data-visualization.html">Data Visualization</a>
-            <a href="data-engineering.html">Data Engineering</a>
-            <a href="data-architecture.html">Data Architecture</a>
-            <a href="ai-implementation.html">AI Implementation</a>
-            <a href="data-strategy.html">Data Strategy</a>
-            <a href="data-governance.html">Data Governance</a>
-            <a href="devops-dataops.html">DevOps & DataOps</a>
-          </div>
-        </div>
-        <div class="dropdown">
-          <a href="#" class="dropdown-toggle">Tools <i class="fas fa-chevron-down"></i></a>
-          <div class="dropdown-menu">
-            <a href="power-bi.html">Power BI</a>
-            <a href="fabric.html">Fabric</a>
-            <a href="databricks.html">Databricks</a>
-            <a href="openai.html">OpenAI</a>
-          </div>
-        </div>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon sun">
-          <circle cx="12" cy="12" r="5"></circle>
-          <line x1="12" y1="1" x2="12" y2="3"></line>
-          <line x1="12" y1="21" x2="12" y2="23"></line>
-          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-          <line x1="1" y1="12" x2="3" y2="12"></line>
-          <line x1="21" y1="12" x2="23" y2="12"></line>
-          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-        </svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon moon">
-          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-        </svg>
-      </button>
-    </header>
+  <!-- Header -->
+  <header class="header container">
+    <a href="#" class="logo">Brendan Daly</a>
+    <nav class="nav">
+      <a href="#home" class="active">Home</a>
+      <a href="#competencies">Competencies</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <button class="mobile-menu-toggle">
+      <i class="fas fa-bars"></i>
+    </button>
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon sun">
+        <circle cx="12" cy="12" r="5"></circle>
+        <line x1="12" y1="1" x2="12" y2="3"></line>
+        <line x1="12" y1="21" x2="12" y2="23"></line>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+        <line x1="1" y1="12" x2="3" y2="12"></line>
+        <line x1="21" y1="12" x2="23" y2="12"></line>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon moon">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+      </svg>
+    </button>
+  </header>
 
-    <main id="resume-content" class="main container">
-      <!-- Profile Section -->
-      <section class="profile-section">
-        <div class="profile-image">
-          <img src="Daly_Brendan_690x690.png" alt="Brendan Daly" id="profile-image">
-        </div>
-        <div class="profile-content">
-          <h1>Brendan Daly</h1>
-          <div class="job-title">Data & Analytics Leader</div>
-          <p>
-            I align architecture with business goals to reduce time-to-insight, accelerate delivery, and increase the
-            strategic value of data across the organization. From executive alignment to technical execution, I help
-            organizations turn complexity into clarity and insight into action.
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <img src="hero-placeholder.jpg" alt="Hero Background" class="hero-background">
+    <div class="hero-content">
+      <h1>Brendan Daly</h1>
+      <div class="subtitle">Data & Analytics Leader</div>
+      <p class="hero-description">
+        Transforming organizations through strategic data initiatives, innovative architecture design, 
+        and compelling data visualization. From executive alignment to technical execution, 
+        I help turn complexity into clarity and insight into action.
+      </p>
+      <div class="hero-buttons">
+        <a href="#competencies" class="button button-primary">
+          <i class="fas fa-chart-line"></i>
+          <span>Explore Competencies</span>
+        </a>
+        <a href="about.html" class="button button-outline">
+          <i class="fas fa-user"></i>
+          <span>About Me</span>
+        </a>
+        <a href="contact.html" class="button button-outline">
+          <i class="fas fa-envelope"></i>
+          <span>Get In Touch</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="main container">
+    <!-- Competencies Section -->
+    <section id="competencies" class="section">
+      <h2 class="section-title">Core Competencies</h2>
+      <p class="section-subtitle">Strategic expertise areas driving organizational data transformation</p>
+      
+      <div class="competencies-grid">
+        <!-- Data Modeling -->
+        <div class="competency-card">
+          <div class="competency-icon">
+            <i class="fas fa-database"></i>
+          </div>
+          <h3 class="competency-title">Data Modeling</h3>
+          <p class="competency-description">
+            Designing robust, scalable data models that serve as the foundation for enterprise analytics and decision-making.
           </p>
-          <div class="button-group">
-            <a href="#competencies" class="button button-primary">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
-                <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
-                <path d="M2 17l10 5 10-5"></path>
-                <path d="M2 12l10 5 10-5"></path>
-              </svg>
-              <span>View Competencies</span>
-            </a>
-            <a href="#tools" class="button button-primary">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
-                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
-              </svg>
-              <span>Explore Tools</span>
-            </a>
-            <a href="about.html" class="button button-outline">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
-                <circle cx="12" cy="12" r="3"></circle>
-                <path d="M12 1v6m0 6v6"></path>
-                <path d="m21 12-6 0m-6 0l-6 0"></path>
-              </svg>
-              <span>About Me</span>
-            </a>
-          </div>
-          <div class="contact-buttons">
-            <a href="mailto:Brendan.Daly.P@gmail.com" class="button button-outline">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                <polyline points="22,6 12,13 2,6"></polyline>
-              </svg>
-              <span>Brendan.Daly.P@gmail.com</span>
-            </a>
-            <a href="https://www.linkedin.com/in/dalybi/" target="_blank" rel="noopener noreferrer" class="button button-outline">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
-                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                <rect x="2" y="9" width="4" height="12"></rect>
-                <circle cx="4" cy="4" r="2"></circle>
-              </svg>
-              <span>LinkedIn</span>
-            </a>
-            <button id="download-resume" class="button button-outline">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                <polyline points="7 10 12 15 17 10"></polyline>
-                <line x1="12" y1="15" x2="12" y2="3"></line>
-              </svg>
-              <span>Download Resume</span>
-            </button>
-          </div>
-          <div class="location">
-            <div class="location-item">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                <circle cx="12" cy="10" r="3"></circle>
-              </svg>
-              <span>St. Louis, MO 63119</span>
+          
+          <div class="tabs">
+            <div class="tab-buttons">
+              <button class="tab-button active" data-tab="medallion">Medallion</button>
+              <button class="tab-button" data-tab="warehouse">Warehouse</button>
+              <button class="tab-button" data-tab="event-driven">Event Driven</button>
+              <button class="tab-button" data-tab="data-vault">Data Vault</button>
+            </div>
+            
+            <div class="tab-content active" id="medallion">
+              <h4>Medallion Architecture</h4>
+              <p>Implementing bronze, silver, and gold layer architectures for progressive data refinement and quality improvement. This modern approach ensures data lineage, quality, and accessibility across the organization.</p>
+            </div>
+            
+            <div class="tab-content" id="warehouse">
+              <h4>Data Warehouse Design</h4>
+              <p>Traditional and modern data warehouse modeling including dimensional modeling, star schemas, and snowflake designs. Optimized for analytical workloads and business intelligence requirements.</p>
+            </div>
+            
+            <div class="tab-content" id="event-driven">
+              <h4>Event-Driven Architecture</h4>
+              <p>Designing real-time data processing systems using event streaming and message queues. Enables responsive, scalable data processing for modern business requirements.</p>
+            </div>
+            
+            <div class="tab-content" id="data-vault">
+              <h4>Data Vault Methodology</h4>
+              <p>Enterprise-scale data modeling approach focusing on agility, scalability, and historical data preservation. Ideal for complex, evolving business environments.</p>
             </div>
           </div>
         </div>
-      </section>
 
-      <!-- Competencies Section -->
-      <section id="competencies" class="section">
-        <h2 class="section-title">Core Competencies</h2>
-        <p class="section-subtitle">Strategic expertise areas driving organizational data transformation</p>
-        <div class="competencies-grid">
-          <div class="competency-card">
-            <div class="competency-icon">
-              <i class="fas fa-paint-brush"></i>
-            </div>
-            <h3 class="competency-title">Data Visualization</h3>
-            <p class="competency-description">Creating intuitive, impactful visual experiences that drive data adoption and business understanding.</p>
-            <a href="data-visualization.html" class="competency-link">Learn More <i class="fas fa-arrow-right"></i></a>
+        <!-- Data Strategy -->
+        <div class="competency-card">
+          <div class="competency-icon">
+            <i class="fas fa-chess"></i>
           </div>
+          <h3 class="competency-title">Data Strategy</h3>
+          <p class="competency-description">
+            Developing comprehensive data strategies that align with business objectives and drive measurable outcomes across the organization.
+          </p>
           
-          <div class="competency-card">
-            <div class="competency-icon">
-              <i class="fas fa-cogs"></i>
+          <div class="tabs">
+            <div class="tab-buttons">
+              <button class="tab-button active" data-tab="horizon-framework">3 Horizon Framework</button>
+              <button class="tab-button" data-tab="governance">Data Governance</button>
+              <button class="tab-button" data-tab="roadmapping">Strategic Roadmapping</button>
+              <button class="tab-button" data-tab="roi">ROI Optimization</button>
             </div>
-            <h3 class="competency-title">Data Engineering</h3>
-            <p class="competency-description">Building scalable, reliable data pipelines and infrastructure for enterprise-grade analytics.</p>
-            <a href="data-engineering.html" class="competency-link">Learn More <i class="fas fa-arrow-right"></i></a>
-          </div>
-          
-          <div class="competency-card">
-            <div class="competency-icon">
-              <i class="fas fa-sitemap"></i>
+            
+            <div class="tab-content active" id="horizon-framework">
+              <h4>3 Horizon Framework</h4>
+              <p>Strategic planning approach balancing core business optimization (H1), emerging opportunities (H2), and transformational innovations (H3) for sustainable data-driven growth.</p>
             </div>
-            <h3 class="competency-title">Data Architecture</h3>
-            <p class="competency-description">Designing comprehensive data ecosystems aligned with business strategy and technical requirements.</p>
-            <a href="data-architecture.html" class="competency-link">Learn More <i class="fas fa-arrow-right"></i></a>
-          </div>
-          
-          <div class="competency-card">
-            <div class="competency-icon">
-              <i class="fas fa-robot"></i>
+            
+            <div class="tab-content" id="governance">
+              <h4>Data Governance Strategy</h4>
+              <p>Establishing comprehensive governance frameworks ensuring data quality, security, compliance, and organizational adoption of data best practices.</p>
             </div>
-            <h3 class="competency-title">AI Implementation</h3>
-            <p class="competency-description">Enabling organizations to leverage artificial intelligence for competitive advantage and operational excellence.</p>
-            <a href="ai-implementation.html" class="competency-link">Learn More <i class="fas fa-arrow-right"></i></a>
-          </div>
-          
-          <div class="competency-card">
-            <div class="competency-icon">
-              <i class="fas fa-chess"></i>
+            
+            <div class="tab-content" id="roadmapping">
+              <h4>Strategic Roadmapping</h4>
+              <p>Creating actionable roadmaps that align technical capabilities with business priorities, ensuring successful data transformation initiatives.</p>
             </div>
-            <h3 class="competency-title">Data Strategy</h3>
-            <p class="competency-description">Developing data-driven strategies that align with business objectives and drive measurable outcomes.</p>
-            <a href="data-strategy.html" class="competency-link">Learn More <i class="fas fa-arrow-right"></i></a>
-          </div>
-          
-          <div class="competency-card">
-            <div class="competency-icon">
-              <i class="fas fa-shield-alt"></i>
+            
+            <div class="tab-content" id="roi">
+              <h4>ROI Optimization</h4>
+              <p>Developing metrics and methodologies to measure and optimize return on data investments, demonstrating tangible business value.</p>
             </div>
-            <h3 class="competency-title">Data Governance</h3>
-            <p class="competency-description">Establishing comprehensive governance frameworks ensuring data quality, security, and compliance.</p>
-            <a href="data-governance.html" class="competency-link">Learn More <i class="fas fa-arrow-right"></i></a>
-          </div>
-          
-          <div class="competency-card">
-            <div class="competency-icon">
-              <i class="fas fa-rocket"></i>
-            </div>
-            <h3 class="competency-title">DevOps & DataOps</h3>
-            <p class="competency-description">Implementing modern operational practices for accelerated, reliable data platform delivery.</p>
-            <a href="devops-dataops.html" class="competency-link">Learn More <i class="fas fa-arrow-right"></i></a>
           </div>
         </div>
-      </section>
 
-      <!-- Tools Section -->
-      <section id="tools" class="section">
-        <h2 class="section-title">Technology Tools</h2>
-        <p class="section-subtitle">Expertise in cutting-edge platforms and technologies</p>
-        <div class="tools-grid">
-          <div class="tool-card">
-            <div class="tool-icon">
-              <i class="fas fa-chart-bar"></i>
-            </div>
-            <h3 class="tool-title">Power BI</h3>
-            <p class="tool-description">Advanced business intelligence and data visualization platform for enterprise reporting and analytics.</p>
-            <a href="power-bi.html" class="tool-link">Explore <i class="fas fa-arrow-right"></i></a>
+        <!-- Data Visualization -->
+        <div class="competency-card">
+          <div class="competency-icon">
+            <i class="fas fa-chart-bar"></i>
           </div>
+          <h3 class="competency-title">Data Visualization</h3>
+          <p class="competency-description">
+            Creating compelling, intuitive visual experiences that drive data adoption and enable data-driven decision making across all organizational levels.
+          </p>
           
-          <div class="tool-card">
-            <div class="tool-icon">
-              <i class="fas fa-layer-group"></i>
+          <div class="tabs">
+            <div class="tab-buttons">
+              <button class="tab-button active" data-tab="power-bi">Power BI</button>
+              <button class="tab-button" data-tab="tableau">Tableau</button>
+              <button class="tab-button" data-tab="d3js">D3.js</button>
+              <button class="tab-button" data-tab="python">Python</button>
             </div>
-            <h3 class="tool-title">Microsoft Fabric</h3>
-            <p class="tool-description">Unified analytics platform combining data integration, engineering, warehousing, science, and business intelligence.</p>
-            <a href="fabric.html" class="tool-link">Explore <i class="fas fa-arrow-right"></i></a>
-          </div>
-          
-          <div class="tool-card">
-            <div class="tool-icon">
-              <i class="fas fa-database"></i>
+            
+            <div class="tab-content active" id="power-bi">
+              <h4>Microsoft Power BI</h4>
+              <p>Advanced Power BI development including custom visuals, DAX optimization, and enterprise deployment strategies. Expertise in Power BI Premium and Microsoft Fabric integration.</p>
             </div>
-            <h3 class="tool-title">Databricks</h3>
-            <p class="tool-description">Unified analytics platform for big data processing, machine learning, and collaborative data science.</p>
-            <a href="databricks.html" class="tool-link">Explore <i class="fas fa-arrow-right"></i></a>
-          </div>
-          
-          <div class="tool-card">
-            <div class="tool-icon">
-              <i class="fas fa-brain"></i>
+            
+            <div class="tab-content" id="tableau">
+              <h4>Tableau</h4>
+              <p>Professional Tableau development with focus on performance optimization, advanced calculations, and interactive dashboard design for enterprise analytics.</p>
             </div>
-            <h3 class="tool-title">OpenAI</h3>
-            <p class="tool-description">Artificial intelligence platform for natural language processing, content generation, and intelligent automation.</p>
-            <a href="openai.html" class="tool-link">Explore <i class="fas fa-arrow-right"></i></a>
+            
+            <div class="tab-content" id="d3js">
+              <h4>D3.js</h4>
+              <p>Custom data visualization development using D3.js for unique, interactive, and highly customized visual experiences that go beyond traditional BI tools.</p>
+            </div>
+            
+            <div class="tab-content" id="python">
+              <h4>Python Visualization</h4>
+              <p>Leveraging Python libraries (Matplotlib, Plotly, Seaborn, Streamlit) for advanced analytics visualization, statistical analysis, and machine learning model interpretation.</p>
+            </div>
           </div>
         </div>
-      </section>
-    </main>
+      </div>
+    </section>
+  </main>
 
-    <footer class="footer container">
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
       <p>&copy; 2025 Brendan Daly. All rights reserved.</p>
-    </footer>
-  </div>
+    </div>
+  </footer>
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -817,17 +664,74 @@
         const currentTheme = body.classList.contains('dark') ? 'dark' : 'light';
         localStorage.setItem('theme', currentTheme);
       });
-      
-      // Download resume functionality
-      const downloadResumeBtn = document.getElementById('download-resume');
-      downloadResumeBtn.addEventListener('click', function() {
-        const link = document.createElement('a');
-        link.href = 'Resume_Daly_425 (1).pdf';
-        link.download = 'Brendan_Daly_Resume.pdf';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+
+      // Tab functionality
+      function initializeTabs() {
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabButtons.forEach(button => {
+          button.addEventListener('click', function() {
+            const targetTab = this.getAttribute('data-tab');
+            const parentCard = this.closest('.competency-card');
+            
+            // Remove active class from all buttons and contents in this card
+            parentCard.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+            parentCard.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            
+            // Add active class to clicked button
+            this.classList.add('active');
+            
+            // Show corresponding content
+            const targetContent = parentCard.querySelector(`#${targetTab}`);
+            if (targetContent) {
+              targetContent.classList.add('active');
+            }
+          });
+        });
+      }
+
+      // Initialize tabs
+      initializeTabs();
+
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
       });
+
+      // Navigation active state based on scroll position
+      function updateActiveNavigation() {
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav a[href^="#"]');
+        
+        let currentSection = '';
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop - 100;
+          const sectionHeight = section.offsetHeight;
+          if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+            currentSection = section.getAttribute('id');
+          }
+        });
+
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${currentSection}`) {
+            link.classList.add('active');
+          }
+        });
+      }
+
+      // Update navigation on scroll
+      window.addEventListener('scroll', updateActiveNavigation);
     });
   </script>
 </body>
