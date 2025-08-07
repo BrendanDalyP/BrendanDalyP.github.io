@@ -91,18 +91,85 @@
         .nav {
           display: flex;
           gap: 2rem;
+          align-items: center;
         }
 
-        .nav a {
+        .nav > a {
           color: hsl(var(--muted-foreground));
           text-decoration: none;
           font-weight: 500;
           transition: color 0.3s;
         }
 
-        .nav a:hover,
-        .nav a.active {
+        .nav > a:hover,
+        .nav > a.active {
           color: hsl(var(--foreground));
+        }
+
+        /* Dropdown Styles */
+        .dropdown {
+          position: relative;
+        }
+
+        .dropdown-toggle {
+          color: hsl(var(--muted-foreground));
+          text-decoration: none;
+          font-weight: 500;
+          transition: color 0.3s;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          cursor: pointer;
+        }
+
+        .dropdown-toggle:hover {
+          color: hsl(var(--foreground));
+        }
+
+        .dropdown-toggle i {
+          font-size: 0.75rem;
+          transition: transform 0.3s;
+        }
+
+        .dropdown:hover .dropdown-toggle i {
+          transform: rotate(180deg);
+        }
+
+        .dropdown-menu {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          background-color: hsl(var(--card));
+          border: 1px solid hsl(var(--border));
+          border-radius: var(--radius);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+          min-width: 200px;
+          padding: 0.5rem 0;
+          margin-top: 0.5rem;
+          opacity: 0;
+          visibility: hidden;
+          transform: translateY(-10px);
+          transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+          z-index: 1000;
+        }
+
+        .dropdown:hover .dropdown-menu {
+          opacity: 1;
+          visibility: visible;
+          transform: translateY(0);
+        }
+
+        .dropdown-menu a {
+          display: block;
+          padding: 0.5rem 1rem;
+          color: hsl(var(--foreground));
+          text-decoration: none;
+          font-weight: 400;
+          transition: background-color 0.3s;
+        }
+
+        .dropdown-menu a:hover {
+          background-color: hsl(var(--muted));
         }
 
         .theme-toggle {
@@ -309,7 +376,28 @@
         <a href="index.html" class="logo">Brendan Daly</a>
         <nav class="nav">
             <a href="index.html">Home</a>
-            <a href="skills.html">Skills</a>
+            <div class="dropdown">
+                <a href="#" class="dropdown-toggle">Competencies <i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown-menu">
+                    <a href="ux-data-visualization.html">UX & Data Visualization</a>
+                    <a href="data-engineering.html">Data Engineering</a>
+                    <a href="data-architecture.html">Data Architecture</a>
+                    <a href="ai-implementation.html">AI Implementation</a>
+                    <a href="data-strategy.html">Data Strategy</a>
+                    <a href="data-governance.html">Data Governance</a>
+                    <a href="devops-dataops.html">DevOps & DataOps</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#" class="dropdown-toggle">Tools <i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown-menu">
+                    <a href="power-bi.html">Power BI</a>
+                    <a href="fabric.html">Fabric</a>
+                    <a href="databricks.html">Databricks</a>
+                    <a href="openai.html">OpenAI</a>
+                </div>
+            </div>
+            <a href="about.html">About</a>
             <a href="contact.html" class="active">Contact</a>
         </nav>
         <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">

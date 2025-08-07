@@ -71,6 +71,7 @@
 
     html {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      scroll-behavior: smooth;
     }
 
     body {
@@ -108,18 +109,187 @@
     .nav {
       display: flex;
       gap: 2rem;
+      align-items: center;
     }
 
-    .nav a {
+    .nav > a {
       color: hsl(var(--muted-foreground));
       text-decoration: none;
       font-weight: 500;
       transition: color 0.3s;
     }
 
-    .nav a:hover,
-    .nav a.active {
+    .nav > a:hover,
+    .nav > a.active {
       color: hsl(var(--foreground));
+    }
+
+    /* Dropdown Styles */
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-toggle {
+      color: hsl(var(--muted-foreground));
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+    }
+
+    .dropdown-toggle:hover {
+      color: hsl(var(--foreground));
+    }
+
+    .dropdown-toggle i {
+      font-size: 0.75rem;
+      transition: transform 0.3s;
+    }
+
+    .dropdown:hover .dropdown-toggle i {
+      transform: rotate(180deg);
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: hsl(var(--card));
+      border: 1px solid hsl(var(--border));
+      border-radius: var(--radius);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      min-width: 200px;
+      padding: 0.5rem 0;
+      margin-top: 0.5rem;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+      z-index: 1000;
+    }
+
+    .dropdown:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 0.5rem 1rem;
+      color: hsl(var(--foreground));
+      text-decoration: none;
+      font-weight: 400;
+      transition: background-color 0.3s;
+    }
+
+    .dropdown-menu a:hover {
+      background-color: hsl(var(--accent));
+      color: hsl(var(--accent-foreground));
+    }
+
+    /* New sections styles */
+    .section {
+      margin-top: 4rem;
+      margin-bottom: 4rem;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: hsl(var(--foreground));
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .section-subtitle {
+      font-size: 1.125rem;
+      color: hsl(var(--muted-foreground));
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .competencies-grid,
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .competency-card,
+    .tool-card {
+      background-color: hsl(var(--card));
+      border: 1px solid hsl(var(--border));
+      border-radius: var(--radius);
+      padding: 2rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .competency-card:hover,
+    .tool-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .competency-icon,
+    .tool-icon {
+      width: 60px;
+      height: 60px;
+      background-color: hsl(var(--primary));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      color: hsl(var(--primary-foreground));
+      font-size: 1.5rem;
+    }
+
+    .competency-title,
+    .tool-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: hsl(var(--foreground));
+    }
+
+    .competency-description,
+    .tool-description {
+      color: hsl(var(--muted-foreground));
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .competency-link,
+    .tool-link {
+      color: hsl(var(--primary));
+      text-decoration: none;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: color 0.3s;
+    }
+
+    .competency-link:hover,
+    .tool-link:hover {
+      color: hsl(var(--primary) / 0.8);
+      text-decoration: underline;
+    }
+
+    .competency-link i,
+    .tool-link i {
+      font-size: 0.875rem;
+      transition: transform 0.3s;
+    }
+
+    .competency-link:hover i,
+    .tool-link:hover i {
+      transform: translateX(3px);
     }
 
     .theme-toggle {
@@ -262,8 +432,20 @@
       justify-content: center;
     }
 
+    .contact-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+      justify-content: center;
+    }
+
     @media (min-width: 768px) {
       .button-group {
+        justify-content: flex-start;
+      }
+      
+      .contact-buttons {
         justify-content: flex-start;
       }
     }
@@ -334,16 +516,37 @@
         display: none;
       }
       
+      .dropdown-menu {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        border: none;
+        margin-top: 0;
+        padding: 0;
+      }
+      
       .profile-section {
         text-align: center;
       }
       
-      .button-group {
+      .button-group,
+      .contact-buttons {
         justify-content: center;
       }
       
       .location {
         justify-content: center;
+      }
+      
+      .competencies-grid,
+      .tools-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .section-title {
+        font-size: 1.75rem;
       }
     }
 
@@ -361,7 +564,28 @@
       <a href="index.html" class="logo">Brendan Daly</a>
       <nav class="nav">
         <a href="index.html" class="active">Home</a>
-        <a href="skills.html">Skills</a>
+        <div class="dropdown">
+          <a href="#" class="dropdown-toggle">Competencies <i class="fas fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="ux-data-visualization.html">UX & Data Visualization</a>
+            <a href="data-engineering.html">Data Engineering</a>
+            <a href="data-architecture.html">Data Architecture</a>
+            <a href="ai-implementation.html">AI Implementation</a>
+            <a href="data-strategy.html">Data Strategy</a>
+            <a href="data-governance.html">Data Governance</a>
+            <a href="devops-dataops.html">DevOps & DataOps</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <a href="#" class="dropdown-toggle">Tools <i class="fas fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="power-bi.html">Power BI</a>
+            <a href="fabric.html">Fabric</a>
+            <a href="databricks.html">Databricks</a>
+            <a href="openai.html">OpenAI</a>
+          </div>
+        </div>
+        <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
       </nav>
       <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
@@ -397,18 +621,36 @@
             organizations turn complexity into clarity and insight into action.
           </p>
           <div class="button-group">
+            <a href="#competencies" class="button button-primary">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
+                <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                <path d="M2 17l10 5 10-5"></path>
+                <path d="M2 12l10 5 10-5"></path>
+              </svg>
+              <span>View Competencies</span>
+            </a>
+            <a href="#tools" class="button button-primary">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
+                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+              </svg>
+              <span>Explore Tools</span>
+            </a>
+            <a href="about.html" class="button button-outline">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M12 1v6m0 6v6"></path>
+                <path d="m21 12-6 0m-6 0l-6 0"></path>
+              </svg>
+              <span>About Me</span>
+            </a>
+          </div>
+          <div class="contact-buttons">
             <a href="mailto:Brendan.Daly.P@gmail.com" class="button button-outline">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                 <polyline points="22,6 12,13 2,6"></polyline>
               </svg>
               <span>Brendan.Daly.P@gmail.com</span>
-            </a>
-            <a href="tel:+13148357944" class="button button-outline">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-              </svg>
-              <span>(314) 835-7944</span>
             </a>
             <a href="https://www.linkedin.com/in/dalybi/" target="_blank" rel="noopener noreferrer" class="button button-outline">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
@@ -435,6 +677,119 @@
               </svg>
               <span>St. Louis, MO 63119</span>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Competencies Section -->
+      <section id="competencies" class="section">
+        <h2 class="section-title">Core Competencies</h2>
+        <p class="section-subtitle">Strategic expertise areas driving organizational data transformation</p>
+        <div class="competencies-grid">
+          <div class="competency-card">
+            <div class="competency-icon">
+              <i class="fas fa-paint-brush"></i>
+            </div>
+            <h3 class="competency-title">UX & Data Visualization</h3>
+            <p class="competency-description">Creating intuitive, impactful visual experiences that drive data adoption and business understanding.</p>
+            <a href="ux-data-visualization.html" class="competency-link">Learn More <i class="fas fa-arrow-right"></i></a>
+          </div>
+          
+          <div class="competency-card">
+            <div class="competency-icon">
+              <i class="fas fa-cogs"></i>
+            </div>
+            <h3 class="competency-title">Data Engineering</h3>
+            <p class="competency-description">Building scalable, reliable data pipelines and infrastructure for enterprise-grade analytics.</p>
+            <a href="data-engineering.html" class="competency-link">Learn More <i class="fas fa-arrow-right"></i></a>
+          </div>
+          
+          <div class="competency-card">
+            <div class="competency-icon">
+              <i class="fas fa-sitemap"></i>
+            </div>
+            <h3 class="competency-title">Data Architecture</h3>
+            <p class="competency-description">Designing comprehensive data ecosystems aligned with business strategy and technical requirements.</p>
+            <a href="data-architecture.html" class="competency-link">Learn More <i class="fas fa-arrow-right"></i></a>
+          </div>
+          
+          <div class="competency-card">
+            <div class="competency-icon">
+              <i class="fas fa-robot"></i>
+            </div>
+            <h3 class="competency-title">AI Implementation</h3>
+            <p class="competency-description">Enabling organizations to leverage artificial intelligence for competitive advantage and operational excellence.</p>
+            <a href="ai-implementation.html" class="competency-link">Learn More <i class="fas fa-arrow-right"></i></a>
+          </div>
+          
+          <div class="competency-card">
+            <div class="competency-icon">
+              <i class="fas fa-chess"></i>
+            </div>
+            <h3 class="competency-title">Data Strategy</h3>
+            <p class="competency-description">Developing data-driven strategies that align with business objectives and drive measurable outcomes.</p>
+            <a href="data-strategy.html" class="competency-link">Learn More <i class="fas fa-arrow-right"></i></a>
+          </div>
+          
+          <div class="competency-card">
+            <div class="competency-icon">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <h3 class="competency-title">Data Governance</h3>
+            <p class="competency-description">Establishing comprehensive governance frameworks ensuring data quality, security, and compliance.</p>
+            <a href="data-governance.html" class="competency-link">Learn More <i class="fas fa-arrow-right"></i></a>
+          </div>
+          
+          <div class="competency-card">
+            <div class="competency-icon">
+              <i class="fas fa-rocket"></i>
+            </div>
+            <h3 class="competency-title">DevOps & DataOps</h3>
+            <p class="competency-description">Implementing modern operational practices for accelerated, reliable data platform delivery.</p>
+            <a href="devops-dataops.html" class="competency-link">Learn More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tools Section -->
+      <section id="tools" class="section">
+        <h2 class="section-title">Technology Tools</h2>
+        <p class="section-subtitle">Expertise in cutting-edge platforms and technologies</p>
+        <div class="tools-grid">
+          <div class="tool-card">
+            <div class="tool-icon">
+              <i class="fas fa-chart-bar"></i>
+            </div>
+            <h3 class="tool-title">Power BI</h3>
+            <p class="tool-description">Advanced business intelligence and data visualization platform for enterprise reporting and analytics.</p>
+            <a href="power-bi.html" class="tool-link">Explore <i class="fas fa-arrow-right"></i></a>
+          </div>
+          
+          <div class="tool-card">
+            <div class="tool-icon">
+              <i class="fas fa-layer-group"></i>
+            </div>
+            <h3 class="tool-title">Microsoft Fabric</h3>
+            <p class="tool-description">Unified analytics platform combining data integration, engineering, warehousing, science, and business intelligence.</p>
+            <a href="fabric.html" class="tool-link">Explore <i class="fas fa-arrow-right"></i></a>
+          </div>
+          
+          <div class="tool-card">
+            <div class="tool-icon">
+              <i class="fas fa-database"></i>
+            </div>
+            <h3 class="tool-title">Databricks</h3>
+            <p class="tool-description">Unified analytics platform for big data processing, machine learning, and collaborative data science.</p>
+            <a href="databricks.html" class="tool-link">Explore <i class="fas fa-arrow-right"></i></a>
+          </div>
+          
+          <div class="tool-card">
+            <div class="tool-icon">
+              <i class="fas fa-brain"></i>
+            </div>
+            <h3 class="tool-title">OpenAI</h3>
+            <p class="tool-description">Artificial intelligence platform for natural language processing, content generation, and intelligent automation.</p>
+            <a href="openai.html" class="tool-link">Explore <i class="fas fa-arrow-right"></i></a>
           </div>
         </div>
       </section>
