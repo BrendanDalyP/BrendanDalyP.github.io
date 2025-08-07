@@ -231,62 +231,147 @@
           margin-bottom: 3rem;
         }
 
-        .contact-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-          gap: 2rem;
-          margin-bottom: 3rem;
-        }
-
-        .contact-card {
+        /* Modern Contact Section Layout */
+        .contact-section {
           background-color: hsl(var(--card));
           border: 1px solid hsl(var(--border));
           border-radius: var(--radius);
           padding: 2rem;
-          text-align: center;
+          margin-bottom: 3rem;
           box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-          transition: transform 0.3s, box-shadow 0.3s;
         }
 
-        .contact-card:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        .contact-info-row {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+          gap: 1.5rem;
+          margin-bottom: 2rem;
+        }
+
+        .contact-item {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          padding: 1rem;
+          background-color: hsl(var(--muted));
+          border-radius: var(--radius);
+          transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .contact-item:hover {
+          transform: translateY(-1px);
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
 
         .contact-icon {
-          width: 60px;
-          height: 60px;
+          width: 40px;
+          height: 40px;
           background-color: hsl(var(--primary));
           border-radius: 50%;
           display: flex;
           align-items: center;
           justify-content: center;
-          margin: 0 auto 1rem;
           color: hsl(var(--primary-foreground));
-          font-size: 1.5rem;
+          font-size: 1.2rem;
+          flex-shrink: 0;
         }
 
-        .contact-title {
-          font-size: 1.25rem;
+        .contact-details h3 {
+          font-size: 1rem;
           font-weight: 600;
-          margin-bottom: 0.5rem;
+          margin-bottom: 0.25rem;
           color: hsl(var(--foreground));
         }
 
-        .contact-info {
+        .contact-details p {
           color: hsl(var(--muted-foreground));
           margin: 0;
+          font-size: 0.9rem;
         }
 
-        .contact-info a {
+        .contact-details a {
           color: hsl(var(--primary));
           text-decoration: none;
           transition: color 0.3s;
         }
 
-        .contact-info a:hover {
+        .contact-details a:hover {
           color: hsl(var(--primary) / 0.8);
           text-decoration: underline;
+        }
+
+        /* Resume Section Styles */
+        .resume-section {
+          background-color: hsl(var(--card));
+          border: 1px solid hsl(var(--border));
+          border-radius: var(--radius);
+          padding: 2rem;
+          margin-bottom: 3rem;
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .resume-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 1.5rem;
+          flex-wrap: wrap;
+          gap: 1rem;
+        }
+
+        .resume-title {
+          font-size: 1.5rem;
+          font-weight: 600;
+          color: hsl(var(--foreground));
+          margin: 0;
+        }
+
+        .download-button {
+          background-color: hsl(var(--primary));
+          color: hsl(var(--primary-foreground));
+          border: none;
+          padding: 0.75rem 1.5rem;
+          border-radius: var(--radius);
+          font-weight: 500;
+          cursor: pointer;
+          transition: background-color 0.3s, transform 0.2s;
+          text-decoration: none;
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          font-size: 0.9rem;
+        }
+
+        .download-button:hover {
+          background-color: hsl(var(--primary) / 0.9);
+          transform: translateY(-1px);
+        }
+
+        .pdf-viewer {
+          width: 100%;
+          height: 600px;
+          border: 1px solid hsl(var(--border));
+          border-radius: var(--radius);
+          background-color: hsl(var(--muted));
+        }
+
+        .pdf-fallback {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          height: 300px;
+          text-align: center;
+          color: hsl(var(--muted-foreground));
+          background-color: hsl(var(--muted));
+          border-radius: var(--radius);
+          border: 1px solid hsl(var(--border));
+        }
+
+        .pdf-fallback i {
+          font-size: 3rem;
+          margin-bottom: 1rem;
+          color: hsl(var(--primary));
         }
 
         .contact-form {
@@ -361,12 +446,28 @@
             display: none;
           }
           
-          .contact-grid {
+          .contact-info-row {
             grid-template-columns: 1fr;
           }
           
           .page-title {
             font-size: 2rem;
+          }
+          
+          .resume-header {
+            flex-direction: column;
+            align-items: stretch;
+            text-align: center;
+          }
+          
+          .pdf-viewer {
+            height: 400px;
+          }
+          
+          .contact-section,
+          .resume-section,
+          .contact-form {
+            padding: 1.5rem;
           }
         }
     </style>
@@ -422,46 +523,90 @@
         <h1 class="page-title">Contact Me</h1>
         <p class="page-subtitle">Let's connect and discuss how I can help with your data and analytics needs</p>
 
-        <div class="contact-grid">
-            <div class="contact-card">
-                <div class="contact-icon">
-                    <i class="fas fa-envelope"></i>
+        <!-- Contact Information Section -->
+        <div class="contact-section">
+            <h2 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1.5rem; color: hsl(var(--foreground));">Get in Touch</h2>
+            <div class="contact-info-row">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h3>Email</h3>
+                        <p><a href="mailto:Brendan.Daly.P@gmail.com">Brendan.Daly.P@gmail.com</a></p>
+                    </div>
                 </div>
-                <h3 class="contact-title">Email</h3>
-                <p class="contact-info">
-                    <a href="mailto:Brendan.Daly.P@gmail.com">Brendan.Daly.P@gmail.com</a>
-                </p>
-            </div>
-            
-            <div class="contact-card">
-                <div class="contact-icon">
-                    <i class="fab fa-linkedin"></i>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fab fa-linkedin"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h3>LinkedIn</h3>
+                        <p><a href="https://www.linkedin.com/in/dalybi/" target="_blank">linkedin.com/in/dalybi</a></p>
+                    </div>
                 </div>
-                <h3 class="contact-title">LinkedIn</h3>
-                <p class="contact-info">
-                    <a href="https://www.linkedin.com/in/dalybi/" target="_blank">linkedin.com/in/dalybi</a>
-                </p>
-            </div>
-            
-            <div class="contact-card">
-                <div class="contact-icon">
-                    <i class="fas fa-phone"></i>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h3>Phone</h3>
+                        <p><a href="tel:+13148357944">(314) 835-7944</a></p>
+                    </div>
                 </div>
-                <h3 class="contact-title">Phone</h3>
-                <p class="contact-info">
-                    <a href="tel:+13148357944">(314) 835-7944</a>
-                </p>
-            </div>
-            
-            <div class="contact-card">
-                <div class="contact-icon">
-                    <i class="fas fa-map-marker-alt"></i>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h3>Location</h3>
+                        <p>St. Louis, MO 63119</p>
+                    </div>
                 </div>
-                <h3 class="contact-title">Location</h3>
-                <p class="contact-info">St. Louis, MO 63119</p>
             </div>
         </div>
 
+        <!-- Resume Section -->
+        <!-- 
+        RESUME UPDATE INSTRUCTIONS:
+        To update the resume, simply replace the 'Resume.pdf' file in the root directory.
+        No code changes are required - the viewer and download link will automatically use the new file.
+        Make sure the new file is named exactly 'Resume.pdf' (case-sensitive).
+        -->
+        <div class="resume-section">
+            <div class="resume-header">
+                <h2 class="resume-title">Resume</h2>
+                <a href="Resume.pdf" download="Brendan_Daly_Resume.pdf" class="download-button">
+                    <i class="fas fa-download"></i>
+                    Download PDF
+                </a>
+            </div>
+            
+            <!-- PDF Viewer with fallback -->
+            <div class="pdf-container">
+                <iframe 
+                    src="Resume.pdf#toolbar=1&navpanes=0&scrollbar=1&view=FitH" 
+                    class="pdf-viewer"
+                    title="Brendan Daly Resume"
+                    allow="fullscreen">
+                    <!-- Fallback for browsers that don't support iframe PDF viewing -->
+                    <div class="pdf-fallback">
+                        <i class="fas fa-file-pdf"></i>
+                        <h3 style="margin-bottom: 0.5rem;">Resume Preview Not Available</h3>
+                        <p style="margin-bottom: 1rem;">Your browser doesn't support PDF preview.</p>
+                        <a href="Resume.pdf" download="Brendan_Daly_Resume.pdf" class="download-button">
+                            <i class="fas fa-download"></i>
+                            Download Resume
+                        </a>
+                    </div>
+                </iframe>
+            </div>
+        </div>
+
+        <!-- Contact Form -->
         <div class="contact-form">
             <h3 style="margin-bottom: 1.5rem; text-align: center;">Send me a message</h3>
             <form action="mailto:Brendan.Daly.P@gmail.com" method="get" enctype="text/plain">
