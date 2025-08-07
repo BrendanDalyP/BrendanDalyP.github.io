@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Data Strategy - Brendan Daly | Data & Analytics Leader</title>
-  <meta name="description" content="Comprehensive data strategy expertise including frameworks, governance, culture transformation, and ROI measurement">
+  <title>Data Visualization - Brendan Daly | Data & Analytics Leader</title>
+  <meta name="description" content="Comprehensive data visualization expertise across Power BI, Tableau, Looker, and other leading visualization platforms">
   
   <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
@@ -262,6 +262,7 @@
     }
 
     /* ===== TAB NAVIGATION COMPONENT ===== */
+    /* This is the main tab navigation container */
     .tab-navigation {
       background-color: hsl(var(--card));
       border: 1px solid hsl(var(--border));
@@ -270,18 +271,21 @@
       overflow: hidden;
     }
 
+    /* Tab button container with horizontal scrolling for mobile */
     .tab-buttons {
       display: flex;
       border-bottom: 1px solid hsl(var(--border));
       overflow-x: auto;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none;  /* Internet Explorer 10+ */
     }
 
+    /* Hide scrollbar for WebKit browsers */
     .tab-buttons::-webkit-scrollbar {
       display: none;
     }
 
+    /* Individual tab button styling */
     .tab-button {
       background: none;
       border: none;
@@ -297,35 +301,42 @@
       position: relative;
     }
 
+    /* Tab button hover state */
     .tab-button:hover {
       background-color: hsl(var(--tab-hover));
       color: hsl(var(--foreground));
     }
 
+    /* Active tab button styling */
     .tab-button.active {
       background-color: hsl(var(--tab-active));
       color: hsl(var(--tab-active-foreground));
       border-bottom-color: hsl(var(--primary));
     }
 
+    /* Tab button focus styles for accessibility */
     .tab-button:focus {
       outline: 2px solid hsl(var(--primary));
       outline-offset: -2px;
     }
 
+    /* Tab content container */
     .tab-content {
       padding: 2rem;
     }
 
+    /* Individual tab panel styling */
     .tab-panel {
       display: none;
       animation: fadeIn 0.3s ease-in-out;
     }
 
+    /* Show active tab panel */
     .tab-panel.active {
       display: block;
     }
 
+    /* Fade-in animation for tab content */
     @keyframes fadeIn {
       from {
         opacity: 0;
@@ -387,37 +398,36 @@
       font-weight: 600;
     }
 
-    .framework-grid {
+    .tool-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
       margin: 1.5rem 0;
     }
 
-    .framework-card {
+    .tool-card {
       background-color: hsl(var(--card));
       border: 1px solid hsl(var(--border));
       border-radius: var(--radius);
       padding: 1.5rem;
+      text-align: center;
       transition: transform 0.3s, box-shadow 0.3s;
     }
 
-    .framework-card:hover {
+    .tool-card:hover {
       transform: translateY(-2px);
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
 
-    .framework-card h4 {
+    .tool-card h4 {
       color: hsl(var(--foreground));
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
       font-weight: 600;
-      font-size: 1.1rem;
     }
 
-    .framework-card p {
+    .tool-card p {
       font-size: 0.9rem;
       color: hsl(var(--muted-foreground));
-      line-height: 1.5;
     }
 
     /* ===== FOOTER ===== */
@@ -451,7 +461,7 @@
         padding: 2rem 0;
       }
 
-      .framework-grid {
+      .tool-grid {
         grid-template-columns: 1fr;
       }
     }
@@ -495,11 +505,11 @@
           Competencies <i class="fas fa-chevron-down" aria-hidden="true"></i>
         </a>
         <div class="dropdown-menu" role="menu">
-          <a href="data-visualization.html" role="menuitem">Data Visualization</a>
+          <a href="data-visualization.html" class="active" role="menuitem">Data Visualization</a>
           <a href="data-engineering.html" role="menuitem">Data Engineering</a>
           <a href="data-architecture.html" role="menuitem">Data Architecture</a>
           <a href="ai-implementation.html" role="menuitem">AI Implementation</a>
-          <a href="data-strategy.html" class="active" role="menuitem">Data Strategy</a>
+          <a href="data-strategy.html" role="menuitem">Data Strategy</a>
           <a href="data-governance.html" role="menuitem">Data Governance</a>
           <a href="devops-dataops.html" role="menuitem">DevOps & DataOps</a>
           <a href="data-modeling.html" role="menuitem">Data Modeling</a>
@@ -541,428 +551,365 @@
   <main class="container">
     <!-- Page header with title and description -->
     <div class="page-header">
-      <h1 class="page-title">Data Strategy</h1>
+      <h1 class="page-title">Data Visualization</h1>
       <p class="page-subtitle">
-        Strategic expertise in developing comprehensive data strategies that align with business 
-        objectives, drive organizational transformation, and deliver measurable value.
+        Expert proficiency across leading visualization platforms and tools, creating impactful 
+        data experiences that drive understanding and decision-making.
       </p>
     </div>
 
-    <!-- Tab-based navigation for different strategy aspects -->
-    <div class="tab-navigation" role="tablist" aria-label="Data Strategy Areas">
-      <!-- Tab buttons for navigation between different strategy topics -->
+    <!-- Tab-based navigation for different visualization tools -->
+    <div class="tab-navigation" role="tablist" aria-label="Data Visualization Tools">
+      <!-- Tab buttons for navigation between different tools -->
       <div class="tab-buttons">
         <button class="tab-button active" 
                 role="tab" 
                 aria-selected="true" 
-                aria-controls="frameworks-panel" 
-                id="frameworks-tab"
-                data-tab="frameworks">
-          <i class="fas fa-sitemap" aria-hidden="true"></i>
-          Strategic Frameworks
+                aria-controls="powerbi-panel" 
+                id="powerbi-tab"
+                data-tab="powerbi">
+          <i class="fas fa-chart-bar" aria-hidden="true"></i>
+          Power BI
         </button>
         <button class="tab-button" 
                 role="tab" 
                 aria-selected="false" 
-                aria-controls="governance-panel" 
-                id="governance-tab"
-                data-tab="governance">
-          <i class="fas fa-shield-alt" aria-hidden="true"></i>
-          Data Governance
-        </button>
-        <button class="tab-button" 
-                role="tab" 
-                aria-selected="false" 
-                aria-controls="culture-panel" 
-                id="culture-tab"
-                data-tab="culture">
-          <i class="fas fa-users" aria-hidden="true"></i>
-          Culture & Adoption
-        </button>
-        <button class="tab-button" 
-                role="tab" 
-                aria-selected="false" 
-                aria-controls="roi-panel" 
-                id="roi-tab"
-                data-tab="roi">
+                aria-controls="tableau-panel" 
+                id="tableau-tab"
+                data-tab="tableau">
           <i class="fas fa-chart-line" aria-hidden="true"></i>
-          ROI & Value
+          Tableau
+        </button>
+        <button class="tab-button" 
+                role="tab" 
+                aria-selected="false" 
+                aria-controls="looker-panel" 
+                id="looker-tab"
+                data-tab="looker">
+          <i class="fas fa-search" aria-hidden="true"></i>
+          Looker
+        </button>
+        <button class="tab-button" 
+                role="tab" 
+                aria-selected="false" 
+                aria-controls="other-tools-panel" 
+                id="other-tools-tab"
+                data-tab="other-tools">
+          <i class="fas fa-tools" aria-hidden="true"></i>
+          Other Tools
         </button>
       </div>
 
       <!-- Tab content area where each panel will be displayed -->
       <div class="tab-content">
-        <!-- Strategic Frameworks Panel -->
+        <!-- Power BI Panel -->
         <div class="tab-panel active" 
              role="tabpanel" 
-             aria-labelledby="frameworks-tab" 
-             id="frameworks-panel">
-          <h2 class="section-title">Strategic Frameworks</h2>
+             aria-labelledby="powerbi-tab" 
+             id="powerbi-panel">
+          <h2 class="section-title">Microsoft Power BI</h2>
           <div class="section-content">
             <p>
-              Expert application of proven strategic frameworks to develop comprehensive data strategies 
-              that align with business objectives and drive organizational transformation.
+              Deep expertise in Microsoft Power BI for creating comprehensive business intelligence 
+              solutions. From data modeling to advanced visualizations and enterprise deployment, 
+              delivering insights that drive business value.
             </p>
             
             <div class="highlight-box">
-              <h4>Framework-Driven Approach</h4>
+              <h4>Power BI Expertise Areas</h4>
               <p>
-                Leveraging time-tested frameworks like the 3 Horizons Model, Data Strategy Canvas, 
-                and custom methodologies to ensure strategic alignment and sustainable success.
+                Comprehensive knowledge spanning Power BI Desktop, Service, Premium, and embedded 
+                analytics with focus on performance optimization and governance.
               </p>
             </div>
 
-            <h3>Core Strategic Frameworks</h3>
-            <div class="framework-grid">
-              <div class="framework-card">
-                <h4>3 Horizons Model</h4>
-                <p>
-                  Strategic planning framework that balances immediate operational needs (Horizon 1), 
-                  emerging opportunities (Horizon 2), and transformational innovations (Horizon 3) 
-                  in data and analytics investments.
-                </p>
+            <h3>Core Capabilities</h3>
+            <ul class="feature-list">
+              <li><strong>Data Modeling:</strong> Star schema design, relationships, and DAX optimization</li>
+              <li><strong>Advanced Visualizations:</strong> Custom visuals, interactive dashboards, and storytelling</li>
+              <li><strong>DAX Development:</strong> Complex calculations, time intelligence, and performance tuning</li>
+              <li><strong>Power Query:</strong> Data transformation, cleansing, and automation</li>
+              <li><strong>Enterprise Deployment:</strong> Workspace management, security, and governance</li>
+              <li><strong>Integration:</strong> SharePoint, Teams, Azure, and third-party connectors</li>
+            </ul>
+
+            <h3>Advanced Features</h3>
+            <p>
+              Expertise in Power BI's advanced capabilities including paginated reports, 
+              dataflows, AI features, and embedded analytics for customer-facing solutions.
+            </p>
+
+            <ul class="feature-list">
+              <li>Power BI Premium and Per User licensing optimization</li>
+              <li>Row-level security (RLS) and object-level security implementation</li>
+              <li>Incremental refresh and large dataset optimization</li>
+              <li>Power BI REST APIs and PowerShell automation</li>
+              <li>Custom R and Python integration for advanced analytics</li>
+              <li>Power BI Embedded for white-label solutions</li>
+            </ul>
+
+            <h3>Industry Applications</h3>
+            <p>
+              Successfully implemented Power BI solutions across various industries, 
+              adapting to specific business requirements and compliance needs.
+            </p>
+
+            <div class="tool-grid">
+              <div class="tool-card">
+                <h4>Financial Services</h4>
+                <p>Risk management dashboards, regulatory reporting, and performance analytics</p>
               </div>
-              <div class="framework-card">
-                <h4>Data Strategy Canvas</h4>
-                <p>
-                  Comprehensive framework for mapping data strategy components including value 
-                  propositions, capabilities, governance, and enabling technologies to ensure 
-                  holistic strategy development.
-                </p>
+              <div class="tool-card">
+                <h4>Healthcare</h4>
+                <p>Patient outcome tracking, operational efficiency, and compliance monitoring</p>
               </div>
-              <div class="framework-card">
-                <h4>Data Maturity Assessment</h4>
-                <p>
-                  Structured evaluation of current data capabilities across people, process, 
-                  technology, and governance dimensions to identify gaps and prioritize 
-                  strategic initiatives.
-                </p>
+              <div class="tool-card">
+                <h4>Manufacturing</h4>
+                <p>Production optimization, quality control, and supply chain visibility</p>
               </div>
-              <div class="framework-card">
-                <h4>Value Stream Mapping</h4>
-                <p>
-                  End-to-end analysis of data flows and value creation processes to identify 
-                  optimization opportunities and guide strategic investment decisions.
-                </p>
-              </div>
-              <div class="framework-card">
-                <h4>DAMA-DMBOK Framework</h4>
-                <p>
-                  Professional data management framework providing comprehensive guidance for 
-                  establishing data management capabilities and governance structures.
-                </p>
-              </div>
-              <div class="framework-card">
-                <h4>Enterprise Architecture</h4>
-                <p>
-                  Structured approach to aligning data strategy with enterprise architecture 
-                  principles, ensuring coherent technology landscapes and integration strategies.
-                </p>
+              <div class="tool-card">
+                <h4>Retail</h4>
+                <p>Sales performance, inventory management, and customer analytics</p>
               </div>
             </div>
-
-            <h3>Implementation Methodology</h3>
-            <ul class="feature-list">
-              <li><strong>Current State Assessment:</strong> Comprehensive evaluation of existing data capabilities</li>
-              <li><strong>Future State Vision:</strong> Development of target data architecture and capabilities</li>
-              <li><strong>Gap Analysis:</strong> Identification of key gaps and transformation requirements</li>
-              <li><strong>Roadmap Development:</strong> Prioritized implementation plan with clear milestones</li>
-              <li><strong>Business Case Creation:</strong> Financial justification and ROI projections</li>
-              <li><strong>Change Management:</strong> Organizational readiness and adoption planning</li>
-            </ul>
           </div>
         </div>
 
-        <!-- Data Governance Panel -->
+        <!-- Tableau Panel -->
         <div class="tab-panel" 
              role="tabpanel" 
-             aria-labelledby="governance-tab" 
-             id="governance-panel">
-          <h2 class="section-title">Data Governance Strategy</h2>
+             aria-labelledby="tableau-tab" 
+             id="tableau-panel">
+          <h2 class="section-title">Tableau</h2>
           <div class="section-content">
             <p>
-              Comprehensive approach to establishing data governance frameworks that ensure data quality, 
-              compliance, security, and business value while enabling innovation and agility.
+              Extensive experience with Tableau for creating sophisticated data visualizations 
+              and interactive analytics. Proven expertise in Tableau Desktop, Server, and 
+              Tableau Cloud for enterprise-scale deployments.
             </p>
 
             <div class="highlight-box">
-              <h4>Governance-First Strategy</h4>
+              <h4>Tableau Specializations</h4>
               <p>
-                Implementing governance as an enabler of business value rather than a constraint, 
-                ensuring that data governance supports and accelerates business objectives.
+                Advanced proficiency in Tableau's visualization grammar, calculated fields, 
+                and complex dashboard design patterns for maximum user engagement.
               </p>
             </div>
 
-            <h3>Governance Framework Components</h3>
+            <h3>Technical Expertise</h3>
             <ul class="feature-list">
-              <li><strong>Data Governance Council:</strong> Executive-level oversight and decision-making body</li>
-              <li><strong>Data Stewardship Program:</strong> Business-focused data ownership and quality management</li>
-              <li><strong>Data Policies & Standards:</strong> Comprehensive guidelines for data management</li>
-              <li><strong>Data Classification:</strong> Risk-based categorization and protection frameworks</li>
-              <li><strong>Data Lineage & Metadata:</strong> Complete visibility into data origins and transformations</li>
-              <li><strong>Data Quality Management:</strong> Automated monitoring and improvement processes</li>
+              <li><strong>Advanced Visualizations:</strong> Custom chart types, mapping, and statistical charts</li>
+              <li><strong>Calculated Fields:</strong> Complex logic, table calculations, and Level of Detail expressions</li>
+              <li><strong>Data Connections:</strong> Live connections, extracts, and hybrid approaches</li>
+              <li><strong>Dashboard Design:</strong> Interactive filters, actions, and user experience optimization</li>
+              <li><strong>Performance Optimization:</strong> Extract optimization, query performance tuning</li>
+              <li><strong>Server Administration:</strong> User management, security, and content governance</li>
             </ul>
 
-            <h3>Compliance & Regulatory Framework</h3>
+            <h3>Advanced Analytics</h3>
             <p>
-              Expert guidance in navigating complex regulatory requirements while maintaining 
-              operational efficiency and business agility.
+              Leveraging Tableau's analytical capabilities including forecasting, clustering, 
+              and statistical modeling for deeper insights.
             </p>
 
-            <div class="framework-grid">
-              <div class="framework-card">
-                <h4>GDPR Compliance</h4>
-                <p>
-                  Implementation of privacy-by-design principles, consent management, and 
-                  data subject rights management frameworks.
-                </p>
+            <ul class="feature-list">
+              <li>Statistical functions and trend analysis</li>
+              <li>R and Python integration for advanced modeling</li>
+              <li>Tableau Prep for data preparation and cleaning</li>
+              <li>Web data connectors and API integrations</li>
+              <li>Tableau Extensions and custom development</li>
+              <li>Mobile-optimized dashboard design</li>
+            </ul>
+
+            <h3>Enterprise Implementation</h3>
+            <p>
+              Experience deploying Tableau across large organizations with focus on 
+              governance, security, and scalability.
+            </p>
+
+            <div class="tool-grid">
+              <div class="tool-card">
+                <h4>Data Governance</h4>
+                <p>Content certification, lineage tracking, and usage monitoring</p>
               </div>
-              <div class="framework-card">
-                <h4>CCPA/CPRA Readiness</h4>
-                <p>
-                  California privacy law compliance including consumer rights management 
-                  and data processing transparency.
-                </p>
+              <div class="tool-card">
+                <h4>Security & Compliance</h4>
+                <p>Row-level security, SAML integration, and audit logging</p>
               </div>
-              <div class="framework-card">
-                <h4>SOX Compliance</h4>
-                <p>
-                  Financial data controls, audit trails, and reporting accuracy frameworks 
-                  for public company requirements.
-                </p>
+              <div class="tool-card">
+                <h4>Performance</h4>
+                <p>Extract optimization, caching strategies, and load balancing</p>
               </div>
-              <div class="framework-card">
-                <h4>HIPAA Controls</h4>
-                <p>
-                  Healthcare data protection, access controls, and privacy safeguards 
-                  for sensitive health information.
-                </p>
-              </div>
-              <div class="framework-card">
-                <h4>Industry Standards</h4>
-                <p>
-                  Implementation of industry-specific frameworks including PCI-DSS, 
-                  ISO 27001, and NIST guidelines.
-                </p>
-              </div>
-              <div class="framework-card">
-                <h4>Data Retention</h4>
-                <p>
-                  Lifecycle management policies ensuring compliance while optimizing 
-                  storage costs and operational efficiency.
-                </p>
+              <div class="tool-card">
+                <h4>Training & Adoption</h4>
+                <p>User training programs, best practices, and community building</p>
               </div>
             </div>
-
-            <h3>Technology-Enabled Governance</h3>
-            <ul class="feature-list">
-              <li>Automated data discovery and classification tools</li>
-              <li>Real-time data quality monitoring and alerting</li>
-              <li>Self-service governance with embedded controls</li>
-              <li>API-driven policy enforcement and compliance</li>
-              <li>Machine learning-powered anomaly detection</li>
-              <li>Integrated governance across cloud and on-premises platforms</li>
-            </ul>
           </div>
         </div>
 
-        <!-- Culture & Adoption Panel -->
+        <!-- Looker Panel -->
         <div class="tab-panel" 
              role="tabpanel" 
-             aria-labelledby="culture-tab" 
-             id="culture-panel">
-          <h2 class="section-title">Data-Driven Culture & Adoption</h2>
+             aria-labelledby="looker-tab" 
+             id="looker-panel">
+          <h2 class="section-title">Looker / Looker Studio</h2>
           <div class="section-content">
             <p>
-              Strategic approach to transforming organizational culture, building data literacy, 
-              and driving adoption of data-driven decision making across all levels of the organization.
+              Comprehensive expertise in Looker's modeling layer and Looker Studio (formerly Google Data Studio) 
+              for creating governed, consistent analytics experiences across organizations.
             </p>
 
             <div class="highlight-box">
-              <h4>Culture as Competitive Advantage</h4>
+              <h4>Looker Philosophy</h4>
               <p>
-                Building a data-driven culture that empowers employees to make better decisions, 
-                drives innovation, and creates sustainable competitive advantages.
+                Expert in Looker's "single source of truth" approach, ensuring consistent 
+                metrics and definitions across all analytics and reporting.
               </p>
             </div>
 
-            <h3>Cultural Transformation Strategy</h3>
+            <h3>Looker Platform Expertise</h3>
             <ul class="feature-list">
-              <li><strong>Leadership Alignment:</strong> Executive sponsorship and visible commitment to data-driven decisions</li>
-              <li><strong>Data Literacy Programs:</strong> Comprehensive training across technical and business users</li>
-              <li><strong>Success Story Amplification:</strong> Highlighting wins and building momentum for change</li>
-              <li><strong>Incentive Alignment:</strong> Rewarding data-driven behaviors and outcomes</li>
-              <li><strong>Community Building:</strong> Centers of excellence and user communities</li>
-              <li><strong>Communication Strategy:</strong> Clear messaging about vision, benefits, and progress</li>
+              <li><strong>LookML Development:</strong> Modeling best practices, dimensions, measures, and explores</li>
+              <li><strong>Data Modeling:</strong> Semantic layer design, derived tables, and data governance</li>
+              <li><strong>Dashboard Development:</strong> Interactive dashboards, alerts, and scheduled reports</li>
+              <li><strong>API Integration:</strong> Embedded analytics, data extraction, and automation</li>
+              <li><strong>User Management:</strong> Role-based access, content delivery, and governance</li>
+              <li><strong>Performance Optimization:</strong> Query optimization, caching, and infrastructure scaling</li>
             </ul>
 
-            <h3>Adoption Enablement Framework</h3>
+            <h3>Looker Studio (Google Data Studio)</h3>
             <p>
-              Systematic approach to driving user adoption through training, support, and 
-              continuous improvement of the data experience.
+              Extensive experience creating compelling visualizations and reports using 
+              Looker Studio's powerful connector ecosystem and visualization capabilities.
             </p>
 
-            <div class="framework-grid">
-              <div class="framework-card">
-                <h4>Data Literacy Training</h4>
-                <p>
-                  Role-based training programs covering data fundamentals, analytics tools, 
-                  and interpretation skills for all organizational levels.
-                </p>
+            <ul class="feature-list">
+              <li>Google Analytics, Ads, and Marketing platform integrations</li>
+              <li>BigQuery and Google Cloud data source optimization</li>
+              <li>Custom connectors and data blending techniques</li>
+              <li>Interactive dashboard design and user experience</li>
+              <li>Calculated fields and advanced data transformations</li>
+              <li>Sharing, collaboration, and version control</li>
+            </ul>
+
+            <h3>Cloud-Native Analytics</h3>
+            <p>
+              Leveraging Google Cloud's ecosystem for scalable, modern analytics solutions 
+              with Looker at the center of the data platform.
+            </p>
+
+            <div class="tool-grid">
+              <div class="tool-card">
+                <h4>BigQuery Integration</h4>
+                <p>Optimized queries, partitioning, and cost management strategies</p>
               </div>
-              <div class="framework-card">
-                <h4>Self-Service Analytics</h4>
-                <p>
-                  Democratizing data access with intuitive tools, governed datasets, 
-                  and embedded guidance for business users.
-                </p>
+              <div class="tool-card">
+                <h4>Data Governance</h4>
+                <p>Centralized metrics, version control, and impact analysis</p>
               </div>
-              <div class="framework-card">
-                <h4>Center of Excellence</h4>
-                <p>
-                  Establishing expertise hubs that provide guidance, best practices, 
-                  and support for data initiatives across the organization.
-                </p>
+              <div class="tool-card">
+                <h4>Embedded Analytics</h4>
+                <p>White-label dashboards, API integrations, and custom applications</p>
               </div>
-              <div class="framework-card">
-                <h4>Champion Network</h4>
-                <p>
-                  Building networks of data advocates who drive adoption, provide 
-                  peer support, and champion best practices.
-                </p>
-              </div>
-              <div class="framework-card">
-                <h4>Continuous Learning</h4>
-                <p>
-                  Ongoing education programs, lunch-and-learns, and knowledge sharing 
-                  sessions to build and maintain data capabilities.
-                </p>
-              </div>
-              <div class="framework-card">
-                <h4>Success Metrics</h4>
-                <p>
-                  Measuring adoption through usage analytics, competency assessments, 
-                  and business impact metrics.
-                </p>
+              <div class="tool-card">
+                <h4>Marketing Analytics</h4>
+                <p>Customer journey tracking, attribution modeling, and ROI analysis</p>
               </div>
             </div>
-
-            <h3>Change Management Approach</h3>
-            <ul class="feature-list">
-              <li>Stakeholder impact analysis and engagement planning</li>
-              <li>Communication strategies for different organizational levels</li>
-              <li>Training needs assessment and curriculum development</li>
-              <li>Resistance identification and mitigation strategies</li>
-              <li>Feedback loops and continuous improvement processes</li>
-              <li>Sustainable adoption measurement and optimization</li>
-            </ul>
           </div>
         </div>
 
-        <!-- ROI & Value Panel -->
+        <!-- Other Tools Panel -->
         <div class="tab-panel" 
              role="tabpanel" 
-             aria-labelledby="roi-tab" 
-             id="roi-panel">
-          <h2 class="section-title">ROI & Value Measurement</h2>
+             aria-labelledby="other-tools-tab" 
+             id="other-tools-panel">
+          <h2 class="section-title">Other Visualization Tools</h2>
           <div class="section-content">
             <p>
-              Comprehensive framework for measuring, tracking, and optimizing the return on investment 
-              from data and analytics initiatives, ensuring continuous value delivery and strategic alignment.
+              Broad expertise across the visualization ecosystem, including specialized tools 
+              for specific use cases, open-source solutions, and emerging technologies.
             </p>
 
             <div class="highlight-box">
-              <h4>Value-Driven Strategy</h4>
+              <h4>Tool Selection Expertise</h4>
               <p>
-                Focus on measurable business outcomes with clear ROI frameworks that demonstrate 
-                the tangible value of data investments to stakeholders and executives.
+                Deep understanding of when and how to leverage different visualization tools 
+                based on business requirements, technical constraints, and user needs.
               </p>
             </div>
 
-            <h3>Value Measurement Framework</h3>
+            <h3>Business Intelligence Platforms</h3>
             <ul class="feature-list">
-              <li><strong>Business Case Development:</strong> Comprehensive financial justification with clear assumptions</li>
-              <li><strong>KPI Definition:</strong> Specific, measurable outcomes tied to business objectives</li>
-              <li><strong>Baseline Establishment:</strong> Current state measurement for accurate comparison</li>
-              <li><strong>Value Tracking:</strong> Ongoing monitoring and reporting of realized benefits</li>
-              <li><strong>ROI Calculation:</strong> Multiple methodologies including NPV, IRR, and payback period</li>
-              <li><strong>Benefit Realization:</strong> Ensuring projected benefits are actually captured</li>
+              <li><strong>Qlik Sense/QlikView:</strong> Associative analytics, set analysis, and self-service BI</li>
+              <li><strong>Spotfire:</strong> Advanced analytics, statistical modeling, and scientific visualization</li>
+              <li><strong>IBM Cognos:</strong> Enterprise reporting, OLAP analysis, and financial planning</li>
+              <li><strong>SAS Visual Analytics:</strong> Statistical visualization and advanced modeling</li>
+              <li><strong>Oracle Analytics Cloud:</strong> Enterprise BI, machine learning integration</li>
+              <li><strong>Sisense:</strong> Complex data simplification and embedded analytics</li>
             </ul>
 
-            <h3>Value Categories & Metrics</h3>
+            <h3>Specialized & Emerging Tools</h3>
             <p>
-              Comprehensive approach to identifying and measuring value across multiple dimensions 
-              of business impact and organizational improvement.
+              Experience with domain-specific and cutting-edge visualization technologies 
+              for unique analytical requirements.
             </p>
 
-            <div class="framework-grid">
-              <div class="framework-card">
-                <h4>Revenue Generation</h4>
-                <p>
-                  New revenue streams, improved pricing strategies, customer acquisition 
-                  and retention, and market expansion opportunities.
-                </p>
+            <ul class="feature-list">
+              <li><strong>D3.js:</strong> Custom web-based visualizations and interactive charts</li>
+              <li><strong>Python (Matplotlib, Plotly, Seaborn):</strong> Statistical and scientific visualization</li>
+              <li><strong>R (ggplot2, Shiny):</strong> Statistical graphics and interactive web applications</li>
+              <li><strong>Observable:</strong> Collaborative data visualization and analysis</li>
+              <li><strong>Grafana:</strong> Operational dashboards and monitoring visualization</li>
+              <li><strong>Apache Superset:</strong> Open-source business intelligence platform</li>
+            </ul>
+
+            <h3>Specialized Use Cases</h3>
+            <p>
+              Strategic selection and implementation of visualization tools based on 
+              specific industry requirements and analytical needs.
+            </p>
+
+            <div class="tool-grid">
+              <div class="tool-card">
+                <h4>Real-Time Monitoring</h4>
+                <p>Grafana, custom dashboards for operational intelligence and alerting</p>
               </div>
-              <div class="framework-card">
-                <h4>Cost Reduction</h4>
-                <p>
-                  Operational efficiency gains, automation benefits, reduced manual effort, 
-                  and optimized resource utilization.
-                </p>
+              <div class="tool-card">
+                <h4>Scientific/Research</h4>
+                <p>R, Python, and specialized tools for statistical and research visualization</p>
               </div>
-              <div class="framework-card">
-                <h4>Risk Mitigation</h4>
-                <p>
-                  Improved compliance, reduced regulatory fines, fraud detection, 
-                  and enhanced security measures.
-                </p>
+              <div class="tool-card">
+                <h4>Geospatial Analytics</h4>
+                <p>ESRI ArcGIS, Mapbox, and location-based visualization platforms</p>
               </div>
-              <div class="framework-card">
-                <h4>Decision Quality</h4>
-                <p>
-                  Faster decision-making, improved accuracy, reduced uncertainty, 
-                  and better strategic alignment.
-                </p>
+              <div class="tool-card">
+                <h4>Financial Analytics</h4>
+                <p>Bloomberg Terminal, Reuters Eikon, and specialized financial charting</p>
               </div>
-              <div class="framework-card">
-                <h4>Customer Experience</h4>
-                <p>
-                  Improved satisfaction scores, reduced churn, personalization benefits, 
-                  and enhanced service delivery.
-                </p>
+              <div class="tool-card">
+                <h4>Network Visualization</h4>
+                <p>Gephi, Cytoscape, and network analysis visualization tools</p>
               </div>
-              <div class="framework-card">
-                <h4>Innovation Enablement</h4>
-                <p>
-                  New product development, improved time-to-market, enhanced capabilities, 
-                  and competitive advantage creation.
-                </p>
+              <div class="tool-card">
+                <h4>Mobile BI</h4>
+                <p>Native mobile apps, responsive design, and touch-optimized interfaces</p>
               </div>
             </div>
 
-            <h3>ROI Measurement Methodologies</h3>
-            <ul class="feature-list">
-              <li><strong>Total Economic Impact (TEI):</strong> Comprehensive framework including all costs and benefits</li>
-              <li><strong>Business Value Assessment:</strong> Qualitative and quantitative impact measurement</li>
-              <li><strong>Balanced Scorecard:</strong> Multi-dimensional performance measurement approach</li>
-              <li><strong>Value Stream Analysis:</strong> End-to-end process improvement measurement</li>
-              <li><strong>Benchmarking Studies:</strong> Industry and peer comparison analysis</li>
-              <li><strong>Portfolio Optimization:</strong> Resource allocation based on value potential</li>
-            </ul>
-
-            <h3>Continuous Value Optimization</h3>
+            <h3>Integration & Architecture</h3>
             <p>
-              Ongoing refinement and optimization of data investments to maximize value 
-              delivery and ensure sustainable returns.
+              Expertise in creating cohesive visualization ecosystems that work together 
+              to provide comprehensive analytical capabilities.
             </p>
 
             <ul class="feature-list">
-              <li>Regular value assessments and course corrections</li>
-              <li>Portfolio management and investment prioritization</li>
-              <li>Capability maturity advancement planning</li>
-              <li>Technology refresh and modernization strategies</li>
-              <li>Skills development and capability building</li>
-              <li>Strategic alignment verification and adjustment</li>
+              <li>Multi-tool integration and consistent user experience</li>
+              <li>API-driven visualization architectures</li>
+              <li>Headless BI and embedded analytics strategies</li>
+              <li>Performance optimization across multiple platforms</li>
+              <li>Security and governance in multi-tool environments</li>
             </ul>
           </div>
         </div>
@@ -978,15 +925,15 @@
   <!-- ===== JAVASCRIPT FOR FUNCTIONALITY ===== -->
   <script>
     /**
-     * Data Strategy Page - Tab Navigation and Theme Management
+     * Data Visualization Page - Tab Navigation and Theme Management
      * 
      * This script handles:
-     * 1. Tab navigation between different strategy areas
+     * 1. Tab navigation between different visualization tools
      * 2. Theme switching (light/dark mode)
      * 3. Accessibility features including keyboard navigation
      * 4. URL hash support for direct linking to specific tabs
      * 
-     * Reuses the same pattern as other competency pages for consistency
+     * Reuses the same pattern as the Data Modeling page for consistency
      */
 
     document.addEventListener('DOMContentLoaded', function() {
@@ -1106,7 +1053,7 @@
      */
     function handleUrlHash() {
       const hash = window.location.hash.substring(1);
-      const validTabs = ['frameworks', 'governance', 'culture', 'roi'];
+      const validTabs = ['powerbi', 'tableau', 'looker', 'other-tools'];
       
       if (hash && validTabs.includes(hash)) {
         switchTab(hash);
