@@ -285,7 +285,7 @@
       <div class="dropdown active">
         <a href="#" class="dropdown-toggle">Competencies <i class="fas fa-chevron-down"></i></a>
         <div class="dropdown-menu">
-          <a href="ux-data-visualization.html">UX & Data Visualization</a>
+          <a href="data-visualization.html">Data Visualization</a>
           <a href="data-engineering.html">Data Engineering</a>
           <a href="data-architecture.html">Data Architecture</a>
           <a href="ai-implementation.html">AI Implementation</a>
@@ -332,34 +332,146 @@
       <h2 class="section-title">Overview</h2>
       <div class="section-content">
         <p>
-          This page provides detailed information about Data Architecture capabilities and expertise. 
-          Content is currently being developed and will include comprehensive details about methodologies, 
-          tools, and best practices in this competency area.
+          Data architecture provides the blueprint for how data flows through an organization, from source systems to analytical insights. It encompasses the design of data models, storage systems, integration patterns, and governance frameworks that enable scalable, reliable analytics.
         </p>
         <p>
-          Please check back soon for complete content, or contact directly to discuss specific requirements 
-          and how these capabilities can support your organization's data and analytics initiatives.
+          This competency includes both strategic architecture planning and hands-on implementation of data platforms that align with business objectives while maintaining technical excellence and operational efficiency.
         </p>
       </div>
     </div>
 
     <div class="content-section">
-      <h2 class="section-title">Key Capabilities</h2>
+      <h2 class="section-title">Data Modeling</h2>
       <div class="section-content">
         <p>
-          Comprehensive expertise includes strategic planning, technical implementation, and organizational 
-          change management to ensure successful Data Architecture outcomes.
+          Data modeling forms the foundation of effective data architecture, providing structure and meaning to raw data assets across the enterprise.
         </p>
+        
+        <div class="subsection">
+          <h3 class="subsection-title">Medallion Architecture</h3>
+          <div class="highlight-card">
+            <h4 class="highlight-title">Bronze Layer (Raw Data)</h4>
+            <p class="highlight-content">
+              Landing zone for ingested data in its original format, providing an immutable record of source systems with minimal transformation.
+            </p>
+          </div>
+          
+          <div class="highlight-card">
+            <h4 class="highlight-title">Silver Layer (Cleaned Data)</h4>
+            <p class="highlight-content">
+              Standardized, cleaned, and validated data with consistent schemas, data types, and business rules applied for downstream consumption.
+            </p>
+          </div>
+          
+          <div class="highlight-card">
+            <h4 class="highlight-title">Gold Layer (Business-Ready)</h4>
+            <p class="highlight-content">
+              Aggregated, enriched data optimized for specific business use cases, analytics, and reporting requirements.
+            </p>
+          </div>
+        </div>
+        
+        <div class="subsection">
+          <h3 class="subsection-title">Data Vault</h3>
+          <p class="section-content">
+            Scalable, auditable modeling methodology that separates business keys, descriptive attributes, and relationships into distinct structures for maximum flexibility and historical tracking.
+          </p>
+          
+          <div class="highlight-card">
+            <h4 class="highlight-title">Hubs, Links, and Satellites</h4>
+            <p class="highlight-content">
+              Core Data Vault structures that separate business keys (Hubs), relationships (Links), and descriptive attributes (Satellites) for maximum agility and auditability.
+            </p>
+          </div>
+        </div>
+        
+        <div class="subsection">
+          <h3 class="subsection-title">Data Warehouse</h3>
+          <p class="section-content">
+            Traditional dimensional modeling approaches including star and snowflake schemas optimized for analytical workloads and business intelligence.
+          </p>
+          
+          <div class="highlight-card">
+            <h4 class="highlight-title">Dimensional Modeling</h4>
+            <p class="highlight-content">
+              Fact and dimension tables designed for optimal query performance, user comprehension, and consistent business metrics.
+            </p>
+          </div>
+        </div>
+        
+        <div class="subsection">
+          <h3 class="subsection-title">Event-Driven Architecture</h3>
+          <p class="section-content">
+            Real-time data modeling approaches that capture business events as they occur, enabling event sourcing and stream processing architectures.
+          </p>
+          
+          <div class="highlight-card">
+            <h4 class="highlight-title">Event Streaming</h4>
+            <p class="highlight-content">
+              Designing event schemas and stream processing patterns for real-time analytics and operational decision-making.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
 
     <div class="content-section">
-      <h2 class="section-title">Approach & Methodology</h2>
+      <h2 class="section-title">Platform Architecture</h2>
       <div class="section-content">
         <p>
-          Proven methodologies and best practices ensure consistent, scalable results that align with 
-          business objectives and technical requirements.
+          Designing scalable, resilient data platforms that support diverse workloads and growth requirements.
         </p>
+        
+        <div class="subsection">
+          <h3 class="subsection-title">Cloud-Native Design</h3>
+          <p class="section-content">
+            Leveraging cloud platforms for elastic scalability, managed services, and cost optimization while maintaining security and compliance requirements.
+          </p>
+        </div>
+        
+        <div class="subsection">
+          <h3 class="subsection-title">Data Lake Architecture</h3>
+          <p class="section-content">
+            Implementing data lakes that support both structured and unstructured data with proper organization, cataloging, and access controls.
+          </p>
+        </div>
+        
+        <div class="subsection">
+          <h3 class="subsection-title">Hybrid and Multi-Cloud</h3>
+          <p class="section-content">
+            Architecting solutions that span on-premises and cloud environments, supporting data residency requirements and vendor diversification strategies.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-section">
+      <h2 class="section-title">Integration Patterns</h2>
+      <div class="section-content">
+        <p>
+          Establishing robust, scalable patterns for data integration that support both batch and real-time requirements.
+        </p>
+        
+        <div class="subsection">
+          <h3 class="subsection-title">API-First Design</h3>
+          <p class="section-content">
+            Creating standardized APIs for data access that enable self-service while maintaining governance and security standards.
+          </p>
+        </div>
+        
+        <div class="subsection">
+          <h3 class="subsection-title">Change Data Capture</h3>
+          <p class="section-content">
+            Implementing real-time data synchronization patterns that minimize impact on source systems while ensuring data freshness.
+          </p>
+        </div>
+        
+        <div class="subsection">
+          <h3 class="subsection-title">Data Mesh Principles</h3>
+          <p class="section-content">
+            Applying domain-driven design to data architecture, enabling decentralized data ownership while maintaining consistency and discoverability.
+          </p>
+        </div>
       </div>
     </div>
   </main>
