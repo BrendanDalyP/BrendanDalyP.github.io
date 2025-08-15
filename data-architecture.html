@@ -17,6 +17,9 @@
   <!-- FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   
+  <!-- Add common.css for unified navigation styles -->
+  <link rel="stylesheet" href="common.css">
+  
   <style>
     :root {
       --background: 0 0% 100%;
@@ -278,33 +281,35 @@
   </style>
 </head>
 <body>
-  <header class="header container">
-    <a href="index.html" class="logo">Brendan Daly</a>
+  <!-- Inject unified side navigation -->
+  <button class="side-nav-toggle" id="sideNavToggle" aria-label="Toggle navigation">
+    <i class="fas fa-bars"></i>
+  </button>
+  <div class="nav-overlay" id="navOverlay"></div>
+  <header class="header" id="sideNav">
+    <div style="display: flex; justify-content: flex-start; align-items: center; padding: 0 2rem; margin-bottom: 2rem;">
+      <a href="index.html" class="logo">Brendan Daly</a>
+    </div>
     <nav class="nav">
       <a href="index.html">Home</a>
-      <div class="dropdown active">
-        <a href="#" class="dropdown-toggle">Competencies <i class="fas fa-chevron-down"></i></a>
+      <a href="experience.html">Experience</a>
+      <div class="dropdown">
+        <button class="dropdown-toggle">
+          <span>Competencies</span>
+          <i class="fas fa-chevron-down"></i>
+        </button>
         <div class="dropdown-menu">
           <a href="data-visualization.html">Data Visualization</a>
           <a href="data-engineering.html">Data Engineering</a>
-          <a href="data-architecture.html">Data Architecture</a>
+          <a href="data-architecture.html" class="active">Data Architecture</a>
+          <a href="data-modeling.html">Data Modeling</a>
+          <a href="data-security.html">Data Security</a>
           <a href="ai-implementation.html">AI Implementation</a>
           <a href="data-strategy.html">Data Strategy</a>
           <a href="data-governance.html">Data Governance</a>
           <a href="devops-dataops.html">DevOps & DataOps</a>
         </div>
       </div>
-      <div class="dropdown">
-        <a href="#" class="dropdown-toggle">Tools <i class="fas fa-chevron-down"></i></a>
-        <div class="dropdown-menu">
-          <a href="power-bi.html">Power BI</a>
-          <a href="fabric.html">Fabric</a>
-          <a href="databricks.html">Databricks</a>
-          <a href="openai.html">OpenAI</a>
-        </div>
-      </div>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
     </nav>
     <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon sun">
@@ -480,22 +485,7 @@
     <p>&copy; 2025 Brendan Daly. All rights reserved.</p>
   </footer>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const themeToggle = document.getElementById('theme-toggle');
-      const body = document.body;
-      
-      const savedTheme = localStorage.getItem('theme') || 'light';
-      if (savedTheme === 'dark') {
-        body.classList.add('dark');
-      }
-      
-      themeToggle.addEventListener('click', function() {
-        body.classList.toggle('dark');
-        const currentTheme = body.classList.contains('dark') ? 'dark' : 'light';
-        localStorage.setItem('theme', currentTheme);
-      });
-    });
-  </script>
+  <!-- Common JavaScript for unified nav -->
+  <script src="common.js"></script>
 </body>
 </html>

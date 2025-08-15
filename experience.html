@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Experience | Brendan Daly - Data & Analytics Leader</title>
+  <meta name="description" content="Professional experience, project portfolio, and career history of Brendan Daly">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
+  
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <!-- Common Styles -->
+  <link rel="stylesheet" href="common.css">
+  
+  <style>
+    /* Page Specific Styles */
+    .main {
+      padding: 6rem 2rem 4rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Alternating Timeline Styles */
+    .alternating-timeline {
+      position: relative;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .alternating-timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, hsl(var(--primary)), hsl(var(--primary) / 0.5));
+      transform: translateX(-50%);
+    }
+
+    .timeline-entry {
+      position: relative;
+      margin-bottom: 3rem;
+      width: 45%;
+    }
+
+    .timeline-entry.left {
+      left: 0;
+    }
+
+    .timeline-entry.right {
+      left: 55%;
+    }
+
+    .timeline-entry::before {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: hsl(var(--primary));
+      border: 4px solid hsl(var(--background));
+      border-radius: 50%;
+      top: 1rem;
+      box-shadow: 0 0 0 4px hsl(var(--primary) / 0.2);
+    }
+
+    .timeline-entry.left::before {
+      right: -43px;
+    }
+
+    .timeline-entry.right::before {
+      left: -43px;
+    }
+
+    .timeline-content {
+      background: hsl(var(--card));
+      border: 1px solid hsl(var(--border));
+      border-radius: var(--radius);
+      padding: 2rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .timeline-content:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .company-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .company-logo {
+      width: 60px;
+      height: 60px;
+      border-radius: 12px;
+      object-fit: contain;
+      background: white;
+      padding: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .company-name {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: hsl(var(--foreground));
+      margin-bottom: 0.5rem;
+    }
+
+    .position-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .position {
+      font-size: 0.9rem;
+      color: hsl(var(--primary));
+      font-weight: 600;
+    }
+
+    .company-description {
+      color: hsl(var(--muted-foreground));
+      line-height: 1.6;
+    }
+
+    .page-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .page-title {
+      font-size: 3rem;
+      font-weight: 700;
+      color: hsl(var(--foreground));
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .page-subtitle {
+      font-size: 1.25rem;
+      color: hsl(var(--muted-foreground));
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* Tab Navigation */
+    .tab-navigation {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 3rem;
+      border-bottom: 2px solid hsl(var(--border));
+    }
+
+    .tab-button {
+      padding: 1rem 2rem;
+      background: none;
+      border: none;
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: hsl(var(--muted-foreground));
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border-bottom: 3px solid transparent;
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .tab-button:hover {
+      color: hsl(var(--foreground));
+      background: hsl(var(--accent) / 0.5);
+    }
+
+    .tab-button.active {
+      color: hsl(var(--primary));
+      border-bottom-color: hsl(var(--primary));
+    }
+
+    /* Navigation Close Button */
+    .nav-close-btn {
+      background: none;
+      border: none;
+      color: hsl(var(--muted-foreground));
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: var(--radius);
+      transition: all 0.3s ease;
+      font-size: 1.2rem;
+    }
+
+    .nav-close-btn:hover {
+      background: hsl(var(--accent));
+      color: hsl(var(--foreground));
+    }
+
+    /* Tab Content */
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Projects Section */
+    .projects-container {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .project-navigation {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .project-nav-btn {
+      background: hsl(var(--card));
+      border: 1px solid hsl(var(--border));
+      color: hsl(var(--muted-foreground));
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+    }
+
+    .project-nav-btn[aria-pressed="true"],
+    .project-nav-btn.active {
+      background: hsl(var(--primary));
+      color: hsl(var(--primary-foreground));
+      border-color: hsl(var(--primary));
+    }
+
+    .project-card {
+      background: hsl(var(--card));
+      border: 1px solid hsl(var(--border));
+      border-radius: var(--radius);
+      padding: 2rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      /* Show all by default; hide via .hidden class when filtered */
+      display: block;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .hidden { display: none !important; }
+
+    .project-header h3.industry {
+      margin: 0 0 0.25rem 0;
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: hsl(var(--foreground));
+    }
+
+    .project-meta {
+      font-size: 1rem;
+      color: hsl(var(--muted-foreground));
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .project-description {
+      color: hsl(var(--muted-foreground));
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .project-technologies {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tech-tag {
+      background: hsl(var(--accent));
+      color: hsl(var(--accent-foreground));
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    /* Timeline Section */
+    .timeline {
+      position: relative;
+      max-width: none;
+      margin: 0;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 2rem;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: hsl(var(--border));
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 3rem;
+      width: 100%;
+      margin-left: 4rem;
+    }
+
+    .timeline-item .timeline-content {
+      background: hsl(var(--card));
+      border: 1px solid hsl(var(--border));
+      border-radius: var(--radius);
+      padding: 2rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    .timeline-marker {
+      position: absolute;
+      left: -2.75rem;
+      top: 1rem;
+      width: 1rem;
+      height: 1rem;
+      background: hsl(var(--primary));
+      border: 3px solid hsl(var(--background));
+      border-radius: 50%;
+      box-shadow: 0 0 0 3px hsl(var(--border));
+    }
+
+    .timeline-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: hsl(var(--foreground));
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-company {
+      font-size: 1rem;
+      color: hsl(var(--primary));
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .timeline-description {
+      color: hsl(var(--muted-foreground));
+      line-height: 1.6;
+    }
+
+    .timeline-details { margin-top: 0.75rem; color: hsl(var(--muted-foreground)); }
+    .timeline-dates { font-weight: 600; color: hsl(var(--foreground)); margin-bottom: 0.25rem; }
+    .timeline-location { font-size: 0.95rem; margin-bottom: 0.5rem; }
+    .timeline-section-title { color: hsl(var(--foreground)); font-weight: 700; margin: 0.75rem 0 0.5rem; font-size: 0.95rem; }
+    .timeline-list { margin: 0.25rem 0 0.75rem 1.25rem; }
+    .timeline-awards { margin: 0.25rem 0 0.75rem 1.25rem; }
+    .timeline-skills { font-size: 0.95rem; color: hsl(var(--muted-foreground)); margin-top: 0.5rem; }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .main {
+        padding: 5rem 1rem 3rem;
+      }
+
+      .page-title {
+        font-size: 2.5rem;
+      }
+
+      .tab-navigation {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .tab-button {
+        width: 100%;
+        max-width: 300px;
+        text-align: center;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline::before {
+        left: 1rem;
+      }
+
+      .timeline-item {
+        margin-left: 3rem;
+      }
+
+      .timeline-marker {
+        left: -2rem;
+      }
+
+      #skills-panel {
+        display: none;
+      }
+
+      #history > div:first-child {
+        flex-direction: column;
+      }
+
+      .resume-controls {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      /* Alternating Timeline Styles */
+      .alternating-timeline::before {
+        left: 30px;
+      }
+      
+      .timeline-entry {
+        width: calc(100% - 60px);
+        left: 60px !important;
+      }
+      
+      .timeline-entry::before {
+        left: -43px !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Side Navigation Toggle -->
+  <button class="side-nav-toggle" id="sideNavToggle" aria-label="Toggle navigation">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <!-- Navigation Overlay -->
+  <div class="nav-overlay" id="navOverlay"></div>
+
+  <!-- Side Navigation -->
+  <header class="header" id="sideNav">
+    <div style="display: flex; justify-content: flex-start; align-items: center; padding: 0 2rem; margin-bottom: 2rem;">
+      <a href="index.html" class="logo">Brendan Daly</a>
+    </div>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="experience.html" class="active">Experience</a>
+      <div class="dropdown">
+        <button class="dropdown-toggle">
+          <span>Competencies</span>
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="dropdown-menu">
+          <a href="data-visualization.html">Data Visualization</a>
+          <a href="data-engineering.html">Data Engineering</a>
+          <a href="data-architecture.html">Data Architecture</a>
+          <a href="data-modeling.html">Data Modeling</a>
+          <a href="data-security.html">Data Security</a>
+          <a href="ai-implementation.html">AI Implementation</a>
+          <a href="data-strategy.html">Data Strategy</a>
+          <a href="data-governance.html">Data Governance</a>
+          <a href="devops-dataops.html">DevOps & DataOps</a>
+        </div>
+      </div>
+    </nav>
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon sun">
+        <circle cx="12" cy="12" r="5"></circle>
+        <line x1="12" y1="1" x2="12" y2="3"></line>
+        <line x1="12" y1="21" x2="12" y2="23"></line>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+        <line x1="1" y1="12" x2="3" y2="12"></line>
+        <line x1="21" y1="12" x2="23" y2="12"></line>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon moon">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+      </svg>
+    </button>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main">
+    <!-- Page Header -->
+    <div class="page-header">
+      <h1 class="page-title">Professional Experience</h1>
+      <p class="page-subtitle">
+        Leading data platform, analytics, and AI initiatives that deliver measurable business value.
+      </p>
+    </div>
+
+    <!-- Tab Navigation -->
+    <div class="tab-navigation">
+      <button class="tab-button active" data-tab="projects">
+        <i class="fas fa-rocket"></i>
+        Recent Projects
+      </button>
+      <button class="tab-button" data-tab="skills">
+        <i class="fas fa-cogs"></i>
+        Competencies
+      </button>
+      <button class="tab-button" data-tab="history">
+        <i class="fas fa-timeline"></i>
+        Work History
+      </button>
+      <button class="tab-button" data-tab="resume">
+        <i class="fas fa-file-pdf"></i>
+        Resume
+      </button>
+    </div>
+
+    <!-- Recent Projects Tab -->
+    <div class="tab-content active" id="projects">
+      <div class="projects-container">
+        <!-- Project Navigation -->
+        <div class="project-navigation" role="group" aria-label="Project industry filters">
+          <button class="project-nav-btn" data-filter="Advertising & Public Relations" aria-pressed="false" title="Filter by Advertising & Public Relations">Advertising & PR</button>
+          <button class="project-nav-btn" data-filter="Manufacturing" aria-pressed="false" title="Filter by Manufacturing">Manufacturing</button>
+          <button class="project-nav-btn" data-filter="Entertainment" aria-pressed="false" title="Filter by Entertainment">Entertainment</button>
+          <button class="project-nav-btn" data-filter="Financial Services" aria-pressed="false" title="Filter by Financial Services">Financial Services</button>
+          <button class="project-nav-btn" data-filter="Construction" aria-pressed="false" title="Filter by Construction">Construction</button>
+        </div>
+        <!-- Project 1: Advertising & PR -->
+        <div class="project-card" id="project-0" data-industry="Advertising & Public Relations">
+          <div class="project-header">
+            <div class="project-info">
+              <h3 class="industry">Advertising & Public Relations</h3>
+              <div class="project-meta">Lead Architect</div>
+            </div>
+          </div>
+          <div class="project-description">
+            <p style="margin-bottom: 1.5rem; font-weight: 500; color: #4b5563; line-height: 1.6;">
+              Delivered a net-new reporting solution leveraging Microsoft Fabric that strengthened the client's relationship with their largest account and laid the foundation for expansion across additional clients.
+            </p>
+
+            <h4 style="margin: 0 0 0.75rem 0; color: #1e40af; font-size: 0.95rem; font-weight: 600;">Technical Implementation</h4>
+            <ul style="color: #64748b; line-height: 1.6; margin-bottom: 1.5rem; padding-left: 1.5rem;">
+              <li>Ingested call center data from Snowflake into OneLake and built semantic models to support reporting</li>
+              <li>Developed interactive Power BI dashboards that functioned like applications, tailored to different management levels</li>
+              <li>Presented on using Copilot for both consuming and developing data, including data agents</li>
+              <li>Delivered net-new reporting capabilities that expanded their strategic relationship with their largest account</li>
+            </ul>
+
+            <!-- Key Outcomes Section -->
+            <div style="background: linear-gradient(135deg, #f0f9ff, #e0f2fe); border-left: 4px solid #0ea5e9; padding: 1rem; margin-bottom: 1.5rem; border-radius: 6px;">
+              <h4 style="margin: 0 0 0.5rem 0; color: #0369a1; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Key Outcomes</h4>
+              <ul style="margin: 0; padding-left: 1rem; color: #0c4a6e; font-weight: 500;">
+                <li>Strengthened client relationship with their largest account through enhanced reporting capabilities</li>
+                <li>Established foundation for expansion across additional clients with reusable solution architecture</li>
+              </ul>
+            </div>
+          </div>
+          <div class="project-technologies">
+            <span class="tech-tag">Power BI</span>
+            <span class="tech-tag">Microsoft Fabric</span>
+            <span class="tech-tag">OneLake</span>
+            <span class="tech-tag">Snowflake</span>
+            <span class="tech-tag">Copilot</span>
+            <span class="tech-tag">Data Agents</span>
+            <span class="tech-tag">DAX</span>
+            <span class="tech-tag">SQL</span>
+          </div>
+        </div>
+
+        <!-- Project 2: Manufacturing -->
+        <div class="project-card" id="project-1" data-industry="Manufacturing">
+          <div class="project-header">
+            <div class="project-info">
+              <h3 class="industry">Manufacturing</h3>
+              <div class="project-meta">Lead Architect</div>
+            </div>
+          </div>
+          <div class="project-description">
+            <p style="margin-bottom: 1.5rem; font-weight: 500; color: #4b5563; line-height: 1.6;">
+              Led a multi-phase migration from on-prem SQL Server, Power BI, and SSRS to Microsoft Fabric, modernizing analytics across four subsidiary companies under a unified enterprise model.
+            </p>
+
+            <h4 style="margin: 0 0 0.75rem 0; color: #1e40af; font-size: 0.95rem; font-weight: 600;">Technical Implementation</h4>
+            <ul style="color: #64748b; line-height: 1.6; margin-bottom: 1.5rem; padding-left: 1.5rem;">
+              <li>Delivered both the initial accelerator and follow-on expansion to modernize data and reporting infrastructure</li>
+              <li>Integrated data from ERP systems including IQMS, Navision, Business Central, and SAP</li>
+              <li>Modeled data using a bronze-silver-gold architecture to support modular data marts for each company, feeding into a unified enterprise semantic layer</li>
+              <li>Trained regional data champions across the US, Canada, and Europe to drive adoption and self-service analytics</li>
+              <li>Collaborated directly with the CIO to develop an 18-month roadmap and identify high-value AI use cases, including "Share of Wallet"</li>
+            </ul>
+
+            <!-- Key Outcomes Section -->
+            <div style="background: linear-gradient(135deg, #f0f9ff, #e0f2fe); border-left: 4px solid #0ea5e9; padding: 1rem; margin-bottom: 1.5rem; border-radius: 6px;">
+              <h4 style="margin: 0 0 0.5rem 0; color: #0369a1; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Key Outcomes</h4>
+              <ul style="margin: 0; padding-left: 1rem; color: #0c4a6e; font-weight: 500;">
+                <li>Successfully modernized analytics infrastructure across four subsidiary companies under unified enterprise model</li>
+                <li>Project featured in Microsoft's internal Win Wire as a land-and-expand success story</li>
+              </ul>
+            </div>
+          </div>
+          <div class="project-technologies">
+            <span class="tech-tag">Microsoft Fabric</span>
+            <span class="tech-tag">Power BI</span>
+            <span class="tech-tag">OneLake</span>
+            <span class="tech-tag">SQL Server</span>
+            <span class="tech-tag">SSRS</span>
+            <span class="tech-tag">SAP</span>
+            <span class="tech-tag">Business Central</span>
+            <span class="tech-tag">Navision</span>
+            <span class="tech-tag">IQMS</span>
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">PySpark</span>
+          </div>
+        </div>
+
+        <!-- Project 3: Entertainment -->
+        <div class="project-card" id="project-2" data-industry="Entertainment">
+          <div class="project-header">
+            <div class="project-info">
+              <h3 class="industry">Entertainment</h3>
+              <div class="project-meta">Lead Architect</div>
+            </div>
+          </div>
+          <div class="project-description">
+            <p style="margin-bottom: 1.5rem; font-weight: 500; color: #4b5563; line-height: 1.6;">
+              Partnered with the CIO and EVP of Data at a large movie theater chain to lead a Microsoft Fabric accelerator, migrating workloads from Synapse and on-prem SQL Server to the cloud.
+            </p>
+
+            <h4 style="margin: 0 0 0.75rem 0; color: #1e40af; font-size: 0.95rem; font-weight: 600;">Technical Implementation</h4>
+            <ul style="color: #64748b; line-height: 1.6; margin-bottom: 1.5rem; padding-left: 1.5rem;">
+              <li>Delivered initial accelerator to validate platform capabilities, followed by support for scoping and relationship management during expansion</li>
+              <li>Focused on enterprise warehousing with silver-layer data vault modeling and gold-layer dimensional modeling</li>
+              <li>Modernized reporting infrastructure to support scalable, cloud-native analytics across business domains</li>
+            </ul>
+
+            <!-- Key Outcomes Section -->
+            <div style="background: linear-gradient(135deg, #f0f9ff, #e0f2fe); border-left: 4px solid #0ea5e9; padding: 1rem; margin-bottom: 1.5rem; border-radius: 6px;">
+              <h4 style="margin: 0 0 0.5rem 0; color: #0369a1; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Key Outcomes</h4>
+              <ul style="margin: 0; padding-left: 1rem; color: #0c4a6e; font-weight: 500;">
+                <li>Successfully validated Microsoft Fabric platform capabilities for large-scale movie theater operations</li>
+                <li>Established foundation for enterprise-wide cloud migration and modern analytics infrastructure</li>
+              </ul>
+            </div>
+          </div>
+          <div class="project-technologies">
+            <span class="tech-tag">Microsoft Fabric</span>
+            <span class="tech-tag">Power BI</span>
+            <span class="tech-tag">Synapse Analytics</span>
+            <span class="tech-tag">SQL Server</span>
+            <span class="tech-tag">OneLake</span>
+          </div>
+        </div>
+
+        <!-- Project 4: Financial Services -->
+        <div class="project-card" id="project-3" data-industry="Financial Services">
+          <div class="project-header">
+            <div class="project-info">
+              <h3 class="industry">Financial Services</h3>
+              <div class="project-meta">Lead Architect</div>
+            </div>
+          </div>
+          <div class="project-description">
+            <p style="margin-bottom: 1.5rem; font-weight: 500; color: #4b5563; line-height: 1.6;">
+              Led simultaneous pilots of Microsoft Fabric and Microsoft Purview to modernize data access and modeling at a top 25 investment bank. The initiative focused on empowering analysts—who rely heavily on Excel for modeling—with standardized data and scalable analytics capabilities.
+            </p>
+
+            <h4 style="margin: 0 0 0.75rem 0; color: #1e40af; font-size: 0.95rem; font-weight: 600;">Technical Implementation</h4>
+            <ul style="color: #64748b; line-height: 1.6; margin-bottom: 1.5rem; padding-left: 1.5rem;">
+              <li>Integrated data from sources including APEX, Bloomberg, ADLS Gen2, and Oracle SQL</li>
+              <li>Built centralized CD and bond models to serve as trusted reference data for analysis and enrichment</li>
+              <li>Implemented complex RBAC which enabled self-service access to trusted data assets for enhancing analyst modeling workflows</li>
+              <li>Implemented advanced Power BI reporting capabilities tailored to financial use cases</li>
+              <li>Implemented Copilot for both data consumption and development</li>
+            </ul>
+
+            <!-- Key Outcomes Section -->
+            <div style="background: linear-gradient(135deg, #f0f9ff, #e0f2fe); border-left: 4px solid #0ea5e9; padding: 1rem; margin-bottom: 1.5rem; border-radius: 6px;">
+              <h4 style="margin: 0 0 0.5rem 0; color: #0369a1; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Key Outcomes</h4>
+              <ul style="margin: 0; padding-left: 1rem; color: #0c4a6e; font-weight: 500;">
+                <li>Successfully modernized data access and modeling capabilities for analysts at top 25 investment bank</li>
+                <li>Enabled self-service access to trusted data assets, enhancing analyst modeling workflows and productivity</li>
+              </ul>
+            </div>
+          </div>
+          <div class="project-technologies">
+            <span class="tech-tag">Microsoft Fabric</span>
+            <span class="tech-tag">Microsoft Purview</span>
+            <span class="tech-tag">Power BI</span>
+            <span class="tech-tag">OneLake</span>
+            <span class="tech-tag">DAX</span>
+            <span class="tech-tag">SQL</span>
+            <span class="tech-tag">Excel</span>
+            <span class="tech-tag">Oracle SQL</span>
+            <span class="tech-tag">ADLS Gen2</span>
+            <span class="tech-tag">APEX</span>
+            <span class="tech-tag">Bloomberg</span>
+            <span class="tech-tag">Copilot</span>
+          </div>
+        </div>
+
+        <!-- Project 5: Construction -->
+        <div class="project-card" id="project-4" data-industry="Construction">
+          <div class="project-header">
+            <div class="project-info">
+              <h3 class="industry">Construction</h3>
+              <div class="project-meta">Lead Architect</div>
+            </div>
+          </div>
+          <div class="project-description">
+            <p style="margin-bottom: 1.5rem; font-weight: 500; color: #4b5563; line-height: 1.6;">
+              Led a pilot that expanded into a broader engagement with a national construction firm, focused on modernizing enterprise reporting, enabling self-service analytics, and supporting their ERP transition.
+            </p>
+
+            <h4 style="margin: 0 0 0.75rem 0; color: #1e40af; font-size: 0.95rem; font-weight: 600;">Technical Implementation</h4>
+            <ul style="color: #64748b; line-height: 1.6; margin-bottom: 1.5rem; padding-left: 1.5rem;">
+              <li>Ingested data from on-prem ERP systems and modeled it for enterprise-wide reporting and analysis</li>
+              <li>Introduced medallion architecture, structuring the gold layer as a formal data warehouse to support governed, scalable analytics</li>
+              <li>Delivered advanced Power BI reports with rich interactivity for visualizing and exploring land plots</li>
+              <li>Enabled self-service analytics across business units through semantic modeling and report design</li>
+              <li>Supported the migration off legacy ERP systems and archiving of on-prem data as part of their transition to a new ERP platform</li>
+            </ul>
+
+            <!-- Key Outcomes Section -->
+            <div style="background: linear-gradient(135deg, #f0f9ff, #e0f2fe); border-left: 4px solid #0ea5e9; padding: 1rem; margin-bottom: 1.5rem; border-radius: 6px;">
+              <h4 style="margin: 0 0 0.5rem 0; color: #0369a1; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Key Outcomes</h4>
+              <ul style="margin: 0; padding-left: 1rem; color: #0c4a6e; font-weight: 500;">
+                <li>Successfully expanded pilot into broader enterprise analytics modernization engagement</li>
+                <li>Contributed to the launch of the client's internal ACE (Analytics Center of Excellence) and data governance group</li>
+              </ul>
+            </div>
+          </div>
+          <div class="project-technologies">
+            <span class="tech-tag">Microsoft Fabric</span>
+            <span class="tech-tag">Microsoft Purview</span>
+            <span class="tech-tag">Power BI</span>
+            <span class="tech-tag">OneLake</span>
+            <span class="tech-tag">Oracle SQL</span>
+            <span class="tech-tag">ADLS Gen2</span>
+            <span class="tech-tag">Excel</span>
+            <span class="tech-tag">DAX</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Competencies Tab -->
+    <div class="tab-content" id="skills">
+      <!-- Skills Section - Optimized Layout -->
+      <div style="margin-bottom: 3rem;">
+        <h2 style="font-size: 2rem; margin-bottom: 2rem; color: hsl(var(--foreground));">Competencies</h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+          <div style="margin-bottom: 1.5rem;">
+            <h3 style="font-size: 1.25rem; margin-bottom: 1rem;"><a href="data-strategy.html" style="color: hsl(var(--primary)); text-decoration: none;">Data Strategy</a></h3>
+            <p style="color: hsl(var(--muted-foreground)); margin-bottom: 0.5rem;">Business cases, ROI/TCO, portfolio roadmaps</p>
+          </div>
+
+          <div style="margin-bottom: 1.5rem;">
+            <h3 style="font-size: 1.25rem; margin-bottom: 1rem;"><a href="data-governance.html" style="color: hsl(var(--primary)); text-decoration: none;">Data Governance</a></h3>
+            <p style="color: hsl(var(--muted-foreground)); margin-bottom: 0.5rem;">Purview, Unity Catalog, stewardship, catalog/lineage</p>
+          </div>
+
+          <div style="margin-bottom: 1.5rem;">
+            <h3 style="font-size: 1.25rem; margin-bottom: 1rem;"><a href="data-security.html" style="color: hsl(var(--primary)); text-decoration: none;">Data Security</a></h3>
+            <p style="color: hsl(var(--muted-foreground)); margin-bottom: 0.5rem;">RLS/OLS, RBAC/ABAC, PII controls, key management</p>
+          </div>
+
+          <div style="margin-bottom: 1.5rem;">
+            <h3 style="font-size: 1.25rem; margin-bottom: 1rem;"><a href="data-architecture.html" style="color: hsl(var(--primary)); text-decoration: none;">Data Architecture</a></h3>
+            <p style="color: hsl(var(--muted-foreground)); margin-bottom: 0.5rem;">Data products & contracts, unified semantic layer, workload isolation/SLOs</p>
+          </div>
+
+          <div style="margin-bottom: 1.5rem;">
+            <h3 style="font-size: 1.25rem; margin-bottom: 1rem;"><a href="data-engineering.html" style="color: hsl(var(--primary)); text-decoration: none;">Data Engineering</a></h3>
+            <p style="color: hsl(var(--muted-foreground)); margin-bottom: 0.5rem;">ELT/ETL, streaming & CDC, orchestration, performance optimization</p>
+          </div>
+
+          <div style="margin-bottom: 1.5rem;">
+            <h3 style="font-size: 1.25rem; margin-bottom: 1rem;"><a href="data-modeling.html" style="color: hsl(var(--primary)); text-decoration: none;">Data Modeling</a></h3>
+            <p style="color: hsl(var(--muted-foreground)); margin-bottom: 0.5rem;">Dimensional, data vault, medallion, semantic</p>
+          </div>
+
+          <div style="margin-bottom: 1.5rem;">
+            <h3 style="font-size: 1.25rem; margin-bottom: 1rem;"><a href="data-visualization.html" style="color: hsl(var(--primary)); text-decoration: none;">Data Visualization</a></h3>
+            <p style="color: hsl(var(--muted-foreground)); margin-bottom: 0.5rem;">Decision-centric dashboards, KPI design, UI/UX, Power BI, Tableau</p>
+          </div>
+
+          <div style="margin-bottom: 1.5rem;">
+            <h3 style="font-size: 1.25rem; margin-bottom: 1rem;"><a href="devops-dataops.html" style="color: hsl(var(--primary)); text-decoration: none;">DataOps & CI/CD</a></h3>
+            <p style="color: hsl(var(--muted-foreground)); margin-bottom: 0.5rem;">Git, GitHub, Azure DevOps, CI/CD workflows, testing & release management</p>
+          </div>
+
+          <div style="margin-bottom: 1.5rem;">
+            <h3 style="font-size: 1.25rem; margin-bottom: 1rem;"><a href="openai.html" style="color: hsl(var(--primary)); text-decoration: none;">Applied AI</a></h3>
+            <p style="color: hsl(var(--muted-foreground)); margin-bottom: 0.5rem;">Copilot, Azure OpenAI, RAG over OneLake/Delta, Azure AI Foundry, Copilot Studio</p>
+          </div>
+
+          <div style="margin-bottom: 1.5rem;">
+            <h3 style="font-size: 1.25rem; color: hsl(var(--primary)); margin-bottom: 1rem;">Programming Languages</h3>
+            <p style="color: hsl(var(--muted-foreground)); margin-bottom: 0.5rem;">SQL, Python, DAX, Power Query (M), PySpark, C#</p>
+          </div>
+        </div>
+      </div>
+
+        <!-- Certifications Section - Always Visible -->
+        <div style="margin-top: 3rem;">
+          <div style="margin-bottom: 3rem;">
+            <h2 style="font-size: 2rem; margin-bottom: 1.5rem; color: hsl(var(--foreground));">Professional Certifications</h2>
+            
+            <!-- Certification Metrics -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 3rem;">
+              <div style="background: linear-gradient(135deg, #3b82f6, #1d4ed8); color: white; padding: 1.5rem; border-radius: var(--radius); text-align: center;">
+                <div style="font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem;">8</div>
+                <div style="font-size: 0.95rem; opacity: 0.9;">Microsoft Certifications</div>
+              </div>
+              <div style="background: linear-gradient(135deg, #ef4444, #dc2626); color: white; padding: 1.5rem; border-radius: var(--radius); text-align: center;">
+                <div style="font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem;">2</div>
+                <div style="font-size: 0.95rem; opacity: 0.9;">Databricks Certifications</div>
+              </div>
+              <div style="background: linear-gradient(135deg, #06b6d4, #0891b2); color: white; padding: 1.5rem; border-radius: var(--radius); text-align: center;">
+                <div style="font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem;">1</div>
+                <div style="font-size: 0.95rem; opacity: 0.9;">Snowflake Certification</div>
+              </div>
+              <div style="background: linear-gradient(135deg, #8b5cf6, #7c3aed); color: white; padding: 1.5rem; border-radius: var(--radius); text-align: center;">
+                <div style="font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem;">2</div>
+                <div style="font-size: 0.95rem; opacity: 0.9;">ICAgile Certifications</div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Microsoft Fabric & Power BI -->
+          <div style="margin-bottom: 3rem;">
+            <h3 style="font-size: 1.3rem; margin-bottom: 1.5rem; color: hsl(var(--primary)); border-bottom: 2px solid hsl(var(--primary) / 0.2); padding-bottom: 0.5rem;">Microsoft Fabric & Power BI</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 1.2rem;">
+              <!-- Fabric Data Engineer Associate -->
+              <div style="background: hsl(var(--card)); padding: 1.5rem; border-radius: var(--radius); border: 1px solid hsl(var(--border)); display: flex; align-items: center; gap: 1.5rem;">
+                <img src="fabric_dataengineer_badge.png" alt="Microsoft Fabric Data Engineer Associate badge" style="width: 80px; height: 80px; border-radius: 8px; object-fit: contain;" />
+                <div>
+                  <h4 style="margin: 0; color: hsl(var(--foreground)); font-size: 1.1rem;">Fabric Data Engineer Associate</h4>
+                  <p style="margin: 0; color: hsl(var(--muted-foreground)); font-size: 0.95rem;">Microsoft</p>
+                </div>
+              </div>
+
+              <!-- Fabric Analytics Engineer Associate -->
+              <div style="background: hsl(var(--card)); padding: 1.5rem; border-radius: var(--radius); border: 1px solid hsl(var(--border)); display: flex; align-items: center; gap: 1.5rem;">
+                <img src="fabric_data_analytics_engineer_associate.png" alt="Microsoft Fabric Analytics Engineer Associate badge" style="width: 160px; height: 160px; border-radius: 8px; object-fit: contain;" />
+                <div>
+                  <h4 style="margin: 0; color: hsl(var(--foreground)); font-size: 1.1rem;">Fabric Analytics Engineer Associate</h4>
+                  <p style="margin: 0; color: hsl(var(--muted-foreground)); font-size: 0.95rem;">Microsoft</p>
+                </div>
+              </div>
+
+              <!-- Power BI Data Analyst Associate -->
+              <div style="background: hsl(var(--card)); padding: 1.5rem; border-radius: var(--radius); border: 1px solid hsl(var(--border)); display: flex; align-items: center; gap: 1.5rem;">
+                <img src="https://images.credly.com/images/619f60f8-4f63-4772-910e-dc31c6f2f7e8/image.png" alt="Microsoft Power BI Data Analyst Associate badge" style="width: 80px; height: 80px; border-radius: 8px; object-fit: contain;" />
+                <div>
+                  <h4 style="margin: 0; color: hsl(var(--foreground)); font-size: 1.1rem;">Power BI Data Analyst Associate</h4>
+                  <p style="margin: 0; color: hsl(var(--muted-foreground)); font-size: 0.95rem;">Microsoft</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Data Platforms -->
+          <div style="margin-bottom: 3rem;">
+            <h3 style="font-size: 1.3rem; margin-bottom: 1.5rem; color: hsl(var(--primary)); border-bottom: 2px solid hsl(var(--primary) / 0.2); padding-bottom: 0.5rem;">Data Platforms</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 1.2rem;">
+              <!-- Databricks Certified Generative AI Engineer Associate -->
+              <div style="background: hsl(var(--card)); padding: 1.5rem; border-radius: var(--radius); border: 1px solid hsl(var(--border)); display: flex; align-items: center; gap: 1.5rem;">
+                <img src="https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/156687433" alt="Databricks Certified Generative AI Engineer Associate badge" style="width: 80px; height: 80px; border-radius: 8px; object-fit: contain;" />
+                <div>
+                  <h4 style="margin: 0; color: hsl(var(--foreground)); font-size: 1.1rem;">Databricks Certified Generative AI Engineer Associate</h4>
+                  <p style="margin: 0; color: hsl(var(--muted-foreground)); font-size: 0.95rem;">Databricks</p>
+                </div>
+              </div>
+
+              <!-- Databricks Certified Data Analyst Associate -->
+              <div style="background: hsl(var(--card)); padding: 1.5rem; border-radius: var(--radius); border: 1px solid hsl(var(--border)); display: flex; align-items: center; gap: 1.5rem;">
+                <img src="https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/155615126" alt="Databricks Certified Data Analyst Associate badge" style="width: 80px; height: 80px; border-radius: 8px; object-fit: contain;" />
+                <div>
+                  <h4 style="margin: 0; color: hsl(var(--foreground)); font-size: 1.1rem;">Databricks Certified Data Analyst Associate</h4>
+                  <p style="margin: 0; color: hsl(var(--muted-foreground)); font-size: 0.95rem;">Databricks</p>
+                </div>
+              </div>
+
+              <!-- Snowflake SnowPro Core -->
+              <div style="background: hsl(var(--card)); padding: 1.5rem; border-radius: var(--radius); border: 1px solid hsl(var(--border)); display: flex; align-items: center; gap: 1.5rem;">
+                <img src="https://images.credly.com/size/160x160/images/7a2ed5ab-2bed-4b5c-84e9-fc7c71275da4/SnowProCoreTM600.png" alt="Snowflake SnowPro Core badge" style="width: 80px; height: 80px; border-radius: 8px; object-fit: contain;" />
+                <div>
+                  <h4 style="margin: 0; color: hsl(var(--foreground)); font-size: 1.1rem;">Snowflake SnowPro Core</h4>
+                  <p style="margin: 0; color: hsl(var(--muted-foreground)); font-size: 0.95rem;">Snowflake</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Azure -->
+          <div style="margin-bottom: 3rem;">
+            <h3 style="font-size: 1.3rem; margin-bottom: 1.5rem; color: hsl(var(--primary)); border-bottom: 2px solid hsl(var(--primary) / 0.2); padding-bottom: 0.5rem;">Azure</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 1.2rem;">
+              <!-- Azure Data Engineer Associate -->
+              <div style="background: hsl(var(--card)); padding: 1.5rem; border-radius: var(--radius); border: 1px solid hsl(var(--border)); display: flex; align-items: center; gap: 1.5rem;">
+                <img src="https://images.credly.com/images/61542181-0e8d-496c-a17c-3d4bf590eda1/azure-data-engineer-associate-600x600.png" alt="Microsoft Azure Data Engineer Associate badge" style="width: 80px; height: 80px; border-radius: 8px; object-fit: contain;" />
+                <div>
+                  <h4 style="margin: 0; color: hsl(var(--foreground)); font-size: 1.1rem;">Azure Data Engineer Associate</h4>
+                  <p style="margin: 0; color: hsl(var(--muted-foreground)); font-size: 0.95rem;">Microsoft</p>
+                </div>
+              </div>
+
+              <!-- Azure Enterprise Data Analyst Associate -->
+              <div style="background: hsl(var(--card)); padding: 1.5rem; border-radius: var(--radius); border: 1px solid hsl(var(--border)); display: flex; align-items: center; gap: 1.5rem;">
+                <img src="https://images.credly.com/images/3f35db4f-41b9-4125-8b89-b5ccc5beb4b8/image.png" alt="Microsoft Azure Enterprise Data Analyst Associate badge" style="width: 80px; height: 80px; border-radius: 8px; object-fit: contain;" />
+                <div>
+                  <h4 style="margin: 0; color: hsl(var(--foreground)); font-size: 1.1rem;">Azure Enterprise Data Analyst Associate</h4>
+                  <p style="margin: 0; color: hsl(var(--muted-foreground)); font-size: 0.95rem;">Microsoft</p>
+                </div>
+              </div>
+
+              <!-- Azure Virtual Desktop Specialty -->
+              <div style="background: hsl(var(--card)); padding: 1.5rem; border-radius: var(--radius); border: 1px solid hsl(var(--border)); display: flex; align-items: center; gap: 1.5rem;">
+                <img src="https://learn.microsoft.com/en-us/media/learn/certification/badges/microsoft-certified-specialty-badge.svg" alt="Azure Virtual Desktop Specialty badge" style="width: 80px; height: 80px; border-radius: 8px; object-fit: contain;" />
+                <div>
+                  <h4 style="margin: 0; color: hsl(var(--foreground)); font-size: 1.1rem;">Azure Virtual Desktop Specialty</h4>
+                  <p style="margin: 0; color: hsl(var(--muted-foreground)); font-size: 0.95rem;">Microsoft</p>
+                </div>
+              </div>
+
+              <!-- Azure Cosmos DB Developer Specialty -->
+              <div style="background: hsl(var(--card)); padding: 1.5rem; border-radius: var(--radius); border: 1px solid hsl(var(--border)); display: flex; align-items: center; gap: 1.5rem;">
+                <img src="https://images.credly.com/images/515fa1dc-ac4a-4f08-ac73-6fd9694124cb/image.png" alt="Azure Cosmos DB Developer Specialty badge" style="width: 80px; height: 80px; border-radius: 8px; object-fit: contain;" />
+                <div>
+                  <h4 style="margin: 0; color: hsl(var(--foreground)); font-size: 1.1rem;">Azure Cosmos DB Developer Specialty</h4>
+                  <p style="margin: 0; color: hsl(var(--muted-foreground)); font-size: 0.95rem;">Microsoft</p>
+                </div>
+              </div>
+
+              <!-- Azure Data Fundamentals -->
+              <div style="background: hsl(var(--card)); padding: 1.5rem; border-radius: var(--radius); border: 1px solid hsl(var(--border)); display: flex; align-items: center; gap: 1.5rem;">
+                <img src="https://images.credly.com/images/70eb1e3f-d4de-4377-a062-b20fb29594ea/azure-data-fundamentals-600x600.png" alt="Azure Data Fundamentals badge" style="width: 80px; height: 80px; border-radius: 8px; object-fit: contain;" />
+                <div>
+                  <h4 style="margin: 0; color: hsl(var(--foreground)); font-size: 1.1rem;">Azure Data Fundamentals</h4>
+                  <p style="margin: 0; color: hsl(var(--muted-foreground)); font-size: 0.95rem;">Microsoft</p>
+                </div>
+              </div>
+
+              <!-- Azure AI Fundamentals -->
+              <div style="background: hsl(var(--card)); padding: 1.5rem; border-radius: var(--radius); border: 1px solid hsl(var(--border)); display: flex; align-items: center; gap: 1.5rem;">
+                <img src="https://images.credly.com/images/4136ced8-75d5-4afb-8677-40b6236e2672/azure-ai-fundamentals-600x600.png" alt="Azure AI Fundamentals badge" style="width: 80px; height: 80px; border-radius: 8px; object-fit: contain;" />
+                <div>
+                  <h4 style="margin: 0; color: hsl(var(--foreground)); font-size: 1.1rem;">Azure AI Fundamentals</h4>
+                  <p style="margin: 0; color: hsl(var(--muted-foreground)); font-size: 0.95rem;">Microsoft</p>
+                </div>
+              </div>
+
+              <!-- Azure Fundamentals -->
+              <div style="background: hsl(var(--card)); padding: 1.5rem; border-radius: var(--radius); border: 1px solid hsl(var(--border)); display: flex; align-items: center; gap: 1.5rem;">
+                <img src="https://images.credly.com/images/be8fcaeb-c769-4858-b567-ffaaa73ce8cf/image.png" alt="Azure Fundamentals badge" style="width: 80px; height: 80px; border-radius: 8px; object-fit: contain;" />
+                <div>
+                  <h4 style="margin: 0; color: hsl(var(--foreground)); font-size: 1.1rem;">Azure Fundamentals</h4>
+                  <p style="margin: 0; color: hsl(var(--muted-foreground)); font-size: 0.95rem;">Microsoft</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Agile & Project Management -->
+          <div style="margin-bottom: 2rem;">
+            <h3 style="font-size: 1.3rem; margin-bottom: 1.5rem; color: hsl(var(--primary)); border-bottom: 2px solid hsl(var(--primary) / 0.2); padding-bottom: 0.5rem;">Agile & Project Management</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 1.2rem;">
+              <!-- ICAgile Agile Project and Delivery Management -->
+              <div style="background: hsl(var(--card)); padding: 1.5rem; border-radius: var(--radius); border: 1px solid hsl(var(--border)); display: flex; align-items: center; gap: 1.5rem;">
+                <img src="https://images.credly.com/images/4243945b-8140-4c0b-8b60-3a4e24fd2aa3/image.png" alt="ICAgile Agile Project and Delivery Management badge" style="width: 80px; height: 80px; border-radius: 8px; object-fit: contain;" />
+                <div>
+                  <h4 style="margin: 0; color: hsl(var(--foreground)); font-size: 1.1rem;">ICAgile Agile Project and Delivery Management</h4>
+                  <p style="margin: 0; color: hsl(var(--muted-foreground)); font-size: 0.95rem;">ICAgile</p>
+                </div>
+              </div>
+
+              <!-- ICAgile Agile Fundamentals -->
+              <div style="background: hsl(var(--card)); padding: 1.5rem; border-radius: var(--radius); border: 1px solid hsl(var(--border)); display: flex; align-items: center; gap: 1.5rem;">
+                <img src="https://images.credly.com/images/37ba451a-4739-41b8-b90c-32ef9054a418/image.png" alt="ICAgile Agile Fundamentals badge" style="width: 80px; height: 80px; border-radius: 8px; object-fit: contain;" />
+                <div>
+                  <h4 style="margin: 0; color: hsl(var(--foreground)); font-size: 1.1rem;">ICAgile Agile Fundamentals</h4>
+                  <p style="margin: 0; color: hsl(var(--muted-foreground)); font-size: 0.95rem;">ICAgile</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile responsive styles -->
+      <style>
+        @media (max-width: 768px) {
+          #skills .certification-grid {
+            grid-template-columns: 1fr !important;
+          }
+        }
+      </style>
+    </div>
+
+    <!-- Work History Tab -->
+    <div class="tab-content" id="history">
+      <div>
+        <!-- Alternating Timeline (D3 sidebar removed) -->
+        <div class="alternating-timeline">
+          <div class="timeline-entry left">
+            <div class="timeline-content">
+              <div class="company-header">
+                <img class="company-logo" src="https://media.licdn.com/dms/image/v2/D4E0BAQHrWb5T4I2ayg/company-logo_100_100/B4EZW0R_1qGwAQ-/0/1742486372094?e=1758153600&v=beta&t=YEg18q6uOVAKgzr1D3kglirSEfTUuFVJv2gqTahALfM" alt="NRI North America">
+                <div>
+                  <div class="company-name">NRI North America</div>
+                  <div class="position">Senior Solution Architect</div>
+                </div>
+              </div>
+              <div class="timeline-details">
+                <div class="timeline-dates">Jun 2025 – Present · 3 mos</div>
+                <div class="timeline-location">Employment Type: Full-time</div>
+                <p class="timeline-description">Leading technical architecture and solution design for enterprise data platforms. Specializing in Microsoft Fabric implementations, data governance frameworks, and pre-sales technical consulting to drive digital transformation initiatives.</p>
+                <div class="timeline-skills"><strong>Skills:</strong> Microsoft Fabric · Data Architecture · Data Engineering · Data Strategies · Data Governance · Pre-Sales Technical Consulting</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-entry right">
+            <div class="timeline-content">
+              <div class="company-header">
+                <img class="company-logo" src="https://media.licdn.com/dms/image/v2/C4D0BAQF_eGCZHOLrww/company-logo_100_100/company-logo_100_100/0/1630467219947/quisitive_inc_logo?e=1758153600&v=beta&t=SbYhkc1ay0RNFkLEZO5ZGjTiKt-Pzg1RPGiWsw2Eo5g" alt="Quisitive">
+                <div>
+                  <div class="company-name">Quisitive</div>
+                  <div class="position">Lead Consultant — Azure Data Architect</div>
+                </div>
+              </div>
+              <div class="timeline-details">
+                <div class="timeline-dates">Jul 2024 – Jun 2025 · 1 yr</div>
+                <div class="timeline-location">Remote</div>
+                <p class="timeline-description">As a Lead Consultant, I played a pivotal role in the technical leadership and collaborative delivery of Azure Data solutions, including DPi30, On-Ramp to Azure Data accelerators, and Proof of Concept (PoC) initiatives. I led comprehensive workshops to define use cases, delivered Microsoft Fabric training, and explored advanced analytics, modeling, and AI capabilities to lay the groundwork for scalable data solutions.</p>
+                <p class="timeline-description">I partnered closely with Account Executives to develop strategic client roadmaps, focusing on value streams that supported long-term success. This collaboration helped transition PoCs into extended engagements aligned with client goals.</p>
+                <p class="timeline-description">A key highlight was leading dynamic client workshops using Copilot to demonstrate “The Art of the Possible,” facilitate use case development, and conduct live prototyping—driving innovation and stakeholder engagement.</p>
+                <p class="timeline-description">I also curated and maintained internal documentation for Fabric offerings, ensuring technical rigor and alignment with business objectives to support sales enablement and delivery consistency.</p>
+                <p class="timeline-description">By leveraging deep expertise in the Microsoft Azure ecosystem, I helped clients navigate their digital transformation journeys through technically sound and strategically aligned solutions.</p>
+                <div class="timeline-section-title">Awards</div>
+                <ul class="timeline-awards">
+                  <li>2025 Quisitive Hackathon Winning Team – Technical Lead</li>
+                  <li>2024 Combined Q2 & Q3 Brand Promise Award</li>
+                </ul>
+                <div class="timeline-skills"><strong>Skills:</strong> Microsoft Fabric · M365 Copilot · Azure Data Factory · Data Architecture · Technical Project Leadership · Synapse Analytics · Microsoft Power BI · Azure AI Studio · OpenAI · Apache Airflow · Azure Automation · Azure Databricks · Azure Data Lake · Azure Cosmos DB · Azure Functions · Azure DevOps · Business Intelligence (BI) · Strategic Data Analysis · Sales Presentations · Microsoft Purview · Enterprise Architecture · Strategic Roadmap Development · Client Engagement</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-entry left">
+            <div class="timeline-content">
+              <div class="company-header">
+                <img class="company-logo" src="https://media.licdn.com/dms/image/v2/D560BAQFNfYVy0oQA2A/company-logo_100_100/company-logo_100_100/0/1707755286334/neudesic_an_ibm_company_logo?e=1758153600&v=beta&t=4hjOGR7U0rDt80Q6c2VhtPbI_-vk7-nRRByr5_bpCxA" alt="Neudesic, an IBM Company">
+                <div>
+                  <div class="company-name">Neudesic, an IBM Company</div>
+                  <div class="position">Senior Consultant II - Business Intelligence Architect</div>
+                  <div class="position">Senior Consultant I - Senior Data Engineer</div>
+                </div>
+              </div>
+              <div class="timeline-details">
+                <div class="timeline-dates">Full-time · 1 yr 9 mos</div>
+                <div class="timeline-section-title">Senior Consultant II - Business Intelligence Architect</div>
+                <div class="timeline-location">Jun 2023 – Jul 2024 · 1 yr 2 mos · Remote</div>
+                <p class="timeline-description">Steer key technical endeavors, including dynamic reporting and data standardization, while also guiding advanced data engineering and modeling. My role is integral in achieving marked efficiency gains and client satisfaction, embodying a strategic and focused approach to data consulting and architectural design.</p>
+                <ul class="timeline-list">
+                  <li>Oversee client stakeholder communications, ensuring project goals are met with precision and professionalism.</li>
+                  <li>Initiate and manage comprehensive audits in Data Quality, Data Engineering, Architecture, Security, and BI, targeting both regulatory adherence and performance improvement, while strategically aligning with overarching business objectives.</li>
+                  <li>Facilitate regular training sessions on Power BI, Data Engineering, Analytics, and Reporting to embed best practices.</li>
+                  <li>Champion the formation and growth of a BI user group, encouraging collaborative learning and knowledge exchange.</li>
+                  <li>Hold a key role in developing and expanding Neudesic's dedicated BI practice with a focus on innovative solutions and methodologies for both training and IP development.</li>
+                  <li>Lead client discussions on data architecture, modeling, and business alignment, contributing to robust and scalable business infrastructure.</li>
+                </ul>
+                <div class="timeline-awards">
+                  <em>2023H2 Neudesic Certification Contest - 1st Place</em><br/>
+                  <em>2024H1 Neudesic Certification Contest - 4th Place</em>
+                </div>
+                <div class="timeline-skills"><strong>Skills:</strong> Microsoft Power BI · Data Warehousing · Key Performance Indicators · Business Process · Communication · Azure Data Lake · Business Strategy · Reporting & Analysis · Data Modeling · Business Intelligence (BI) · Azure Data Factory · Data Analytics · Agile Methodologies · Microsoft Azure · Visual C# · Data Presentation · Azure Cosmos DB · Azure SQL</div>
+
+                <div class="timeline-section-title">Senior Consultant I - Senior Data Engineer</div>
+                <div class="timeline-location">Nov 2022 – Jun 2023 · 8 mos</div>
+                <ul class="timeline-list">
+                  <li>Deploy and configure repositories and Azure resources to support the implementation of Neudesic’s ONE Data Platform Accelerator.</li>
+                  <li>Developed parameterized pipelines and stored procedures to pull data from multiple sources including on-prem databases and NoSQL databases into AzureSQL databases.</li>
+                  <li>Implemented incremental refreshes to correctly merge or update records when moving from short term storage to long term storage and optimize performance.</li>
+                  <li>Developed and implemented new data warehouse models leveraging external tables and custom stored procedures to normalize the data into a dimensional format.</li>
+                  <li>Created enterprise level Power BI data models along with custom training videos on how to best utilize the final reporting views most effectively.</li>
+                  <li>Implemented security best practices leveraging Azure Key Vault, AAD Security Groups, and database level permissions.</li>
+                </ul>
+                <div class="timeline-skills"><strong>Skills:</strong> Microsoft Excel · Microsoft Power BI · Synapse Analytics · SQL Azure · Data Warehousing · Key Performance Indicators · Business Process · Communication · Azure Data Lake · Business Strategy · Microsoft SQL Server · Reporting & Analysis · SQL · Data Modeling · Dimensional Modeling · Azure Data Factory · Visio · IT Consulting · Data Governance · SQL Server Integration Services (SSIS) · Transact-SQL (T-SQL) · Data Analytics · Agile Methodologies · Microsoft Azure · Visual C# · Extract, Transform, Load (ETL) · Data Presentation · Leadership · PowerPoint</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-entry right">
+            <div class="timeline-content">
+              <div class="company-header">
+                <img class="company-logo" src="https://media.licdn.com/dms/image/v2/D560BAQG5l3nKnBCEWA/company-logo_100_100/company-logo_100_100/0/1719861816497/slalom_consulting_logo?e=1758153600&v=beta&t=RCqztxd-PixeNE7jaYhPDfsPdiGptns0775ma6tIiX0" alt="Slalom">
+                <div>
+                  <div class="company-name">Slalom</div>
+                  <div class="position">Consultant - Data Engineer</div>
+                </div>
+              </div>
+              <div class="timeline-details">
+                <div class="timeline-dates">Jul 2021 – Nov 2022 · 1 yr 5 mos</div>
+                <div class="timeline-location">St. Louis</div>
+                <ul class="timeline-list">
+                  <li>Served as data lead on a team of consultants for the migration of 700+ reports from Tableau Server to Power BI by leveraging advanced VizQL, DAX, and parameterized M for effective deployment.</li>
+                  <li>Acted as a velocity enabler by developing parameterized ADF pipelines used to load many 900GB+ files to migrate data from Salesforce NGOC into a new data vault architecture.</li>
+                  <li>Developed enterprise reporting data models utilizing slowly changing dimensions, CosmosDB, ADLS, ADF, and Azure Databricks to track sensor data, notification effectiveness, and program adoption.</li>
+                  <li>Implemented a Bronze, Silver, Gold ADLS architecture supporting a Synapse Analytics workspace leveraging External Tables.</li>
+                  <li>Partnered with clients as a Data Engineering and BI expert to provide customized and evidence-based recommendations around costs, performance, staffing, and implementation.</li>
+                  <li>Acted as a mentor and course facilitator for Slalom's internal D&A Academy.</li>
+                </ul>
+                <div class="timeline-skills"><strong>Skills:</strong> Microsoft Excel · C# · Microsoft Power BI · Synapse Analytics · SQL Azure · Data Warehousing · Key Performance Indicators · Business Process · Communication · Azure Data Lake · Business Strategy · Microsoft SQL Server · Reporting & Analysis · SQL · Data Modeling · Dimensional Modeling · Azure Data Factory · Visio · IT Consulting · Data Governance · SQL Server Integration Services (SSIS) · Transact-SQL (T-SQL) · Data Analytics · Agile Methodologies · Microsoft Azure · Visual C# · Extract, Transform, Load (ETL) · Data Presentation · Leadership · PowerPoint</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-entry left">
+            <div class="timeline-content">
+              <div class="company-header">
+                <img class="company-logo" src="https://media.licdn.com/dms/image/v2/D560BAQGVxVcP5NbFOQ/company-logo_100_100/company-logo_100_100/0/1666880576149/oakwood_systems_group_logo?e=1758153600&v=beta&t=tgnSirh-RtbRMu2OLtZsMcSnVJIgE0fdVlu57dmnYgg" alt="Oakwood Systems Group">
+                <div>
+                  <div class="company-name">Oakwood Systems Group</div>
+                  <div class="position">Consultant</div>
+                </div>
+              </div>
+              <div class="timeline-details">
+                <div class="timeline-dates">Oct 2020 – Jul 2021 · 10 mos</div>
+                <div class="timeline-location">Creve Coeur, Missouri, United States</div>
+                <ul class="timeline-list">
+                  <li>Developed Power BI reports to support general ledger accounting and connection with a 3rd party ERP system leveraging an Azure SQL reporting database for increased performance.</li>
+                  <li>Created customized technical documentation and training for clients on Power BI, SQL, and development best practices.</li>
+                  <li>Migrated on-premise SQL Databases, SSRS reports, and SSIS tasks to Azure on a BI team that reported to the client CFO.</li>
+                  <li>Developed emergency Power BI reports to allow the client to quickly implement state-mandated COVID testing data tracking using a custom API to a 3rd party testing vendor, loading into Azure SQL and displayed via Power BI dashboards and Paginated Reports with HIPAA-compliant RLS and column masking.</li>
+                </ul>
+                <div class="timeline-skills"><strong>Skills:</strong> Microsoft Excel · C# · Microsoft Power BI · SQL Azure · Data Warehousing · Key Performance Indicators · Business Process · Communication · Microsoft SQL Server · Reporting & Analysis · SQL · Data Modeling · Dimensional Modeling · Azure Data Factory · IT Consulting · Data Governance · SQL Server Integration Services (SSIS) · Transact-SQL (T-SQL) · Data Analytics · Agile Methodologies · Microsoft Azure · Visual C# · Extract, Transform, Load (ETL) · Data Presentation · PowerPoint</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-entry right">
+            <div class="timeline-content">
+              <div class="company-header">
+                <img class="company-logo" src="https://media.licdn.com/dms/image/v2/D560BAQGNusejGrG_Yw/company-logo_100_100/company-logo_100_100/0/1734359909715/daugherty_business_solutions_logo?e=1758153600&v=beta&t=tddjjNa815txyRTjvAzPd9jMLiP3DoPRA4bztih54SA" alt="Daugherty Business Solutions">
+                <div>
+                  <div class="company-name">Daugherty Business Solutions</div>
+                  <div class="position">Associate Consultant</div>
+                </div>
+              </div>
+              <div class="timeline-details">
+                <div class="timeline-dates">Jan 2019 – Mar 2020 · 1 yr 3 mos</div>
+                <div class="timeline-location">Greater St. Louis Area</div>
+                <p class="timeline-description">Completed Daugherty University - Data & AI</p>
+                <ul class="timeline-list">
+                  <li>Developed SSRS reports utilizing dynamic SQL, CTEs, optimized execution plans, and TFS to allow for the creation of over 120 KPI’s, metrics, and operational visuals.</li>
+                  <li>Built parameterized SSIS pipelines to gather data from all client manufacturing locations in North America.</li>
+                </ul>
+                <div class="timeline-skills"><strong>Skills:</strong> Microsoft Excel · Microsoft Power BI · Data Warehousing · Key Performance Indicators · Business Process · Communication · Microsoft SQL Server · Reporting & Analysis · SQL · IT Consulting · SQL Server Integration Services (SSIS) · Transact-SQL (T-SQL) · Data Analytics · Agile Methodologies · Extract, Transform, Load (ETL) · Data Presentation · PowerPoint</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Resume Tab -->
+    <div class="tab-content" id="resume">
+      <div class="resume-viewer" style="max-width: 900px; margin: 0 auto;">
+        <div style="text-align: center; padding: 2rem; background: hsl(var(--card)); border: 1px solid hsl(var(--border)); border-radius: var(--radius); margin-bottom: 2rem;">
+          <h3 style="color: hsl(var(--foreground)); margin-bottom: 1rem;">Resume</h3>
+          <p style="color: hsl(var(--muted-foreground)); margin-bottom: 1rem;">
+            View my complete professional experience and accomplishments below.
+          </p>
+          <a href="Resume_Daly_425.pdf" target="_blank" style="display: inline-flex; align-items: center; gap: 0.5rem; background: hsl(var(--primary)); color: hsl(var(--primary-foreground)); padding: 0.75rem 1.5rem; border-radius: var(--radius); text-decoration: none; font-weight: 500; transition: all 0.3s ease;">
+            <i class="fas fa-download"></i>
+            Download Resume PDF
+          </a>
+        </div>
+        
+        <!-- PDF Viewer -->
+        <div style="width: 100%; height: 1200px; border: 1px solid hsl(var(--border)); border-radius: var(--radius); overflow: auto; background: hsl(var(--card)); position: relative;">
+          <iframe 
+            src="Resume_Daly_425.pdf#toolbar=1&navpanes=0&scrollbar=1&zoom=FitH&view=FitH" 
+            width="100%" 
+            height="100%" 
+            style="border: none; display: block; min-height: 1200px;"
+            title="Brendan Daly Resume"
+            onload="this.style.height='1200px';">
+            <div style="padding: 2rem; text-align: center; color: hsl(var(--muted-foreground));">
+              <p>Your browser does not support PDF viewing. Please download the resume file directly.</p>
+              <a href="Resume_Daly_425.pdf" target="_blank" style="color: hsl(var(--primary)); text-decoration: none;">
+                <i class="fas fa-download"></i> Download Resume PDF
+              </a>
+            </div>
+          </iframe>
+        </div>
+        
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Common JavaScript -->
+  <script src="common.js"></script>
+  
+  <!-- Page-specific JavaScript: keep only tabs, project filter, and resume lazy-load; remove duplicate side nav logic -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const tabButtons = document.querySelectorAll('.tab-button');
+      const tabContents = document.querySelectorAll('.tab-content');
+
+      tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          const targetTab = button.getAttribute('data-tab');
+          
+          tabButtons.forEach(btn => btn.classList.remove('active'));
+          tabContents.forEach(content => content.classList.remove('active'));
+          
+          button.classList.add('active');
+          document.getElementById(targetTab).classList.add('active');
+
+          // Note: PDF loading removed to prevent any downloads
+        });
+      });
+
+      // Project filtering functionality
+      const projectNavButtons = document.querySelectorAll('.project-nav-btn');
+      const projectCards = document.querySelectorAll('.project-card');
+
+      function applyProjectFilter(filter) {
+        if (!filter || filter === 'all' || filter === '') {
+          projectCards.forEach(card => card.classList.remove('hidden'));
+          return;
+        }
+        projectCards.forEach(card => {
+          const industry = card.getAttribute('data-industry');
+          if (industry === filter) card.classList.remove('hidden');
+          else card.classList.add('hidden');
+        });
+      }
+
+      // Default: show all projects
+      applyProjectFilter('all');
+
+      projectNavButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          const filter = button.getAttribute('data-filter');
+          const isCurrentlyActive = button.classList.contains('active');
+          
+          // Clear all active states
+          projectNavButtons.forEach(btn => { 
+            btn.classList.remove('active'); 
+            btn.setAttribute('aria-pressed', 'false'); 
+          });
+          
+          if (isCurrentlyActive) {
+            // If clicking the active button, deselect it and show all
+            applyProjectFilter('all');
+          } else {
+            // If clicking an inactive button, select it and filter
+            button.classList.add('active');
+            button.setAttribute('aria-pressed', 'true');
+            applyProjectFilter(filter);
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

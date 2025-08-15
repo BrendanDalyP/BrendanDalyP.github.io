@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Modeling - Brendan Daly | Data & Analytics Leader</title>
+  <meta name="description" content="Data Modeling expertise and capabilities">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
+  
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <!-- Add common.css for unified navigation styles -->
+  <link rel="stylesheet" href="common.css">
+  
+  <style>
+    :root {
+      --background: 0 0% 100%;
+      --foreground: 222.2 84% 4.9%;
+      --card: 0 0% 100%;
+      --primary: 222.2 47.4% 11.2%;
+      --primary-foreground: 210 40% 98%;
+      --secondary: 210 40% 96.1%;
+      --muted-foreground: 215.4 16.3% 46.9%;
+      --border: 214.3 31.8% 91.4%;
+      --radius: 0.5rem;
+    }
+
+    .dark {
+      --background: 222.2 84% 4.9%;
+      --foreground: 210 40% 98%;
+      --card: 222.2 84% 4.9%;
+      --primary: 210 40% 98%;
+      --primary-foreground: 222.2 47.4% 11.2%;
+      --secondary: 217.2 32.6% 17.5%;
+      --muted-foreground: 215 20.2% 65.1%;
+      --border: 217.2 32.6% 17.5%;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: hsl(var(--background));
+      color: hsl(var(--foreground));
+      transition: background-color 0.3s, color 0.3s;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    main {
+      flex: 1;
+      padding: 3rem 0;
+      margin-left: 300px;
+    }
+
+    .page-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .page-subtitle {
+      font-size: 1.125rem;
+      color: hsl(var(--muted-foreground));
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .content-section {
+      background-color: hsl(var(--card));
+      border: 1px solid hsl(var(--border));
+      border-radius: var(--radius);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: hsl(var(--foreground));
+      border-bottom: 2px solid hsl(var(--primary));
+      padding-bottom: 0.5rem;
+    }
+
+    .subsection-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin: 1.5rem 0 1rem 0;
+      color: hsl(var(--primary));
+    }
+
+    .section-content {
+      color: hsl(var(--muted-foreground));
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .highlight-card {
+      background: linear-gradient(135deg, hsl(var(--card)), hsl(var(--secondary)));
+      border: 1px solid hsl(var(--border));
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin: 1rem 0;
+    }
+
+    .highlight-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: hsl(var(--primary));
+      margin-bottom: 0.5rem;
+    }
+
+    .highlight-content {
+      color: hsl(var(--muted-foreground));
+      line-height: 1.6;
+    }
+
+    .footer {
+      border-top: 1px solid hsl(var(--border));
+      padding: 2rem 0;
+      text-align: center;
+      color: hsl(var(--muted-foreground));
+      margin-left: 300px;
+    }
+
+    @media (max-width: 768px) {
+      main, .footer {
+        margin-left: 0;
+      }
+      
+      .page-title {
+        font-size: 2rem;
+      }
+      
+      .content-section {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Inject unified side navigation -->
+  <button class="side-nav-toggle" id="sideNavToggle" aria-label="Toggle navigation">
+    <i class="fas fa-bars"></i>
+  </button>
+  <div class="nav-overlay" id="navOverlay"></div>
+  <header class="header" id="sideNav">
+    <div style="display: flex; justify-content: flex-start; align-items: center; padding: 0 2rem; margin-bottom: 2rem;">
+      <a href="index.html" class="logo">Brendan Daly</a>
+    </div>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="experience.html">Experience</a>
+      <div class="dropdown">
+        <button class="dropdown-toggle">
+          <span>Competencies</span>
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="dropdown-menu">
+          <a href="data-visualization.html">Data Visualization</a>
+          <a href="data-engineering.html">Data Engineering</a>
+          <a href="data-architecture.html">Data Architecture</a>
+          <a href="data-modeling.html" class="active">Data Modeling</a>
+          <a href="ai-implementation.html">AI Implementation</a>
+          <a href="data-strategy.html">Data Strategy</a>
+          <a href="data-governance.html">Data Governance</a>
+          <a href="devops-dataops.html">DevOps & DataOps</a>
+        </div>
+      </div>
+    </nav>
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon sun">
+        <circle cx="12" cy="12" r="5"></circle>
+        <line x1="12" y1="1" x2="12" y2="3"></line>
+        <line x1="12" y1="21" x2="12" y2="23"></line>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+        <line x1="1" y1="12" x2="3" y2="12"></line>
+        <line x1="21" y1="12" x2="23" y2="12"></line>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon moon">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+      </svg>
+    </button>
+  </header>
+
+  <main class="container">
+    <h1 class="page-title">Data Modeling</h1>
+    <p class="page-subtitle">Dimensional, data vault, medallion, and semantic modeling approaches for enterprise data</p>
+
+    <div class="content-section">
+      <h2 class="section-title">Overview</h2>
+      <div class="section-content">
+        <p>
+          Data modeling provides the structural foundation for how data is organized, stored, and accessed across analytics platforms. It translates business requirements into technical schemas that enable both performance and flexibility while maintaining data integrity and relationships.
+        </p>
+        <p>
+          This competency encompasses multiple modeling methodologies, each optimized for different use cases and analytical patterns, from traditional dimensional warehousing to modern lakehouse architectures.
+        </p>
+      </div>
+    </div>
+
+    <div class="content-section">
+      <h2 class="section-title">Dimensional Modeling</h2>
+      <div class="section-content">
+        <p>
+          Traditional data warehouse modeling approach optimized for analytical workloads and business intelligence reporting.
+        </p>
+        
+        <div class="highlight-card">
+          <h4 class="highlight-title">Star Schema Design</h4>
+          <p class="highlight-content">
+            Central fact tables surrounded by dimension tables, providing intuitive business views with optimal query performance for aggregations and filtering.
+          </p>
+        </div>
+        
+        <div class="highlight-card">
+          <h4 class="highlight-title">Snowflake Schema</h4>
+          <p class="highlight-content">
+            Normalized dimensional structures that reduce storage requirements while maintaining analytical performance for complex hierarchical data.
+          </p>
+        </div>
+        
+        <div class="highlight-card">
+          <h4 class="highlight-title">Slowly Changing Dimensions</h4>
+          <p class="highlight-content">
+            Type 1, 2, and 3 SCD patterns for managing historical changes in dimensional attributes while preserving analytical consistency.
+          </p>
+        </div>
+        
+        <div class="highlight-card">
+          <h4 class="highlight-title">Conformed Dimensions</h4>
+          <p class="highlight-content">
+            Shared dimension structures across multiple data marts enabling consistent cross-functional reporting and drill-across capabilities.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-section">
+      <h2 class="section-title">Data Vault Modeling</h2>
+      <div class="section-content">
+        <p>
+          Agile, auditable modeling methodology that separates business keys, relationships, and descriptive attributes for maximum flexibility and historical tracking.
+        </p>
+        
+        <div class="highlight-card">
+          <h4 class="highlight-title">Hubs</h4>
+          <p class="highlight-content">
+            Core business entities containing unique business keys and minimal metadata, providing stable anchor points for data integration.
+          </p>
+        </div>
+        
+        <div class="highlight-card">
+          <h4 class="highlight-title">Links</h4>
+          <p class="highlight-content">
+            Relationship structures that capture associations between business entities with full auditability and temporal tracking.
+          </p>
+        </div>
+        
+        <div class="highlight-card">
+          <h4 class="highlight-title">Satellites</h4>
+          <p class="highlight-content">
+            Descriptive attributes and context data with complete change history, enabling time-variant analysis and compliance requirements.
+          </p>
+        </div>
+        
+        <div class="highlight-card">
+          <h4 class="highlight-title">Point-in-Time Tables</h4>
+          <p class="highlight-content">
+            Performance optimization structures that provide efficient access to historical state across multiple satellites for reporting and analytics.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-section">
+      <h2 class="section-title">Medallion Architecture</h2>
+      <div class="section-content">
+        <p>
+          Modern lakehouse modeling pattern that organizes data processing through bronze, silver, and gold layers for progressive refinement and consumption.
+        </p>
+        
+        <div class="highlight-card">
+          <h4 class="highlight-title">Bronze Layer (Raw Zone)</h4>
+          <p class="highlight-content">
+            Unprocessed data in its original format providing an immutable source of truth with full lineage and audit capabilities.
+          </p>
+        </div>
+        
+        <div class="highlight-card">
+          <h4 class="highlight-title">Silver Layer (Curated Zone)</h4>
+          <p class="highlight-content">
+            Cleaned, validated, and standardized data with consistent schemas, data quality checks, and business rules applied.
+          </p>
+        </div>
+        
+        <div class="highlight-card">
+          <h4 class="highlight-title">Gold Layer (Consumption Zone)</h4>
+          <p class="highlight-content">
+            Business-ready data optimized for specific use cases including aggregated metrics, KPIs, and domain-specific data marts.
+          </p>
+        </div>
+        
+        <div class="highlight-card">
+          <h4 class="highlight-title">Delta Lake Integration</h4>
+          <p class="highlight-content">
+            ACID transaction support with time travel capabilities enabling both batch and streaming data processing patterns.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-section">
+      <h2 class="section-title">Semantic Modeling</h2>
+      <div class="section-content">
+        <p>
+          Business-focused data models that provide consistent definitions, metrics, and relationships for self-service analytics and reporting.
+        </p>
+        
+        <div class="highlight-card">
+          <h4 class="highlight-title">Universal Semantic Layer</h4>
+          <p class="highlight-content">
+            Centralized business logic layer that provides consistent metric definitions across all analytical tools and platforms.
+          </p>
+        </div>
+        
+        <div class="highlight-card">
+          <h4 class="highlight-title">DAX and MDX Modeling</h4>
+          <p class="highlight-content">
+            Advanced analytical expressions for calculated columns, measures, and complex business logic in Power BI and Analysis Services.
+          </p>
+        </div>
+        
+        <div class="highlight-card">
+          <h4 class="highlight-title">Metric Stores</h4>
+          <p class="highlight-content">
+            Centralized repositories for business metrics with versioning, documentation, and governance to ensure analytical consistency.
+          </p>
+        </div>
+        
+        <div class="highlight-card">
+          <h4 class="highlight-title">Self-Service Enablement</h4>
+          <p class="highlight-content">
+            User-friendly abstractions that enable business users to create reports and analyses without deep technical knowledge.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-section">
+      <h2 class="section-title">Modern Patterns</h2>
+      <div class="section-content">
+        <p>
+          Contemporary modeling approaches that support real-time analytics, streaming data, and cloud-native architectures.
+        </p>
+        
+        <div class="subsection-title">Event-Driven Modeling</div>
+        <div class="highlight-card">
+          <h4 class="highlight-title">Event Sourcing</h4>
+          <p class="highlight-content">
+            Capturing business events as immutable facts enabling temporal analysis and system state reconstruction at any point in time.
+          </p>
+        </div>
+        
+        <div class="subsection-title">Graph Modeling</div>
+        <div class="highlight-card">
+          <h4 class="highlight-title">Network Analysis</h4>
+          <p class="highlight-content">
+            Modeling complex relationships and networks for fraud detection, recommendation systems, and social network analysis.
+          </p>
+        </div>
+        
+        <div class="subsection-title">Streaming Models</div>
+        <div class="highlight-card">
+          <h4 class="highlight-title">Real-Time Analytics</h4>
+          <p class="highlight-content">
+            Designing schemas and processing patterns for continuous data streams enabling immediate insights and operational responses.
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer container">
+    <p>&copy; 2025 Brendan Daly. All rights reserved.</p>
+  </footer>
+
+  <!-- Common JavaScript for unified nav -->
+  <script src="common.js"></script>
+</body>
+</html>

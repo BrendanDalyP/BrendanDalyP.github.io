@@ -16,6 +16,7 @@
   
   <!-- FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="common.css">
   
   <style>
     :root {
@@ -90,150 +91,145 @@
       padding: 0 1rem;
     }
 
-    .header {
+    /* Enforce unified side-nav layout on this page */
+    #sideNav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 280px;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(20px);
+      border-right: 1px solid hsl(var(--border) / 0.3);
+      z-index: 1000;
+      padding: 2rem 0;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 0;
-      border-bottom: 1px solid hsl(var(--border));
+      flex-direction: column;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
     }
 
-    .logo {
+    .dark #sideNav {
+      background: rgba(15,15,15,0.95);
+    }
+
+    #sideNav.open {
+      transform: translateX(0);
+    }
+
+    #sideNav .logo {
+      padding: 0 2rem;
+      margin-bottom: 2rem;
       font-size: 1.5rem;
       font-weight: 700;
       color: hsl(var(--foreground));
       text-decoration: none;
     }
 
-    .nav {
+    #sideNav .nav {
+      flex: 1;
       display: flex;
-      gap: 2rem;
-      align-items: center;
-    }
-
-    .nav > a {
-      color: hsl(var(--muted-foreground));
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
-
-    .nav > a:hover,
-    .nav > a.active {
-      color: hsl(var(--foreground));
-    }
-
-    /* Dropdown Styles */
-    .dropdown {
-      position: relative;
-    }
-
-    .dropdown-toggle {
-      color: hsl(var(--muted-foreground));
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s;
-      display: flex;
-      align-items: center;
+      flex-direction: column;
       gap: 0.5rem;
+      padding: 0 1rem;
+    }
+
+    #sideNav .nav > a,
+    #sideNav .dropdown-toggle {
+      padding: 0.75rem 1rem;
+      color: hsl(var(--muted-foreground));
+      text-decoration: none;
+      border-radius: var(--radius);
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: none;
+      border: none;
+      width: 100%;
+      font-size: 1rem;
       cursor: pointer;
     }
 
-    .dropdown.active .dropdown-toggle {
+    #sideNav .nav > a:hover,
+    #sideNav .dropdown-toggle:hover,
+    #sideNav .nav > a.active {
+      background: hsl(var(--accent));
       color: hsl(var(--foreground));
     }
 
-    .dropdown-toggle:hover {
-      color: hsl(var(--foreground));
+    #sideNav .dropdown-menu {
+      display: none;
+      flex-direction: column;
+      gap: 0.25rem;
+      margin-top: 0.25rem;
+      padding-left: 0;
     }
 
-    .dropdown-toggle i {
-      font-size: 0.75rem;
-      transition: transform 0.3s;
+    #sideNav .dropdown-menu.show {
+      display: flex;
     }
 
-    .dropdown:hover .dropdown-toggle i {
-      transform: rotate(180deg);
-    }
-
-    .dropdown-menu {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background-color: hsl(var(--card));
-      border: 1px solid hsl(var(--border));
-      border-radius: var(--radius);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-      min-width: 200px;
-      padding: 0.5rem 0;
-      margin-top: 0.5rem;
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(-10px);
-      transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
-      z-index: 1000;
-    }
-
-    .dropdown:hover .dropdown-menu {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-
-    .dropdown-menu a {
-      display: block;
+    #sideNav .dropdown-menu a {
       padding: 0.5rem 1rem;
-      color: hsl(var(--foreground));
+      color: hsl(var(--muted-foreground));
       text-decoration: none;
-      font-weight: 400;
-      transition: background-color 0.3s;
-    }
-
-    .dropdown-menu a:hover,
-    .dropdown-menu a.active {
-      background-color: hsl(var(--accent));
-      color: hsl(var(--accent-foreground));
-    }
-
-    .theme-toggle {
-      background: none;
-      border: 1px solid hsl(var(--border));
       border-radius: var(--radius);
-      width: 2.5rem;
-      height: 2.5rem;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+      margin-left: 1rem;
+    }
+
+    #sideNav .dropdown-menu a:hover {
+      background: hsl(var(--muted));
+      color: hsl(var(--foreground));
+    }
+
+    .side-nav-toggle {
+      position: fixed;
+      top: 2rem;
+      left: 2rem;
+      z-index: 1001;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border: 1px solid hsl(var(--border) / 0.3);
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      position: relative;
+      transition: all 0.3s ease;
       color: hsl(var(--foreground));
+      font-size: 1.2rem;
     }
 
-    .theme-toggle svg {
-      width: 1.2rem;
-      height: 1.2rem;
-      transition: transform 0.3s, opacity 0.3s;
+    .dark .side-nav-toggle {
+      background: rgba(15, 15, 15, 0.95);
     }
 
-    .theme-toggle .sun {
-      opacity: 1;
-      transform: rotate(0) scale(1);
+    .side-nav-toggle:hover {
+      background: hsl(var(--accent));
+      transform: scale(1.05);
     }
 
-    .theme-toggle .moon {
-      position: absolute;
+    .nav-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 999;
       opacity: 0;
-      transform: rotate(90deg) scale(0);
+      visibility: hidden;
+      transition: all 0.3s ease;
     }
 
-    .dark .theme-toggle .sun {
-      opacity: 0;
-      transform: rotate(-90deg) scale(0);
-    }
-
-    .dark .theme-toggle .moon {
+    .nav-overlay.show {
       opacity: 1;
-      transform: rotate(0) scale(1);
+      visibility: visible;
     }
 
     main {
@@ -368,33 +364,30 @@
   </style>
 </head>
 <body>
-  <header class="header container">
-    <a href="index.html" class="logo">Brendan Daly</a>
+  <!-- Side Navigation -->
+  <button class="side-nav-toggle" id="sideNavToggle" aria-label="Toggle navigation"><i class="fas fa-bars"></i></button>
+  <div class="nav-overlay" id="navOverlay"></div>
+  <header class="header" id="sideNav">
+    <div style="display: flex; justify-content: flex-start; align-items: center; padding: 0 2rem; margin-bottom: 2rem;">
+      <a href="index.html" class="logo">Brendan Daly</a>
+    </div>
     <nav class="nav">
       <a href="index.html">Home</a>
-      <div class="dropdown active">
-        <a href="#" class="dropdown-toggle">Competencies <i class="fas fa-chevron-down"></i></a>
+      <a href="experience.html">Experience</a>
+      <div class="dropdown">
+        <button class="dropdown-toggle"><span>Competencies</span><i class="fas fa-chevron-down"></i></button>
         <div class="dropdown-menu">
           <a href="data-visualization.html">Data Visualization</a>
           <a href="data-engineering.html" class="active">Data Engineering</a>
           <a href="data-architecture.html">Data Architecture</a>
+          <a href="data-modeling.html">Data Modeling</a>
+          <a href="data-security.html">Data Security</a>
           <a href="ai-implementation.html">AI Implementation</a>
           <a href="data-strategy.html">Data Strategy</a>
           <a href="data-governance.html">Data Governance</a>
           <a href="devops-dataops.html">DevOps & DataOps</a>
         </div>
       </div>
-      <div class="dropdown">
-        <a href="#" class="dropdown-toggle">Tools <i class="fas fa-chevron-down"></i></a>
-        <div class="dropdown-menu">
-          <a href="power-bi.html">Power BI</a>
-          <a href="fabric.html">Fabric</a>
-          <a href="databricks.html">Databricks</a>
-          <a href="openai.html">OpenAI</a>
-        </div>
-      </div>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
     </nav>
     <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon sun">
@@ -581,6 +574,7 @@
     <p>&copy; 2025 Brendan Daly. All rights reserved.</p>
   </footer>
 
+  <script src="common.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       // Theme toggle functionality

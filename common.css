@@ -1,0 +1,735 @@
+/* Unified Navigation and Common Styles */
+:root {
+  --background: 0 0% 100%;
+  --foreground: 222.2 84% 4.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 222.2 84% 4.9%;
+  --primary: 222.2 47.4% 11.2%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 210 40% 96.1%;
+  --secondary-foreground: 222.2 47.4% 11.2%;
+  --muted: 210 40% 96.1%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+  --accent: 210 40% 96.1%;
+  --accent-foreground: 222.2 47.4% 11.2%;
+  --border: 214.3 31.8% 91.4%;
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: 222.2 84% 4.9%;
+  --foreground: 210 40% 98%;
+  --card: 222.2 84% 4.9%;
+  --card-foreground: 210 40% 98%;
+  --primary: 210 40% 98%;
+  --primary-foreground: 222.2 47.4% 11.2%;
+  --secondary: 217.2 32.6% 17.5%;
+  --secondary-foreground: 210 40% 98%;
+  --muted: 217.2 32.6% 17.5%;
+  --muted-foreground: 215 20.2% 65.1%;
+  --accent: 217.2 32.6% 17.5%;
+  --accent-foreground: 210 40% 98%;
+  --border: 217.2 32.6% 17.5%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  transition: background-color 0.3s, color 0.3s;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Unified Header Styles */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  background-color: hsl(var(--background) / 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid hsl(var(--border) / 0.5);
+  z-index: 100;
+  transition: all 0.3s ease;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 280px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-right: 1px solid hsl(var(--border) / 0.3);
+  z-index: 1000;
+  padding: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+
+.header.open {
+  transform: translateX(0);
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: hsl(var(--foreground));
+  text-decoration: none;
+}
+
+.header .logo {
+  padding: 0 2rem;
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: hsl(var(--foreground));
+  text-decoration: none;
+}
+
+.nav {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.header .nav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0 1rem;
+}
+
+.nav > a {
+  color: hsl(var(--muted-foreground));
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav > a:hover,
+.nav > a.active {
+  color: hsl(var(--foreground));
+}
+
+.header .nav > a,
+.header .dropdown-toggle {
+  padding: 0.75rem 1rem;
+  color: hsl(var(--muted-foreground));
+  text-decoration: none;
+  border-radius: var(--radius);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: none;
+  border: none;
+  width: 100%;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.header .nav > a:hover,
+.header .dropdown-toggle:hover,
+.header .nav > a.active {
+  background: hsl(var(--accent));
+  color: hsl(var(--foreground));
+}
+
+/* Dropdown Styles */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-toggle {
+  color: hsl(var(--muted-foreground));
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.dropdown-toggle:hover {
+  color: hsl(var(--foreground));
+}
+
+.dropdown-toggle i {
+  font-size: 0.75rem;
+  transition: transform 0.3s;
+}
+
+.dropdown:hover .dropdown-toggle i {
+  transform: rotate(180deg);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--radius);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  min-width: 200px;
+  padding: 0.5rem 0;
+  margin-top: 0.5rem;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+  z-index: 1000;
+}
+
+.dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.header .dropdown {
+  position: relative;
+}
+
+.header .dropdown-menu {
+  display: none;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-top: 0.25rem;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.header .dropdown-menu.show {
+  display: flex;
+}
+
+.header .dropdown-menu a {
+  padding: 0.5rem 1rem;
+  color: hsl(var(--muted-foreground));
+  text-decoration: none;
+  border-radius: var(--radius);
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  margin-left: 1rem;
+}
+
+.header .dropdown-menu a:hover {
+  background: hsl(var(--muted));
+  color: hsl(var(--foreground));
+}
+
+.theme-toggle {
+  background: none;
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--radius);
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: hsl(var(--foreground));
+  transition: background-color 0.3s;
+}
+
+.theme-toggle:hover {
+  background-color: hsl(var(--accent));
+}
+
+.theme-toggle svg {
+  width: 1.2rem;
+  height: 1.2rem;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.theme-toggle .sun {
+  opacity: 1;
+  transform: rotate(0) scale(1);
+}
+
+.theme-toggle .moon {
+  position: absolute;
+  opacity: 0;
+  transform: rotate(90deg) scale(0);
+}
+
+.dark .theme-toggle .sun {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0);
+}
+
+.dark .theme-toggle .moon {
+  opacity: 1;
+  transform: rotate(0) scale(1);
+}
+
+/* Side Nav Toggle Button */
+.side-nav-toggle {
+  position: fixed;
+  top: 2rem;
+  left: 2rem;
+  z-index: 1001;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid hsl(var(--border) / 0.3);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: hsl(var(--foreground));
+  font-size: 1.2rem;
+}
+
+.side-nav-toggle:hover {
+  background: hsl(var(--accent));
+  transform: scale(1.05);
+}
+
+/* Hide hamburger when sidebar is open */
+.side-nav-toggle.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Overlay */
+.nav-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.nav-overlay.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Mobile Menu */
+.mobile-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: hsl(var(--foreground));
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .nav {
+    display: none;
+  }
+  
+  .mobile-menu-toggle {
+    display: block;
+  }
+}
+
+/* Common Button Styles */
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-decoration: none;
+  border: 2px solid transparent;
+}
+
+.button-primary {
+  background-color: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  border-color: hsl(var(--primary));
+}
+
+.button-primary:hover {
+  background-color: hsl(var(--primary) / 0.9);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.button-outline {
+  background-color: transparent;
+  color: hsl(var(--primary));
+  border-color: hsl(var(--border));
+}
+
+.button-outline:hover {
+  background-color: hsl(var(--accent));
+  transform: translateY(-2px);
+}
+
+/* Common Typography */
+h1, h2, h3, h4, h5, h6 {
+  color: hsl(var(--foreground));
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+p {
+  color: hsl(var(--muted-foreground));
+  margin-bottom: 1rem;
+}
+
+a {
+  color: hsl(var(--primary));
+  text-decoration: none;
+  transition: opacity 0.3s;
+}
+
+a:hover {
+  opacity: 0.8;
+}
+
+/* Footer */
+.footer {
+  border-top: 1px solid hsl(var(--border));
+  padding: 2rem 0;
+  text-align: center;
+  color: hsl(var(--muted-foreground));
+  background-color: hsl(var(--muted));
+  margin-top: auto;
+}
+
+/* Dark mode adjustments */
+.dark .header {
+  background: rgba(15, 15, 15, 0.95);
+}
+
+.dark .side-nav-toggle {
+  background: rgba(15, 15, 15, 0.95);
+}
+
+/* Responsive Design for Side Nav */
+@media (max-width: 1024px) {
+  .header {
+    width: 260px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    width: 280px;
+  }
+
+  .side-nav-toggle {
+    top: 1.5rem;
+    left: 1.5rem;
+    width: 45px;
+    height: 45px;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    width: 260px;
+  }
+
+  .side-nav-toggle {
+    top: 1rem;
+    left: 1rem;
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+}
+
+/* Theme Toggle Styles */
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: var(--radius);
+  transition: background-color 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-toggle:hover {
+  background-color: hsl(var(--accent));
+}
+
+.theme-toggle .icon {
+  width: 1.2rem;
+  height: 1.2rem;
+  transition: transform 0.3s;
+}
+
+.dark .theme-toggle .sun {
+  display: none;
+}
+
+.theme-toggle .moon {
+  display: none;
+}
+
+.dark .theme-toggle .moon {
+  display: block;
+}
+
+.dark .theme-toggle .sun {
+  display: none;
+}
+
+.theme-toggle .sun {
+  display: block;
+}
+
+/* Technology Logos Cloud */
+.tech-cloud {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.tech-logo {
+  position: absolute;
+  opacity: 1;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform-origin: center;
+  z-index: 10;
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) translateX(0px); }
+  25% { transform: translateY(-8px) translateX(3px); }
+  50% { transform: translateY(0px) translateX(-2px); }
+  75% { transform: translateY(5px) translateX(1px); }
+}
+
+.tech-logo img {
+  width: 180px;
+  height: 180px;
+  object-fit: contain;
+  filter: grayscale(0%) drop-shadow(0 8px 20px rgba(0, 0, 0, 0.3)) brightness(1.1) contrast(1.1) saturate(1.2);
+  transition: all 0.3s ease;
+  border: none;
+  background: transparent;
+  mix-blend-mode: multiply;
+}
+
+/* Special treatment for logos with white backgrounds */
+.tech-logo-1 img,
+.tech-logo-10 img {
+  mix-blend-mode: screen;
+  filter: grayscale(0%) drop-shadow(0 8px 20px rgba(0, 0, 0, 0.3)) brightness(1.1) contrast(1.2) saturate(1.2);
+  background: transparent !important;
+}
+
+/* Fabric logo - simple approach to remove white background */
+.tech-logo-1 img {
+  mix-blend-mode: screen;
+  filter: grayscale(0%) drop-shadow(0 8px 20px rgba(0, 0, 0, 0.3)) brightness(1.1) contrast(1.1) saturate(1.1);
+  background: transparent !important;
+}
+
+.tech-logo:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.tech-logo:hover img {
+  filter: grayscale(0%) drop-shadow(0 12px 32px rgba(0, 0, 0, 0.4)) brightness(1.2) contrast(1.2) saturate(1.3);
+}
+
+/* Logos positioned only on the left side (green background area) */
+.tech-logo-1 {
+  top: 8%;
+  left: 12%;
+  animation-delay: 0s;
+}
+
+/* Microsoft Fabric - larger size */
+.tech-logo-1 img {
+  width: 220px;
+  height: 220px;
+}
+
+.tech-logo-2 {
+  bottom: 8%;
+  left: 30%;
+  animation-delay: 1s;
+}
+
+/* Snowflake - normal size, moved to bottom right */
+.tech-logo-2 img {
+  width: 180px;
+  height: 180px;
+}
+
+.tech-logo-3 {
+  top: 8%;
+  left: 35%;
+  animation-delay: 2s;
+}
+
+/* Databricks - much larger, moved to top right */
+.tech-logo-3 img {
+  width: 299px;
+  height: 299px;
+}
+
+.tech-logo-4 {
+  top: 45%;
+  left: 42%;
+  animation-delay: 3s;
+}
+
+/* Azure - 15% increase, moved away from white area */
+.tech-logo-4 img {
+  width: 207px;
+  height: 207px;
+}
+
+.tech-logo-5 {
+  bottom: 8%;
+  left: 14%;
+  animation-delay: 4s;
+}
+
+/* Power BI - larger and moved down more */
+.tech-logo-5 img {
+  width: 230px;
+  height: 230px;
+}
+
+.tech-logo-6 {
+  bottom: 20%;
+  left: 40%;
+  animation-delay: 5s;
+}
+
+/* Copilot - 15% increase, moved further out */
+.tech-logo-6 img {
+  width: 207px;
+  height: 207px;
+}
+
+.tech-logo-7 {
+  bottom: 35%;
+  left: 2%;
+  animation-delay: 1.5s;
+}
+
+/* Tableau - 15% increase, moved further left */
+.tech-logo-7 img {
+  width: 207px;
+  height: 207px;
+}
+
+.tech-logo-8 {
+  top: 65%;
+  left: 3%;
+  animation-delay: 2.5s;
+}
+
+/* Purview - 15% increase, moved further out */
+.tech-logo-8 img {
+  width: 207px;
+  height: 207px;
+}
+
+.tech-logo-9 {
+  top: 28%;
+  left: 3%;
+  animation-delay: 0.5s;
+}
+
+/* OpenAI - normal size */
+.tech-logo-9 img {
+  width: 180px;
+  height: 180px;
+}
+
+.tech-logo-10 {
+  top: 32%;
+  left: 40%;
+  animation-delay: 3.5s;
+}
+
+/* Microsoft - bigger and moved away from white area */
+.tech-logo-10 img {
+  width: 200px;
+  height: 200px;
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 768px) {
+  .tech-logo img {
+    width: 120px !important;
+    height: 120px !important;
+  }
+  
+  .tech-logo-1 img {
+    width: 85px !important;
+    height: 85px !important;
+  }
+  
+  .tech-logo-3 img {
+    width: 180px !important;
+    height: 180px !important;
+  }
+  
+  .tech-logo-4 img,
+  .tech-logo-5 img,
+  .tech-logo-6 img,
+  .tech-logo-7 img,
+  .tech-logo-8 img {
+    width: 140px !important;
+    height: 140px !important;
+  }
+}

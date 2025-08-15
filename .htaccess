@@ -1,0 +1,12 @@
+# Prevent access to PDF files
+<Files "*.pdf">
+    Deny from all
+</Files>
+
+# Prevent access to disabled files
+<Files "*.disabled">
+    Deny from all
+</Files>
+
+# Prevent directory browsing
+Options -Indexes

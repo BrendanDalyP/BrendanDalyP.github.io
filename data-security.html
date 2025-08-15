@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Security - Brendan Daly | Data & Analytics Leader</title>
+  <meta name="description" content="Data Security expertise and capabilities">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
+  
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <!-- Add common.css for unified navigation styles -->
+  <link rel="stylesheet" href="common.css">
+  
+  <style>
+    :root {
+      --background: 0 0% 100%;
+      --foreground: 222.2 84% 4.9%;
+      --card: 0 0% 100%;
+      --primary: 222.2 47.4% 11.2%;
+      --primary-foreground: 210 40% 98%;
+      --secondary: 210 40% 96.1%;
+      --muted-foreground: 215.4 16.3% 46.9%;
+      --border: 214.3 31.8% 91.4%;
+      --radius: 0.5rem;
+    }
+
+    .dark {
+      --background: 222.2 84% 4.9%;
+      --foreground: 210 40% 98%;
+      --card: 222.2 84% 4.9%;
+      --primary: 210 40% 98%;
+      --primary-foreground: 222.2 47.4% 11.2%;
+      --secondary: 217.2 32.6% 17.5%;
+      --muted-foreground: 215 20.2% 65.1%;
+      --border: 217.2 32.6% 17.5%;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: hsl(var(--background));
+      color: hsl(var(--foreground));
+      transition: background-color 0.3s, color 0.3s;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    main {
+      flex: 1;
+      padding: 3rem 0;
+      margin-left: 300px;
+    }
+
+    .page-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .page-subtitle {
+      font-size: 1.125rem;
+      color: hsl(var(--muted-foreground));
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .content-section {
+      background-color: hsl(var(--card));
+      border: 1px solid hsl(var(--border));
+      border-radius: var(--radius);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: hsl(var(--foreground));
+      border-bottom: 2px solid hsl(var(--primary));
+      padding-bottom: 0.5rem;
+    }
+
+    .subsection-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin: 1.5rem 0 1rem 0;
+      color: hsl(var(--primary));
+    }
+
+    .section-content {
+      color: hsl(var(--muted-foreground));
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .highlight-card {
+      background: linear-gradient(135deg, hsl(var(--card)), hsl(var(--secondary)));
+      border: 1px solid hsl(var(--border));
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin: 1rem 0;
+    }
+
+    .highlight-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: hsl(var(--primary));
+      margin-bottom: 0.5rem;
+    }
+
+    .highlight-content {
+      color: hsl(var(--muted-foreground));
+      line-height: 1.6;
+    }
+
+    .footer {
+      border-top: 1px solid hsl(var(--border));
+      padding: 2rem 0;
+      text-align: center;
+      color: hsl(var(--muted-foreground));
+      margin-left: 300px;
+    }
+
+    @media (max-width: 768px) {
+      main, .footer {
+        margin-left: 0;
+      }
+      
+      .page-title {
+        font-size: 2rem;
+      }
+      
+      .content-section {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Inject unified side navigation -->
+  <button class="side-nav-toggle" id="sideNavToggle" aria-label="Toggle navigation">
+    <i class="fas fa-bars"></i>
+  </button>
+  <div class="nav-overlay" id="navOverlay"></div>
+  <header class="header" id="sideNav">
+    <div style="display: flex; justify-content: flex-start; align-items: center; padding: 0 2rem; margin-bottom: 2rem;">
+      <a href="index.html" class="logo">Brendan Daly</a>
+    </div>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="experience.html">Experience</a>
+      <div class="dropdown">
+        <button class="dropdown-toggle">
+          <span>Competencies</span>
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="dropdown-menu">
+          <a href="data-visualization.html">Data Visualization</a>
+          <a href="data-engineering.html">Data Engineering</a>
+          <a href="data-architecture.html">Data Architecture</a>
+          <a href="data-modeling.html">Data Modeling</a>
+          <a href="data-security.html" class="active">Data Security</a>
+          <a href="ai-implementation.html">AI Implementation</a>
+          <a href="data-strategy.html">Data Strategy</a>
+          <a href="data-governance.html">Data Governance</a>
+          <a href="devops-dataops.html">DevOps & DataOps</a>
+        </div>
+      </div>
+    </nav>
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon sun">
+        <circle cx="12" cy="12" r="5"></circle>
+        <line x1="12" y1="1" x2="12" y2="3"></line>
+        <line x1="12" y1="21" x2="12" y2="23"></line>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+        <line x1="1" y1="12" x2="3" y2="12"></line>
+        <line x1="21" y1="12" x2="23" y2="12"></line>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon moon">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+      </svg>
+    </button>
+  </header>
+
+  <main class="container">
+    <h1 class="page-title">Data Security</h1>
+    <p class="page-subtitle">RLS/OLS, RBAC/ABAC, PII controls, and key management for enterprise data protection</p>
+
+    <div class="content-section">
+      <h2 class="section-title">Overview</h2>
+      <div class="section-content">
+        <p>
+          Data security encompasses the comprehensive protection of data assets through access controls, encryption, privacy controls, and governance frameworks. It ensures that sensitive information is protected while enabling authorized users to access the data they need for business operations.
+        </p>
+        <p>
+          This competency covers both preventive security measures and detective controls, implementing defense-in-depth strategies that protect against internal and external threats while maintaining compliance with regulatory requirements.
+        </p>
+      </div>
+    </div>
+
+    <div class="content-section">
+      <h2 class="section-title">Access Controls</h2>
+      <div class="section-content">
+        <p>
+          Implementing granular access control mechanisms that ensure users can only access data appropriate to their role and business needs.
+        </p>
+        
+        <div class="highlight-card">
+          <h4 class="highlight-title">Role-Based Access Control (RBAC)</h4>
+          <p class="highlight-content">
+            Hierarchical permission systems based on organizational roles, providing scalable access management through predefined role assignments and inheritance patterns.
+          </p>
+        </div>
+        
+        <div class="highlight-card">
+          <h4 class="highlight-title">Attribute-Based Access Control (ABAC)</h4>
+          <p class="highlight-content">
+            Dynamic access decisions based on user attributes, resource properties, environmental conditions, and business context for fine-grained authorization.
+          </p>
+        </div>
+        
+        <div class="highlight-card">
+          <h4 class="highlight-title">Row-Level Security (RLS)</h4>
+          <p class="highlight-content">
+            Database-level security that filters data rows based on user identity or group membership, ensuring users only see data they're authorized to access.
+          </p>
+        </div>
+        
+        <div class="highlight-card">
+          <h4 class="highlight-title">Object-Level Security (OLS)</h4>
+          <p class="highlight-content">
+            Column and field-level access controls that can mask, encrypt, or completely hide sensitive data elements based on user permissions and data classification.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-section">
+      <h2 class="section-title">Privacy & PII Protection</h2>
+      <div class="section-content">
+        <p>
+          Comprehensive frameworks for protecting personally identifiable information and ensuring compliance with privacy regulations like GDPR, CCPA, and HIPAA.
+        </p>
+        
+        <div class="highlight-card">
+          <h4 class="highlight-title">Data Classification</h4>
+          <p class="highlight-content">
+            Automated and manual classification of data based on sensitivity levels, regulatory requirements, and business impact to apply appropriate protection measures.
+          </p>
+        </div>
+        
+        <div class="highlight-card">
+          <h4 class="highlight-title">Data Masking & Anonymization</h4>
+          <p class="highlight-content">
+            Dynamic and static data masking techniques that preserve data utility for analytics while protecting individual privacy through tokenization and anonymization.
+          </p>
+        </div>
+        
+        <div class="highlight-card">
+          <h4 class="highlight-title">Consent Management</h4>
+          <p class="highlight-content">
+            Systems for tracking and enforcing data subject consent, including purpose limitation, retention policies, and right-to-be-forgotten capabilities.
+          </p>
+        </div>
+        
+        <div class="highlight-card">
+          <h4 class="highlight-title">Cross-Border Data Transfer</h4>
+          <p class="highlight-content">
+            Compliance frameworks for international data transfers including adequacy decisions, standard contractual clauses, and data localization requirements.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-section">
+      <h2 class="section-title">Encryption & Key Management</h2>
+      <div class="section-content">
+        <p>
+          Comprehensive encryption strategies that protect data at rest, in transit, and in use while maintaining performance and operational efficiency.
+        </p>
+        
+        <div class="highlight-card">
+          <h4 class="highlight-title">Encryption at Rest</h4>
+          <p class="highlight-content">
+            Database-level and storage-level encryption using industry-standard algorithms (AES-256) with proper key rotation and hardware security module integration.
+          </p>
+        </div>
+        
+        <div class="highlight-card">
+          <h4 class="highlight-title">Encryption in Transit</h4>
+          <p class="highlight-content">
+            TLS/SSL implementation for all data movement with certificate management, perfect forward secrecy, and protection against man-in-the-middle attacks.
+          </p>
+        </div>
+        
+        <div class="highlight-card">
+          <h4 class="highlight-title">Key Management Systems</h4>
+          <p class="highlight-content">
+            Centralized key lifecycle management including generation, distribution, rotation, and destruction using cloud KMS services and hardware security modules.
+          </p>
+        </div>
+        
+        <div class="highlight-card">
+          <h4 class="highlight-title">Application-Level Encryption</h4>
+          <p class="highlight-content">
+            Field-level encryption within applications and databases for highly sensitive data elements with separate key management and access controls.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-section">
+      <h2 class="section-title">Audit & Monitoring</h2>
+      <div class="section-content">
+        <p>
+          Comprehensive logging, monitoring, and alerting systems that provide visibility into data access patterns and security events.
+        </p>
+        
+        <div class="highlight-card">
+          <h4 class="highlight-title">Data Access Logging</h4>
+          <p class="highlight-content">
+            Detailed audit trails of all data access including user identity, timestamp, data accessed, and business context for compliance and forensic analysis.
+          </p>
+        </div>
+        
+        <div class="highlight-card">
+          <h4 class="highlight-title">Anomaly Detection</h4>
+          <p class="highlight-content">
+            Machine learning-based detection of unusual access patterns, data exfiltration attempts, and privilege escalation for proactive security response.
+          </p>
+        </div>
+        
+        <div class="highlight-card">
+          <h4 class="highlight-title">Real-Time Alerting</h4>
+          <p class="highlight-content">
+            Automated alerting systems for security violations, policy breaches, and suspicious activities with integration to SIEM and incident response systems.
+          </p>
+        </div>
+        
+        <div class="highlight-card">
+          <h4 class="highlight-title">Compliance Reporting</h4>
+          <p class="highlight-content">
+            Automated generation of compliance reports for regulatory requirements including access reviews, data inventory, and security control effectiveness.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-section">
+      <h2 class="section-title">Platform-Specific Security</h2>
+      <div class="section-content">
+        <p>
+          Implementing security controls across diverse technology platforms and cloud services.
+        </p>
+        
+        <div class="subsection-title">Cloud Security</div>
+        <div class="highlight-card">
+          <h4 class="highlight-title">Azure Security</h4>
+          <p class="highlight-content">
+            Azure AD integration, Key Vault, Security Center, and Sentinel for comprehensive cloud security across data platforms including Fabric, Synapse, and Power BI.
+          </p>
+        </div>
+        
+        <div class="highlight-card">
+          <h4 class="highlight-title">AWS Security</h4>
+          <p class="highlight-content">
+            IAM policies, KMS, CloudTrail, and GuardDuty integration for securing data lakes, warehouses, and analytics services in AWS environments.
+          </p>
+        </div>
+        
+        <div class="subsection-title">Database Security</div>
+        <div class="highlight-card">
+          <h4 class="highlight-title">SQL Server Security</h4>
+          <p class="highlight-content">
+            Always Encrypted, Dynamic Data Masking, SQL Audit, and certificate-based authentication for enterprise SQL Server deployments.
+          </p>
+        </div>
+        
+        <div class="highlight-card">
+          <h4 class="highlight-title">Databricks Security</h4>
+          <p class="highlight-content">
+            Unity Catalog, table access controls, cluster policies, and secret management for securing big data analytics workloads.
+          </p>
+        </div>
+        
+        <div class="subsection-title">Analytics Platform Security</div>
+        <div class="highlight-card">
+          <h4 class="highlight-title">Power BI Security</h4>
+          <p class="highlight-content">
+            RLS implementation, workspace security, app permissions, and data source authentication for enterprise Business Intelligence deployments.
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer container">
+    <p>&copy; 2025 Brendan Daly. All rights reserved.</p>
+  </footer>
+
+  <!-- Common JavaScript for unified nav -->
+  <script src="common.js"></script>
+</body>
+</html>

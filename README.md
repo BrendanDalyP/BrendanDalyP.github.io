@@ -17,10 +17,11 @@ Visit the live website at: [https://brendandalyp.github.io](https://brendandalyp
 
 ```
 ├── index.html          # Main landing page with resume content
-├── projects.html       # Portfolio projects showcase
-├── contact.html        # Contact information and form
-├── styles.css          # Legacy CSS (maintained for compatibility)
-├── Resume_Daly_425 (1).pdf  # Downloadable resume
+├── experience.html     # Professional experience and resume
+├── data-*.html         # Competency pages (architecture, engineering, etc.)
+├── styles.css          # Main CSS styles
+├── common.js           # Common JavaScript functionality
+├── Resume_Daly_425.pdf # Resume file (accessible)
 ├── Daly_Brendan_690x690.png # Profile photo
 └── certification badges/     # Microsoft certification images
 ```

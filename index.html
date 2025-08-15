@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Brendan Daly | Data & Analytics Leader</title>
+  <title>Brendan Daly | Senior Solution Architect at NRI</title>
   <meta name="description" content="Professional portfolio showcasing expertise in data modeling, data strategy, and data visualization">
   
   <!-- Favicon -->
@@ -17,722 +17,563 @@
   <!-- FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   
+  <!-- Common Styles -->
+  <link rel="stylesheet" href="common.css">
+  
   <style>
-    :root {
-      --background: 0 0% 100%;
-      --foreground: 222.2 84% 4.9%;
-      --card: 0 0% 100%;
-      --card-foreground: 222.2 84% 4.9%;
-      --primary: 222.2 47.4% 11.2%;
-      --primary-foreground: 210 40% 98%;
-      --secondary: 210 40% 96.1%;
-      --secondary-foreground: 222.2 47.4% 11.2%;
-      --muted: 210 40% 96.1%;
-      --muted-foreground: 215.4 16.3% 46.9%;
-      --accent: 210 40% 96.1%;
-      --accent-foreground: 222.2 47.4% 11.2%;
-      --border: 214.3 31.8% 91.4%;
-      --radius: 0.5rem;
-    }
-
-    .dark {
-      --background: 222.2 84% 4.9%;
-      --foreground: 210 40% 98%;
-      --card: 222.2 84% 4.9%;
-      --card-foreground: 210 40% 98%;
-      --primary: 210 40% 98%;
-      --primary-foreground: 222.2 47.4% 11.2%;
-      --secondary: 217.2 32.6% 17.5%;
-      --secondary-foreground: 210 40% 98%;
-      --muted: 217.2 32.6% 17.5%;
-      --muted-foreground: 215 20.2% 65.1%;
-      --accent: 217.2 32.6% 17.5%;
-      --accent-foreground: 210 40% 98%;
-      --border: 217.2 32.6% 17.5%;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-      scroll-behavior: smooth;
-    }
-
+    /* Home Page Specific Styles */
     body {
-      background-color: hsl(var(--background));
-      color: hsl(var(--foreground));
-      transition: background-color 0.3s, color 0.3s;
-      line-height: 1.6;
+      overflow: hidden; /* Prevent scrolling on desktop */
     }
 
-    .container {
-      width: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 1rem;
-    }
-
-    /* Header Styles */
-    .header {
+    .main-container {
+      height: 100vh;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 0;
-      border-bottom: 1px solid hsl(var(--border));
-      position: sticky;
-      top: 0;
-      background-color: hsl(var(--background));
-      z-index: 100;
-    }
-
-    .logo {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: hsl(var(--foreground));
-      text-decoration: none;
-    }
-
-    .nav {
-      display: flex;
-      gap: 2rem;
-      align-items: center;
-    }
-
-    .nav a {
-      color: hsl(var(--muted-foreground));
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
-
-    .nav a:hover,
-    .nav a.active {
-      color: hsl(var(--foreground));
-    }
-
-    .theme-toggle {
-      background: none;
-      border: 1px solid hsl(var(--border));
-      border-radius: var(--radius);
-      width: 2.5rem;
-      height: 2.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      color: hsl(var(--foreground));
-      transition: background-color 0.3s;
-    }
-
-    .theme-toggle:hover {
-      background-color: hsl(var(--accent));
-    }
-
-    .theme-toggle svg {
-      width: 1.2rem;
-      height: 1.2rem;
-      transition: transform 0.3s, opacity 0.3s;
-    }
-
-    .theme-toggle .sun {
-      opacity: 1;
-      transform: rotate(0) scale(1);
-    }
-
-    .theme-toggle .moon {
-      position: absolute;
-      opacity: 0;
-      transform: rotate(90deg) scale(0);
-    }
-
-    .dark .theme-toggle .sun {
-      opacity: 0;
-      transform: rotate(-90deg) scale(0);
-    }
-
-    .dark .theme-toggle .moon {
-      opacity: 1;
-      transform: rotate(0) scale(1);
-    }
-
-    /* Hero Section */
-    .hero {
       position: relative;
-      height: 60vh;
-      min-height: 400px;
-      background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary) / 0.8));
+    }
+
+    /* Left Side - Image */
+    .image-section {
+      flex: 1.3;
+      background: linear-gradient(135deg, 
+        rgba(34, 197, 94, 0.08), 
+        rgba(16, 185, 129, 0.04)
+      );
       display: flex;
       align-items: center;
       justify-content: center;
-      text-align: center;
-      color: white;
-      overflow: hidden;
+      padding: 2rem;
+      position: relative;
+      min-height: 100vh;
     }
 
-    .hero-background {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0.3;
-      z-index: 1;
-    }
-
-    .hero-content {
+    .profile-container {
       position: relative;
       z-index: 2;
-      max-width: 800px;
-      padding: 2rem;
     }
 
-    .hero h1 {
-      font-size: 3.5rem;
+    .profile-image {
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 8px solid white;
+      box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.15),
+        0 8px 20px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .profile-image:hover {
+      transform: scale(1.02);
+    }
+
+    /* Right Side - Content */
+    .content-section {
+      flex: 1;
+      padding: 4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: linear-gradient(135deg, 
+        hsl(var(--background)), 
+        hsl(var(--muted) / 0.3)
+      );
+      min-height: 100vh;
+    }
+
+    .content-header h1 {
+      font-size: 4rem;
       font-weight: 700;
-      margin-bottom: 1rem;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      color: hsl(var(--foreground));
+      margin-bottom: 0.5rem;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
     }
 
-    .hero .subtitle {
-      font-size: 1.5rem;
-      margin-bottom: 2rem;
+    .content-header .subtitle {
+      font-size: 1.75rem;
+      color: hsl(var(--primary));
+      font-weight: 500;
+      margin-bottom: 1rem;
       opacity: 0.9;
     }
 
-    .hero-description {
-      font-size: 1.125rem;
-      margin-bottom: 2rem;
-      opacity: 0.8;
-      line-height: 1.7;
+    .company-info {
+      margin-bottom: 2.5rem;
     }
 
-    .hero-buttons {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .button {
+    .company-link {
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      padding: 0.75rem 1.5rem;
-      border-radius: var(--radius);
-      font-size: 1rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.3s;
+      gap: 0.75rem;
       text-decoration: none;
-      border: 2px solid transparent;
-    }
-
-    .button-primary {
-      background-color: white;
-      color: hsl(var(--primary));
-      border-color: white;
-    }
-
-    .button-primary:hover {
-      background-color: hsl(var(--primary));
-      color: white;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    }
-
-    .button-outline {
-      background-color: transparent;
-      color: white;
-      border-color: white;
-    }
-
-    .button-outline:hover {
-      background-color: white;
-      color: hsl(var(--primary));
-      transform: translateY(-2px);
-    }
-
-    /* Main Content */
-    .main {
-      padding: 4rem 0;
-    }
-
-    .section {
-      margin-bottom: 6rem;
-    }
-
-    .section-title {
-      font-size: 2.5rem;
-      font-weight: 700;
-      text-align: center;
-      margin-bottom: 1rem;
-      color: hsl(var(--foreground));
-    }
-
-    .section-subtitle {
-      font-size: 1.125rem;
-      text-align: center;
-      margin-bottom: 3rem;
       color: hsl(var(--muted-foreground));
-    }
-
-    /* Competencies Section */
-    .competencies-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 2rem;
-      margin-bottom: 3rem;
-    }
-
-    .competency-card {
-      background-color: hsl(var(--card));
-      border: 1px solid hsl(var(--border));
+      transition: all 0.3s ease;
+      padding: 0.5rem;
       border-radius: var(--radius);
-      padding: 2rem;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s, box-shadow 0.3s;
     }
 
-    .competency-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    .company-link:hover {
+      color: hsl(var(--foreground));
+      background: hsl(var(--accent));
+      transform: translateY(-1px);
     }
 
-    .competency-icon {
+    .company-logo {
+      width: 32px;
+      height: 32px;
+      border-radius: 4px;
+      object-fit: contain;
+    }
+
+    .company-name {
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
+
+    .content-description {
+      font-size: 1.25rem;
+      color: hsl(var(--muted-foreground));
+      line-height: 1.8;
+      margin-bottom: 3.5rem;
+      max-width: 550px;
+      font-weight: 400;
+    }
+
+    .content-buttons {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    /* Social Media Links */
+    .social-link {
+      background: linear-gradient(135deg, 
+        hsl(var(--primary)), 
+        hsl(var(--primary) / 0.9)
+      );
+      color: white;
+      padding: 1rem;
+      border: none;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(34, 197, 94, 0.3);
       width: 60px;
       height: 60px;
-      background-color: hsl(var(--primary));
+    }
+
+    .social-link:hover {
+      transform: translateY(-3px) scale(1.1);
+      box-shadow: 0 8px 30px rgba(34, 197, 94, 0.4);
+    }
+
+    .social-link:first-child:hover {
+      background: linear-gradient(135deg, #0077b5, #005885);
+      box-shadow: 0 8px 30px rgba(0, 119, 181, 0.4);
+    }
+
+    .social-link:last-child:hover {
+      background: linear-gradient(135deg, #333, #000);
+      box-shadow: 0 8px 30px rgba(51, 51, 51, 0.4);
+    }
+
+    /* Side Navigation */
+    .side-nav-toggle {
+      position: fixed;
+      top: 2rem;
+      left: 2rem;
+      z-index: 2001;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border: 1px solid hsl(var(--border) / 0.3);
       border-radius: 50%;
+      width: 50px;
+      height: 50px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 1.5rem;
-      color: hsl(var(--primary-foreground));
-      font-size: 1.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      color: hsl(var(--foreground));
+      font-size: 1.2rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      opacity: 1;
+      visibility: visible;
     }
 
-    .competency-title {
+    .side-nav-toggle:hover {
+      background: hsl(var(--accent));
+      transform: scale(1.05);
+    }
+
+    /* Hide hamburger when sidebar is open */
+    .side-nav-toggle.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 280px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border-right: 1px solid hsl(var(--border) / 0.3);
+      z-index: 2000;
+      padding: 2rem 0;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+      box-shadow: 4px 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .header.open {
+      transform: translateX(0);
+    }
+
+    .header .logo {
+      padding: 0 2rem;
+      margin-bottom: 2rem;
       font-size: 1.5rem;
       font-weight: 700;
-      margin-bottom: 1rem;
       color: hsl(var(--foreground));
+      text-decoration: none;
     }
 
-    .competency-description {
-      color: hsl(var(--muted-foreground));
-      margin-bottom: 2rem;
-      line-height: 1.6;
-    }
-
-    /* Tabs Styles */
-    .tabs {
-      border-top: 1px solid hsl(var(--border));
-      padding-top: 1.5rem;
-    }
-
-    .tab-buttons {
+    .header .nav {
+      flex: 1;
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: column;
       gap: 0.5rem;
-      margin-bottom: 1.5rem;
+      padding: 0 1rem;
     }
 
-    .tab-button {
-      padding: 0.5rem 1rem;
-      border: 1px solid hsl(var(--border));
-      background-color: hsl(var(--background));
+    .header .nav > a,
+    .header .dropdown-toggle {
+      padding: 0.75rem 1rem;
       color: hsl(var(--muted-foreground));
+      text-decoration: none;
       border-radius: var(--radius);
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: none;
+      border: none;
+      width: 100%;
+      font-size: 1rem;
       cursor: pointer;
-      transition: all 0.3s;
-      font-size: 0.875rem;
-      font-weight: 500;
     }
 
-    .tab-button:hover {
-      background-color: hsl(var(--accent));
-    }
-
-    .tab-button.active {
-      background-color: hsl(var(--primary));
-      color: hsl(var(--primary-foreground));
-      border-color: hsl(var(--primary));
-    }
-
-    .tab-content {
-      display: none;
-      padding: 1rem;
-      background-color: hsl(var(--muted));
-      border-radius: var(--radius);
-      border: 1px solid hsl(var(--border));
-    }
-
-    .tab-content.active {
-      display: block;
-    }
-
-    .tab-content h4 {
-      font-size: 1.125rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
+    .header .nav > a:hover,
+    .header .dropdown-toggle:hover,
+    .header .nav > a.active {
+      background: hsl(var(--accent));
       color: hsl(var(--foreground));
     }
 
-    .tab-content p {
-      color: hsl(var(--muted-foreground));
-      font-size: 0.875rem;
+    .header .dropdown {
+      position: relative;
     }
 
-    /* Footer */
-    .footer {
-      border-top: 1px solid hsl(var(--border));
-      padding: 2rem 0;
-      text-align: center;
+    .header .dropdown-menu {
+      display: none;
+      flex-direction: column;
+      gap: 0.25rem;
+      margin-top: 0.25rem;
+      margin-left: 0;
+      padding-left: 0;
+    }
+
+    .header .dropdown-menu.show {
+      display: flex;
+    }
+
+    .header .dropdown-menu a {
+      padding: 0.5rem 1rem;
       color: hsl(var(--muted-foreground));
-      background-color: hsl(var(--muted));
+      text-decoration: none;
+      border-radius: var(--radius);
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+      margin-left: 1rem;
+    }
+
+    .header .dropdown-menu a:hover {
+      background: hsl(var(--muted));
+      color: hsl(var(--foreground));
+    }
+
+    .nav-close-btn {
+      background: none;
+      border: none;
+      color: hsl(var(--muted-foreground));
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: var(--radius);
+      transition: all 0.3s ease;
+      font-size: 1.2rem;
+    }
+
+    .nav-close-btn:hover {
+      background: hsl(var(--accent));
+      color: hsl(var(--foreground));
+    }
+
+    .nav-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1999;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .nav-overlay.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* Dark mode adjustments */
+    .dark .side-nav-toggle {
+      background: rgba(15, 15, 15, 0.95);
+    }
+
+    .dark .header {
+      background: rgba(15, 15, 15, 0.95);
+    }
+
+    .dark .content-section {
+      background: linear-gradient(135deg, 
+        hsl(var(--background)), 
+        hsl(var(--card) / 0.5)
+      );
+    }
+
+    .dark .profile-image {
+      border-color: hsl(var(--border));
     }
 
     /* Responsive Design */
+    @media (max-width: 1024px) {
+      .content-section {
+        padding: 3rem;
+      }
+
+      .content-header h1 {
+        font-size: 3.5rem;
+      }
+
+      .profile-image {
+        width: 420px;
+        height: 420px;
+      }
+    }
+
     @media (max-width: 768px) {
-      .nav {
-        display: none;
+      body {
+        overflow: auto; /* Allow scrolling on mobile */
       }
 
-      .hero h1 {
-        font-size: 2.5rem;
+      .main-container {
+        height: auto;
+        min-height: 100vh;
+        flex-direction: column;
       }
 
-      .hero .subtitle {
-        font-size: 1.25rem;
+      .image-section {
+        padding: 3rem 2rem;
+        height: 60vh;
+        min-height: auto;
       }
 
-      .hero-description {
-        font-size: 1rem;
+      .profile-image {
+        width: 320px;
+        height: 320px;
+        border-width: 6px;
       }
 
-      .hero-buttons {
+      .content-section {
+        padding: 3rem 2rem;
+        text-align: center;
+        min-height: auto;
+      }
+
+      .content-header h1 {
+        font-size: 2.75rem;
+      }
+
+      .content-header .subtitle {
+        font-size: 1.5rem;
+      }
+
+      .content-description {
+        max-width: none;
+        font-size: 1.125rem;
+      }
+
+      .content-buttons {
+        justify-content: center;
+        gap: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .image-section {
+        padding: 2rem 1rem;
+      }
+
+      .profile-image {
+        width: 260px;
+        height: 260px;
+      }
+
+      .content-section {
+        padding: 2rem 1.5rem;
+      }
+
+      .content-header h1 {
+        font-size: 2.25rem;
+      }
+
+      .content-buttons {
         flex-direction: column;
         align-items: center;
       }
 
-      .section-title {
-        font-size: 2rem;
-      }
-
-      .competencies-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .tab-buttons {
-        justify-content: center;
-      }
-    }
-
-    /* Mobile Menu (basic implementation) */
-    .mobile-menu-toggle {
-      display: none;
-      background: none;
-      border: none;
-      color: hsl(var(--foreground));
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
-
-    @media (max-width: 768px) {
-      .mobile-menu-toggle {
-        display: block;
+      .social-link {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
       }
     }
   </style>
 </head>
 <body>
-  <!-- Header -->
-  <header class="header container">
-    <a href="#" class="logo">Brendan Daly</a>
+  <!-- Side Navigation Toggle -->
+  <button class="side-nav-toggle" id="sideNavToggle" aria-label="Toggle navigation">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <!-- Navigation Overlay -->
+  <div class="nav-overlay" id="navOverlay"></div>
+
+  <!-- Side Navigation -->
+  <header class="header" id="sideNav">
+    <div style="display: flex; justify-content: flex-start; align-items: center; padding: 0 2rem; margin-bottom: 2rem;">
+      <a href="index.html" class="logo">Brendan Daly</a>
+    </div>
     <nav class="nav">
-      <a href="#home" class="active">Home</a>
-      <a href="#competencies">Competencies</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
+      <a href="index.html" class="active">Home</a>
+      <a href="experience.html">Experience</a>
+      <div class="dropdown">
+        <button class="dropdown-toggle">
+          <span>Competencies</span>
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="dropdown-menu">
+          <a href="data-visualization.html">Data Visualization</a>
+          <a href="data-engineering.html">Data Engineering</a>
+          <a href="data-architecture.html">Data Architecture</a>
+          <a href="data-modeling.html">Data Modeling</a>
+          <a href="data-security.html">Data Security</a>
+          <a href="ai-implementation.html">AI Implementation</a>
+          <a href="data-strategy.html">Data Strategy</a>
+          <a href="data-governance.html">Data Governance</a>
+          <a href="devops-dataops.html">DevOps & DataOps</a>
+        </div>
+      </div>
     </nav>
-    <button class="mobile-menu-toggle">
-      <i class="fas fa-bars"></i>
-    </button>
-    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon sun">
-        <circle cx="12" cy="12" r="5"></circle>
-        <line x1="12" y1="1" x2="12" y2="3"></line>
-        <line x1="12" y1="21" x2="12" y2="23"></line>
-        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-        <line x1="1" y1="12" x2="3" y2="12"></line>
-        <line x1="21" y1="12" x2="23" y2="12"></line>
-        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-      </svg>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon moon">
-        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-      </svg>
-    </button>
   </header>
 
-  <!-- Hero Section -->
-  <section id="home" class="hero">
-    <img src="hero-placeholder.jpg" alt="Hero Background" class="hero-background">
-    <div class="hero-content">
-      <h1>Brendan Daly</h1>
-      <div class="subtitle">Data & Analytics Leader</div>
-      <p class="hero-description">
-        Transforming organizations through strategic data initiatives, innovative architecture design, 
-        and compelling data visualization. From executive alignment to technical execution, 
-        I help turn complexity into clarity and insight into action.
-      </p>
-      <div class="hero-buttons">
-        <a href="#competencies" class="button button-primary">
-          <i class="fas fa-chart-line"></i>
-          <span>Explore Competencies</span>
-        </a>
-        <a href="about.html" class="button button-outline">
-          <i class="fas fa-user"></i>
-          <span>About Me</span>
-        </a>
-        <a href="contact.html" class="button button-outline">
-          <i class="fas fa-envelope"></i>
-          <span>Get In Touch</span>
-        </a>
+  <!-- Main Split Layout -->
+  <div class="main-container">
+    <!-- Technology Logos Cloud -->
+    <div class="tech-cloud">
+      <div class="tech-logo tech-logo-1">
+        <img src="Microsoft-Fabric-Logo-1-removebg-preview.png" alt="Microsoft Fabric" />
+      </div>
+      <div class="tech-logo tech-logo-2">
+        <img src="https://logos-world.net/wp-content/uploads/2022/11/Snowflake-Emblem.png" alt="Snowflake" />
+      </div>
+      <div class="tech-logo tech-logo-3">
+        <img src="https://datasense.be/wp-content/uploads/databricks-datasense.png" alt="Databricks" />
+      </div>
+      <div class="tech-logo tech-logo-4">
+        <img src="https://logos-world.net/wp-content/uploads/2021/02/Microsoft-Azure-Symbol.png" alt="Microsoft Azure" />
+      </div>
+      <div class="tech-logo tech-logo-5">
+        <img src="https://th.bing.com/th/id/R.83eab36f8ebe21cd09608ea73d95523a?rik=rss%2beh5LjtGYIw&riu=http%3a%2f%2fwww.pngmart.com%2ffiles%2f4%2fMicrosoft-Logo-Transparent-Background.png&ehk=rqBs2L0Wm3uKUNNIPlHrIPBJHzHIZCC8ju1yM4NkW2g%3d&risl=&pid=ImgRaw&r=0" alt="Microsoft" />
+      </div>
+      <div class="tech-logo tech-logo-6">
+        <img src="https://hypertecsp.com/wp-content/uploads/copilot-logo-1.png" alt="Microsoft Copilot" />
+      </div>
+      <div class="tech-logo tech-logo-7">
+        <img src="https://logos-world.net/wp-content/uploads/2021/10/Tableau-Logo.png" alt="Tableau" />
+      </div>
+      <div class="tech-logo tech-logo-8">
+        <img src="https://www.ambient-it.net/wp-content/uploads/2024/06/Microsoft-Purview.png" alt="Microsoft Purview" />
+      </div>
+      <div class="tech-logo tech-logo-9">
+        <img src="https://freepnglogo.com/images/all_img/1702059309openai-logo-png.png" alt="OpenAI" />
+      </div>
+      <div class="tech-logo tech-logo-10">
+        <img src="https://www.pngmart.com/files/23/Power-Bi-Logo-PNG.png" alt="Power BI" />
       </div>
     </div>
-  </section>
 
-  <!-- Main Content -->
-  <main class="main container">
-    <!-- Competencies Section -->
-    <section id="competencies" class="section">
-      <h2 class="section-title">Core Competencies</h2>
-      <p class="section-subtitle">Strategic expertise areas driving organizational data transformation</p>
-      
-      <div class="competencies-grid">
-        <!-- Data Modeling -->
-        <div class="competency-card">
-          <div class="competency-icon">
-            <i class="fas fa-database"></i>
-          </div>
-          <h3 class="competency-title">Data Modeling</h3>
-          <p class="competency-description">
-            Designing robust, scalable data models that serve as the foundation for enterprise analytics and decision-making.
-          </p>
-          
-          <div class="tabs">
-            <div class="tab-buttons">
-              <button class="tab-button active" data-tab="medallion">Medallion</button>
-              <button class="tab-button" data-tab="warehouse">Warehouse</button>
-              <button class="tab-button" data-tab="event-driven">Event Driven</button>
-              <button class="tab-button" data-tab="data-vault">Data Vault</button>
-            </div>
-            
-            <div class="tab-content active" id="medallion">
-              <h4>Medallion Architecture</h4>
-              <p>Implementing bronze, silver, and gold layer architectures for progressive data refinement and quality improvement. This modern approach ensures data lineage, quality, and accessibility across the organization.</p>
-            </div>
-            
-            <div class="tab-content" id="warehouse">
-              <h4>Data Warehouse Design</h4>
-              <p>Traditional and modern data warehouse modeling including dimensional modeling, star schemas, and snowflake designs. Optimized for analytical workloads and business intelligence requirements.</p>
-            </div>
-            
-            <div class="tab-content" id="event-driven">
-              <h4>Event-Driven Architecture</h4>
-              <p>Designing real-time data processing systems using event streaming and message queues. Enables responsive, scalable data processing for modern business requirements.</p>
-            </div>
-            
-            <div class="tab-content" id="data-vault">
-              <h4>Data Vault Methodology</h4>
-              <p>Enterprise-scale data modeling approach focusing on agility, scalability, and historical data preservation. Ideal for complex, evolving business environments.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Data Strategy -->
-        <div class="competency-card">
-          <div class="competency-icon">
-            <i class="fas fa-chess"></i>
-          </div>
-          <h3 class="competency-title">Data Strategy</h3>
-          <p class="competency-description">
-            Developing comprehensive data strategies that align with business objectives and drive measurable outcomes across the organization.
-          </p>
-          
-          <div class="tabs">
-            <div class="tab-buttons">
-              <button class="tab-button active" data-tab="horizon-framework">3 Horizon Framework</button>
-              <button class="tab-button" data-tab="governance">Data Governance</button>
-              <button class="tab-button" data-tab="roadmapping">Strategic Roadmapping</button>
-              <button class="tab-button" data-tab="roi">ROI Optimization</button>
-            </div>
-            
-            <div class="tab-content active" id="horizon-framework">
-              <h4>3 Horizon Framework</h4>
-              <p>Strategic planning approach balancing core business optimization (H1), emerging opportunities (H2), and transformational innovations (H3) for sustainable data-driven growth.</p>
-            </div>
-            
-            <div class="tab-content" id="governance">
-              <h4>Data Governance Strategy</h4>
-              <p>Establishing comprehensive governance frameworks ensuring data quality, security, compliance, and organizational adoption of data best practices.</p>
-            </div>
-            
-            <div class="tab-content" id="roadmapping">
-              <h4>Strategic Roadmapping</h4>
-              <p>Creating actionable roadmaps that align technical capabilities with business priorities, ensuring successful data transformation initiatives.</p>
-            </div>
-            
-            <div class="tab-content" id="roi">
-              <h4>ROI Optimization</h4>
-              <p>Developing metrics and methodologies to measure and optimize return on data investments, demonstrating tangible business value.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Data Visualization -->
-        <div class="competency-card">
-          <div class="competency-icon">
-            <i class="fas fa-chart-bar"></i>
-          </div>
-          <h3 class="competency-title">Data Visualization</h3>
-          <p class="competency-description">
-            Creating compelling, intuitive visual experiences that drive data adoption and enable data-driven decision making across all organizational levels.
-          </p>
-          
-          <div class="tabs">
-            <div class="tab-buttons">
-              <button class="tab-button active" data-tab="power-bi">Power BI</button>
-              <button class="tab-button" data-tab="tableau">Tableau</button>
-              <button class="tab-button" data-tab="d3js">D3.js</button>
-              <button class="tab-button" data-tab="python">Python</button>
-            </div>
-            
-            <div class="tab-content active" id="power-bi">
-              <h4>Microsoft Power BI</h4>
-              <p>Advanced Power BI development including custom visuals, DAX optimization, and enterprise deployment strategies. Expertise in Power BI Premium and Microsoft Fabric integration.</p>
-            </div>
-            
-            <div class="tab-content" id="tableau">
-              <h4>Tableau</h4>
-              <p>Professional Tableau development with focus on performance optimization, advanced calculations, and interactive dashboard design for enterprise analytics.</p>
-            </div>
-            
-            <div class="tab-content" id="d3js">
-              <h4>D3.js</h4>
-              <p>Custom data visualization development using D3.js for unique, interactive, and highly customized visual experiences that go beyond traditional BI tools.</p>
-            </div>
-            
-            <div class="tab-content" id="python">
-              <h4>Python Visualization</h4>
-              <p>Leveraging Python libraries (Matplotlib, Plotly, Seaborn, Streamlit) for advanced analytics visualization, statistical analysis, and machine learning model interpretation.</p>
-            </div>
-          </div>
-        </div>
+    <!-- Left Side - Profile Image -->
+    <section class="image-section">
+      <div class="profile-container">
+        <img src="headshot.jpg" alt="Brendan Daly - Data & Analytics Leader" class="profile-image">
       </div>
     </section>
-  </main>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <p>&copy; 2025 Brendan Daly. All rights reserved.</p>
-    </div>
-  </footer>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Theme toggle functionality
-      const themeToggle = document.getElementById('theme-toggle');
-      const body = document.body;
+    <!-- Right Side - Content -->
+    <section class="content-section">
+      <div class="content-header">
+        <h1>Brendan Daly</h1>
+        <div class="subtitle">Senior Solution Architect</div>
+        <div class="company-info">
+          <a href="https://www.linkedin.com/company/nri-na/posts/?feedView=all" target="_blank" class="company-link">
+            <img src="https://media.licdn.com/dms/image/v2/D4E0BAQHrWb5T4I2ayg/company-logo_200_200/B4EZW0R_1qGwAI-/0/1742486372094?e=1758153600&v=beta&t=s960a3d5mr6nfnyWu3HiD1o63QKDif0IJeMVCPscBCw" alt="NRI North America" class="company-logo">
+            <span class="company-name">NRI North America</span>
+          </a>
+        </div>
+      </div>
       
-      // Check for saved theme preference or default to light
-      const savedTheme = localStorage.getItem('theme') || 'light';
-      if (savedTheme === 'dark') {
-        body.classList.add('dark');
-      }
+      <p class="content-description">
+        Transforming organizations through strategic data initiatives and compelling insights. 
+        I specialize in building scalable data platforms, implementing AI solutions, and creating 
+        data-driven cultures that deliver measurable business value and competitive advantage.
+      </p>
       
-      themeToggle.addEventListener('click', function() {
-        body.classList.toggle('dark');
-        const currentTheme = body.classList.contains('dark') ? 'dark' : 'light';
-        localStorage.setItem('theme', currentTheme);
-      });
+      <div class="content-buttons">
+        <a href="https://www.linkedin.com/in/dalybi/" target="_blank" class="social-link" aria-label="LinkedIn Profile">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://github.com/BrendanDalyP" target="_blank" class="social-link" aria-label="GitHub Profile">
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+    </section>
+  </div>
 
-      // Tab functionality
-      function initializeTabs() {
-        const tabButtons = document.querySelectorAll('.tab-button');
-        const tabContents = document.querySelectorAll('.tab-content');
-
-        tabButtons.forEach(button => {
-          button.addEventListener('click', function() {
-            const targetTab = this.getAttribute('data-tab');
-            const parentCard = this.closest('.competency-card');
-            
-            // Remove active class from all buttons and contents in this card
-            parentCard.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
-            parentCard.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-            
-            // Add active class to clicked button
-            this.classList.add('active');
-            
-            // Show corresponding content
-            const targetContent = parentCard.querySelector(`#${targetTab}`);
-            if (targetContent) {
-              targetContent.classList.add('active');
-            }
-          });
-        });
-      }
-
-      // Initialize tabs
-      initializeTabs();
-
-      // Smooth scrolling for navigation links
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-          e.preventDefault();
-          const target = document.querySelector(this.getAttribute('href'));
-          if (target) {
-            target.scrollIntoView({
-              behavior: 'smooth',
-              block: 'start'
-            });
-          }
-        });
-      });
-
-      // Navigation active state based on scroll position
-      function updateActiveNavigation() {
-        const sections = document.querySelectorAll('section[id]');
-        const navLinks = document.querySelectorAll('.nav a[href^="#"]');
-        
-        let currentSection = '';
-        sections.forEach(section => {
-          const sectionTop = section.offsetTop - 100;
-          const sectionHeight = section.offsetHeight;
-          if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
-            currentSection = section.getAttribute('id');
-          }
-        });
-
-        navLinks.forEach(link => {
-          link.classList.remove('active');
-          if (link.getAttribute('href') === `#${currentSection}`) {
-            link.classList.add('active');
-          }
-        });
-      }
-
-      // Update navigation on scroll
-      window.addEventListener('scroll', updateActiveNavigation);
-    });
-  </script>
+  <!-- Common JavaScript -->
+  <script src="common.js"></script>
 </body>
 </html>
