@@ -1,0 +1,13 @@
+# robots.txt for https://brendandalyp.github.io/
+
+User-agent: *
+Allow: /
+
+# Disallow 404 page from being indexed
+Disallow: /404.html
+
+# Sitemap location
+Sitemap: https://brendandalyp.github.io/sitemap.xml
+
+# Crawl-delay for polite crawling
+Crawl-delay: 1

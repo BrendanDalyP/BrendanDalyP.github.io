@@ -1,0 +1,148 @@
+/* Accessibility Improvements */
+
+/* Skip Navigation Link */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  padding: 1rem 1.5rem;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 0 0 var(--radius) 0;
+  z-index: 9999;
+  transition: top 0.3s ease;
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: 3px solid hsl(var(--primary));
+  outline-offset: 2px;
+}
+
+/* Enhanced Focus Indicators */
+a:focus,
+button:focus,
+input:focus,
+select:focus,
+textarea:focus,
+.dropdown-toggle:focus,
+.social-link:focus,
+.company-link:focus,
+.side-nav-toggle:focus {
+  outline: 2px solid hsl(var(--primary));
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px hsl(var(--primary) / 0.2);
+}
+
+/* Focus visible for keyboard navigation only */
+a:focus:not(:focus-visible),
+button:focus:not(:focus-visible) {
+  outline: none;
+  box-shadow: none;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid hsl(var(--primary));
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px hsl(var(--primary) / 0.2);
+}
+
+/* Improved contrast for muted text */
+.content-description,
+p {
+  color: hsl(var(--muted-foreground));
+  /* Ensure minimum contrast ratio of 4.5:1 for WCAG AA */
+}
+
+/* Dark mode contrast improvements */
+.dark .content-description,
+.dark p {
+  color: hsl(215 20.2% 70%);
+}
+
+/* Navigation focus improvements */
+.nav a:focus,
+.header .nav a:focus {
+  outline: 2px solid hsl(var(--primary));
+  outline-offset: 2px;
+}
+
+/* Dropdown menu keyboard navigation */
+.dropdown-toggle:focus + .dropdown-menu,
+.dropdown:focus-within .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Button focus states */
+.button:focus,
+.error-button:focus {
+  outline: 2px solid hsl(var(--primary));
+  outline-offset: 2px;
+}
+
+/* Screen reader only text */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Focus trap for modal/sidebar */
+.header:focus-within {
+  /* Keep sidebar visible when navigating with keyboard */
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .tech-logo {
+    animation: none !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  a,
+  button,
+  .button {
+    outline: 2px solid currentColor;
+  }
+
+  .social-link {
+    border: 2px solid currentColor;
+  }
+}
+
+/* Ensure interactive elements are keyboard accessible */
+[role="button"],
+[role="link"] {
+  cursor: pointer;
+}
+
+[role="button"]:focus,
+[role="link"]:focus {
+  outline: 2px solid hsl(var(--primary));
+  outline-offset: 2px;
+}

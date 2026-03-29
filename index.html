@@ -5,7 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Brendan Daly | Senior Solution Architect at NRI</title>
   <meta name="description" content="Professional portfolio showcasing expertise in data modeling, data strategy, and data visualization">
-  
+  <meta name="keywords" content="data architecture, data engineering, Microsoft Fabric, Power BI, Azure, data analytics, AI implementation, data governance, Brendan Daly">
+  <meta name="author" content="Brendan Daly">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://brendandalyp.github.io/">
+  <meta property="og:title" content="Brendan Daly | Senior Solution Architect">
+  <meta property="og:description" content="Transforming organizations through strategic data initiatives and compelling insights. Specializing in Microsoft Fabric, Power BI, Azure, and AI solutions.">
+  <meta property="og:image" content="https://brendandalyp.github.io/headshot.jpg">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://brendandalyp.github.io/">
+  <meta name="twitter:title" content="Brendan Daly | Senior Solution Architect">
+  <meta name="twitter:description" content="Transforming organizations through strategic data initiatives and compelling insights. Specializing in Microsoft Fabric, Power BI, Azure, and AI solutions.">
+  <meta name="twitter:image" content="https://brendandalyp.github.io/headshot.jpg">
+
+  <!-- Additional SEO -->
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+  <link rel="canonical" href="https://brendandalyp.github.io/">
+
   <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
   
@@ -19,451 +40,90 @@
   
   <!-- Common Styles -->
   <link rel="stylesheet" href="common.css">
-  
-  <style>
-    /* Home Page Specific Styles */
-    body {
-      overflow: hidden; /* Prevent scrolling on desktop */
-    }
 
-    .main-container {
-      height: 100vh;
-      display: flex;
-      position: relative;
-    }
+  <!-- Page Specific Styles -->
+  <link rel="stylesheet" href="index.css">
 
-    /* Left Side - Image */
-    .image-section {
-      flex: 1.3;
-      background: linear-gradient(135deg, 
-        rgba(34, 197, 94, 0.08), 
-        rgba(16, 185, 129, 0.04)
-      );
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
-      position: relative;
-      min-height: 100vh;
-    }
+  <!-- Accessibility Styles -->
+  <link rel="stylesheet" href="accessibility.css">
 
-    .profile-container {
-      position: relative;
-      z-index: 2;
-    }
-
-    .profile-image {
-      width: 500px;
-      height: 500px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 8px solid white;
-      box-shadow: 
-        0 20px 60px rgba(0, 0, 0, 0.15),
-        0 8px 20px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
-    }
-
-    .profile-image:hover {
-      transform: scale(1.02);
-    }
-
-    /* Right Side - Content */
-    .content-section {
-      flex: 1;
-      padding: 4rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      background: linear-gradient(135deg, 
-        hsl(var(--background)), 
-        hsl(var(--muted) / 0.3)
-      );
-      min-height: 100vh;
-    }
-
-    .content-header h1 {
-      font-size: 4rem;
-      font-weight: 700;
-      color: hsl(var(--foreground));
-      margin-bottom: 0.5rem;
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-    }
-
-    .content-header .subtitle {
-      font-size: 1.75rem;
-      color: hsl(var(--primary));
-      font-weight: 500;
-      margin-bottom: 1rem;
-      opacity: 0.9;
-    }
-
-    .company-info {
-      margin-bottom: 2.5rem;
-    }
-
-    .company-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.75rem;
-      text-decoration: none;
-      color: hsl(var(--muted-foreground));
-      transition: all 0.3s ease;
-      padding: 0.5rem;
-      border-radius: var(--radius);
-    }
-
-    .company-link:hover {
-      color: hsl(var(--foreground));
-      background: hsl(var(--accent));
-      transform: translateY(-1px);
-    }
-
-    .company-logo {
-      width: 32px;
-      height: 32px;
-      border-radius: 4px;
-      object-fit: contain;
-    }
-
-    .company-name {
-      font-size: 1.1rem;
-      font-weight: 500;
-    }
-
-    .content-description {
-      font-size: 1.25rem;
-      color: hsl(var(--muted-foreground));
-      line-height: 1.8;
-      margin-bottom: 3.5rem;
-      max-width: 550px;
-      font-weight: 400;
-    }
-
-    .content-buttons {
-      display: flex;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-    }
-
-    /* Social Media Links */
-    .social-link {
-      background: linear-gradient(135deg, 
-        hsl(var(--primary)), 
-        hsl(var(--primary) / 0.9)
-      );
-      color: white;
-      padding: 1rem;
-      border: none;
-      border-radius: 50%;
-      font-size: 1.5rem;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 20px rgba(34, 197, 94, 0.3);
-      width: 60px;
-      height: 60px;
-    }
-
-    .social-link:hover {
-      transform: translateY(-3px) scale(1.1);
-      box-shadow: 0 8px 30px rgba(34, 197, 94, 0.4);
-    }
-
-    .social-link:first-child:hover {
-      background: linear-gradient(135deg, #0077b5, #005885);
-      box-shadow: 0 8px 30px rgba(0, 119, 181, 0.4);
-    }
-
-    .social-link:last-child:hover {
-      background: linear-gradient(135deg, #333, #000);
-      box-shadow: 0 8px 30px rgba(51, 51, 51, 0.4);
-    }
-
-    /* Side Navigation */
-    .side-nav-toggle {
-      position: fixed;
-      top: 2rem;
-      left: 2rem;
-      z-index: 2001;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(20px);
-      border: 1px solid hsl(var(--border) / 0.3);
-      border-radius: 50%;
-      width: 50px;
-      height: 50px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      color: hsl(var(--foreground));
-      font-size: 1.2rem;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .side-nav-toggle:hover {
-      background: hsl(var(--accent));
-      transform: scale(1.05);
-    }
-
-    /* Hide hamburger when sidebar is open */
-    .side-nav-toggle.hidden {
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-    }
-
-    .header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 100vh;
-      width: 280px;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(20px);
-      border-right: 1px solid hsl(var(--border) / 0.3);
-      z-index: 2000;
-      padding: 2rem 0;
-      display: flex;
-      flex-direction: column;
-      transform: translateX(-100%);
-      transition: transform 0.3s ease;
-      box-shadow: 4px 0 20px rgba(0, 0, 0, 0.1);
-    }
-
-    .header.open {
-      transform: translateX(0);
-    }
-
-    .header .logo {
-      padding: 0 2rem;
-      margin-bottom: 2rem;
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: hsl(var(--foreground));
-      text-decoration: none;
-    }
-
-    .header .nav {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      padding: 0 1rem;
-    }
-
-    .header .nav > a,
-    .header .dropdown-toggle {
-      padding: 0.75rem 1rem;
-      color: hsl(var(--muted-foreground));
-      text-decoration: none;
-      border-radius: var(--radius);
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: none;
-      border: none;
-      width: 100%;
-      font-size: 1rem;
-      cursor: pointer;
-    }
-
-    .header .nav > a:hover,
-    .header .dropdown-toggle:hover,
-    .header .nav > a.active {
-      background: hsl(var(--accent));
-      color: hsl(var(--foreground));
-    }
-
-    .header .dropdown {
-      position: relative;
-    }
-
-    .header .dropdown-menu {
-      display: none;
-      flex-direction: column;
-      gap: 0.25rem;
-      margin-top: 0.25rem;
-      margin-left: 0;
-      padding-left: 0;
-    }
-
-    .header .dropdown-menu.show {
-      display: flex;
-    }
-
-    .header .dropdown-menu a {
-      padding: 0.5rem 1rem;
-      color: hsl(var(--muted-foreground));
-      text-decoration: none;
-      border-radius: var(--radius);
-      transition: all 0.3s ease;
-      font-size: 0.9rem;
-      margin-left: 1rem;
-    }
-
-    .header .dropdown-menu a:hover {
-      background: hsl(var(--muted));
-      color: hsl(var(--foreground));
-    }
-
-    .nav-close-btn {
-      background: none;
-      border: none;
-      color: hsl(var(--muted-foreground));
-      cursor: pointer;
-      padding: 0.5rem;
-      border-radius: var(--radius);
-      transition: all 0.3s ease;
-      font-size: 1.2rem;
-    }
-
-    .nav-close-btn:hover {
-      background: hsl(var(--accent));
-      color: hsl(var(--foreground));
-    }
-
-    .nav-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0, 0, 0, 0.5);
-      z-index: 1999;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s ease;
-    }
-
-    .nav-overlay.show {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    /* Dark mode adjustments */
-    .dark .side-nav-toggle {
-      background: rgba(15, 15, 15, 0.95);
-    }
-
-    .dark .header {
-      background: rgba(15, 15, 15, 0.95);
-    }
-
-    .dark .content-section {
-      background: linear-gradient(135deg, 
-        hsl(var(--background)), 
-        hsl(var(--card) / 0.5)
-      );
-    }
-
-    .dark .profile-image {
-      border-color: hsl(var(--border));
-    }
-
-    /* Responsive Design */
-    @media (max-width: 1024px) {
-      .content-section {
-        padding: 3rem;
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Brendan Daly",
+    "jobTitle": "Senior Solution Architect",
+    "description": "Data & Analytics Leader specializing in Microsoft Fabric, Power BI, Azure, and AI solutions",
+    "url": "https://brendandalyp.github.io/",
+    "image": "https://brendandalyp.github.io/headshot.jpg",
+    "email": "Brendan.Daly.P@gmail.com",
+    "telephone": "+1-314-835-7944",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "United States"
+    },
+    "worksFor": {
+      "@type": "Organization",
+      "name": "NRI North America",
+      "url": "https://www.linkedin.com/company/nri-na/"
+    },
+    "alumniOf": {
+      "@type": "Organization",
+      "name": "University"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/in/dalybi/",
+      "https://github.com/BrendanDalyP"
+    ],
+    "knowsAbout": [
+      "Data Architecture",
+      "Data Engineering",
+      "Microsoft Fabric",
+      "Power BI",
+      "Azure",
+      "Data Analytics",
+      "AI Implementation",
+      "Data Governance",
+      "Data Strategy",
+      "DevOps",
+      "DataOps",
+      "Databricks",
+      "Snowflake"
+    ],
+    "hasCredential": [
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "Microsoft Fabric Data Engineer Associate",
+        "credentialCategory": "certification"
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "Microsoft Fabric Analytics Engineer Associate",
+        "credentialCategory": "certification"
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "Azure Data Engineer Associate",
+        "credentialCategory": "certification"
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "Databricks Certified Data Analyst Associate",
+        "credentialCategory": "certification"
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "Snowflake SnowPro Core",
+        "credentialCategory": "certification"
       }
-
-      .content-header h1 {
-        font-size: 3.5rem;
-      }
-
-      .profile-image {
-        width: 420px;
-        height: 420px;
-      }
-    }
-
-    @media (max-width: 768px) {
-      body {
-        overflow: auto; /* Allow scrolling on mobile */
-      }
-
-      .main-container {
-        height: auto;
-        min-height: 100vh;
-        flex-direction: column;
-      }
-
-      .image-section {
-        padding: 3rem 2rem;
-        height: 60vh;
-        min-height: auto;
-      }
-
-      .profile-image {
-        width: 320px;
-        height: 320px;
-        border-width: 6px;
-      }
-
-      .content-section {
-        padding: 3rem 2rem;
-        text-align: center;
-        min-height: auto;
-      }
-
-      .content-header h1 {
-        font-size: 2.75rem;
-      }
-
-      .content-header .subtitle {
-        font-size: 1.5rem;
-      }
-
-      .content-description {
-        max-width: none;
-        font-size: 1.125rem;
-      }
-
-      .content-buttons {
-        justify-content: center;
-        gap: 1rem;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .image-section {
-        padding: 2rem 1rem;
-      }
-
-      .profile-image {
-        width: 260px;
-        height: 260px;
-      }
-
-      .content-section {
-        padding: 2rem 1.5rem;
-      }
-
-      .content-header h1 {
-        font-size: 2.25rem;
-      }
-
-      .content-buttons {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .social-link {
-        width: 50px;
-        height: 50px;
-        font-size: 1.2rem;
-      }
-    }
-  </style>
+    ]
+  }
+  </script>
 </head>
 <body>
+  <!-- Skip Navigation -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
   <!-- Side Navigation Toggle -->
   <button class="side-nav-toggle" id="sideNavToggle" aria-label="Toggle navigation">
     <i class="fas fa-bars"></i>
@@ -498,48 +158,64 @@
         </div>
       </div>
     </nav>
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon sun">
+        <circle cx="12" cy="12" r="5"></circle>
+        <line x1="12" y1="1" x2="12" y2="3"></line>
+        <line x1="12" y1="21" x2="12" y2="23"></line>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+        <line x1="1" y1="12" x2="3" y2="12"></line>
+        <line x1="21" y1="12" x2="23" y2="12"></line>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon moon">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+      </svg>
+    </button>
   </header>
 
   <!-- Main Split Layout -->
-  <div class="main-container">
+  <div class="main-container" id="main-content">
     <!-- Technology Logos Cloud -->
     <div class="tech-cloud">
       <div class="tech-logo tech-logo-1">
-        <img src="Microsoft-Fabric-Logo-1-removebg-preview.png" alt="Microsoft Fabric" />
+        <img src="images/logos/fabric.png" alt="Microsoft Fabric" loading="lazy" />
       </div>
       <div class="tech-logo tech-logo-2">
-        <img src="https://logos-world.net/wp-content/uploads/2022/11/Snowflake-Emblem.png" alt="Snowflake" />
+        <img src="images/logos/snowflake.png" alt="Snowflake" loading="lazy" />
       </div>
       <div class="tech-logo tech-logo-3">
-        <img src="https://datasense.be/wp-content/uploads/databricks-datasense.png" alt="Databricks" />
+        <img src="images/logos/databricks.png" alt="Databricks" loading="lazy" />
       </div>
       <div class="tech-logo tech-logo-4">
-        <img src="https://logos-world.net/wp-content/uploads/2021/02/Microsoft-Azure-Symbol.png" alt="Microsoft Azure" />
+        <img src="images/logos/azure.png" alt="Microsoft Azure" loading="lazy" />
       </div>
       <div class="tech-logo tech-logo-5">
-        <img src="https://th.bing.com/th/id/R.83eab36f8ebe21cd09608ea73d95523a?rik=rss%2beh5LjtGYIw&riu=http%3a%2f%2fwww.pngmart.com%2ffiles%2f4%2fMicrosoft-Logo-Transparent-Background.png&ehk=rqBs2L0Wm3uKUNNIPlHrIPBJHzHIZCC8ju1yM4NkW2g%3d&risl=&pid=ImgRaw&r=0" alt="Microsoft" />
+        <img src="images/logos/microsoft.png" alt="Microsoft" loading="lazy" />
       </div>
       <div class="tech-logo tech-logo-6">
-        <img src="https://hypertecsp.com/wp-content/uploads/copilot-logo-1.png" alt="Microsoft Copilot" />
+        <img src="images/logos/copilot.png" alt="Microsoft Copilot" loading="lazy" />
       </div>
       <div class="tech-logo tech-logo-7">
-        <img src="https://logos-world.net/wp-content/uploads/2021/10/Tableau-Logo.png" alt="Tableau" />
+        <img src="images/logos/tableau.png" alt="Tableau" loading="lazy" />
       </div>
       <div class="tech-logo tech-logo-8">
-        <img src="https://www.ambient-it.net/wp-content/uploads/2024/06/Microsoft-Purview.png" alt="Microsoft Purview" />
+        <img src="images/logos/purview.png" alt="Microsoft Purview" loading="lazy" />
       </div>
       <div class="tech-logo tech-logo-9">
-        <img src="https://freepnglogo.com/images/all_img/1702059309openai-logo-png.png" alt="OpenAI" />
+        <img src="images/logos/openai.png" alt="OpenAI" loading="lazy" />
       </div>
       <div class="tech-logo tech-logo-10">
-        <img src="https://www.pngmart.com/files/23/Power-Bi-Logo-PNG.png" alt="Power BI" />
+        <img src="images/logos/powerbi.png" alt="Power BI" loading="lazy" />
       </div>
     </div>
 
     <!-- Left Side - Profile Image -->
     <section class="image-section">
       <div class="profile-container">
-        <img src="headshot.jpg" alt="Brendan Daly - Data & Analytics Leader" class="profile-image">
+        <img src="headshot.jpg" alt="Brendan Daly - Data & Analytics Leader" class="profile-image" width="500" height="500">
       </div>
     </section>
 
