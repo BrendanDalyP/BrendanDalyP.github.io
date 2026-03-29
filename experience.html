@@ -1197,41 +1197,68 @@
 
     <!-- Resume Tab -->
     <div class="tab-content" id="resume">
-      <div class="resume-viewer" style="max-width: 900px; margin: 0 auto;">
-        <div style="text-align: center; padding: 2rem; background: hsl(var(--card)); border: 1px solid hsl(var(--border)); border-radius: var(--radius); margin-bottom: 2rem;">
-          <h3 style="color: hsl(var(--foreground)); margin-bottom: 1rem;">Resume</h3>
-          <p style="color: hsl(var(--muted-foreground)); margin-bottom: 1rem;">
-            View my complete professional experience and accomplishments below.
-          </p>
-          <a href="Resume_Daly_425.pdf" target="_blank" style="display: inline-flex; align-items: center; gap: 0.5rem; background: hsl(var(--primary)); color: hsl(var(--primary-foreground)); padding: 0.75rem 1.5rem; border-radius: var(--radius); text-decoration: none; font-weight: 500; transition: all 0.3s ease;">
-            <i class="fas fa-download"></i>
-            Download Resume PDF
-          </a>
-        </div>
-        
-        <!-- PDF Viewer using PDF.js -->
-        <div id="pdf-viewer-container" style="width: 100%; border: 1px solid hsl(var(--border)); border-radius: var(--radius); overflow: auto; background: hsl(var(--card)); position: relative; padding: 1rem 0;">
-          <div id="pdf-loading" style="text-align: center; padding: 3rem; color: hsl(var(--muted-foreground));">
-            <i class="fas fa-spinner fa-spin" style="font-size: 2rem; margin-bottom: 1rem;"></i>
-            <p>Loading resume...</p>
-          </div>
-          <div id="pdf-error" style="display: none; text-align: center; padding: 3rem; color: hsl(var(--muted-foreground));">
-            <i class="fas fa-exclamation-circle" style="font-size: 2rem; margin-bottom: 1rem; color: hsl(var(--primary));"></i>
-            <p>Unable to render the PDF inline. Please use the download button above.</p>
-          </div>
-          <canvas id="pdf-canvas" style="display: block; margin: 0 auto; max-width: 100%;"></canvas>
-          <div id="pdf-nav" style="display: none; text-align: center; padding: 1rem; gap: 1rem; align-items: center; justify-content: center; flex-wrap: wrap;">
-            <button id="pdf-prev" onclick="changePdfPage(-1)" style="padding: 0.5rem 1rem; border-radius: var(--radius); border: 1px solid hsl(var(--border)); background: hsl(var(--card)); color: hsl(var(--foreground)); cursor: pointer;">
-              <i class="fas fa-chevron-left"></i> Prev
-            </button>
-            <span id="pdf-page-info" style="color: hsl(var(--muted-foreground)); font-size: 0.9rem;"></span>
-            <button id="pdf-next" onclick="changePdfPage(1)" style="padding: 0.5rem 1rem; border-radius: var(--radius); border: 1px solid hsl(var(--border)); background: hsl(var(--card)); color: hsl(var(--foreground)); cursor: pointer;">
-              Next <i class="fas fa-chevron-right"></i>
-            </button>
-          </div>
-        </div>
-        
+      <style>
+        .pdf-btn {
+          padding: 0.4rem 0.65rem;
+          border-radius: 6px;
+          border: 1px solid hsl(var(--border));
+          background: hsl(var(--background));
+          color: hsl(var(--foreground));
+          cursor: pointer;
+          font-size: 0.85rem;
+          text-decoration: none;
+          display: inline-flex;
+          align-items: center;
+          transition: background 0.15s;
+          line-height: 1;
+        }
+        .pdf-btn:hover { background: hsl(var(--accent)); }
+        #pdf-outer:fullscreen,
+        #pdf-outer:-webkit-full-screen {
+          background: #222;
+          display: flex;
+          flex-direction: column;
+        }
+        #pdf-outer:fullscreen #pdf-viewer-container,
+        #pdf-outer:-webkit-full-screen #pdf-viewer-container {
+          flex: 1;
+          min-height: 0;
+        }
+      </style>
 
+      <div id="pdf-outer" style="max-width: 960px; margin: 0 auto; border: 1px solid hsl(var(--border)); border-radius: var(--radius); overflow: hidden; background: hsl(var(--card));">
+        <!-- Toolbar -->
+        <div style="display: flex; align-items: center; justify-content: space-between; padding: 0.6rem 1rem; border-bottom: 1px solid hsl(var(--border)); gap: 0.5rem; flex-wrap: wrap; background: hsl(var(--card));">
+          <div style="display: flex; align-items: center; gap: 0.4rem;">
+            <button onclick="changePdfPage(-1)" title="Previous page" class="pdf-btn"><i class="fas fa-chevron-left"></i></button>
+            <span id="pdf-page-info" style="font-size: 0.85rem; color: hsl(var(--muted-foreground)); min-width: 80px; text-align: center;">— / —</span>
+            <button onclick="changePdfPage(1)" title="Next page" class="pdf-btn"><i class="fas fa-chevron-right"></i></button>
+          </div>
+          <div style="display: flex; align-items: center; gap: 0.4rem;">
+            <button onclick="adjustZoom(-0.15)" title="Zoom out" class="pdf-btn"><i class="fas fa-search-minus"></i></button>
+            <span id="pdf-zoom-label" style="font-size: 0.85rem; color: hsl(var(--muted-foreground)); min-width: 48px; text-align: center;">100%</span>
+            <button onclick="adjustZoom(0.15)" title="Zoom in" class="pdf-btn"><i class="fas fa-search-plus"></i></button>
+            <button onclick="fitWidth()" title="Fit to width" class="pdf-btn" style="margin-left: 0.25rem;"><i class="fas fa-arrows-alt-h"></i></button>
+          </div>
+          <div style="display: flex; align-items: center; gap: 0.4rem;">
+            <a href="Resume_Daly_425.pdf" target="_blank" title="Open in new tab" class="pdf-btn"><i class="fas fa-external-link-alt"></i></a>
+            <a href="Resume_Daly_425.pdf" download title="Download" class="pdf-btn"><i class="fas fa-download"></i></a>
+            <button onclick="togglePdfFullscreen()" title="Fullscreen" class="pdf-btn" id="pdf-fs-btn"><i class="fas fa-expand"></i></button>
+          </div>
+        </div>
+
+        <!-- Canvas area -->
+        <div id="pdf-viewer-container" style="overflow: auto; background: hsl(var(--muted) / 0.3); min-height: 820px; position: relative;">
+          <div id="pdf-loading" style="text-align: center; padding: 4rem; color: hsl(var(--muted-foreground));">
+            <i class="fas fa-spinner fa-spin" style="font-size: 2rem; margin-bottom: 1rem; display: block;"></i>
+            Loading resume...
+          </div>
+          <div id="pdf-error" style="display: none; text-align: center; padding: 4rem; color: hsl(var(--muted-foreground));">
+            <i class="fas fa-exclamation-circle" style="font-size: 2rem; margin-bottom: 1rem; display: block; color: hsl(var(--primary));"></i>
+            Unable to render PDF inline. <a href="Resume_Daly_425.pdf" target="_blank" style="color: hsl(var(--primary));">Open directly</a>
+          </div>
+          <canvas id="pdf-canvas" style="display: block; margin: 1.5rem auto; box-shadow: 0 4px 20px rgba(0,0,0,0.2);"></canvas>
+        </div>
       </div>
     </div>
   </main>
@@ -1307,54 +1334,94 @@
 
   <!-- PDF.js Resume Renderer -->
   <script>
+    pdfjsLib.GlobalWorkerOptions.workerSrc =
+      'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
     let pdfDoc = null;
     let pdfCurrentPage = 1;
     let pdfRendering = false;
     let pdfLoaded = false;
-
-    pdfjsLib.GlobalWorkerOptions.workerSrc =
-      'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    let pdfZoomScale = null; // null = fit-width (default)
+    let pdfLastScale = 1;   // tracks the actual scale used in last render
 
     function renderPdfPage(num) {
+      if (!pdfDoc) return;
       pdfRendering = true;
       pdfDoc.getPage(num).then(function(page) {
         const canvas = document.getElementById('pdf-canvas');
         const ctx = canvas.getContext('2d');
         const container = document.getElementById('pdf-viewer-container');
-        const scale = Math.min((container.clientWidth - 32) / page.getViewport({ scale: 1 }).width, 2);
+        const naturalWidth = page.getViewport({ scale: 1 }).width;
+        const scale = pdfZoomScale !== null
+          ? pdfZoomScale
+          : (container.clientWidth - 48) / naturalWidth;
+
         const viewport = page.getViewport({ scale });
+        const dpr = window.devicePixelRatio || 1;
+        canvas.width = viewport.width * dpr;
+        canvas.height = viewport.height * dpr;
+        canvas.style.width = viewport.width + 'px';
+        canvas.style.height = viewport.height + 'px';
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-        canvas.height = viewport.height;
-        canvas.width = viewport.width;
-
+        pdfLastScale = scale;
         page.render({ canvasContext: ctx, viewport }).promise.then(function() {
           pdfRendering = false;
           const info = document.getElementById('pdf-page-info');
           if (info) info.textContent = 'Page ' + num + ' of ' + pdfDoc.numPages;
+          const label = document.getElementById('pdf-zoom-label');
+          if (label) label.textContent = Math.round(scale * 100) + '%';
         });
       });
     }
 
     function changePdfPage(delta) {
       if (pdfRendering || !pdfDoc) return;
-      const newPage = pdfCurrentPage + delta;
-      if (newPage < 1 || newPage > pdfDoc.numPages) return;
-      pdfCurrentPage = newPage;
+      const next = pdfCurrentPage + delta;
+      if (next < 1 || next > pdfDoc.numPages) return;
+      pdfCurrentPage = next;
       renderPdfPage(pdfCurrentPage);
     }
+
+    function adjustZoom(delta) {
+      if (!pdfDoc) return;
+      pdfZoomScale = Math.max(0.25, Math.min(4, pdfLastScale + delta));
+      renderPdfPage(pdfCurrentPage);
+    }
+
+    function fitWidth() {
+      pdfZoomScale = null;
+      renderPdfPage(pdfCurrentPage);
+    }
+
+    function togglePdfFullscreen() {
+      const el = document.getElementById('pdf-outer');
+      const btn = document.getElementById('pdf-fs-btn');
+      if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+        (el.requestFullscreen || el.webkitRequestFullscreen).call(el);
+        btn.innerHTML = '<i class="fas fa-compress"></i>';
+      } else {
+        (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+        btn.innerHTML = '<i class="fas fa-expand"></i>';
+      }
+    }
+
+    document.addEventListener('fullscreenchange', function() {
+      if (!document.fullscreenElement) {
+        const btn = document.getElementById('pdf-fs-btn');
+        if (btn) btn.innerHTML = '<i class="fas fa-expand"></i>';
+        fitWidth();
+      }
+    });
 
     function loadResumePdf() {
       if (pdfLoaded) return;
       pdfLoaded = true;
-
       const loading = document.getElementById('pdf-loading');
       const error = document.getElementById('pdf-error');
-      const nav = document.getElementById('pdf-nav');
-
       pdfjsLib.getDocument('Resume_Daly_425.pdf').promise.then(function(pdf) {
         pdfDoc = pdf;
         if (loading) loading.style.display = 'none';
-        if (nav) { nav.style.display = pdf.numPages > 1 ? 'flex' : 'none'; }
         renderPdfPage(pdfCurrentPage);
       }).catch(function(err) {
         console.error('PDF load error:', err);

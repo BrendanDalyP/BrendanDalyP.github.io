@@ -636,27 +636,38 @@ a:hover {
 
 /* Responsive adjustments for mobile */
 @media (max-width: 768px) {
-  .tech-logo img {
-    width: 120px !important;
-    height: 120px !important;
+  /* Contain the cloud to the image section area only */
+  .tech-cloud {
+    position: absolute;
+    height: 55vh;
+    pointer-events: none;
   }
-  
-  .tech-logo-1 img {
-    width: 85px !important;
-    height: 85px !important;
-  }
-  
-  .tech-logo-3 img {
-    width: 180px !important;
-    height: 180px !important;
-  }
-  
+
+  /* All logos small and uniform on mobile */
+  .tech-logo img,
+  .tech-logo-1 img,
+  .tech-logo-2 img,
+  .tech-logo-3 img,
   .tech-logo-4 img,
   .tech-logo-5 img,
   .tech-logo-6 img,
   .tech-logo-7 img,
-  .tech-logo-8 img {
-    width: 140px !important;
-    height: 140px !important;
+  .tech-logo-8 img,
+  .tech-logo-9 img,
+  .tech-logo-10 img {
+    width: 60px !important;
+    height: 60px !important;
   }
+
+  /* Reposition logos to spread across the image section only */
+  .tech-logo-1  { top: 5%;  left: 5%;  }
+  .tech-logo-2  { top: 5%;  left: 35%; }
+  .tech-logo-3  { top: 5%;  left: 65%; }
+  .tech-logo-4  { top: 28%; left: 2%;  }
+  .tech-logo-5  { top: 28%; left: 76%; }
+  .tech-logo-6  { top: 52%; left: 5%;  }
+  .tech-logo-7  { top: 52%; left: 35%; }
+  .tech-logo-8  { top: 52%; left: 65%; }
+  .tech-logo-9  { top: 78%; left: 5%;  }
+  .tech-logo-10 { top: 78%; left: 76%; }
 }
