@@ -2,7 +2,10 @@
   "permissions": {
     "allow": [
       "Bash(ls:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(curl:*)",
+      "WebFetch(domain:www.linkedin.com)",
+      "Bash(wc:*)"
     ]
   }
 }
