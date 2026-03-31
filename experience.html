@@ -1242,8 +1242,8 @@
             <button onclick="fitWidth()" title="Fit to width" class="pdf-btn" style="margin-left: 0.25rem;"><i class="fas fa-arrows-alt-h"></i></button>
           </div>
           <div style="display: flex; align-items: center; gap: 0.4rem;">
-            <a href="Resume_Daly_425.pdf" target="_blank" title="Open in new tab" class="pdf-btn"><i class="fas fa-external-link-alt"></i></a>
-            <a href="Resume_Daly_425.pdf" download title="Download" class="pdf-btn"><i class="fas fa-download"></i></a>
+            <a href="Resume_Daly_2026.pdf" target="_blank" title="Open in new tab" class="pdf-btn"><i class="fas fa-external-link-alt"></i></a>
+            <a href="Resume_Daly_2026.pdf" download title="Download" class="pdf-btn"><i class="fas fa-download"></i></a>
             <button onclick="togglePdfFullscreen()" title="Fullscreen" class="pdf-btn" id="pdf-fs-btn"><i class="fas fa-expand"></i></button>
           </div>
         </div>
@@ -1256,7 +1256,7 @@
           </div>
           <div id="pdf-error" style="display: none; text-align: center; padding: 4rem; color: hsl(var(--muted-foreground));">
             <i class="fas fa-exclamation-circle" style="font-size: 2rem; margin-bottom: 1rem; display: block; color: hsl(var(--primary));"></i>
-            Unable to render PDF inline. <a href="Resume_Daly_425.pdf" target="_blank" style="color: hsl(var(--primary));">Open directly</a>
+            Unable to render PDF inline. <a href="Resume_Daly_2026.pdf" target="_blank" style="color: hsl(var(--primary));">Open directly</a>
           </div>
           <canvas id="pdf-canvas" style="display: block; margin: 1.5rem auto; box-shadow: 0 4px 20px rgba(0,0,0,0.2);"></canvas>
         </div>
@@ -1420,7 +1420,7 @@
       pdfLoaded = true;
       const loading = document.getElementById('pdf-loading');
       const error = document.getElementById('pdf-error');
-      pdfjsLib.getDocument('Resume_Daly_425.pdf').promise.then(function(pdf) {
+      pdfjsLib.getDocument('Resume_Daly_2026.pdf').promise.then(function(pdf) {
         pdfDoc = pdf;
         if (loading) loading.style.display = 'none';
         renderPdfPage(pdfCurrentPage);
