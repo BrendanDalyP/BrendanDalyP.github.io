@@ -1,4 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
-  <rect width="200" height="200" rx="20" fill="#5B7B3A"/>
-  <text x="100" y="130" font-family="Arial, sans-serif" font-size="110" font-weight="bold" text-anchor="middle" fill="white">O</text>
+  <rect width="200" height="200" rx="24" fill="#2E5F2E"/>
+  <text x="100" y="120" font-family="Arial, Helvetica, sans-serif" font-size="90" font-weight="bold" text-anchor="middle" fill="white">OS</text>
+  <text x="100" y="160" font-family="Arial, Helvetica, sans-serif" font-size="17" text-anchor="middle" fill="rgba(255,255,255,0.8)">Oakwood</text>
+  <text x="100" y="182" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="middle" fill="rgba(255,255,255,0.65)">Systems Group</text>
 </svg>
