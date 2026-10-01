@@ -8,7 +8,8 @@
       "Bash(wc:*)",
       "Bash(grep -rn -i \"claude\\\\|sonnet\\\\|opus\\\\|haiku\\\\|anthropic\" /home/runner/workspace/ --include=*.html --include=*.js --include=*.css --include=*.md)",
       "Bash(grep -rn \"2\\\\.1\\\\.87\\\\|claude.*version\\\\|version.*claude\" /home/runner/workspace/ --include=*.html --include=*.js --include=*.json --include=*.md)",
-      "Bash(grep -rn 2.1 /home/runner/workspace/ --include=*.html --include=*.js --include=*.json)"
+      "Bash(grep -rn 2.1 /home/runner/workspace/ --include=*.html --include=*.js --include=*.json)",
+      "Bash(node --check server.js)"
     ]
   }
 }

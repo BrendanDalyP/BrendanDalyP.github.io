@@ -903,9 +903,12 @@
   <script src="common.js"></script>
 
   <!-- Tab & Filter Logic -->
+  <!-- Drives the Experience section: switching between the Projects/Competencies/History/Resume
+       tabs, and filtering the project cards by industry. -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // Tab switching
+      // --- Tab switching ---
+      // Each tab button carries a data-tab id matching a .tab-content panel.
       const tabButtons = document.querySelectorAll('.experience-section .tab-button');
       const tabContents = document.querySelectorAll('.experience-section .tab-content');
 
@@ -913,22 +916,26 @@
         button.addEventListener('click', () => {
           const targetTab = button.getAttribute('data-tab');
 
+          // Clear the active state from all tabs, then activate only the clicked one and its panel.
           tabButtons.forEach(btn => btn.classList.remove('active'));
           tabContents.forEach(content => content.classList.remove('active'));
 
           button.classList.add('active');
           document.getElementById(targetTab).classList.add('active');
 
+          // The resume PDF is rendered lazily — only build it the first time that tab is opened.
           if (targetTab === 'resume') {
             loadResumePdf();
           }
         });
       });
 
-      // Project filtering
+      // --- Project filtering ---
+      // The industry buttons show/hide project cards based on each card's data-industry value.
       const projectNavButtons = document.querySelectorAll('.project-nav-btn');
       const projectCards = document.querySelectorAll('.project-card');
 
+      // Show every card when no filter (or 'all') is passed; otherwise show only matching industries.
       function applyProjectFilter(filter) {
         if (!filter || filter === 'all' || filter === '') {
           projectCards.forEach(card => card.classList.remove('hidden'));
@@ -941,6 +948,7 @@
         });
       }
 
+      // Start with all projects visible.
       applyProjectFilter('all');
 
       projectNavButtons.forEach(button => {
@@ -948,11 +956,14 @@
           const filter = button.getAttribute('data-filter');
           const isCurrentlyActive = button.classList.contains('active');
 
+          // Reset every button to the unselected state first.
           projectNavButtons.forEach(btn => {
             btn.classList.remove('active');
             btn.setAttribute('aria-pressed', 'false');
           });
 
+          // Clicking the already-active filter toggles it off (back to showing all);
+          // otherwise activate the clicked filter.
           if (isCurrentlyActive) {
             applyProjectFilter('all');
           } else {
@@ -966,17 +977,22 @@
   </script>
 
   <!-- PDF.js Resume Renderer -->
+  <!-- Renders the resume PDF into a <canvas> using the PDF.js library, with page navigation,
+       zoom, fit-to-width, and fullscreen controls (wired to the buttons in the Resume tab). -->
   <script>
+    // PDF.js runs its parsing/rendering in a web worker; point it at the matching worker build.
     pdfjsLib.GlobalWorkerOptions.workerSrc =
       'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
-    let pdfDoc = null;
-    let pdfCurrentPage = 1;
-    let pdfRendering = false;
-    let pdfLoaded = false;
-    let pdfZoomScale = null;
-    let pdfLastScale = 1;
+    // --- Viewer state ---
+    let pdfDoc = null;          // the loaded PDF document object
+    let pdfCurrentPage = 1;     // page currently on screen
+    let pdfRendering = false;   // guard so we don't start a new render over an in-flight one
+    let pdfLoaded = false;      // ensures the PDF is fetched only once
+    let pdfZoomScale = null;    // explicit zoom level; null means "auto fit to width"
+    let pdfLastScale = 1;       // the scale actually used on the last render (basis for zoom steps)
 
+    // Draw a single page of the PDF onto the canvas at the current zoom level.
     function renderPdfPage(num) {
       if (!pdfDoc) return;
       pdfRendering = true;
@@ -984,11 +1000,16 @@
         const canvas = document.getElementById('pdf-canvas');
         const ctx = canvas.getContext('2d');
         const container = document.getElementById('pdf-viewer-container');
+
+        // Scale: use the explicit zoom if set, otherwise fit the page width to the container
+        // (minus 48px of padding). naturalWidth is the page's width at 100%.
         const naturalWidth = page.getViewport({ scale: 1 }).width;
         const scale = pdfZoomScale !== null
           ? pdfZoomScale
           : (container.clientWidth - 48) / naturalWidth;
 
+        // Render at the device pixel ratio so the text stays crisp on high-DPI/retina screens:
+        // the canvas backing store is sized up by dpr while the CSS size stays the on-screen size.
         const viewport = page.getViewport({ scale });
         const dpr = window.devicePixelRatio || 1;
         canvas.width = viewport.width * dpr;
@@ -998,6 +1019,7 @@
         ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
         pdfLastScale = scale;
+        // After the page finishes drawing, update the page counter and zoom percentage labels.
         page.render({ canvasContext: ctx, viewport }).promise.then(function() {
           pdfRendering = false;
           const info = document.getElementById('pdf-page-info');
@@ -1008,6 +1030,7 @@
       });
     }
 
+    // Prev/next page buttons. delta is -1 or +1; ignored while a render is in progress or out of range.
     function changePdfPage(delta) {
       if (pdfRendering || !pdfDoc) return;
       const next = pdfCurrentPage + delta;
@@ -1016,17 +1039,21 @@
       renderPdfPage(pdfCurrentPage);
     }
 
+    // Zoom in/out buttons. Nudge the last-used scale by delta, clamped to 25%–400%.
     function adjustZoom(delta) {
       if (!pdfDoc) return;
       pdfZoomScale = Math.max(0.25, Math.min(4, pdfLastScale + delta));
       renderPdfPage(pdfCurrentPage);
     }
 
+    // Fit-to-width button: clear the explicit zoom so renderPdfPage recalculates from container width.
     function fitWidth() {
       pdfZoomScale = null;
       renderPdfPage(pdfCurrentPage);
     }
 
+    // Enter/exit fullscreen on the viewer shell and swap the button icon.
+    // Falls back to the webkit-prefixed APIs for older Safari.
     function togglePdfFullscreen() {
       const el = document.getElementById('pdf-outer');
       const btn = document.getElementById('pdf-fs-btn');
@@ -1039,6 +1066,7 @@
       }
     }
 
+    // When leaving fullscreen (including via the Esc key), reset the icon and re-fit the page.
     document.addEventListener('fullscreenchange', function() {
       if (!document.fullscreenElement) {
         const btn = document.getElementById('pdf-fs-btn');
@@ -1047,6 +1075,8 @@
       }
     });
 
+    // Fetch and render the resume. Runs once (guarded by pdfLoaded); shows the loading spinner
+    // while fetching and an error message if the PDF can't be loaded.
     function loadResumePdf() {
       if (pdfLoaded) return;
       pdfLoaded = true;

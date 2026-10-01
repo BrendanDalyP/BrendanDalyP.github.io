@@ -1,4 +1,9 @@
 /* Unified Navigation and Common Styles */
+
+/* Design tokens (light theme defaults).
+   Each color is stored as raw HSL components ("H S% L%") — not a full color — so that
+   stylesheets can wrap them like hsl(var(--primary) / 0.2) to add opacity on the fly.
+   The .dark block below overrides these same variables for dark mode. */
 :root {
   --background: 0 0% 100%;
   --foreground: 222.2 84% 4.9%;
@@ -16,6 +21,7 @@
   --radius: 0.5rem;
 }
 
+/* Dark theme overrides — applied when <body> has the .dark class (toggled in common.js). */
 .dark {
   --background: 222.2 84% 4.9%;
   --foreground: 210 40% 98%;
